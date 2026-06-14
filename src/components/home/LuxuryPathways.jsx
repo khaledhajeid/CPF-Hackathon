@@ -1,0 +1,163 @@
+// src/components/home/LuxuryPathways.jsx
+import React, { useState } from 'react';
+import { ArrowUpLeft, Target, Users, Briefcase } from 'lucide-react';
+
+export default function LuxuryPathways({ onPathwaySelect }) {
+  const [activeCard, setActiveCard] = useState(1);
+
+  const pathways = [
+    {
+      id: 'القيادة',
+      goal: 'أريد أن أكون قائداً وصانع قرار',
+      name: 'مسار القيادة',
+      shortName: 'القيادة',
+      number: 'الأول',
+      desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لتمكينهم من ترك أثر إيجابي دائم في مجتمعاتهم.',
+      brands: ['برنامج القيادة للمدارس', 'برنامج خطى الحسين'],
+      icon: Target,
+      bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
+      closedOverlay: 'bg-[#2b307e]/80', 
+      openGradient: 'from-[#121433] via-[#2b307e]/90 to-transparent' 
+    },
+    {
+      id: 'المشاركة الاقتصادية',
+      goal: 'أريد تطوير مهاراتي التقنية والعملية',
+      name: 'مسار المشاركة الاقتصادية',
+      shortName: 'الاقتصاد',
+      number: 'الثاني',
+      desc: 'منظومة متكاملة تهدف لإعداد الشباب لوظائف المستقبل، وتزويدهم بأحدث مهارات الابتكار والبرمجة والتصنيع الرقمي.',
+      brands: [
+        'جامعة الحسين التقنية', 
+        'مركز التميز للريادة والابتكار', 
+        '42 عمّان و42 إربد', 
+        'كلية التدريب المهني المتقدم في الأردن', 
+        'مساحة الصنّاع', 
+        'مبرمجو الأردن', 
+        'منصة التّعلم الرقمي لجامعة الحسين التقنية', 
+        'برنامج التدريب الدّولي', 
+        'مبادرة قصي'
+      ],
+      icon: Briefcase,
+      bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071',
+      closedOverlay: 'bg-[#721F31]/85', 
+      openGradient: 'from-[#3b1019] via-[#721F31]/95 to-transparent' 
+    },
+    {
+      id: 'التنمية المجتمعية',
+      goal: 'أريد التطوع وخدمة مجتمعي',
+      name: 'مسار التنمية المجتمعية',
+      shortName: 'المجتمع',
+      number: 'الثالث',
+      desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تخدم مجتمعك وتساهم في التنمية المستدامة في كافة محافظات المملكة.',
+      brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية'],
+      icon: Users,
+      bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
+      closedOverlay: 'bg-[#1f5412]/85', 
+      openGradient: 'from-[#0e2608] via-[#1f5412]/95 to-transparent'
+    }
+  ];
+
+  return (
+    // 🟢 نظفنا الـ inline styles من هون
+    <div className="py-24 bg-white relative overflow-hidden w-full font-sans" dir="rtl">
+      
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 text-right mb-16 relative z-10">
+        <div className="flex items-center gap-3 mb-4">
+          <img src="/arrow-yellow.svg" className="w-8 h-8 shrink-0" alt="" />
+          <h2 className="text-3xl md:text-5xl font-black text-[#721F31] tracking-tight">
+            طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
+          </h2>
+        </div>
+        <p className="mt-4 text-[#4c4c4c] font-medium max-w-2xl text-lg leading-relaxed">
+          لا تبحث عن المسميات، ابحث عن شغفك. اختر الهدف الذي تسعى إليه وسنقوم بتوجيهك للبرامج المناسبة.
+        </p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-6 h-[850px] lg:h-[600px] w-full px-4 lg:px-8 mx-auto">
+        {pathways.map((path, index) => {
+          const isActive = activeCard === index;
+          const Icon = path.icon;
+
+          return (
+            <div
+              key={path.id}
+              onMouseEnter={() => setActiveCard(index)}
+              onClick={() => onPathwaySelect(path.id)}
+              className={`relative rounded-3xl overflow-hidden cursor-pointer group transition-[flex,shadow] duration-500 ease-in-out border border-gray-100 will-change-[flex]
+                ${isActive ? 'flex-[4] shadow-2xl z-10' : 'flex-[1] shadow-md hover:shadow-xl'}
+              `}
+            >
+              <img 
+                src={path.bgImage} alt={path.name} 
+                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out will-change-transform
+                  ${isActive ? 'scale-100' : 'scale-105 group-hover:scale-110'}`} 
+              />
+              
+              <div className={`absolute inset-0 ${path.closedOverlay} transition-opacity duration-500 
+                ${isActive ? 'opacity-0' : 'opacity-100 group-hover:opacity-90'}`}>
+              </div>
+              
+              <div className={`absolute inset-0 bg-gradient-to-t ${path.openGradient} transition-opacity duration-500 
+                ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+              </div>
+
+              <div className={`absolute inset-0 p-8 flex flex-col transition-opacity duration-300
+                ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-150'}`}
+              >
+                <div className="absolute top-8 right-8 px-4 py-1.5 bg-[#721F31] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
+                   {`المسار ${path.number}`}
+                </div>
+
+                <div className="flex flex-col items-start justify-end mt-auto group-hover:-translate-y-2 transition-transform duration-500">
+                  <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center border border-white/40 mb-4 group-hover:bg-white/10 transition-colors">
+                    <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-black text-[#C08F2D] text-2xl tracking-wide drop-shadow-md">
+                    {path.shortName}
+                  </h3>
+                </div>
+              </div>
+
+              <div className={`absolute bottom-0 right-0 p-8 lg:p-12 flex flex-col justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[600px]
+                ${isActive ? 'opacity-100 delay-200' : 'opacity-0 pointer-events-none'}`}
+              >
+                <div className="flex items-center gap-4 relative z-10 mb-8 pt-4">
+                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
+                    <Icon className="w-8 h-8 text-[#C08F2D]" />
+                  </div>
+                  <div className="px-5 py-2 bg-[#C08F2D] rounded-lg text-[13px] font-black text-white border border-white/20 shadow-md">
+                    {path.name}
+                  </div>
+                </div>
+
+                <div className="w-full relative z-10 mt-auto pt-4 text-right">
+                  <h3 className="font-black text-white text-3xl md:text-4xl leading-tight mb-4 drop-shadow-lg">
+                    {path.goal}
+                  </h3>
+                  
+                  <p className="text-white/90 font-medium text-sm md:text-base leading-relaxed mb-8 drop-shadow-md">
+                    {path.desc}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8 max-w-xl">
+                    {path.brands.map(brand => (
+                      <span key={brand} className="text-[10px] md:text-[12px] font-black text-white bg-[#C08F2D]/20 px-3 py-2 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm shadow-sm hover:bg-[#C08F2D]/30 transition-colors">
+                        {brand}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <button className="flex items-center gap-3 text-white font-black text-base hover:text-[#C08F2D] transition-colors w-fit group/btn">
+                    <span>استكشف الفرص والمبادرات</span> 
+                    <ArrowUpLeft className="w-6 h-6 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

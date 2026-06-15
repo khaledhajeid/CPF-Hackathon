@@ -63,12 +63,11 @@ function App() {
     }
     switch (currentPage) {
       case 'programs': 
-        // 🟢 التمرير هنا: أضفنا handleRegisterClick
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
       case 'program_details': 
         return <motion.div key="program_details" {...pageVariants}><ProgramDetails onNavigate={setCurrentPage} programName={activeProgramName} /></motion.div>; 
       case 'success': 
-        return <motion.div key="success" {...pageVariants}><SuccessStories onNavigate={setCurrentPage} /></motion.div>;
+        return <motion.div key="success" {...pageVariants}><SuccessStories onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} /></motion.div>;
       case 'contact': 
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'home':
@@ -87,7 +86,8 @@ function App() {
   };
 
   return (
-    <div dir="rtl" className="min-h-screen bg-[#F8FAFC] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden">
+    // 🟢 التعديل الجوهري: إضافة pb-20 md:pb-0 عشان المحتوى ما يتخبى ورا الـ MobileNavBar
+    <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
       
       <Navbar 
         currentPage={currentPage} 
@@ -107,6 +107,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            // 🟢 الـ z-index هون 99999 عشان يغطي على كل إشي بما فيها الـ Mobile NavBar
             className="fixed inset-0 z-[99999] bg-white overflow-y-auto"
           >
             <Login 

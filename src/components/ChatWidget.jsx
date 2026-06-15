@@ -1,100 +1,166 @@
 // src/components/ChatWidget.jsx
-import React, { useState } from 'react';
-import { MessageCircle, X, Send, Bot, Sparkles } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { X, Send, Sparkles, ChevronLeft } from 'lucide-react';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { text: "أهلاً بك في منصة مؤسسة ولي العهد. أنا مساعدك الذكي، كيف يمكنني مساعدتك في بناء مسارك اليوم؟", isBot: true }
-  ]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
 
-  const handleSend = (e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
+  // 🟢 رسالة الترحيب
+  const [messages, setMessages] = useState([
+    { 
+      text: "أهلاً بك يا صديقي! أنا عون، رفيقك الذكي في مؤسسة ولي العهد. كيف يمكنني إرشادك اليوم لتكتشف شغفك وتبني مسارك؟", 
+      isBot: true 
+    }
+  ]);
 
-    setMessages(prev => [...prev, { text: inputValue, isBot: false }]);
+  // 🟢 أسئلة مقترحة (Quick Replies)
+  const quickReplies = [
+    "كيف أحدد المسار الأنسب لي؟",
+    "كيف يعمل نظام النقاط؟",
+    "ما هي مبادرة 42 عمّان؟"
+  ];
+
+  // نزول تلقائي لآخر رسالة
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
+
+  // 🟢 محاكاة للذكاء الاصطناعي (بتلقط الكلمات المفتاحية)
+  const generateBotResponse = (userText) => {
+    const text = userText.toLowerCase();
+    if (text.includes('مسار') || text.includes('شغف')) {
+      return "لتحديد مسارك بدقة، أحتاج لمعرفة المزيد عنك. هل تميل أكثر للعمل مع التكنولوجيا والأرقام، أم تفضل العمل الميداني ومساعدة المجتمع؟";
+    } else if (text.includes('نقاط')) {
+      return "نظام النقاط صُمم لمكافأتك! في كل مرة تمسح فيها كود الـ QR عند حضورك لفعالية، ستحصل على نقاط تضاف لمحفظتك الرقمية، ويمكنك استبدالها لاحقاً بفرص حصرية.";
+    } else if (text.includes('42')) {
+      return "مدرسة 42 عمّان هي مدرسة برمجة ثورية! لا تعتمد على المعلمين ولا المحاضرات، بل على التعلم الذاتي وحل المشكلات كفريق. هل أنت مهتم بالتسجيل في معسكر التصفية القادم؟";
+    } else {
+      return "فهمت عليك! لضمان تقديم الدعم الأفضل لك، هل ترغب أن أحولك لصفحة 'بوصلة الفرص' لتستكشف البرامج المتاحة بنفسك، أم تفضل أن أقترح عليك مبادرة محددة؟";
+    }
+  };
+
+  const handleSend = (text) => {
+    if (!text.trim()) return;
+
+    // إضافة رسالة المستخدم
+    setMessages(prev => [...prev, { text, isBot: false }]);
     setInputValue("");
     setIsTyping(true);
 
+    // تأخير وهمي لمحاكاة التفكير
     setTimeout(() => {
       setIsTyping(false);
-      setMessages(prev => [...prev, { 
-        text: "رائع! بناءً على اهتمامك، أنصحك بالتسجيل في 'منتدى الفرص الاقتصادية' في العقبة. هل أضيفه إلى محفظتك؟", 
-        isBot: true 
-      }]);
+      const botReply = generateBotResponse(text);
+      setMessages(prev => [...prev, { text: botReply, isBot: true }]);
     }, 1500);
   };
 
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    handleSend(inputValue);
+  };
+
   return (
-    // السر هون: bottom-24 للموبايل، و md:bottom-8 للكمبيوتر
-    <div className="fixed bottom-24 md:bottom-8 left-4 md:left-8 z-[100] font-sans">
+    <div className="fixed bottom-24 md:bottom-8 left-4 md:left-8 z-[100] font-sans" dir="rtl">
       
       {/* نافذة الدردشة */}
       {isOpen && (
-        <div className="absolute bottom-16 left-0 w-[calc(100vw-2rem)] sm:w-96 bg-white rounded-2xl shadow-[0_10px_40px_rgb(0,0,0,0.15)] border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-left animate-in zoom-in-95">
+        <div className="absolute bottom-16 left-0 w-[calc(100vw-2rem)] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-left animate-in zoom-in-95">
           
-          {/* Header */}
-          <div className="bg-gradient-to-r from-[#721F31] to-[#5a1826] p-4 sm:p-5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-xl backdrop-blur-sm">
-                <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          {/* Header الفخم (الاسم: عون فقط) */}
+          <div className="bg-[#1a0409] relative p-5 flex items-center justify-between border-b-[4px] border-[#C08F2D]">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#8a1538]/80 to-transparent pointer-events-none" />
+            <div className="relative z-10 flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm p-1.5 shadow-inner">
+                <img src="/The-Star.png" alt="عون" className="w-full h-full object-contain drop-shadow-md" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-base sm:text-lg leading-tight flex items-center gap-1">
-                  المساعد الذكي <Sparkles className="w-3 h-3 text-[#C08F2D]" />
+                <h3 className="text-white font-black text-[17px] leading-tight flex items-center gap-1.5">
+                 عون 
                 </h3>
-                <span className="text-white/70 text-xs font-medium">متصل الآن</span>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-white/60 text-[11px] font-bold">متصل لمساعدتك</span>
+                </div>
               </div>
             </div>
             <button 
               onClick={() => setIsOpen(false)}
-              className="text-white/70 hover:text-white hover:bg-white/10 p-2 rounded-full transition-colors"
+              className="relative z-10 text-white/50 hover:text-white bg-white/5 hover:bg-white/10 p-2 rounded-full transition-colors cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Messages Area - متجاوب مع ارتفاع الموبايل */}
-          <div className="h-[50vh] max-h-[400px] sm:h-80 overflow-y-auto p-4 sm:p-5 bg-[#F8FAFC] flex flex-col gap-4">
+          {/* منطقة الرسائل */}
+          <div className="h-[50vh] max-h-[420px] overflow-y-auto p-5 bg-[#F4F7FA] flex flex-col gap-4">
+            
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}>
-                <div className={`max-w-[85%] p-3.5 rounded-2xl text-sm font-medium leading-relaxed ${
+                {msg.isBot && (
+                  <div className="w-6 h-6 rounded-full bg-[#8a1538] flex items-center justify-center shrink-0 ml-2 mt-auto mb-1 border border-white shadow-sm">
+                    <img src="/The-Star.png" alt="عون" className="w-3 h-3 object-contain" />
+                  </div>
+                )}
+                <div className={`max-w-[80%] p-3.5 text-[13px] font-bold leading-[1.8em] shadow-sm ${
                   msg.isBot 
-                    ? 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100' 
-                    : 'bg-[#721F31] text-white rounded-br-sm shadow-md'
+                    ? 'bg-white text-gray-700 rounded-2xl rounded-br-sm border border-gray-100' 
+                    : 'bg-[#8a1538] text-white rounded-2xl rounded-bl-sm'
                 }`}>
                   {msg.text}
                 </div>
               </div>
             ))}
             
-            {/* Typing Indicator */}
+            {/* مؤشر الكتابة (Typing Indicator) */}
             {isTyping && (
-              <div className="flex justify-start">
-                <div className="bg-white p-4 rounded-2xl rounded-bl-sm shadow-sm border border-gray-100 flex gap-1.5 items-center">
-                  <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                  <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                  <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+              <div className="flex justify-start items-end gap-2">
+                <div className="w-6 h-6 rounded-full bg-[#8a1538] flex items-center justify-center shrink-0 mb-1 border border-white shadow-sm">
+                  <img src="/The-Star.png" alt="عون" className="w-3 h-3 object-contain" />
+                </div>
+                <div className="bg-white px-4 py-3.5 rounded-2xl rounded-br-sm shadow-sm border border-gray-100 flex gap-1.5 items-center h-10">
+                  <div className="w-1.5 h-1.5 bg-[#C08F2D] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                  <div className="w-1.5 h-1.5 bg-[#C08F2D] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                  <div className="w-1.5 h-1.5 bg-[#C08F2D] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                 </div>
               </div>
             )}
+
+            {/* أزرار الاقتراحات السريعة */}
+            {!isTyping && messages.length === 1 && (
+              <div className="flex flex-col gap-2 mt-2">
+                {quickReplies.map((reply, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => handleSend(reply)}
+                    className="bg-white border border-[#C08F2D]/30 hover:border-[#C08F2D] hover:bg-[#C08F2D]/5 text-[#8a1538] text-[12px] font-black py-2.5 px-4 rounded-xl text-right transition-all flex items-center justify-between group cursor-pointer shadow-sm"
+                  >
+                    <span>{reply}</span>
+                    <ChevronLeft className="w-4 h-4 text-[#C08F2D] transform group-hover:-translate-x-1 transition-transform" />
+                  </button>
+                ))}
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
-          <form onSubmit={handleSend} className="p-3 sm:p-4 bg-white border-t border-gray-100 flex gap-2 items-center">
+          {/* منطقة الإدخال */}
+          <form onSubmit={onSubmitForm} className="p-3 bg-white border-t border-gray-100 flex gap-2 items-center">
             <input 
               type="text" 
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="اكتب سؤالك هنا..." 
-              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-[#721F31]/50 focus:ring-2 focus:ring-[#721F31]/10 transition-all font-medium"
+              placeholder="تحدث مع عون..." 
+              className="flex-1 bg-[#F8FAFC] border border-gray-200 rounded-xl px-4 py-3 text-[13px] outline-none focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/10 transition-all font-bold placeholder:font-medium placeholder:text-gray-400"
             />
             <button 
               type="submit"
-              disabled={!inputValue.trim()}
-              className="bg-[#C08F2D] hover:bg-[#a67c27] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all shadow-sm"
+              disabled={!inputValue.trim() || isTyping}
+              className="bg-[#C08F2D] hover:bg-[#a67c27] disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-xl transition-all shadow-sm cursor-pointer shrink-0"
             >
               <Send className="w-5 h-5 rtl:-scale-x-100" />
             </button>
@@ -102,12 +168,12 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {/* Floating Button */}
+      {/* 🟢 الزر العائم - تم استبدال الأيقونة بشعار النجمة السباعية الرسمية */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className={`bg-[#721F31] hover:bg-[#5a1826] text-white p-3 sm:p-4 rounded-full shadow-2xl hover:shadow-[0_10px_30px_rgb(114,31,49,0.4)] transition-all duration-300 hover:-translate-y-1 flex items-center justify-center ${isOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
+        className={`bg-[#8a1538] hover:bg-[#680f2a] text-white p-3.5 rounded-full shadow-2xl hover:shadow-[#8a1538]/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border-2 border-white ${isOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
       >
-        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+        <img src="/The-Star.png" alt="عون AI" className="w-8 h-8 object-contain drop-shadow-md" />
       </button>
     </div>
   );

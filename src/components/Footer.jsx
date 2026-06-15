@@ -38,12 +38,13 @@ export default function Footer() {
   };
 
   return (
-    // 🟢 شلنا الـ inline style من الـ Footer عشان يورث الخط النظيف
-    <footer className="bg-[#3b1019] text-gray-200 pt-16 pb-8 relative border-t-4 border-[#721F31] font-sans" dir="rtl">
+    // 🟢 تم تفتيح لون الخلفية من الأسود شبه الكامل إلى العنابي الغني الملكي
+    <footer className="bg-[#3b1019] text-gray-200 pt-16 pb-8 relative overflow-hidden font-sans border-t-[6px] border-[#C08F2D]" dir="rtl">
       
-      <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay"
-        style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '180px', backgroundRepeat: 'repeat' }}
+      {/* خلفية مضيئة متدرجة وزخرفة CPF */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#8a1538]/20 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay z-0"
+        style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px', backgroundRepeat: 'repeat' }}
       />
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-10">
@@ -51,7 +52,7 @@ export default function Footer() {
         {/* قسم النشرة الإخبارية */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pb-12 mb-12 border-b border-white/10">
           <div className="text-right w-full lg:w-1/2 pe-10">
-            <h3 className="text-2xl md:text-3xl font-black text-white mb-3">اشترك في نشرتنا الإخبارية</h3>
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-3 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
             <p className="text-gray-300 text-base font-medium leading-relaxed">
               كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
             </p>
@@ -60,9 +61,9 @@ export default function Footer() {
             <input 
               type="email" 
               placeholder="البريد الإلكتروني..." 
-              className="w-full h-full bg-[#300d14] border border-white/10 text-white px-5 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-base"
+              className="w-full h-full bg-[#300d14] border border-white/10 text-white px-5 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-base placeholder:font-medium placeholder:text-gray-500"
             />
-            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a1c1d] font-black px-8 rounded-l-xl transition-colors whitespace-nowrap text-base">
+            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a1c1d] font-black px-8 rounded-l-xl transition-colors whitespace-nowrap text-base shadow-md cursor-pointer">
               اشترك الآن
             </button>
           </div>
@@ -72,19 +73,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-white/10">
           
           <div className="space-y-6 text-right">
+            {/* 🟢 تم إرجاع اللوجو الأبيض الرسمي بناءً على طلبك */}
             <div className="flex flex-col items-start gap-1">
-              <img src="/logo_white.png" alt="مؤسسة ولي العهد - Crown Prince Foundation" className="h-20 max-w-[250px] object-contain" />
+              <img src="/logo_white.png" alt="مؤسسة ولي العهد - Crown Prince Foundation" className="h-20 max-w-[280px] object-contain drop-shadow-lg mx-auto md:mx-0" />
             </div>
-            <p className="text-base leading-8 text-gray-200 font-medium pe-4">
+            <p className="text-base leading-relaxed text-gray-200 font-medium pe-4 text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
             </p>
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex items-center gap-3 pt-2">
               {socialLinks.map((social, idx) => {
                 const Icon = social.icon;
                 return (
                   <a 
                     key={idx} href={social.href} aria-label={social.name}
-                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#C08F2D] hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D] transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D]/30 transition-all duration-300"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -98,8 +100,7 @@ export default function Footer() {
             <ul className="space-y-4 text-base font-bold text-gray-200">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a href={link.href} className="text-gray-200 hover:text-[#C08F2D] transition-colors flex items-center gap-2 group w-fit">
-                    <span className="text-[#C08F2D] transition-colors">-</span>
+                  <a href={link.href} className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit">
                     <span>{link.name}</span>
                   </a>
                 </li>
@@ -112,8 +113,7 @@ export default function Footer() {
             <ul className="space-y-4 text-base font-bold text-gray-200">
               {initiatives.map((item, idx) => (
                 <li key={idx}>
-                  <a href={item.href} className="text-gray-200 hover:text-[#C08F2D] transition-colors flex items-center gap-2 group w-fit">
-                    <span className="text-[#C08F2D] transition-colors">-</span>
+                  <a href={item.href} className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit">
                     <span>{item.name}</span>
                   </a>
                 </li>
@@ -126,15 +126,15 @@ export default function Footer() {
             <ul className="space-y-6 text-base font-bold text-gray-200">
               <li className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />
-                <span className="leading-relaxed font-medium">عمان، المملكة الأردنية الهاشمية<br /><span className="text-gray-400 text-sm">شارع الملك عبدالله الثاني</span></span>
+                <span className="leading-relaxed font-medium">عمان، مجمع الملك حسين للأعمال<br />مبنى رقم 3</span>
               </li>
               <li className="flex items-center gap-4 font-sans ltr">
                 <Phone className="w-5 h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />
-                <span className="font-sans font-black">+962 6 550 0000</span>
+                <span className="font-sans font-black tracking-wider text-white pt-1">+962 6 555 5555</span>
               </li>
               <li className="flex items-center gap-4 font-sans ltr">
                 <Mail className="w-5 h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />
-                <a href="mailto:info@cpf.jo" className="hover:text-[#C08F2D] transition-colors font-sans text-gray-200 font-bold">info@cpf.jo</a>
+                <a href="mailto:info@cpf.jo" className="hover:text-white transition-colors font-sans text-gray-200 font-bold">info@cpf.jo</a>
               </li>
             </ul>
           </div>
@@ -142,24 +142,24 @@ export default function Footer() {
         </div>
 
         {/* القسم السفلي */}
-        <div className="pt-8 flex flex-col md:flex-row-reverse items-center justify-between gap-6 text-sm font-bold text-gray-400">
+        <div className="pt-8 flex flex-col md:flex-row-reverse items-center justify-between gap-6 text-[13px] font-bold text-gray-500">
           
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-[#C08F2D] hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-2.5 rounded-full transition-all border border-white/10 shadow-lg group"
+            className="flex items-center gap-2 text-gray-300 hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-2.5 rounded-full transition-all border border-white/10 shadow-lg group cursor-pointer"
           >
             <span>أعلى الصفحة</span>
             <ArrowUpLeft className="w-4 h-4 transform rotate-45 transition-transform duration-300 group-hover:-translate-y-1" />
           </button>
 
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-[#C08F2D] transition-colors">شروط الاستخدام</a>
-            <a href="#" className="hover:text-[#C08F2D] transition-colors">سياسة الخصوصية</a>
+            <a href="#" className="hover:text-white transition-colors">شروط الاستخدام</a>
+            <a href="#" className="hover:text-white transition-colors">سياسة الخصوصية</a>
           </div>
 
           <div className="text-center md:text-right font-medium">
             <span>جميع الحقوق محفوظة © ٢٠٢٦ </span>
-            <span className="text-gray-200 font-bold">مؤسسة ولي العهد</span>
+            <span className="text-white font-bold">مؤسسة ولي العهد</span>
           </div>
 
         </div>

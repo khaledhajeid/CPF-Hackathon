@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Menu, Search } from 'lucide-react';
+import { ShieldCheck, Search } from 'lucide-react';
 
 export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearchClick }) {
   const [scrollPos, setScrollPos] = useState(0);
@@ -16,7 +16,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
   const forceSolid = currentPage !== 'home';
   const isScrolled = forceSolid || scrollPos > 20;
 
-  // 🟢 التعديل: شلنا الـ border-white/10 من الحالة الشفافة نهائياً عشان يندمج مع الـ Hero
   const navBg = isScrolled 
     ? 'bg-white shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] border-b border-gray-100' 
     : 'bg-gradient-to-b from-[#1a070b]/60 to-transparent border-transparent backdrop-blur-[2px]';
@@ -29,7 +28,7 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
 
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
-    { id: 'programs', label: 'البرامج والمبادرات' },
+    { id: 'programs', label: 'البرامج والفرص' },
     { id: 'success', label: 'قصص النجاح' },
     { id: 'contact', label: 'تواصل معنا' }
   ];
@@ -63,17 +62,15 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
         </div>
 
         <div className="flex items-center gap-5">
-          <button onClick={onSearchClick} className={`p-3 rounded-full transition-all duration-300 ${isScrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
+          <button onClick={onSearchClick} className={`p-3 rounded-full transition-all duration-300 cursor-pointer ${isScrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
             <Search className="w-6 h-6" />
           </button>
 
-          <button onClick={onLoginClick} className={`hidden md:flex items-center gap-3 rounded-lg font-bold text-[15px] transition-all duration-300 shadow-sm ${buttonClass}`}>
-            <ShieldCheck className="w-[20px] h-[20px]" /> دخول / محفظة سند
+          <button onClick={onLoginClick} className={`hidden md:flex items-center gap-3 rounded-lg font-bold text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
+            <ShieldCheck className="w-[20px] h-[20px]" /> تسجيل الدخول
           </button>
-
-          <button className={`lg:hidden p-2 rounded-md transition-colors ${isScrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
-            <Menu className="w-7 h-7" />
-          </button>
+          
+          {/* 🟢 تم إزالة زر الهمبرغر نهائياً كما طلبت */}
         </div>
 
       </div>

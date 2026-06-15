@@ -82,7 +82,7 @@ export const allEvents = [
     pathway: 'القيادة',
     points: 80,
     ageRange: '13 - 17',
-    image: 'https://images.unsplash.com/photo-1475721028070-20531557088b?q=80&w=2070',
+    image: 'https://nahno-new.s3.eu-west-3.amazonaws.com/project_vip/cover-241001123739B3NCq.png',
     description: 'ورشة عمل متخصصة لتدريب الشباب على مهارات التواصل الفعال، التخلص من رهبة المسرح، وبناء الثقة بالنفس للتعبير عن الأفكار بقوة ووضوح.'
   },
   {
@@ -130,7 +130,7 @@ export const allEvents = [
     pathway: 'القيادة',
     points: 110,
     ageRange: '18 - 23',
-    image: 'https://images.unsplash.com/photo-1549419131-01fcd2fb7dff?q=80&w=2034',
+    image: 'https://ar.visitjordan.com/uploads/attractions/29b0d9eb-5a78-43f5-9919-af205af829b5.png',
     description: 'يهدف البرنامج لتأهيل أدلاء سياحيين شباب قادرين على إبراز الوجه المشرق للمواقع الأثرية الأردنية ونقل الرواية التاريخية بطرق تفاعلية مبتكرة.'
   },
   {

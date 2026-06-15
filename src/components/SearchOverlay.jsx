@@ -31,26 +31,28 @@ export default function SearchOverlay({ isOpen, onClose, handleRegisterClick }) 
           initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
           animate={{ opacity: 1, backdropFilter: 'blur(24px)' }}
           exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-          className="fixed inset-0 z-[100] bg-[#1a070b]/80 flex flex-col items-center pt-24 md:pt-32 px-4"
+          // 🟢 100dvh لضمان عدم القفز عند ظهور كيبورد الموبايل
+          className="fixed inset-0 z-[120] bg-[#1a0409]/85 flex flex-col items-center pt-20 md:pt-32 px-4 min-h-[100dvh]"
           dir="rtl"
         >
-          {/* زر الإغلاق */}
+          {/* 🟢 زر الإغلاق: تصغير للحجم وموقع مريح للموبايل */}
           <button 
             onClick={onClose}
-            className="absolute top-8 right-8 text-white/40 hover:text-white transition-transform hover:rotate-90 duration-300"
+            className="absolute top-6 right-6 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all hover:rotate-90 duration-300 cursor-pointer"
           >
-            <X className="w-10 h-10" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           {/* الحاوية الزجاجية لمحرك البحث */}
           <motion.div 
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className={`w-full max-w-4xl relative transition-all duration-500 ${isFocused ? 'scale-[1.02]' : 'scale-100'}`}
+            className={`w-full max-w-4xl relative transition-all duration-500 mt-4 md:mt-0 ${isFocused ? 'scale-[1.02]' : 'scale-100'}`}
           >
-            <div className="relative bg-[#0a0204]/80 backdrop-blur-xl border border-white/10 rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+            {/* 🟢 تدوير الحواف rounded-2xl لتلائم تصميم المنصة */}
+            <div className="relative bg-[#0a0204]/80 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
               
-              <Search className={`absolute right-6 top-1/2 -translate-y-1/2 w-7 h-7 transition-colors duration-300 ${isFocused ? 'text-[#C08F2D]' : 'text-white/30'}`} />
+              <Search className={`absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-5 h-5 md:w-7 md:h-7 transition-colors duration-300 ${isFocused ? 'text-[#C08F2D]' : 'text-white/30'}`} />
               
               <input 
                 ref={inputRef}
@@ -60,18 +62,18 @@ export default function SearchOverlay({ isOpen, onClose, handleRegisterClick }) 
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 placeholder="ابحث عن فعالية، مسار، أو محافظة..."
-                dir="rtl" // 🟢 إجبار الاتجاه مباشرة جوا الـ Input
-                /* 🟢 تم إزالة font-bold واستخدام font-normal لأن الأوزان الثقيلة هي اللي بتكسر الوصلات */
-                className="w-full bg-transparent border-none text-white placeholder-white/40 text-2xl md:text-3xl font-normal font-sans py-7 pr-16 pl-6 outline-none"
+                dir="rtl"
+                /* 🟢 تعديل الـ Padding و حجم الخط للموبايل */
+                className="w-full bg-transparent border-none text-white placeholder-white/40 text-lg md:text-3xl font-medium font-sans py-5 md:py-7 pr-12 md:pr-16 pl-6 outline-none"
                 style={{ 
                   letterSpacing: '0px', 
                   wordSpacing: '0px',
-                  textRendering: 'optimizeLegibility' // 🟢 منع المتصفح من تشويه الحروف
+                  textRendering: 'optimizeLegibility' 
                 }}
               />
 
               {/* خط التركيز الذهبي السفلي */}
-              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white/5">
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: isFocused ? '100%' : '0%' }}
@@ -85,12 +87,13 @@ export default function SearchOverlay({ isOpen, onClose, handleRegisterClick }) 
           {query.length > 1 && (
             <motion.div 
               initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}
-              className="w-full max-w-4xl mt-3 bg-[#0a0204]/80 backdrop-blur-xl rounded-sm shadow-2xl overflow-hidden max-h-[50vh] overflow-y-auto border border-white/10"
+              // 🟢 التحكم بارتفاع النتائج لتناسب الموبايل بشكل مثالي
+              className="w-full max-w-4xl mt-3 md:mt-4 bg-[#0a0204]/80 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden max-h-[50vh] md:max-h-[60vh] overflow-y-auto border border-white/10 scrollbar-hide"
             >
               {results.length === 0 ? (
-                <div className="p-10 text-center text-white/50 font-bold flex flex-col items-center gap-3">
-                  <Search className="w-8 h-8 text-white/20" />
-                  لا توجد نتائج مطابقة لبحثك عن "{query}"
+                <div className="p-8 md:p-10 text-center text-white/50 font-bold flex flex-col items-center gap-3">
+                  <Search className="w-6 h-6 md:w-8 md:h-8 text-white/20" />
+                  <span className="text-[13px] md:text-base">لا توجد نتائج مطابقة لبحثك عن "{query}"</span>
                 </div>
               ) : (
                 <div className="flex flex-col">
@@ -98,19 +101,21 @@ export default function SearchOverlay({ isOpen, onClose, handleRegisterClick }) 
                     <motion.div 
                       initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}
                       key={event.id} 
-                      className="p-5 border-b border-white/5 hover:bg-white/5 transition-colors flex items-center justify-between group cursor-pointer" 
+                      className="p-4 md:p-5 border-b border-white/5 hover:bg-white/5 transition-colors flex items-center justify-between group cursor-pointer" 
                       onClick={() => { onClose(); handleRegisterClick(event); }}
                     >
-                      <div className="flex items-center gap-5">
-                        <div className="w-14 h-14 bg-[#1a070b] rounded-sm overflow-hidden shrink-0 border border-white/10 relative">
-                          <img src={event.image} alt="" className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="flex items-center gap-3 md:gap-5 w-full">
+                        <div className="w-12 h-12 md:w-16 md:h-16 bg-[#1a0409] rounded-xl overflow-hidden shrink-0 border border-white/10 relative">
+                          <img src={event.image} alt={event.title} className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
                         </div>
-                        <div>
-                          <h4 className="text-base font-black text-white group-hover:text-[#C08F2D] transition-colors mb-1">{event.title}</h4>
-                          <span className="text-[11px] font-bold text-white/50 bg-white/5 border border-white/5 px-2 py-1 rounded-sm">{event.pathway} • {event.city}</span>
+                        <div className="flex-1 pr-1">
+                          <h4 className="text-[13px] md:text-base font-black text-white group-hover:text-[#C08F2D] transition-colors mb-1 md:mb-1.5 line-clamp-1">{event.title}</h4>
+                          <span className="text-[10px] md:text-[11px] font-bold text-white/60 bg-white/10 border border-white/5 px-2 md:px-2.5 py-1 rounded-md inline-block shadow-sm">
+                            {event.pathway} • {event.city}
+                          </span>
                         </div>
                       </div>
-                      <ArrowUpLeft className="w-5 h-5 text-white/20 group-hover:text-[#C08F2D] transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      <ArrowUpLeft className="w-4 h-4 md:w-5 md:h-5 text-white/20 group-hover:text-[#C08F2D] transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all shrink-0 ml-2" />
                     </motion.div>
                   ))}
                 </div>

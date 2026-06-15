@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
 import { Quote, Sparkles, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin } from 'lucide-react';
 
-// 🟢 الداتا المعتمدة مع الصور الموثوقة والمحافظات
 const stories = [
   {
     id: 1,
@@ -107,50 +106,57 @@ const stories = [
   },
 ];
 
-// 🟢 مكون النافذة المنبثقة (Story Modal) المُعدل
 const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
   if (!story) return null;
 
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-12 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-6 lg:p-12 bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+        // 🟢 الأنيميشن بيسحب من تحت للموبايل (Bottom Sheet) ومن النص للكمبيوتر
+        initial={{ y: window.innerWidth < 768 ? '100%' : 20, opacity: window.innerWidth < 768 ? 1 : 0 }} 
+        animate={{ y: 0, opacity: 1 }} 
+        exit={{ y: window.innerWidth < 768 ? '100%' : 20, opacity: window.innerWidth < 768 ? 1 : 0 }}
+        transition={{ type: 'spring', damping: 25, stiffness: window.innerWidth < 768 ? 250 : 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-[2rem] overflow-hidden shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] md:max-h-[90vh]"
+        className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row 
+                   mt-auto h-[90vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0"
       >
-        <div className="w-full md:w-3/5 p-8 md:p-12 overflow-y-auto flex flex-col scrollbar-hide">
-          <button onClick={onClose} className="absolute top-6 right-6 md:relative md:top-0 md:right-0 md:self-end w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors mb-6 text-gray-500 z-10 cursor-pointer">
+        {/* 🟢 شريط السحب للموبايل */}
+        <div className="md:hidden w-full flex justify-center pt-4 pb-2 bg-white shrink-0 rounded-t-3xl">
+          <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+        </div>
+
+        <div className="w-full md:w-3/5 p-6 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8">
+          <button onClick={onClose} className="hidden md:flex absolute top-6 right-6 md:relative md:top-0 md:right-0 md:self-end w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full items-center justify-center transition-colors mb-6 text-gray-500 z-10 cursor-pointer shrink-0">
             <X className="w-5 h-5" />
           </button>
           
-          <div className="inline-flex items-center gap-2 bg-[#721F31]/10 text-[#721F31] px-4 py-2 rounded-lg font-bold text-xs w-fit mb-4">
-            <Target className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 bg-[#721F31]/10 text-[#721F31] px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4">
+            <Target className="w-3.5 h-3.5 md:w-4 md:h-4" />
             {story.pathway}
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8">{story.name}</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6 md:mb-8">{story.name}</h2>
           
-          {/* 🟢 تم حل مشكلة أيقونة الاقتباس العملاقة بدمجها ضمن صندوق جانبي فخم */}
-          <div className="flex gap-4 mb-8 bg-gray-50 p-6 rounded-2xl border-r-4 border-[#C08F2D]">
-            <Quote className="w-8 h-8 text-[#C08F2D]/50 rotate-180 shrink-0" />
-            <h3 className="text-[1.2rem] md:text-[1.35rem] font-black text-[#8a1538] leading-[1.8em]">
+          <div className="flex gap-3 md:gap-4 mb-6 md:mb-8 bg-gray-50 p-5 md:p-6 rounded-2xl border-r-4 border-[#C08F2D]">
+            <Quote className="w-6 h-6 md:w-8 md:h-8 text-[#C08F2D]/50 rotate-180 shrink-0" />
+            <h3 className="text-base md:text-[1.2rem] lg:text-[1.35rem] font-black text-[#8a1538] leading-[1.8em]">
               {story.quote}
             </h3>
           </div>
 
-          <p className="text-gray-700 text-[1.05rem] leading-[2.1rem] font-medium text-justify mb-8">
+          <p className="text-gray-700 text-sm md:text-base lg:text-[1.05rem] leading-[2.1rem] font-medium text-justify mb-8">
             {story.fullStory}
           </p>
 
-          <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-50 p-6 rounded-2xl border border-gray-200/60">
+          <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-5 bg-gray-50 p-5 md:p-6 rounded-2xl border border-gray-200/60">
             <div className="w-full sm:w-auto text-right">
-              <h4 className="font-black text-gray-900 mb-1 text-[1.1rem]">ألهمتك قصة {story.name.split(' ')[0]}؟</h4>
-              <p className="text-sm font-bold text-gray-500">ابدأ رحلتك الخاصة واكتشف فرصك في مبادرة {story.program}.</p>
+              <h4 className="font-black text-gray-900 mb-1 text-sm md:text-[1.1rem]">ألهمتك قصة {story.name.split(' ')[0]}؟</h4>
+              <p className="text-[11px] md:text-sm font-bold text-gray-500">ابدأ رحلتك الخاصة واكتشف فرصك في مبادرة {story.program}.</p>
             </div>
             <button
               onClick={() => {
@@ -158,7 +164,7 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
                 onClose();
                 onNavigate('program_details');
               }}
-              className="w-full sm:w-auto shrink-0 bg-[#8a1538] hover:bg-[#680f2a] text-white px-7 py-3.5 rounded-xl font-black text-sm transition-all duration-300 shadow-md flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto shrink-0 bg-[#8a1538] hover:bg-[#680f2a] text-white px-6 py-3.5 md:px-7 md:py-3.5 rounded-xl font-black text-[13px] md:text-sm transition-all duration-300 shadow-md flex items-center justify-center gap-2 group cursor-pointer"
             >
               <span>استكشف البرنامج</span>
               <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" strokeWidth={2.5} />
@@ -167,7 +173,8 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
 
         </div>
 
-        <div className="w-full md:w-2/5 relative h-64 md:h-auto shrink-0 bg-gray-900 hidden sm:block">
+        {/* 🟢 إخفاء الصورة كلياً عالموبايل عشان مساحة النص تكون أريح */}
+        <div className="w-full md:w-2/5 relative h-64 md:h-auto shrink-0 bg-gray-900 hidden md:block">
           <img src={story.image} alt={story.name} className="w-full h-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           
@@ -201,18 +208,18 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
 
   const getPathwayStyle = (pathway) => {
     switch(pathway) {
-      case 'المشاركة الاقتصادية': return 'bg-[#721F31]/10 text-[#721F31]'; 
-      case 'القيادة': return 'bg-[#2b307e]/10 text-[#2b307e]'; 
-      case 'التنمية المجتمعية': return 'bg-[#1f5412]/10 text-[#1f5412]'; 
-      default: return 'bg-gray-100 text-gray-700';
+      case 'المشاركة الاقتصادية': return 'bg-[#721F31]/10 text-[#721F31] border-[#721F31]/20'; 
+      case 'القيادة': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20'; 
+      case 'التنمية المجتمعية': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
+      default: return 'bg-gray-100 text-gray-700 border-gray-200';
     }
   };
 
   return (
     <div className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col" dir="rtl">
       
-      {/* الهيدر */}
-      <div className="bg-[#1a0409] h-[380px] pt-32 pb-20 relative overflow-hidden rounded-b-[3rem] shadow-md shrink-0">
+      {/* الهيدر - 🟢 تصغير المسافات للموبايل */}
+      <div className="bg-[#1a0409] h-[340px] md:h-[380px] pt-28 md:pt-32 pb-16 md:pb-20 relative overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-md shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 to-[#1a0409]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -224,20 +231,20 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
           </svg>
         </div>
         
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10 text-center">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-3 md:mb-4 tracking-tight">
             قصص <span className="text-[#C08F2D]">النجاح</span>
           </h1>
-          <p className="text-white/90 text-[15px] font-bold max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/90 text-[13px] md:text-[15px] font-bold max-w-2xl mx-auto leading-relaxed px-2">
             لم تكن البرامج يوماً مجرد محطات عابرة، بل كانت نقطة انطلاق. تعرّف على شباب أردنيين استثمروا الفرص لتحقيق تغيير جذري في مسيراتهم.
           </p>
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 flex-grow pb-24">
+      <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-24">
         
-        {/* الفلاتر */}
-        <div className="bg-white p-2 rounded-2xl shadow-xl shadow-gray-200/40 border border-gray-100 flex gap-2 w-fit mb-16 mx-auto overflow-x-auto max-w-full scrollbar-hide">
+        {/* הפلاتر - 🟢 صارت Grid ع الموبايل بدل سحب (Scroll) يمين ويسار */}
+        <div className="bg-white p-2 md:p-2.5 rounded-2xl shadow-xl shadow-gray-200/40 border border-gray-100 flex flex-wrap md:flex-nowrap gap-2 w-full md:w-fit mb-10 md:mb-16 mx-auto justify-center">
           {categories.map(category => {
             const Icon = category.icon;
             const isActive = activeFilter === category.id;
@@ -245,14 +252,14 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
               <button
                 key={category.id}
                 onClick={() => setActiveFilter(category.id)}
-                className={`flex items-center gap-2 px-6 py-3.5 rounded-xl font-black text-sm transition-all duration-300 whitespace-nowrap cursor-pointer ${
+                className={`flex items-center justify-center gap-1.5 md:gap-2 px-3 sm:px-6 py-2.5 md:py-3.5 rounded-xl font-black text-[11px] md:text-sm transition-all duration-300 w-[calc(50%-4px)] md:w-auto cursor-pointer border ${
                   isActive 
-                    ? 'bg-[#8a1538] text-white shadow-md' 
-                    : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'bg-[#8a1538] text-white shadow-md border-[#8a1538]' 
+                    : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900 border-transparent'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-[#C08F2D]' : ''}`} />
-                {category.id}
+                <Icon className={`w-3.5 h-3.5 md:w-4 md:h-4 ${isActive ? 'text-[#C08F2D]' : ''}`} />
+                <span className="truncate">{category.id}</span>
               </button>
             );
           })}
@@ -262,7 +269,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
           <motion.div
             key={activeFilter}
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8"
+            className="columns-1 md:columns-2 lg:columns-3 gap-6 md:gap-8 space-y-6 md:space-y-8"
           >
             {filteredStories.map((story) => {
               const tagStyle = getPathwayStyle(story.pathway);
@@ -271,35 +278,34 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
                 <div 
                   key={story.id} 
                   onClick={() => setSelectedStory(story)}
-                  className="break-inside-avoid block group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col"
+                  className="break-inside-avoid block group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col"
                 >
-                  <div className="relative h-64 overflow-hidden bg-gray-100 shrink-0">
-                    <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  <div className="relative h-56 md:h-64 overflow-hidden bg-gray-100 shrink-0">
+                    <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     
-                    <div className="absolute top-5 right-5 z-10">
-                      <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-black backdrop-blur-md shadow-sm bg-white/95 ${tagStyle.split(' ')[1]}`}>
+                    <div className="absolute top-4 right-4 md:top-5 md:right-5 z-10">
+                      <span className={`flex items-center gap-1.5 px-2.5 md:px-3 py-1 md:py-1.5 rounded-lg text-[9px] md:text-[10px] font-black backdrop-blur-md shadow-sm bg-white/95 border ${tagStyle.split(' ')[2]} ${tagStyle.split(' ')[1]}`}>
                         {story.pathway}
                       </span>
                     </div>
 
-                    <div className="absolute bottom-5 left-5 right-5 z-10 flex justify-between items-end">
+                    <div className="absolute bottom-4 left-4 right-4 md:bottom-5 md:left-5 md:right-5 z-10 flex justify-between items-end">
                        <div>
-                         <h3 className="font-black text-2xl text-white leading-tight drop-shadow-md">{story.name}</h3>
-                         <p className="text-[#C08F2D] font-bold text-sm mt-1">{story.program}</p>
+                         <h3 className="font-black text-xl md:text-2xl text-white leading-tight drop-shadow-md">{story.name}</h3>
+                         <p className="text-[#C08F2D] font-bold text-[11px] md:text-sm mt-1">{story.program}</p>
                        </div>
-                       <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                         <ArrowUpLeft className="w-5 h-5 text-white" />
+                       <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-300">
+                         <ArrowUpLeft className="w-4 h-4 md:w-5 md:h-5 text-white" />
                        </div>
                     </div>
                   </div>
 
-                  {/* 🟢 تم حل مشكلة محاذاة أيقونة الاقتباس داخل الكرت */}
-                  <div className="p-8 pb-10 relative bg-white flex-grow flex flex-col justify-center">
-                    <div className="mb-4">
-                      <Quote className="w-8 h-8 text-[#C08F2D]/40 rotate-180" />
+                  <div className="p-6 md:p-8 pb-8 md:pb-10 relative bg-white flex-grow flex flex-col justify-center">
+                    <div className="mb-3 md:mb-4">
+                      <Quote className="w-6 h-6 md:w-8 md:h-8 text-[#C08F2D]/40 rotate-180" />
                     </div>
-                    <p className="text-gray-700 text-[1.05rem] font-medium leading-[2.1rem] text-justify relative z-10">
+                    <p className="text-gray-700 text-sm md:text-[1.05rem] font-medium leading-loose md:leading-[2.1rem] text-justify relative z-10">
                       "{story.quote}"
                     </p>
                   </div>
@@ -322,7 +328,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
         )}
       </AnimatePresence>
       
-      {/* 🟢 الفوتر */}
       <Footer />
     </div>
   );

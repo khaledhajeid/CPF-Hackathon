@@ -12,9 +12,10 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
   const [activeTab, setActiveTab] = useState('programs'); 
 
   return (
-    <div className="min-h-screen bg-[#F4F7FA] pb-24 font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
+    // 🟢 التعديل هنا: إضافة flex flex-col وإزالة pb-24 وتغيير min-h-screen لـ min-h-[100dvh]
+    <div className="min-h-[100dvh] flex flex-col bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
       
-      {/* الهيدر الثابت - 🟢 تقليل الـ Padding للموبايل */}
+      {/* الهيدر الثابت */}
       <div className="bg-[#1a0409] relative pt-28 pb-16 lg:pt-40 lg:pb-32 overflow-hidden shadow-md shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 to-[#1a0409]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
@@ -37,7 +38,8 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow">
+      {/* 🟢 التعديل هنا: إضافة w-full و pb-16 md:pb-24 عشان المحتوى ياخذ مساحته */}
+      <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-16 md:pb-24">
         
         {/* التبويبات العلوية (قابلة للسحب Swipe عالموبايل) */}
         <div className="bg-white p-2 rounded-2xl shadow-xl shadow-[#8a1538]/5 border border-gray-100 flex gap-2 w-fit mb-8 md:mb-12 mx-auto overflow-x-auto max-w-full scrollbar-hide">
@@ -57,7 +59,11 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
           )}
         </AnimatePresence>
       </div>
-      <Footer />
+      
+      {/* 🟢 الفوتر الآن في مكانه الصحيح أسفل الصفحة دائماً */}
+      <div className="shrink-0 w-full mt-auto relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }

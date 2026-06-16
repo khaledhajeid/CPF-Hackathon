@@ -1,9 +1,15 @@
 // src/components/home/LuxuryPathways.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowUpLeft, Target, Users, Briefcase } from 'lucide-react';
 
 export default function LuxuryPathways({ onPathwaySelect }) {
   const [activeCard, setActiveCard] = useState(1);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // 🟢 اكتشاف إذا الجهاز بيدعم اللمس (موبايل/تابلت) أو لا (كمبيوتر)
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   const pathways = [
     {
@@ -72,7 +78,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
         </p>
       </div>
 
-      {/* 🟢 تعديل الارتفاع ليتناسب مع الموبايل: h-[750px] للموبايل، h-[600px] للكمبيوتر */}
       <div className="flex flex-col lg:flex-row gap-4 md:gap-6 h-[750px] lg:h-[600px] w-full px-4 lg:px-8 mx-auto">
         {pathways.map((path, index) => {
           const isActive = activeCard === index;
@@ -81,10 +86,13 @@ export default function LuxuryPathways({ onPathwaySelect }) {
           return (
             <div
               key={path.id}
-              onMouseEnter={() => setActiveCard(index)}
-              // 🟢 التعديل الأهم للموبايل: الكبسة الأولى بتفتح الكرت، الثانية بتنقلك
+              // 🟢 الـ Hover بيشتغل بس عالكمبيوتر (إذا مش شاشة لمس)
+              onMouseEnter={() => {
+                if (!isTouchDevice) setActiveCard(index);
+              }}
+              // 🟢 الكبسة صارت ذكية: للموبايل بتفتح أول مرة وثاني مرة بتنقل
               onClick={() => {
-                if (activeCard === index) {
+                if (isActive) {
                   onPathwaySelect(path.id);
                 } else {
                   setActiveCard(index);
@@ -112,12 +120,10 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               <div className={`absolute inset-0 p-6 lg:p-8 flex flex-col transition-opacity duration-300
                 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-150'}`}
               >
-                {/* إخفاء الشارة (المسار الأول، الثاني) عالموبايل لأن المساحة ضيقة، وإظهارها عالـ PC */}
                 <div className="hidden lg:block absolute top-8 right-8 px-4 py-1.5 bg-[#721F31] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
                    {`المسار ${path.number}`}
                 </div>
 
-                {/* 🟢 توسيط الأيقونة والنص عالموبايل، ومحاذاتها للأسفل عالكمبيوتر */}
                 <div className="flex flex-row lg:flex-col items-center lg:items-start justify-center lg:justify-end my-auto lg:my-0 lg:mt-auto group-hover:-translate-y-2 transition-transform duration-500 gap-4 lg:gap-0">
                   <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-transparent flex items-center justify-center border border-white/40 lg:mb-4 group-hover:bg-white/10 transition-colors shrink-0">
                     <Icon className="w-6 h-6 lg:w-8 lg:h-8 text-white" strokeWidth={1.5} />
@@ -146,7 +152,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                     {path.goal}
                   </h3>
                   
-                  {/* 🟢 إخفاء الوصف الطويل على الشاشات الصغيرة جداً لتجنب الزحمة */}
                   <p className="hidden sm:block text-white/90 font-medium text-sm md:text-base leading-relaxed mb-6 lg:mb-8 drop-shadow-md">
                     {path.desc}
                   </p>
@@ -159,7 +164,11 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                     ))}
                   </div>
                   
-                  <button className="flex items-center gap-2 md:gap-3 text-white font-black text-sm md:text-base hover:text-[#C08F2D] transition-colors w-fit group/btn cursor-pointer">
+                  {/* 🟢 الزر بيبين للمستخدم إنه قابل للنقر مرة ثانية عشان يكمل */}
+                  <button 
+                    // الزر بيعمل Propagation عشان يلقطها הـ onClick اللي عالأب
+                    className="flex items-center gap-2 md:gap-3 text-white font-black text-sm md:text-base hover:text-[#C08F2D] transition-colors w-fit group/btn cursor-pointer"
+                  >
                     <span>استكشف الفرص والمبادرات</span> 
                     <ArrowUpLeft className="w-5 h-5 md:w-6 md:h-6 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
                   </button>

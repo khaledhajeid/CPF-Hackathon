@@ -9,5 +9,38 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+    (function(d){
+      var s = d.createElement("script");
+      
+      /* 🟢 تحديد المكان: 5 = أسفل اليسار (عشان ما يغطي على أزرار اليمين) */
+      s.setAttribute("data-position", "3");
+      
+      /* 🟢 الحجم: صغير ليتناسب مع شاشات الموبايل */
+      s.setAttribute("data-size", "small");
+      
+      /* 🟢 اللغة: واجهة الأداة باللغة العربية */
+      s.setAttribute("data-language", "ar");
+      
+      /* 🟢 اللون: العنابي الرسمي للمؤسسة */
+      s.setAttribute("data-color", "#8a1538");
+      
+      /* 🟢 شكل الأيقونة: 1 = أيقونة الشخص المتعارف عليها عالمياً */
+      s.setAttribute("data-type", "1");
+      
+      /* 🟢 تفعيل الأداة على شاشات الموبايل إجبارياً */
+      s.setAttribute("data-mobile", "true");
+      
+      /* 🟢 طبقة العرض: رقم عالي لتبقى الأداة فوق النوافذ المنبثقة (Modals) */
+      s.setAttribute("data-z-index", "999999");
+      
+      /* 🟢 كود حسابك */
+      s.setAttribute("data-account", "gIRXpzO4p5");
+      s.setAttribute("src", "https://cdn.userway.org/widget.js");
+      
+      (d.body || d.head).appendChild(s);
+    })(document)
+    </script>
+    <noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
   </body>
 </html>

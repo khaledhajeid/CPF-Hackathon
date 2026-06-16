@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import ProgramDetails from './pages/ProgramDetails'; 
 import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
-import AccessibilityWidget from './components/AccessibilityWidget';
+// import AccessibilityWidget from './components/AccessibilityWidget';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -130,7 +130,6 @@ function App() {
       />
       
       <ChatWidget />
-      <AccessibilityWidget />
     </div>
   );
 }

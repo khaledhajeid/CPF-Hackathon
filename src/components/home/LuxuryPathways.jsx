@@ -6,7 +6,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
   const [activeCard, setActiveCard] = useState(1);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-  // 🟢 اكتشاف إذا الجهاز بيدعم اللمس (موبايل/تابلت) أو لا (كمبيوتر)
   useEffect(() => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
@@ -64,7 +63,12 @@ export default function LuxuryPathways({ onPathwaySelect }) {
   ];
 
   return (
-    <div className="py-20 md:py-24 bg-white relative overflow-hidden w-full font-sans" dir="rtl">
+    // 🟢 التعديل هنا: إضافة id="strategic-pathways" وكلاسات الـ scroll-mt المتجاوبة
+    <div 
+      id="strategic-pathways" 
+      className="py-20 md:py-24 bg-white relative overflow-hidden w-full font-sans scroll-mt-20 lg:scroll-mt-28" 
+      dir="rtl"
+    >
       
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12 text-right mb-10 md:mb-16 relative z-10">
         <div className="flex items-center gap-3 mb-4">
@@ -86,11 +90,9 @@ export default function LuxuryPathways({ onPathwaySelect }) {
           return (
             <div
               key={path.id}
-              // 🟢 الـ Hover بيشتغل بس عالكمبيوتر (إذا مش شاشة لمس)
               onMouseEnter={() => {
                 if (!isTouchDevice) setActiveCard(index);
               }}
-              // 🟢 الكبسة صارت ذكية: للموبايل بتفتح أول مرة وثاني مرة بتنقل
               onClick={() => {
                 if (isActive) {
                   onPathwaySelect(path.id);
@@ -116,7 +118,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
               </div>
 
-              {/* الكرت وهو مسكر (مغلق) */}
               <div className={`absolute inset-0 p-6 lg:p-8 flex flex-col transition-opacity duration-300
                 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-150'}`}
               >
@@ -134,7 +135,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                 </div>
               </div>
 
-              {/* الكرت وهو مفتوح (نشط) */}
               <div className={`absolute bottom-0 right-0 p-6 sm:p-8 lg:p-12 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[600px]
                 ${isActive ? 'opacity-100 delay-200' : 'opacity-0 pointer-events-none'}`}
               >
@@ -164,9 +164,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                     ))}
                   </div>
                   
-                  {/* 🟢 الزر بيبين للمستخدم إنه قابل للنقر مرة ثانية عشان يكمل */}
                   <button 
-                    // الزر بيعمل Propagation عشان يلقطها הـ onClick اللي عالأب
                     className="flex items-center gap-2 md:gap-3 text-white font-black text-sm md:text-base hover:text-[#C08F2D] transition-colors w-fit group/btn cursor-pointer"
                   >
                     <span>استكشف الفرص والمبادرات</span> 

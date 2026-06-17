@@ -10,7 +10,6 @@ import LuxuryPathways from '../components/home/LuxuryPathways';
 export default function HomePage({ activeFilters, setActiveFilters, handleRegisterClick, onNavigate }) {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
 
-  // 🟢 التعديل الوحيد المسموح: استبدال مصفوفة اللوجوهات لتتضمن الروابط
   const programLogos = [
     { name: 'The Makerspace', src: '/The-Makerspace.png', path: 'https://cpf.jo/programs/themakerspace/' },
     { name: 'Nahno', src: '/Nahno.png', path: 'https://www.nahno.org/' },
@@ -22,22 +21,21 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
   return (
     <div className="w-full bg-[#fcfcfc] text-[#4c4c4c] selection:bg-[#C08F2D] selection:text-white font-sans" dir="rtl">
       
-      <LuxuryHero onExploreClick={() => { document.getElementById('programs-logos')?.scrollIntoView({ behavior: 'smooth' }); }} />
+      {/* 🟢 التعديل هنا: جعل كبسة الـ Hero تنزل مباشرة لقسم المسارات الاستراتيجي */}
+      <LuxuryHero onExploreClick={() => { document.getElementById('strategic-pathways')?.scrollIntoView({ behavior: 'smooth' }); }} />
 
-      {/* 🟢 صندوق الإحصائيات: ترتيب ذكي للموبايل (كرتين بكل سطر) وللكمبيوتر (4 كروت) */}
+      {/* صندوق الإحصائيات */}
       <div className="relative z-30 -mt-4 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
           className="bg-white rounded-xl shadow-lg p-6 md:p-12 border border-gray-50"
         >
-          {/* 🟢 التعديل هون: grid-cols-2 للموبايل و md:grid-cols-4 للكمبيوتر */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-8">
             <div className="text-center flex flex-col justify-center border-l border-gray-200">
               <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">+500K</h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">مستفيد</p>
             </div>
             
-            {/* 🟢 شلنا البوردر اليسار بالموبايل للعمود الثاني عشان هو آخر واحد بالسطر الأول */}
             <div className="text-center flex flex-col justify-center border-l-0 md:border-l border-gray-200">
               <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">12</h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">محافظة</p>
@@ -62,7 +60,6 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
             <img src="/arrow-yellow.svg" className="w-5 h-5 shrink-0" alt="" />
             <h2 className="text-xl md:text-2xl font-black text-[#721F31]">أبرز برامج ومبادرات مؤسسة ولي العهد</h2>
           </div>
-          {/* 🟢 تصغير أحجام اللوجوهات للموبايل وجعلها روابط قابلة للنقر */}
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24">
             {programLogos.map((logo, idx) => (
               <a 
@@ -83,6 +80,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </div>
       </div>
 
+      {/* الـ ID والـ scroll-mt تم نقلهم داخل الكومبوننت نفسه بالملف التابع له بالأسفل لضمان النتيجة الفورية */}
       <LuxuryPathways onPathwaySelect={(pathwayId) => {
         setActiveFilters(prev => ({ ...prev, pathway: pathwayId }));
         document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' });

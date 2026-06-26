@@ -12,10 +12,11 @@ import Login from './pages/Login';
 import ProgramDetails from './pages/ProgramDetails'; 
 import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
+import AboutPage from './pages/AboutPage';
 // import AccessibilityWidget from './components/AccessibilityWidget';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('about');
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -70,6 +71,12 @@ function App() {
         return <motion.div key="success" {...pageVariants}><SuccessStories onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} /></motion.div>;
       case 'contact': 
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
+      case 'about': 
+        return (
+          <motion.div key="about" {...pageVariants}>
+            <AboutPage onNavigate={setCurrentPage} />
+          </motion.div>
+        );
       case 'home':
       default:
         return (

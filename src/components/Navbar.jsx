@@ -26,8 +26,10 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     ? 'bg-[#721F31] hover:bg-[#5a1826] text-white border-transparent py-3.5 px-8' 
     : 'bg-white/10 hover:bg-white hover:text-[#721F31] text-white border border-white/30 backdrop-blur-md py-3.5 px-8';
 
+  // 🟢 إضافة الرابط الجديد هنا
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
+    { id: 'about', label: 'عن المؤسسة' }, // الرابط الجديد
     { id: 'programs', label: 'البرامج والفرص' },
     { id: 'success', label: 'قصص النجاح' },
     { id: 'contact', label: 'تواصل معنا' }
@@ -45,7 +47,8 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
           />
         </div>
 
-        <div className="hidden lg:flex items-center gap-12 font-bold text-lg">
+        {/* 🟢 القائمة الآن تحتوي على الرابط الجديد */}
+        <div className="hidden lg:flex items-center gap-8 font-bold text-[17px]">
           {navLinks.map((link) => {
             const isActive = currentPage === link.id;
             return (
@@ -69,8 +72,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
           <button onClick={onLoginClick} className={`hidden md:flex items-center gap-3 rounded-lg font-bold text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
             <ShieldCheck className="w-[20px] h-[20px]" /> تسجيل الدخول
           </button>
-          
-          {/* 🟢 تم إزالة زر الهمبرغر نهائياً كما طلبت */}
         </div>
 
       </div>

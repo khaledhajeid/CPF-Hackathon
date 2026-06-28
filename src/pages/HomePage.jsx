@@ -6,25 +6,18 @@ import PathwayWizard from '../components/home/PathwayWizard';
 import Footer from '../components/Footer';
 import LuxuryHero from '../components/home/LuxuryHero';
 import LuxuryPathways from '../components/home/LuxuryPathways';
+import EcosystemPrograms from '../components/home/EcosystemPrograms';
 
 export default function HomePage({ activeFilters, setActiveFilters, handleRegisterClick, onNavigate }) {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
 
-  const programLogos = [
-    { name: 'The Makerspace', src: '/The-Makerspace.png', path: 'https://cpf.jo/programs/themakerspace/' },
-    { name: 'Nahno', src: '/Nahno.png', path: 'https://www.nahno.org/' },
-    { name: '42 Amman', src: '/42Amman.png', path: 'https://42amman.com/' },
-    { name: 'HTU', src: '/HTU.png', path: 'https://htu.edu.jo/ar' },
-    { name: 'Global Internship', src: '/Global-Internship-Program.png', path: 'https://cpf.jo/programs/globalinternshipprogram/' }
-  ];
-
   return (
     <div className="w-full bg-[#fcfcfc] text-[#4c4c4c] selection:bg-[#C08F2D] selection:text-white font-sans" dir="rtl">
       
-      {/* 🟢 التعديل هنا: جعل كبسة الـ Hero تنزل مباشرة لقسم المسارات الاستراتيجي */}
+      {/* قسم الـ Hero */}
       <LuxuryHero onExploreClick={() => { document.getElementById('strategic-pathways')?.scrollIntoView({ behavior: 'smooth' }); }} />
 
-      {/* صندوق الإحصائيات */}
+      {/* صندوق الإحصائيات المتجاوب */}
       <div className="relative z-30 -mt-4 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
@@ -54,38 +47,16 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </motion.div>
       </div>
 
-      <div id="programs-logos" className="pt-24 pb-16 bg-[#fcfcfc]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <div className="flex items-center justify-center gap-3 mb-10 md:mb-16">
-            <img src="/arrow-yellow.svg" className="w-5 h-5 shrink-0" alt="" />
-            <h2 className="text-xl md:text-2xl font-black text-[#721F31]">أبرز برامج ومبادرات مؤسسة ولي العهد</h2>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24">
-            {programLogos.map((logo, idx) => (
-              <a 
-                key={idx} 
-                href={logo.path} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="transition-transform duration-300 hover:scale-105 shrink-0 block cursor-pointer"
-              >
-                <img 
-                  src={logo.src} 
-                  alt={logo.name} 
-                  className="h-10 sm:h-12 md:h-16 lg:h-[70px] max-w-[140px] md:max-w-[180px] object-contain opacity-70 hover:opacity-100 transition-opacity" 
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* 🟢 القسم الجديد للبرامج بدل اللوجوهات القديمة */}
+      <EcosystemPrograms />
 
-      {/* الـ ID والـ scroll-mt تم نقلهم داخل الكومبوننت نفسه بالملف التابع له بالأسفل لضمان النتيجة الفورية */}
+      {/* قسم المسارات الاستراتيجية */}
       <LuxuryPathways onPathwaySelect={(pathwayId) => {
         setActiveFilters(prev => ({ ...prev, pathway: pathwayId }));
         document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' });
       }} />
 
+      {/* دعوة لاستخدام الذكاء الاصطناعي (الـ Wizard) */}
       <div className="bg-[#721F31] pt-20 pb-24 md:pt-24 md:pb-28 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 right-0 h-40 z-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px', backgroundRepeat: 'repeat-x', backgroundPosition: 'bottom' }} />
         <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-20 text-center flex flex-col items-center">
@@ -104,6 +75,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </div>
       </div>
 
+      {/* قسم الفعاليات والفرص المتاحة */}
       <div id="events-section" className="relative z-30 bg-[#f8fafc] pt-8 md:pt-12">
         <HomeEvents 
           activeFilters={activeFilters} 
@@ -115,6 +87,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
 
       <Footer />
 
+      {/* المودال الخاص بالـ Wizard */}
       <AnimatePresence>
         {isWizardOpen && <PathwayWizard onClose={() => setIsWizardOpen(false)} onComplete={(wizardResult) => { setActiveFilters({ location: wizardResult.location || 'الكل', pathway: wizardResult.pathway || 'الكل' }); const eventsSection = document.getElementById('events-section'); if (eventsSection) { eventsSection.scrollIntoView({ behavior: 'smooth' }); } }} />}
       </AnimatePresence>

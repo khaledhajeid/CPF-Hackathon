@@ -29,10 +29,10 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
   // 🟢 تمت إضافة "الشركاء" هنا بالترتيب المنطقي للمستخدم
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
-    { id: 'about', label: 'عن المؤسسة' },
     { id: 'programs', label: 'البرامج والفرص' },
-    { id: 'partnerships', label: 'الشركاء' }, // 🟢 الرابط الجديد
     { id: 'success', label: 'قصص النجاح' },
+    { id: 'partnerships', label: 'الشركاء' },
+    { id: 'about', label: 'عن المؤسسة' },
     { id: 'contact', label: 'تواصل معنا' }
   ];
 

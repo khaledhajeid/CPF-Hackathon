@@ -77,7 +77,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
             طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
           </h2>
         </div>
-        <p className="mt-4 text-[#4c4c4c] font-medium max-w-2xl text-base md:text-lg leading-relaxed">
+        <p className="mt-4 text-[#4c4c4c] font-medium max-w-2xl text-base md:text-xl leading-relaxed">
           لا تبحث عن المسميات، ابحث عن شغفك. اختر الهدف الذي تسعى إليه وسنقوم بتوجيهك للبرامج المناسبة.
         </p>
       </div>

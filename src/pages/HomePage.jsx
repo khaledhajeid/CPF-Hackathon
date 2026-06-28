@@ -1,12 +1,37 @@
 // src/pages/HomePage.jsx
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+// 🟢 أضفنا الهوكس الخاصة بالحركة والأرقام من framer-motion
+import { AnimatePresence, motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import HomeEvents from '../components/home/HomeEvents';
 import PathwayWizard from '../components/home/PathwayWizard';
 import Footer from '../components/Footer';
 import LuxuryHero from '../components/home/LuxuryHero';
 import LuxuryPathways from '../components/home/LuxuryPathways';
 import EcosystemPrograms from '../components/home/EcosystemPrograms';
+
+// 🟢 مكون العداد الذكي (يبدأ العد عند ظهوره في الشاشة)
+const AnimatedNumber = ({ value, prefix = '', suffix = '' }) => {
+  const ref = useRef(null);
+  // يراقب متى يظهر العنصر في الشاشة (مرة واحدة فقط)
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+
+  useEffect(() => {
+    if (isInView) {
+      // سرعة العداد 2.5 ثانية بحركة سلسة
+      const controls = animate(count, value, { duration: 2.5, ease: "easeOut" });
+      return controls.stop;
+    }
+  }, [isInView, value, count]);
+
+  return (
+    // استخدمنا dir="ltr" عشان الزائد والـ K يترتبوا صح كأرقام
+    <span ref={ref} dir="ltr" className="inline-block">
+      {prefix}<motion.span>{rounded}</motion.span>{suffix}
+    </span>
+  );
+};
 
 export default function HomePage({ activeFilters, setActiveFilters, handleRegisterClick, onNavigate }) {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
@@ -24,31 +49,42 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
           className="bg-white rounded-xl shadow-lg p-6 md:p-12 border border-gray-50"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-8">
+            
+            {/* 🟢 تطبيق العدادات بدلاً من النصوص الثابتة */}
             <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">+500K</h3>
+              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+                <AnimatedNumber value={500} prefix="+" suffix="K" />
+              </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">مستفيد</p>
             </div>
             
             <div className="text-center flex flex-col justify-center border-l-0 md:border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">12</h3>
+              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+                <AnimatedNumber value={12} />
+              </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">محافظة</p>
             </div>
             
             <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">3</h3>
+              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+                <AnimatedNumber value={3} />
+              </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">مسارات رئيسية</p>
             </div>
             
             <div className="text-center flex flex-col justify-center">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">+50</h3>
+              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+                <AnimatedNumber value={50} prefix="+" />
+              </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">شريك استراتيجي</p>
             </div>
+            
           </div>
         </motion.div>
       </div>
 
-      {/* 🟢 القسم الجديد للبرامج بدل اللوجوهات القديمة */}
-      <EcosystemPrograms />
+      {/* القسم الخاص بالبرامج */}
+      <EcosystemPrograms onNavigate={onNavigate} />
 
       {/* قسم المسارات الاستراتيجية */}
       <LuxuryPathways onPathwaySelect={(pathwayId) => {

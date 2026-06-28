@@ -12,11 +12,11 @@ import Login from './pages/Login';
 import ProgramDetails from './pages/ProgramDetails'; 
 import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
-import AboutPage from './pages/AboutPage'; // أو المسار الصحيح حسب مجلداتك
-// import AccessibilityWidget from './components/AccessibilityWidget';
+import AboutPage from './pages/AboutPage'; 
+import PartnershipsPage from './pages/PartnershipsPage'; // 🟢 تم استيراد الصفحة بنجاح
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('about');
+  const [currentPage, setCurrentPage] = useState('home'); // 🟢 رجعت الـ default للـ home
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -73,6 +73,8 @@ function App() {
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'about':
         return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={setCurrentPage} /></motion.div>;  
+      case 'partnerships': // 🟢 إضافة التوجيه لصفحة الشراكات
+        return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
       case 'home':
       default:
         return (
@@ -89,7 +91,6 @@ function App() {
   };
 
   return (
-    // 🟢 التعديل الجوهري: إضافة pb-20 md:pb-0 عشان المحتوى ما يتخبى ورا الـ MobileNavBar
     <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
       
       <Navbar 
@@ -110,7 +111,6 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            // 🟢 الـ z-index هون 99999 عشان يغطي على كل إشي بما فيها الـ Mobile NavBar
             className="fixed inset-0 z-[99999] bg-white overflow-y-auto"
           >
             <Login 

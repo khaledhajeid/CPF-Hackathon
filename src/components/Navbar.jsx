@@ -26,11 +26,12 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     ? 'bg-[#721F31] hover:bg-[#5a1826] text-white border-transparent py-3.5 px-8' 
     : 'bg-white/10 hover:bg-white hover:text-[#721F31] text-white border border-white/30 backdrop-blur-md py-3.5 px-8';
 
-  // 🟢 إضافة الرابط الجديد هنا
+  // 🟢 تمت إضافة "الشركاء" هنا بالترتيب المنطقي للمستخدم
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
-    { id: 'about', label: 'عن المؤسسة' }, // الرابط الجديد
+    { id: 'about', label: 'عن المؤسسة' },
     { id: 'programs', label: 'البرامج والفرص' },
+    { id: 'partnerships', label: 'الشركاء' }, // 🟢 الرابط الجديد
     { id: 'success', label: 'قصص النجاح' },
     { id: 'contact', label: 'تواصل معنا' }
   ];
@@ -47,8 +48,7 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
           />
         </div>
 
-        {/* 🟢 القائمة الآن تحتوي على الرابط الجديد */}
-        <div className="hidden lg:flex items-center gap-8 font-bold text-[17px]">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8 font-bold text-[16px] xl:text-[17px]">
           {navLinks.map((link) => {
             const isActive = currentPage === link.id;
             return (
@@ -64,13 +64,13 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
           })}
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 xl:gap-5">
           <button onClick={onSearchClick} className={`p-3 rounded-full transition-all duration-300 cursor-pointer ${isScrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
             <Search className="w-6 h-6" />
           </button>
 
-          <button onClick={onLoginClick} className={`hidden md:flex items-center gap-3 rounded-lg font-bold text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
-            <ShieldCheck className="w-[20px] h-[20px]" /> تسجيل الدخول
+          <button onClick={onLoginClick} className={`hidden md:flex items-center gap-3 rounded-lg font-bold text-[14px] xl:text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
+            <ShieldCheck className="w-5 h-5" /> تسجيل الدخول
           </button>
         </div>
 

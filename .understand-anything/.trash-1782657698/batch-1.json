@@ -1,0 +1,112 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README",
+      "filePath": "README.md",
+      "summary": "Project documentation for the CPF web application built with React and Vite, describing available plugins and ESLint configuration options.",
+      "tags": ["documentation", "react", "vite"],
+      "complexity": "simple",
+      "languageNotes": "Markdown documentation"
+    },
+    {
+      "id": "config:eslint.config.js",
+      "type": "config",
+      "name": "ESLint Configuration",
+      "filePath": "eslint.config.js",
+      "summary": "ESLint configuration for the CPF app with React Hooks and React Refresh plugins, extending @eslint/js recommended rules.",
+      "tags": ["linting", "configuration", "javascript"],
+      "complexity": "simple",
+      "languageNotes": "ESLint flat config for React JSX project"
+    },
+    {
+      "id": "file:index.html",
+      "type": "markup",
+      "name": "HTML Entry Point",
+      "filePath": "index.html",
+      "summary": "HTML shell with RTL direction, Arabic lang attribute, and root div for React app mount.",
+      "tags": ["html", "entry", "root"],
+      "complexity": "simple",
+      "languageNotes": "HTML5 document with React root mount point"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "Package Manifest",
+      "filePath": "package.json",
+      "summary": "NPM package manifest for CPF app with React 19, Framer Motion, Tailwind CSS 4, Vite 8, and lucide-react dependencies.",
+      "tags": ["configuration", "dependencies", "npm"],
+      "complexity": "simple",
+      "languageNotes": "Node.js package manifest"
+    },
+    {
+      "id": "config:postcss.config.js",
+      "type": "config",
+      "name": "PostCSS Configuration",
+      "filePath": "postcss.config.js",
+      "summary": "PostCSS config with Tailwind CSS and autoprefixer plugins for the build pipeline.",
+      "tags": ["configuration", "postcss", "tailwind"],
+      "complexity": "simple",
+      "languageNotes": "PostCSS configuration"
+    },
+    {
+      "id": "config:tailwind.config.js",
+      "type": "config",
+      "name": "Tailwind CSS Configuration",
+      "filePath": "tailwind.config.js",
+      "summary": "Tailwind CSS v4 configuration with content paths for JSX files in src directory.",
+      "tags": ["configuration", "tailwind", "styling"],
+      "complexity": "simple",
+      "languageNotes": "Tailwind CSS configuration"
+    },
+    {
+      "id": "config:vite.config.js",
+      "type": "config",
+      "name": "Vite Configuration",
+      "filePath": "vite.config.js",
+      "summary": "Vite build configuration with React plugin for fast development and optimized builds.",
+      "tags": ["configuration", "vite", "build"],
+      "complexity": "simple",
+      "languageNotes": "Vite build tool configuration"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:README.md",
+      "target": "config:package.json",
+      "type": "documents",
+      "weight": 0.5
+    },
+    {
+      "source": "config:vite.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "config:postcss.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tailwind.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "config:eslint.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6
+    },
+    {
+      "source": "config:vite.config.js",
+      "target": "file:index.html",
+      "type": "serves",
+      "weight": 0.5
+    }
+  ]
+}

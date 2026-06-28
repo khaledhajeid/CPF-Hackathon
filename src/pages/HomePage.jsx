@@ -127,6 +127,6 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
       <AnimatePresence>
         {isWizardOpen && <PathwayWizard onClose={() => setIsWizardOpen(false)} onComplete={(wizardResult) => { setActiveFilters({ location: wizardResult.location || 'الكل', pathway: wizardResult.pathway || 'الكل' }); const eventsSection = document.getElementById('events-section'); if (eventsSection) { eventsSection.scrollIntoView({ behavior: 'smooth' }); } }} />}
       </AnimatePresence>
-    </div
+    </div>
   );
 }

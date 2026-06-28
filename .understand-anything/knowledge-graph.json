@@ -1,0 +1,1120 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "cpf-app",
+    "languages": [
+      "javascript",
+      "css",
+      "html",
+      "json"
+    ],
+    "frameworks": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "description": "CPF (Crown Prince Foundation) web application for managing youth programs, events, and opportunities in Jordan.",
+    "analyzedAt": "2026-06-28T11:40:09.474Z",
+    "gitCommitHash": "134cab61c88fde767f56463fc9221905ef776006"
+  },
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README",
+      "filePath": "README.md",
+      "summary": "Project documentation for the CPF web application built with React and Vite, describing available plugins and ESLint configuration options.",
+      "tags": [
+        "documentation",
+        "react",
+        "vite"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Markdown documentation"
+    },
+    {
+      "id": "config:eslint.config.js",
+      "type": "config",
+      "name": "ESLint Configuration",
+      "filePath": "eslint.config.js",
+      "summary": "ESLint configuration for the CPF app with React Hooks and React Refresh plugins, extending @eslint/js recommended rules.",
+      "tags": [
+        "linting",
+        "configuration",
+        "javascript"
+      ],
+      "complexity": "simple",
+      "languageNotes": "ESLint flat config for React JSX project"
+    },
+    {
+      "id": "file:index.html",
+      "type": "markup",
+      "name": "HTML Entry Point",
+      "filePath": "index.html",
+      "summary": "HTML shell with RTL direction, Arabic lang attribute, and root div for React app mount.",
+      "tags": [
+        "html",
+        "entry",
+        "root"
+      ],
+      "complexity": "simple",
+      "languageNotes": "HTML5 document with React root mount point"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "Package Manifest",
+      "filePath": "package.json",
+      "summary": "NPM package manifest for CPF app with React 19, Framer Motion, Tailwind CSS 4, Vite 8, and lucide-react dependencies.",
+      "tags": [
+        "configuration",
+        "dependencies",
+        "npm"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Node.js package manifest"
+    },
+    {
+      "id": "config:postcss.config.js",
+      "type": "config",
+      "name": "PostCSS Configuration",
+      "filePath": "postcss.config.js",
+      "summary": "PostCSS config with Tailwind CSS and autoprefixer plugins for the build pipeline.",
+      "tags": [
+        "configuration",
+        "postcss",
+        "tailwind"
+      ],
+      "complexity": "simple",
+      "languageNotes": "PostCSS configuration"
+    },
+    {
+      "id": "config:tailwind.config.js",
+      "type": "config",
+      "name": "Tailwind CSS Configuration",
+      "filePath": "tailwind.config.js",
+      "summary": "Tailwind CSS v4 configuration with content paths for JSX files in src directory.",
+      "tags": [
+        "configuration",
+        "tailwind",
+        "styling"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Tailwind CSS configuration"
+    },
+    {
+      "id": "config:vite.config.js",
+      "type": "config",
+      "name": "Vite Configuration",
+      "filePath": "vite.config.js",
+      "summary": "Vite build configuration with React plugin for fast development and optimized builds.",
+      "tags": [
+        "configuration",
+        "vite",
+        "build"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Vite build tool configuration"
+    },
+    {
+      "id": "file:data:data/mockup.json",
+      "type": "data",
+      "name": "Mockup Data",
+      "filePath": "data/mockup.json",
+      "summary": "JSON mockup data file for development and testing purposes.",
+      "tags": [
+        "data",
+        "mockup",
+        "development"
+      ],
+      "complexity": "simple",
+      "languageNotes": "JSON data file"
+    },
+    {
+      "id": "file:src/App.css",
+      "type": "file",
+      "name": "App Styles",
+      "filePath": "src/App.css",
+      "summary": "Main application stylesheet with custom utility classes, responsive grid layouts, animations, component-specific styles for Navbar, Dashboard, Programs, and page transitions.",
+      "tags": [
+        "styles",
+        "app",
+        "animations",
+        "responsive"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "CSS with custom properties and responsive breakpoints"
+    },
+    {
+      "id": "file:src/App.jsx",
+      "type": "file",
+      "name": "App Root Component",
+      "filePath": "src/App.jsx",
+      "summary": "Root application component with page routing via state management, login modal with overlay, search overlay, mobile navigation, chat widget, and AnimatePresence page transitions.",
+      "tags": [
+        "app",
+        "router",
+        "layout",
+        "navigation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with Framer Motion AnimatePresence"
+    },
+    {
+      "id": "file:src/components/Navbar.jsx",
+      "type": "file",
+      "name": "Navbar Component",
+      "filePath": "src/components/Navbar.jsx",
+      "summary": "Top navigation bar with scroll-aware background opacity, logo, navigation links for home/programs/success stories/contact, login button, and search trigger.",
+      "tags": [
+        "component",
+        "navigation",
+        "header"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React component with scroll event listener"
+    },
+    {
+      "id": "file:src/components/Dashboard.jsx",
+      "type": "file",
+      "name": "Dashboard Component",
+      "filePath": "src/components/Dashboard.jsx",
+      "summary": "Full user dashboard with points display, booked tickets management with QR codes, profile settings panel, filterable event cards grid, and animated tab navigation between dashboard, tickets, and profile views.",
+      "tags": [
+        "component",
+        "dashboard",
+        "user",
+        "tickets",
+        "profile"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Large React component with multiple tab views and AnimatePresence"
+    },
+    {
+      "id": "file:src/components/Programs.jsx",
+      "type": "file",
+      "name": "Programs Component",
+      "filePath": "src/components/Programs.jsx",
+      "summary": "Programs hub component with NationalPrograms grid, EventsExplorer, pathway filter tabs, and animated content transitions.",
+      "tags": [
+        "component",
+        "programs",
+        "explorer",
+        "tabs"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with AnimatePresence tab switching"
+    },
+    {
+      "id": "file:src/components/ChatWidget.jsx",
+      "type": "file",
+      "name": "Chat Widget Component",
+      "filePath": "src/components/ChatWidget.jsx",
+      "summary": "Floating chat assistant widget with toggle button, message history, input field with send functionality, auto-scroll, and animated open/close transitions.",
+      "tags": [
+        "component",
+        "chat",
+        "assistant",
+        "floating"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with scroll-into-view auto-scroll"
+    },
+    {
+      "id": "file:src/components/SuccessStories.jsx",
+      "type": "file",
+      "name": "Success Stories Component",
+      "filePath": "src/components/SuccessStories.jsx",
+      "summary": "Success stories gallery with 12 stories data, filterable by pathway category, story detail viewer with expandable cards, quote highlights, and pathway-based navigation.",
+      "tags": [
+        "component",
+        "stories",
+        "testimonials",
+        "gallery"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with AnimatePresence and filter logic"
+    },
+    {
+      "id": "file:src/components/Contact.jsx",
+      "type": "file",
+      "name": "Contact Component",
+      "filePath": "src/components/Contact.jsx",
+      "summary": "Contact page with contact info cards (address, phone, email, working hours), inquiry form with validation, success notification, and interactive FAQ accordion.",
+      "tags": [
+        "component",
+        "contact",
+        "form",
+        "faq"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with form state management"
+    },
+    {
+      "id": "file:src/components/Hero.jsx",
+      "type": "file",
+      "name": "Hero Component",
+      "filePath": "src/components/Hero.jsx",
+      "summary": "Simple hero/banner section with search bar and filter button, importing filter options from data module.",
+      "tags": [
+        "component",
+        "hero",
+        "search",
+        "banner"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React component with inline SVG icons"
+    },
+    {
+      "id": "file:src/components/Footer.jsx",
+      "type": "file",
+      "name": "Footer Component",
+      "filePath": "src/components/Footer.jsx",
+      "summary": "Site footer with logo, navigation links, contact information, social media icons, newsletter subscription, and copyright notice.",
+      "tags": [
+        "component",
+        "footer",
+        "navigation",
+        "social"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with custom SVG social icons"
+    },
+    {
+      "id": "file:src/components/EventCard.jsx",
+      "type": "file",
+      "name": "Event Card Component",
+      "filePath": "src/components/EventCard.jsx",
+      "summary": "Reusable event card displaying event title, date, location, pathway badge, point cost, and register button with hover effects.",
+      "tags": [
+        "component",
+        "card",
+        "event",
+        "ui"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React presentational component"
+    },
+    {
+      "id": "file:src/components/AccessibilityWidget.jsx",
+      "type": "file",
+      "name": "Accessibility Widget",
+      "filePath": "src/components/AccessibilityWidget.jsx",
+      "summary": "Accessibility settings panel with font size controls, contrast mode toggle, and text-to-speech option.",
+      "tags": [
+        "component",
+        "accessibility",
+        "widget",
+        "settings"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React component with Framer Motion animations"
+    },
+    {
+      "id": "file:src/components/MobileNavBar.jsx",
+      "type": "file",
+      "name": "Mobile Navigation Bar",
+      "filePath": "src/components/MobileNavBar.jsx",
+      "summary": "Bottom navigation bar for mobile with icons for home, programs, dashboard, profile, and chat, highlighting the active page.",
+      "tags": [
+        "component",
+        "navigation",
+        "mobile",
+        "bottom-bar"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React component with lucide-react icons"
+    },
+    {
+      "id": "file:src/components/SearchOverlay.jsx",
+      "type": "file",
+      "name": "Search Overlay Component",
+      "filePath": "src/components/SearchOverlay.jsx",
+      "summary": "Full-screen search overlay with live filtering of allEvents by title/description, result cards with registration action, and animated open/close.",
+      "tags": [
+        "component",
+        "search",
+        "overlay",
+        "filter"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with AnimatePresence and live search"
+    },
+    {
+      "id": "file:src/components/SanadModal.jsx",
+      "type": "file",
+      "name": "Sanad Modal Component",
+      "filePath": "src/components/SanadModal.jsx",
+      "summary": "Event registration confirmation modal branded as Sanad, displaying event details, ticket booking form, and confirmation action.",
+      "tags": [
+        "component",
+        "modal",
+        "registration",
+        "ticket"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React modal component"
+    },
+    {
+      "id": "file:src/components/home/LuxuryHero.jsx",
+      "type": "file",
+      "name": "Luxury Hero Section",
+      "filePath": "src/components/home/LuxuryHero.jsx",
+      "summary": "Premium hero banner for the home page with full-screen background image, gradient overlays, animated title text, subtitle, and CTA button.",
+      "tags": [
+        "component",
+        "hero",
+        "home",
+        "luxury"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React component with Framer Motion and inline background"
+    },
+    {
+      "id": "file:src/components/home/LuxuryPathways.jsx",
+      "type": "file",
+      "name": "Luxury Pathways Section",
+      "filePath": "src/components/home/LuxuryPathways.jsx",
+      "summary": "Strategic pathways showcase with three pathway cards (Leadership, Economic Participation, Community Development), each with gradient icons, descriptions, and scroll-triggered animation.",
+      "tags": [
+        "component",
+        "pathways",
+        "home",
+        "cards"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with intersection observer animation"
+    },
+    {
+      "id": "file:src/components/home/EcosystemPrograms.jsx",
+      "type": "file",
+      "name": "Ecosystem Programs Section",
+      "filePath": "src/components/home/EcosystemPrograms.jsx",
+      "summary": "Program ecosystem grid showcasing 12 program cards with icons, descriptions, and navigation to program details.",
+      "tags": [
+        "component",
+        "programs",
+        "ecosystem",
+        "grid"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with Framer Motion grid animations"
+    },
+    {
+      "id": "file:src/components/home/HomeEvents.jsx",
+      "type": "file",
+      "name": "Home Events Section",
+      "filePath": "src/components/home/HomeEvents.jsx",
+      "summary": "Events section with dual pathway/region filters, filterable events list from data, event detail drawer, and AnimatePresence list transitions.",
+      "tags": [
+        "component",
+        "events",
+        "filter",
+        "drawer"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with animated drawers and event data"
+    },
+    {
+      "id": "file:src/components/home/PathwayWizard.jsx",
+      "type": "file",
+      "name": "Pathway Wizard Modal",
+      "filePath": "src/components/home/PathwayWizard.jsx",
+      "summary": "AI-inspired step-by-step wizard modal with 3 questions to determine user interests, animated step transitions, and personalized pathway recommendation.",
+      "tags": [
+        "component",
+        "wizard",
+        "quiz",
+        "pathway",
+        "ai"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React multi-step wizard with Framer Motion AnimatePresence"
+    },
+    {
+      "id": "file:src/components/home/JordanMap.jsx",
+      "type": "file",
+      "name": "Jordan Map Component",
+      "filePath": "src/components/home/JordanMap.jsx",
+      "summary": "Interactive SVG map of Jordan with clickable governorate regions for location-based event filtering.",
+      "tags": [
+        "component",
+        "map",
+        "interactive",
+        "svg"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with inline SVG map paths"
+    },
+    {
+      "id": "file:src/components/programs/NationalPrograms.jsx",
+      "type": "file",
+      "name": "National Programs Grid",
+      "filePath": "src/components/programs/NationalPrograms.jsx",
+      "summary": "Grid of national program cards with category filtering (all/tech/leadership/community), showing program logos, titles, and navigation to details.",
+      "tags": [
+        "component",
+        "programs",
+        "grid",
+        "national",
+        "filter"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with Framer Motion grid and tab filtering"
+    },
+    {
+      "id": "file:src/components/programs/EventsExplorer.jsx",
+      "type": "file",
+      "name": "Events Explorer Component",
+      "filePath": "src/components/programs/EventsExplorer.jsx",
+      "summary": "Full events explorer with search input, pathway/location dropdown filters, interactive JordanMap, and results list with pagination-style layout.",
+      "tags": [
+        "component",
+        "events",
+        "explorer",
+        "map",
+        "search"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with interactive map and multi-filter search"
+    },
+    {
+      "id": "file:src/components/events/EventDetailsDrawer.jsx",
+      "type": "file",
+      "name": "Event Details Drawer",
+      "filePath": "src/components/events/EventDetailsDrawer.jsx",
+      "summary": "Slide-in drawer for event details with image hero, full description, date/location/points/age range metadata, pathway badge, and registration button using React Portal.",
+      "tags": [
+        "component",
+        "drawer",
+        "event",
+        "details",
+        "portal"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with Portal rendering and AnimatePresence"
+    },
+    {
+      "id": "file:src/data.js",
+      "type": "file",
+      "name": "Events Data",
+      "filePath": "src/data.js",
+      "summary": "Static data module containing allEvents array with 12 event objects for CPF youth programs, including details like date, city, pathway, points, and descriptions.",
+      "tags": [
+        "data",
+        "events",
+        "seed-data"
+      ],
+      "complexity": "simple",
+      "languageNotes": "JavaScript data module with exported array of event objects"
+    },
+    {
+      "id": "file:src/index.css",
+      "type": "file",
+      "name": "Global Styles",
+      "filePath": "src/index.css",
+      "summary": "Global CSS with Tailwind directives (@import 'tailwindcss') and custom base styles for font family and scroll behavior.",
+      "tags": [
+        "styles",
+        "tailwind",
+        "global"
+      ],
+      "complexity": "simple",
+      "languageNotes": "CSS with Tailwind CSS v4 @import directive"
+    },
+    {
+      "id": "file:src/main.jsx",
+      "type": "file",
+      "name": "Application Entry Point",
+      "filePath": "src/main.jsx",
+      "summary": "React application entry point that mounts the App component into the DOM with StrictMode enabled.",
+      "tags": [
+        "entry-point",
+        "react",
+        "bootstrap"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React DOM createRoot entry point"
+    },
+    {
+      "id": "file:src/pages/ExplorerPage.jsx",
+      "type": "file",
+      "name": "Explorer Page",
+      "filePath": "src/pages/ExplorerPage.jsx",
+      "summary": "Full-screen event explorer with geospatial split layout, search bar, pathway/region filters, interactive map with clickable region pins, and a scrollable events list with booking functionality.",
+      "tags": [
+        "page",
+        "explorer",
+        "geospatial",
+        "events",
+        "map"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with Framer Motion animations and interactive SVG map"
+    },
+    {
+      "id": "file:src/pages/HomePage.jsx",
+      "type": "file",
+      "name": "Home Page",
+      "filePath": "src/pages/HomePage.jsx",
+      "summary": "Main landing page featuring a luxury hero, animated statistics counters, ecosystem programs section, strategic pathways selector, AI-powered pathway wizard modal, and events section with filters.",
+      "tags": [
+        "page",
+        "home",
+        "landing",
+        "pathways",
+        "statistics"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with Framer Motion animated counters and modals"
+    },
+    {
+      "id": "file:src/pages/Login.jsx",
+      "type": "file",
+      "name": "Login Page",
+      "filePath": "src/pages/Login.jsx",
+      "summary": "Full-screen login form with national ID and password fields, show/hide password toggle, loading state, alternative login options (Google, email), and decorative hero panel with gradient overlay.",
+      "tags": [
+        "page",
+        "login",
+        "authentication",
+        "form"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React component with Framer Motion spring animations"
+    },
+    {
+      "id": "file:src/pages/ProgramDetails.jsx",
+      "type": "file",
+      "name": "Program Details Page",
+      "filePath": "src/pages/ProgramDetails.jsx",
+      "summary": "Detailed program information page with full data for 13 programs, featuring breadcrumb navigation, image header, program type/mechanism/language metadata cards, overview, facilities list, degree offerings, and FAQ accordion.",
+      "tags": [
+        "page",
+        "programs",
+        "details",
+        "faq"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React component with hardcoded program data and Framer Motion"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:README.md",
+      "target": "config:package.json",
+      "type": "documents",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "config:vite.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "config:postcss.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "config:tailwind.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "config:eslint.config.js",
+      "target": "config:package.json",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "config:vite.config.js",
+      "target": "file:index.html",
+      "type": "serves",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Navbar.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Dashboard.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Programs.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/ChatWidget.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/SuccessStories.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Contact.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/pages/HomePage.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/pages/Login.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/pages/ProgramDetails.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/MobileNavBar.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/SearchOverlay.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/Contact.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/Programs.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/Programs.jsx",
+      "target": "file:src/components/programs/NationalPrograms.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/Programs.jsx",
+      "target": "file:src/components/programs/EventsExplorer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/SuccessStories.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/Hero.jsx",
+      "target": "file:src/data.js",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/SearchOverlay.jsx",
+      "target": "file:src/data.js",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/home/HomeEvents.jsx",
+      "target": "file:src/components/events/EventDetailsDrawer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/components/programs/EventsExplorer.jsx",
+      "target": "file:src/components/home/JordanMap.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Navbar.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/Dashboard.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/MobileNavBar.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/ChatWidget.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "file:src/components/SearchOverlay.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryHero.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/EcosystemPrograms.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryPathways.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/HomeEvents.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/PathwayWizard.jsx",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/main.jsx",
+      "target": "file:src/index.css",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/main.jsx",
+      "target": "file:src/App.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/ExplorerPage.jsx",
+      "target": "file:src/data.js",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/HomeEvents.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/PathwayWizard.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryHero.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryPathways.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/EcosystemPrograms.jsx",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:entry-bootstrap",
+      "name": "Entry & Bootstrap",
+      "description": "Application bootstrapping layer including the HTML shell, React entry point, and global CSS stylesheets that initialize the app.",
+      "nodeIds": [
+        "file:index.html",
+        "file:src/main.jsx",
+        "file:src/index.css",
+        "file:src/App.css"
+      ]
+    },
+    {
+      "id": "layer:app-routing",
+      "name": "App Shell & Routing",
+      "description": "Root application component that orchestrates page routing via state, manages modals (login, search), and provides the global layout with navbar, mobile nav, and chat widget.",
+      "nodeIds": [
+        "file:src/App.jsx"
+      ]
+    },
+    {
+      "id": "layer:pages",
+      "name": "Pages",
+      "description": "Top-level page components mapped to different views in the application, including home, explorer, login, and program details pages.",
+      "nodeIds": [
+        "file:src/pages/HomePage.jsx",
+        "file:src/pages/ExplorerPage.jsx",
+        "file:src/pages/Login.jsx",
+        "file:src/pages/ProgramDetails.jsx"
+      ]
+    },
+    {
+      "id": "layer:components",
+      "name": "UI Components",
+      "description": "Reusable UI components organized by feature domain including navigation, dashboard, programs, events, and home page sections.",
+      "nodeIds": [
+        "file:src/components/Navbar.jsx",
+        "file:src/components/MobileNavBar.jsx",
+        "file:src/components/Footer.jsx",
+        "file:src/components/Dashboard.jsx",
+        "file:src/components/Programs.jsx",
+        "file:src/components/ChatWidget.jsx",
+        "file:src/components/SuccessStories.jsx",
+        "file:src/components/Contact.jsx",
+        "file:src/components/Hero.jsx",
+        "file:src/components/EventCard.jsx",
+        "file:src/components/SearchOverlay.jsx",
+        "file:src/components/SanadModal.jsx",
+        "file:src/components/AccessibilityWidget.jsx",
+        "file:src/components/home/LuxuryHero.jsx",
+        "file:src/components/home/LuxuryPathways.jsx",
+        "file:src/components/home/EcosystemPrograms.jsx",
+        "file:src/components/home/HomeEvents.jsx",
+        "file:src/components/home/PathwayWizard.jsx",
+        "file:src/components/home/JordanMap.jsx",
+        "file:src/components/programs/NationalPrograms.jsx",
+        "file:src/components/programs/EventsExplorer.jsx",
+        "file:src/components/events/EventDetailsDrawer.jsx"
+      ]
+    },
+    {
+      "id": "layer:data",
+      "name": "Data Layer",
+      "description": "Static data sources including the events seed data module and mockup JSON used throughout the application.",
+      "nodeIds": [
+        "file:src/data.js",
+        "file:data:data/mockup.json"
+      ]
+    },
+    {
+      "id": "layer:configuration",
+      "name": "Configuration & Tooling",
+      "description": "Project configuration files for Vite, Tailwind CSS, PostCSS, ESLint, and NPM package manifest defining build tooling and dependencies.",
+      "nodeIds": [
+        "config:package.json",
+        "config:vite.config.js",
+        "config:tailwind.config.js",
+        "config:postcss.config.js",
+        "config:eslint.config.js"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Documentation",
+      "description": "Project documentation and guides.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "CPF (Crown Prince Foundation) web application built with React 19, Vite 8, and Tailwind CSS 4. It provides a unified platform for Jordanian youth to discover programs, register for events, and track their participation. Start with the README to understand the project context.",
+      "nodeIds": [
+        "document:README.md",
+        "config:package.json"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Application Entry Point",
+      "description": "The app boots from main.jsx which mounts the App component into the DOM with StrictMode. The HTML shell in index.html provides the RTL structure with Arabic language support.",
+      "nodeIds": [
+        "file:index.html",
+        "file:src/main.jsx",
+        "file:src/index.css"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "App Shell & Page Routing",
+      "description": "The root App component manages page routing via React state, renders the Navbar, MobileNavBar, ChatWidget, and SearchOverlay globally, and wraps page content with AnimatePresence for smooth transitions. It also manages the login modal overlay and ticket booking flow.",
+      "nodeIds": [
+        "file:src/App.jsx",
+        "file:src/App.css"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Home Page & Feature Sections",
+      "description": "The HomePage assembles all landing sections: LuxuryHero banner, animated statistics counters, EcosystemPrograms grid, LuxuryPathways cards, AI-powered PathwayWizard modal, and the HomeEvents filterable list with EventDetailsDrawer.",
+      "nodeIds": [
+        "file:src/pages/HomePage.jsx",
+        "file:src/components/home/LuxuryHero.jsx",
+        "file:src/components/home/LuxuryPathways.jsx",
+        "file:src/components/home/EcosystemPrograms.jsx",
+        "file:src/components/home/HomeEvents.jsx",
+        "file:src/components/home/PathwayWizard.jsx",
+        "file:src/components/home/JordanMap.jsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Programs & Events Explorer",
+      "description": "The Programs hub page lets users browse national programs or explore events interactively. The EventsExplorer integrates JordanMap for location-based filtering and a searchable event list. The ExplorerPage provides a geospatial split-layout experience with an interactive map of Jordan's regions.",
+      "nodeIds": [
+        "file:src/components/Programs.jsx",
+        "file:src/components/programs/NationalPrograms.jsx",
+        "file:src/components/programs/EventsExplorer.jsx",
+        "file:src/pages/ExplorerPage.jsx",
+        "file:src/components/events/EventDetailsDrawer.jsx",
+        "file:src/components/EventCard.jsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Program Details & Data",
+      "description": "The ProgramDetails page displays comprehensive information for 13 programs including enrollment details, facilities, and FAQs. All event data is defined in data.js which serves as the centralized data source across components.",
+      "nodeIds": [
+        "file:src/pages/ProgramDetails.jsx",
+        "file:src/data.js",
+        "file:data:data/mockup.json"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "User Dashboard & Authentication",
+      "description": "Users can log in via the Login page with national ID authentication, then access their Dashboard showing points, booked tickets with QR codes, and profile settings. The SuccessStories and Contact pages provide community engagement touchpoints.",
+      "nodeIds": [
+        "file:src/pages/Login.jsx",
+        "file:src/components/Dashboard.jsx",
+        "file:src/components/SuccessStories.jsx",
+        "file:src/components/Contact.jsx",
+        "file:src/components/SanadModal.jsx"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Navigation & Global Features",
+      "description": "The Navbar and MobileNavBar provide responsive navigation across all pages. The ChatWidget offers an AI assistant, SearchOverlay enables live event search, and AccessibilityWidget provides font/contrast controls.",
+      "nodeIds": [
+        "file:src/components/Navbar.jsx",
+        "file:src/components/MobileNavBar.jsx",
+        "file:src/components/Footer.jsx",
+        "file:src/components/ChatWidget.jsx",
+        "file:src/components/SearchOverlay.jsx",
+        "file:src/components/AccessibilityWidget.jsx"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Build Configuration",
+      "description": "The project uses Vite for development and builds with React plugin, PostCSS with Tailwind CSS for styling, and ESLint for code quality. These tools work together to provide a modern development experience.",
+      "nodeIds": [
+        "config:vite.config.js",
+        "config:tailwind.config.js",
+        "config:postcss.config.js",
+        "config:eslint.config.js"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 39,
+  "totalBatches": 3,
+  "exportsByPath": {
+    "src/main.jsx": [],
+    "src/App.jsx": [],
+    "src/data.js": [
+      "allEvents"
+    ],
+    "src/App.css": [],
+    "src/index.css": [],
+    "src/components/Navbar.jsx": [
+      "Navbar"
+    ],
+    "src/components/Dashboard.jsx": [
+      "Dashboard"
+    ],
+    "src/components/Programs.jsx": [
+      "Programs"
+    ],
+    "src/components/ChatWidget.jsx": [
+      "ChatWidget"
+    ],
+    "src/components/SuccessStories.jsx": [
+      "SuccessStories"
+    ],
+    "src/components/Contact.jsx": [
+      "Contact"
+    ],
+    "src/components/Hero.jsx": [
+      "Hero"
+    ],
+    "src/components/Footer.jsx": [
+      "Footer"
+    ],
+    "src/components/EventCard.jsx": [
+      "EventCard"
+    ],
+    "src/components/AccessibilityWidget.jsx": [
+      "AccessibilityWidget"
+    ],
+    "src/components/MobileNavBar.jsx": [
+      "MobileNavBar"
+    ],
+    "src/components/SearchOverlay.jsx": [
+      "SearchOverlay"
+    ],
+    "src/components/SanadModal.jsx": [
+      "SanadModal"
+    ],
+    "src/components/home/LuxuryHero.jsx": [
+      "LuxuryHero"
+    ],
+    "src/components/home/LuxuryPathways.jsx": [
+      "LuxuryPathways"
+    ],
+    "src/components/home/EcosystemPrograms.jsx": [
+      "EcosystemPrograms"
+    ],
+    "src/components/home/HomeEvents.jsx": [
+      "HomeEvents"
+    ],
+    "src/components/home/PathwayWizard.jsx": [
+      "PathwayWizard"
+    ],
+    "src/components/home/JordanMap.jsx": [
+      "JordanMap"
+    ],
+    "src/components/programs/NationalPrograms.jsx": [
+      "NationalPrograms"
+    ],
+    "src/components/programs/EventsExplorer.jsx": [
+      "EventsExplorer"
+    ],
+    "src/components/events/EventDetailsDrawer.jsx": [
+      "EventDetailsDrawer"
+    ],
+    "src/pages/HomePage.jsx": [
+      "HomePage"
+    ],
+    "src/pages/ExplorerPage.jsx": [
+      "ExplorerPage"
+    ],
+    "src/pages/Login.jsx": [
+      "Login"
+    ],
+    "src/pages/ProgramDetails.jsx": [
+      "ProgramDetails"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 9,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "eslint.config.js",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "config"
+        },
+        {
+          "path": "index.html",
+          "language": "html",
+          "sizeLines": 46,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 33,
+          "fileCategory": "config"
+        },
+        {
+          "path": "postcss.config.js",
+          "language": "javascript",
+          "sizeLines": 6,
+          "fileCategory": "config"
+        },
+        {
+          "path": "tailwind.config.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "vite.config.js",
+          "language": "javascript",
+          "sizeLines": 6,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "README.md": [],
+        "eslint.config.js": [],
+        "index.html": [],
+        "package.json": [],
+        "postcss.config.js": [],
+        "tailwind.config.js": [],
+        "vite.config.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "data/mockup.json",
+          "language": "json",
+          "sizeLines": 1,
+          "fileCategory": "data"
+        },
+        {
+          "path": "src/App.css",
+          "language": "css",
+          "sizeLines": 158,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/App.jsx",
+          "language": "javascript",
+          "sizeLines": 137,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/AccessibilityWidget.jsx",
+          "language": "javascript",
+          "sizeLines": 77,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/ChatWidget.jsx",
+          "language": "javascript",
+          "sizeLines": 180,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Contact.jsx",
+          "language": "javascript",
+          "sizeLines": 246,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Dashboard.jsx",
+          "language": "javascript",
+          "sizeLines": 456,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/EventCard.jsx",
+          "language": "javascript",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/events/EventDetailsDrawer.jsx",
+          "language": "javascript",
+          "sizeLines": 275,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Footer.jsx",
+          "language": "javascript",
+          "sizeLines": 172,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Hero.jsx",
+          "language": "javascript",
+          "sizeLines": 99,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/EcosystemPrograms.jsx",
+          "language": "javascript",
+          "sizeLines": 159,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/HomeEvents.jsx",
+          "language": "javascript",
+          "sizeLines": 335,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/JordanMap.jsx",
+          "language": "javascript",
+          "sizeLines": 143,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/LuxuryHero.jsx",
+          "language": "javascript",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/LuxuryPathways.jsx",
+          "language": "javascript",
+          "sizeLines": 182,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/home/PathwayWizard.jsx",
+          "language": "javascript",
+          "sizeLines": 317,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/MobileNavBar.jsx",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Navbar.jsx",
+          "language": "javascript",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/Programs.jsx",
+          "language": "javascript",
+          "sizeLines": 69,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/programs/EventsExplorer.jsx",
+          "language": "javascript",
+          "sizeLines": 211,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/programs/NationalPrograms.jsx",
+          "language": "javascript",
+          "sizeLines": 99,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SanadModal.jsx",
+          "language": "javascript",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SearchOverlay.jsx",
+          "language": "javascript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/components/SuccessStories.jsx",
+          "language": "javascript",
+          "sizeLines": 334,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "data/mockup.json": [],
+        "src/App.css": [],
+        "src/App.jsx": [
+          "react",
+          "framer-motion",
+          "./components/Navbar",
+          "./components/Dashboard",
+          "./components/Programs",
+          "./components/ChatWidget",
+          "./components/SuccessStories",
+          "./components/Contact",
+          "./pages/HomePage",
+          "./pages/Login",
+          "./pages/ProgramDetails",
+          "./components/MobileNavBar",
+          "./components/SearchOverlay"
+        ],
+        "src/components/AccessibilityWidget.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/ChatWidget.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/Contact.jsx": [
+          "react",
+          "framer-motion",
+          "../components/Footer",
+          "lucide-react"
+        ],
+        "src/components/Dashboard.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/EventCard.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/events/EventDetailsDrawer.jsx": [
+          "react",
+          "react-dom",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/Footer.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/Hero.jsx": [
+          "react",
+          "lucide-react",
+          "../data"
+        ],
+        "src/components/home/EcosystemPrograms.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/home/HomeEvents.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react",
+          "../events/EventDetailsDrawer"
+        ],
+        "src/components/home/JordanMap.jsx": [
+          "react"
+        ],
+        "src/components/home/LuxuryHero.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/home/LuxuryPathways.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/home/PathwayWizard.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/MobileNavBar.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/Navbar.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/Programs.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react",
+          "../components/Footer",
+          "./programs/NationalPrograms",
+          "./programs/EventsExplorer"
+        ],
+        "src/components/programs/EventsExplorer.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react",
+          "../home/JordanMap"
+        ],
+        "src/components/programs/NationalPrograms.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/components/SanadModal.jsx": [
+          "react",
+          "lucide-react"
+        ],
+        "src/components/SearchOverlay.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react",
+          "../data"
+        ],
+        "src/components/SuccessStories.jsx": [
+          "react",
+          "framer-motion",
+          "../components/Footer",
+          "lucide-react"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "src/data.js",
+          "language": "javascript",
+          "sizeLines": 148,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/index.css",
+          "language": "css",
+          "sizeLines": 4,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/main.jsx",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/ExplorerPage.jsx",
+          "language": "javascript",
+          "sizeLines": 266,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/HomePage.jsx",
+          "language": "javascript",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/Login.jsx",
+          "language": "javascript",
+          "sizeLines": 205,
+          "fileCategory": "code"
+        },
+        {
+          "path": "src/pages/ProgramDetails.jsx",
+          "language": "javascript",
+          "sizeLines": 514,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "src/data.js": [],
+        "src/index.css": [],
+        "src/main.jsx": [
+          "react",
+          "react-dom/client",
+          "./index.css",
+          "./App.jsx"
+        ],
+        "src/pages/ExplorerPage.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react",
+          "../data"
+        ],
+        "src/pages/HomePage.jsx": [
+          "react",
+          "framer-motion",
+          "../components/home/HomeEvents",
+          "../components/home/PathwayWizard",
+          "../components/Footer",
+          "../components/home/LuxuryHero",
+          "../components/home/LuxuryPathways",
+          "../components/home/EcosystemPrograms"
+        ],
+        "src/pages/Login.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ],
+        "src/pages/ProgramDetails.jsx": [
+          "react",
+          "framer-motion",
+          "lucide-react"
+        ]
+      },
+      "neighborMap": {}
+    }
+  ]
+}

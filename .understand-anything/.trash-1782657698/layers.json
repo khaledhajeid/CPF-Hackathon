@@ -1,0 +1,90 @@
+[
+  {
+    "id": "layer:entry-bootstrap",
+    "name": "Entry & Bootstrap",
+    "description": "Application bootstrapping layer including the HTML shell, React entry point, and global CSS stylesheets that initialize the app.",
+    "nodeIds": [
+      "file:index.html",
+      "file:src/main.jsx",
+      "file:src/index.css",
+      "file:src/App.css"
+    ]
+  },
+  {
+    "id": "layer:app-routing",
+    "name": "App Shell & Routing",
+    "description": "Root application component that orchestrates page routing via state, manages modals (login, search), and provides the global layout with navbar, mobile nav, and chat widget.",
+    "nodeIds": [
+      "file:src/App.jsx"
+    ]
+  },
+  {
+    "id": "layer:pages",
+    "name": "Pages",
+    "description": "Top-level page components mapped to different views in the application, including home, explorer, login, and program details pages.",
+    "nodeIds": [
+      "file:src/pages/HomePage.jsx",
+      "file:src/pages/ExplorerPage.jsx",
+      "file:src/pages/Login.jsx",
+      "file:src/pages/ProgramDetails.jsx"
+    ]
+  },
+  {
+    "id": "layer:components",
+    "name": "UI Components",
+    "description": "Reusable UI components organized by feature domain including navigation, dashboard, programs, events, and home page sections.",
+    "nodeIds": [
+      "file:src/components/Navbar.jsx",
+      "file:src/components/MobileNavBar.jsx",
+      "file:src/components/Footer.jsx",
+      "file:src/components/Dashboard.jsx",
+      "file:src/components/Programs.jsx",
+      "file:src/components/ChatWidget.jsx",
+      "file:src/components/SuccessStories.jsx",
+      "file:src/components/Contact.jsx",
+      "file:src/components/Hero.jsx",
+      "file:src/components/EventCard.jsx",
+      "file:src/components/SearchOverlay.jsx",
+      "file:src/components/SanadModal.jsx",
+      "file:src/components/AccessibilityWidget.jsx",
+      "file:src/components/home/LuxuryHero.jsx",
+      "file:src/components/home/LuxuryPathways.jsx",
+      "file:src/components/home/EcosystemPrograms.jsx",
+      "file:src/components/home/HomeEvents.jsx",
+      "file:src/components/home/PathwayWizard.jsx",
+      "file:src/components/home/JordanMap.jsx",
+      "file:src/components/programs/NationalPrograms.jsx",
+      "file:src/components/programs/EventsExplorer.jsx",
+      "file:src/components/events/EventDetailsDrawer.jsx"
+    ]
+  },
+  {
+    "id": "layer:data",
+    "name": "Data Layer",
+    "description": "Static data sources including the events seed data module and mockup JSON used throughout the application.",
+    "nodeIds": [
+      "file:src/data.js",
+      "data:data/mockup.json"
+    ]
+  },
+  {
+    "id": "layer:configuration",
+    "name": "Configuration & Tooling",
+    "description": "Project configuration files for Vite, Tailwind CSS, PostCSS, ESLint, and NPM package manifest defining build tooling and dependencies.",
+    "nodeIds": [
+      "config:package.json",
+      "config:vite.config.js",
+      "config:tailwind.config.js",
+      "config:postcss.config.js",
+      "config:eslint.config.js"
+    ]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "Documentation",
+    "description": "Project documentation and guides.",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  }
+]

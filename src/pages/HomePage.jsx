@@ -19,7 +19,6 @@ const AnimatedNumber = ({ value, prefix = '', suffix = '' }) => {
 
   useEffect(() => {
     if (isInView) {
-      // سرعة العداد 2.5 ثانية بحركة سلسة
       const controls = animate(count, value, { duration: 2.5, ease: "easeOut" });
       return controls.stop;
     }

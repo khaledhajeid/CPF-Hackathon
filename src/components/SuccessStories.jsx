@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
-import { Quote, Sparkles, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin } from 'lucide-react';
+import { Quote, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin } from 'lucide-react';
+import ShareStoryModal from './success/ShareStoryModal';
 
 const stories = [
   {
@@ -116,7 +117,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
       onClick={onClose}
     >
       <motion.div
-        // 🟢 الأنيميشن بيسحب من تحت للموبايل (Bottom Sheet) ومن النص للكمبيوتر
         initial={{ y: window.innerWidth < 768 ? '100%' : 20, opacity: window.innerWidth < 768 ? 1 : 0 }} 
         animate={{ y: 0, opacity: 1 }} 
         exit={{ y: window.innerWidth < 768 ? '100%' : 20, opacity: window.innerWidth < 768 ? 1 : 0 }}
@@ -125,7 +125,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
         className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row 
                    mt-auto h-[90vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0"
       >
-        {/* 🟢 شريط السحب للموبايل */}
         <div className="md:hidden w-full flex justify-center pt-4 pb-2 bg-white shrink-0 rounded-t-3xl">
           <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
         </div>
@@ -173,7 +172,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
 
         </div>
 
-        {/* 🟢 إخفاء الصورة كلياً عالموبايل عشان مساحة النص تكون أريح */}
         <div className="w-full md:w-2/5 relative h-64 md:h-auto shrink-0 bg-gray-900 hidden md:block">
           <img src={story.image} alt={story.name} className="w-full h-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -194,6 +192,7 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
 export default function SuccessStories({ onNavigate, setActiveProgramName }) {
   const [activeFilter, setActiveFilter] = useState('الكل');
   const [selectedStory, setSelectedStory] = useState(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const categories = [
     { id: 'الكل', icon: LayoutGrid },
@@ -218,7 +217,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
   return (
     <div className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col" dir="rtl">
       
-      {/* الهيدر - 🟢 تصغير المسافات للموبايل */}
+      {/* الهيدر */}
       <div className="bg-[#1a0409] h-[340px] md:h-[380px] pt-28 md:pt-32 pb-16 md:pb-20 relative overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-md shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 to-[#1a0409]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
@@ -243,7 +242,49 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
 
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-24">
         
-        {/* הפلاتر - 🟢 صارت Grid ع الموبايل بدل سحب (Scroll) يمين ويسار */}
+  {/* =======================================
+            الكرت العريض: شارك قصتك (فوق الفلاتر)
+            ======================================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative max-w-[1000px] mx-auto bg-white rounded-[2rem] p-8 md:p-10 shadow-xl shadow-gray-200/50 border border-gray-100 mb-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden z-20"
+        >
+          <div className="absolute top-0 right-0 w-48 h-48 bg-[#C08F2D]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#721F31]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px' }} />
+
+          {/* 🟢 التعديل هنا: دمجنا النصوص بعمود واحد لتكون المحاذاة مثالية */}
+          <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start text-center md:text-right gap-4 md:gap-5 w-full md:w-auto">
+            
+            {/* الأيقونة على اليمين */}
+            <div className="w-7 h-7 object-contain md:mt-1">
+              <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-7 md:h-7 object-contain" alt="" />
+            </div>
+
+            {/* النصوص (العنوان والفقرة) مصطفة تماماً */}
+            <div className="flex flex-col gap-2 md:gap-3">
+              <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
+                هل أنت قصة <span className="text-[#721F31]">النجاح</span> القادمة؟
+              </h3>
+              <p className="text-gray-500 font-medium text-base md:text-lg max-w-xl leading-relaxed">
+                أنت لست مجرد رقم. شاركنا تجربتك، وكيف تغلبت على التحديات لتُلهم آلاف الشباب الأردني. قصتك تستحق أن تُروى وتصل للجميع.
+              </p>
+            </div>
+            
+          </div>
+
+          <button
+            onClick={() => setIsShareModalOpen(true)}
+            className="relative z-10 shrink-0 group bg-[#C08F2D] hover:bg-[#a87d25] text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto"
+          >
+            <span>شارك رحلتك</span>
+            <ArrowLeft className="w-5 h-5 transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={2.5} />
+          </button>
+        </motion.div>
+
+        {/* الفلاتر */}
         <div className="bg-white p-2 md:p-2.5 rounded-2xl shadow-xl shadow-gray-200/40 border border-gray-100 flex flex-wrap md:flex-nowrap gap-2 w-full md:w-fit mb-10 md:mb-16 mx-auto justify-center">
           {categories.map(category => {
             const Icon = category.icon;
@@ -324,6 +365,15 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
             onClose={() => setSelectedStory(null)} 
             onNavigate={onNavigate}
             setActiveProgramName={setActiveProgramName}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isShareModalOpen && (
+          <ShareStoryModal 
+            isOpen={isShareModalOpen} 
+            onClose={() => setIsShareModalOpen(false)} 
           />
         )}
       </AnimatePresence>

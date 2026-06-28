@@ -1,0 +1,93 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "CPF (Crown Prince Foundation) web application built with React 19, Vite 8, and Tailwind CSS 4. It provides a unified platform for Jordanian youth to discover programs, register for events, and track their participation. Start with the README to understand the project context.",
+    "nodeIds": ["document:README.md", "config:package.json"]
+  },
+  {
+    "order": 2,
+    "title": "Application Entry Point",
+    "description": "The app boots from main.jsx which mounts the App component into the DOM with StrictMode. The HTML shell in index.html provides the RTL structure with Arabic language support.",
+    "nodeIds": ["file:index.html", "file:src/main.jsx", "file:src/index.css"]
+  },
+  {
+    "order": 3,
+    "title": "App Shell & Page Routing",
+    "description": "The root App component manages page routing via React state, renders the Navbar, MobileNavBar, ChatWidget, and SearchOverlay globally, and wraps page content with AnimatePresence for smooth transitions. It also manages the login modal overlay and ticket booking flow.",
+    "nodeIds": ["file:src/App.jsx", "file:src/App.css"]
+  },
+  {
+    "order": 4,
+    "title": "Home Page & Feature Sections",
+    "description": "The HomePage assembles all landing sections: LuxuryHero banner, animated statistics counters, EcosystemPrograms grid, LuxuryPathways cards, AI-powered PathwayWizard modal, and the HomeEvents filterable list with EventDetailsDrawer.",
+    "nodeIds": [
+      "file:src/pages/HomePage.jsx",
+      "file:src/components/home/LuxuryHero.jsx",
+      "file:src/components/home/LuxuryPathways.jsx",
+      "file:src/components/home/EcosystemPrograms.jsx",
+      "file:src/components/home/HomeEvents.jsx",
+      "file:src/components/home/PathwayWizard.jsx",
+      "file:src/components/home/JordanMap.jsx"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Programs & Events Explorer",
+    "description": "The Programs hub page lets users browse national programs or explore events interactively. The EventsExplorer integrates JordanMap for location-based filtering and a searchable event list. The ExplorerPage provides a geospatial split-layout experience with an interactive map of Jordan's regions.",
+    "nodeIds": [
+      "file:src/components/Programs.jsx",
+      "file:src/components/programs/NationalPrograms.jsx",
+      "file:src/components/programs/EventsExplorer.jsx",
+      "file:src/pages/ExplorerPage.jsx",
+      "file:src/components/events/EventDetailsDrawer.jsx",
+      "file:src/components/EventCard.jsx"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Program Details & Data",
+    "description": "The ProgramDetails page displays comprehensive information for 13 programs including enrollment details, facilities, and FAQs. All event data is defined in data.js which serves as the centralized data source across components.",
+    "nodeIds": [
+      "file:src/pages/ProgramDetails.jsx",
+      "file:src/data.js",
+      "data:data/mockup.json"
+    ]
+  },
+  {
+    "order": 7,
+    "title": "User Dashboard & Authentication",
+    "description": "Users can log in via the Login page with national ID authentication, then access their Dashboard showing points, booked tickets with QR codes, and profile settings. The SuccessStories and Contact pages provide community engagement touchpoints.",
+    "nodeIds": [
+      "file:src/pages/Login.jsx",
+      "file:src/components/Dashboard.jsx",
+      "file:src/components/SuccessStories.jsx",
+      "file:src/components/Contact.jsx",
+      "file:src/components/SanadModal.jsx"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Navigation & Global Features",
+    "description": "The Navbar and MobileNavBar provide responsive navigation across all pages. The ChatWidget offers an AI assistant, SearchOverlay enables live event search, and AccessibilityWidget provides font/contrast controls.",
+    "nodeIds": [
+      "file:src/components/Navbar.jsx",
+      "file:src/components/MobileNavBar.jsx",
+      "file:src/components/Footer.jsx",
+      "file:src/components/ChatWidget.jsx",
+      "file:src/components/SearchOverlay.jsx",
+      "file:src/components/AccessibilityWidget.jsx"
+    ]
+  },
+  {
+    "order": 9,
+    "title": "Build Configuration",
+    "description": "The project uses Vite for development and builds with React plugin, PostCSS with Tailwind CSS for styling, and ESLint for code quality. These tools work together to provide a modern development experience.",
+    "nodeIds": [
+      "config:vite.config.js",
+      "config:tailwind.config.js",
+      "config:postcss.config.js",
+      "config:eslint.config.js"
+    ]
+  }
+]

@@ -1,0 +1,1577 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "134cab61c88fde767f56463fc9221905ef776006",
+  "generatedAt": "2026-06-28T11:41:03.896Z",
+  "files": {
+    "src/main.jsx": {
+      "filePath": "src/main.jsx",
+      "contentHash": "ae81f1c01f2c8018a1ba5cf73171921c8982d90b049bb6b039ea82f8e1dec958",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "./App.jsx",
+          "specifiers": [
+            "App"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "src/App.jsx": {
+      "filePath": "src/App.jsx",
+      "contentHash": "194c4af8bcbd7bf1f2cf26a629a3f4c96bc4535146ef1b081ce3025e3fd988aa",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 119
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "AnimatePresence",
+            "motion"
+          ]
+        },
+        {
+          "source": "./components/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "./components/Dashboard",
+          "specifiers": [
+            "Dashboard"
+          ]
+        },
+        {
+          "source": "./components/Programs",
+          "specifiers": [
+            "Programs"
+          ]
+        },
+        {
+          "source": "./components/ChatWidget",
+          "specifiers": [
+            "ChatWidget"
+          ]
+        },
+        {
+          "source": "./components/SuccessStories",
+          "specifiers": [
+            "SuccessStories"
+          ]
+        },
+        {
+          "source": "./components/Contact",
+          "specifiers": [
+            "Contact"
+          ]
+        },
+        {
+          "source": "./pages/HomePage",
+          "specifiers": [
+            "HomePage"
+          ]
+        },
+        {
+          "source": "./pages/Login",
+          "specifiers": [
+            "Login"
+          ]
+        },
+        {
+          "source": "./pages/ProgramDetails",
+          "specifiers": [
+            "ProgramDetails"
+          ]
+        },
+        {
+          "source": "./components/MobileNavBar",
+          "specifiers": [
+            "MobileNavBar"
+          ]
+        },
+        {
+          "source": "./components/SearchOverlay",
+          "specifiers": [
+            "SearchOverlay"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 137,
+      "hasStructuralAnalysis": true
+    },
+    "src/data.js": {
+      "filePath": "src/data.js",
+      "contentHash": "1b63437da49a5af1823552214213b610d0ea6c31471c7ad5ee350def3fea551e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "allEvents"
+      ],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "src/App.css": {
+      "filePath": "src/App.css",
+      "contentHash": "c2571ce7245629994b8adc84f6c48e1920f047a4e7e29c89a4aeb51eeb1b5433",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 185,
+      "hasStructuralAnalysis": false
+    },
+    "src/index.css": {
+      "filePath": "src/index.css",
+      "contentHash": "37836bf1b70420b7f7fe662d3e3328e09d2caca12b10fd4d07b8fc3e0e2f350c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": false
+    },
+    "src/components/Navbar.jsx": {
+      "filePath": "src/components/Navbar.jsx",
+      "contentHash": "0d8c0ae19f76cc2d5ba73ab543f981ebeecf0b555444a61faedb45737c47b57e",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [],
+          "exported": true,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ShieldCheck",
+            "Search"
+          ]
+        }
+      ],
+      "exports": [
+        "Navbar"
+      ],
+      "totalLines": 79,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Dashboard.jsx": {
+      "filePath": "src/components/Dashboard.jsx",
+      "contentHash": "6811846466922878370a12784d632c987d53f12786e13df3feb1ed3f23a3bbc9",
+      "functions": [
+        {
+          "name": "Dashboard",
+          "params": [],
+          "exported": true,
+          "lineCount": 447
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ShieldCheck",
+            "QrCode",
+            "Ticket",
+            "ChevronRight",
+            "MapPin",
+            "Calendar",
+            "X",
+            "Settings",
+            "User",
+            "Bell",
+            "Lock",
+            "LogOut",
+            "CreditCard",
+            "Gift",
+            "Clock",
+            "CheckCircle2",
+            "CircleDashed",
+            "ArrowUpLeft",
+            "BarChart3",
+            "ChevronLeft",
+            "Map"
+          ]
+        }
+      ],
+      "exports": [
+        "Dashboard"
+      ],
+      "totalLines": 456,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Programs.jsx": {
+      "filePath": "src/components/Programs.jsx",
+      "contentHash": "1dbb3cc43f7606178fd7871eba7a2fee1da32312c910fd468c253974f0d15fc4",
+      "functions": [
+        {
+          "name": "Programs",
+          "params": [],
+          "exported": true,
+          "lineCount": 59
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "LayoutGrid",
+            "Target",
+            "Sparkles"
+          ]
+        },
+        {
+          "source": "../components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "./programs/NationalPrograms",
+          "specifiers": [
+            "NationalPrograms"
+          ]
+        },
+        {
+          "source": "./programs/EventsExplorer",
+          "specifiers": [
+            "EventsExplorer"
+          ]
+        }
+      ],
+      "exports": [
+        "Programs"
+      ],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ChatWidget.jsx": {
+      "filePath": "src/components/ChatWidget.jsx",
+      "contentHash": "7da4bdab0ac5e24afde825add9e4cd96f1ffcb74fdca5d71c2b8f9eadeb0a077",
+      "functions": [
+        {
+          "name": "ChatWidget",
+          "params": [],
+          "exported": true,
+          "lineCount": 176
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useRef",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X",
+            "Send",
+            "Sparkles",
+            "ChevronLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "ChatWidget"
+      ],
+      "totalLines": 180,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/SuccessStories.jsx": {
+      "filePath": "src/components/SuccessStories.jsx",
+      "contentHash": "e03a60d18c517365c34a7895c8f27a717d468a6bcd69bb3438e05dceac84b67d",
+      "functions": [
+        {
+          "name": "StoryModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 84
+        },
+        {
+          "name": "SuccessStories",
+          "params": [],
+          "exported": true,
+          "lineCount": 141
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "../components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Quote",
+            "Sparkles",
+            "LayoutGrid",
+            "Briefcase",
+            "Target",
+            "Users",
+            "X",
+            "ArrowUpLeft",
+            "ArrowLeft",
+            "MapPin"
+          ]
+        }
+      ],
+      "exports": [
+        "SuccessStories"
+      ],
+      "totalLines": 334,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Contact.jsx": {
+      "filePath": "src/components/Contact.jsx",
+      "contentHash": "b1fec03be79e0f4bdce56295b5d639827733e1ea31a806beb192196e49bf7d41",
+      "functions": [
+        {
+          "name": "Contact",
+          "params": [],
+          "exported": true,
+          "lineCount": 238
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "../components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "MapPin",
+            "Phone",
+            "Mail",
+            "Send",
+            "Clock",
+            "Building2",
+            "CheckCircle2",
+            "ChevronDown"
+          ]
+        }
+      ],
+      "exports": [
+        "Contact"
+      ],
+      "totalLines": 246,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Hero.jsx": {
+      "filePath": "src/components/Hero.jsx",
+      "contentHash": "2a6205966e745ba183fd21e5d1daaa141497d2d0b4b097d67614cea183bab7ea",
+      "functions": [
+        {
+          "name": "Hero",
+          "params": [],
+          "exported": true,
+          "lineCount": 94
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search",
+            "SlidersHorizontal"
+          ]
+        },
+        {
+          "source": "../data",
+          "specifiers": [
+            "filters"
+          ]
+        }
+      ],
+      "exports": [
+        "Hero"
+      ],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Footer.jsx": {
+      "filePath": "src/components/Footer.jsx",
+      "contentHash": "e8391898fa48ba5503bb69530bb121341c1537751801b2e7cb218dddfdee5f66",
+      "functions": [
+        {
+          "name": "FacebookIcon",
+          "params": [
+            "props"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "InstagramIcon",
+          "params": [
+            "props"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "LinkedinIcon",
+          "params": [
+            "props"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "YoutubeIcon",
+          "params": [
+            "props"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": true,
+          "lineCount": 163
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Mail",
+            "Phone",
+            "MapPin",
+            "ArrowUpLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "Footer"
+      ],
+      "totalLines": 172,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/EventCard.jsx": {
+      "filePath": "src/components/EventCard.jsx",
+      "contentHash": "0b452c94c5b0d6b46703ce005db6d11a7802d2ac158f27845ef39b43c1273969",
+      "functions": [
+        {
+          "name": "EventCard",
+          "params": [],
+          "exported": true,
+          "lineCount": 64
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "MapPin",
+            "Calendar",
+            "Star",
+            "ArrowUpLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "EventCard"
+      ],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/AccessibilityWidget.jsx": {
+      "filePath": "src/components/AccessibilityWidget.jsx",
+      "contentHash": "49b389777338ff0bd79b488f4f94ab2b3722140ca44fae8f70858ef093aa7532",
+      "functions": [
+        {
+          "name": "AccessibilityWidget",
+          "params": [],
+          "exported": true,
+          "lineCount": 72
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Accessibility",
+            "Check",
+            "Sun"
+          ]
+        }
+      ],
+      "exports": [
+        "AccessibilityWidget"
+      ],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/MobileNavBar.jsx": {
+      "filePath": "src/components/MobileNavBar.jsx",
+      "contentHash": "86693af2760b69fa4a2483a4ce29941a8f7cb81c3d6d985c3621c1e27b6e44c5",
+      "functions": [
+        {
+          "name": "MobileNavBar",
+          "params": [],
+          "exported": true,
+          "lineCount": 50
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Home",
+            "Layers",
+            "Trophy",
+            "User",
+            "MessageSquare"
+          ]
+        }
+      ],
+      "exports": [
+        "MobileNavBar"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/SearchOverlay.jsx": {
+      "filePath": "src/components/SearchOverlay.jsx",
+      "contentHash": "d2de692612c9ecb50b9c0519dce29cdeb2c51a021f01a75000034809892987d4",
+      "functions": [
+        {
+          "name": "SearchOverlay",
+          "params": [],
+          "exported": true,
+          "lineCount": 123
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search",
+            "X",
+            "ArrowUpLeft"
+          ]
+        },
+        {
+          "source": "../data",
+          "specifiers": [
+            "allEvents"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchOverlay"
+      ],
+      "totalLines": 129,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/SanadModal.jsx": {
+      "filePath": "src/components/SanadModal.jsx",
+      "contentHash": "b274c67f8ce80f717634ae2f2e41b52db004da05bfab96e270a861f157946d20",
+      "functions": [
+        {
+          "name": "SanadModal",
+          "params": [],
+          "exported": true,
+          "lineCount": 104
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X",
+            "Calendar",
+            "MapPin",
+            "ShieldCheck",
+            "Mail",
+            "ArrowRight"
+          ]
+        }
+      ],
+      "exports": [
+        "SanadModal"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/LuxuryHero.jsx": {
+      "filePath": "src/components/home/LuxuryHero.jsx",
+      "contentHash": "4a6789061b2ad16f81711e7743432bc318e050f1010d4775a93785ed4f198365",
+      "functions": [
+        {
+          "name": "LuxuryHero",
+          "params": [],
+          "exported": true,
+          "lineCount": 103
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "LuxuryHero"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/LuxuryPathways.jsx": {
+      "filePath": "src/components/home/LuxuryPathways.jsx",
+      "contentHash": "25d9e18f2a9cb688df7c7a4f219e67f909680f51aacacc70b331e0373c4f2f1b",
+      "functions": [
+        {
+          "name": "LuxuryPathways",
+          "params": [],
+          "exported": true,
+          "lineCount": 178
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowUpLeft",
+            "Target",
+            "Users",
+            "Briefcase"
+          ]
+        }
+      ],
+      "exports": [
+        "LuxuryPathways"
+      ],
+      "totalLines": 182,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/EcosystemPrograms.jsx": {
+      "filePath": "src/components/home/EcosystemPrograms.jsx",
+      "contentHash": "0d72a6a63b279536202a60b7c2453bc8da8c1ab26d020a9ea4b2f970f3d0a51d",
+      "functions": [
+        {
+          "name": "EcosystemPrograms",
+          "params": [],
+          "exported": true,
+          "lineCount": 153
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowUpLeft",
+            "ArrowLeft"
+          ]
+        }
+      ],
+      "exports": [
+        "EcosystemPrograms"
+      ],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/HomeEvents.jsx": {
+      "filePath": "src/components/home/HomeEvents.jsx",
+      "contentHash": "09c12dd08d6b9c130f8a5556666203faa667b6c6e684bc2a936258fc4be0f5a2",
+      "functions": [
+        {
+          "name": "HomeEvents",
+          "params": [],
+          "exported": true,
+          "lineCount": 327
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useMemo",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Calendar",
+            "MapPin",
+            "Award",
+            "ArrowUpLeft",
+            "Briefcase",
+            "Target",
+            "Users",
+            "LayoutGrid",
+            "Timer",
+            "Filter",
+            "Search",
+            "ArrowLeft",
+            "ChevronDown"
+          ]
+        },
+        {
+          "source": "../events/EventDetailsDrawer",
+          "specifiers": [
+            "EventDetailsDrawer"
+          ]
+        },
+        {
+          "source": "./JordanMap",
+          "specifiers": [
+            "JordanMap"
+          ]
+        },
+        {
+          "source": "../../data",
+          "specifiers": [
+            "allEvents"
+          ]
+        }
+      ],
+      "exports": [
+        "HomeEvents"
+      ],
+      "totalLines": 335,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/PathwayWizard.jsx": {
+      "filePath": "src/components/home/PathwayWizard.jsx",
+      "contentHash": "9d34a71f7446075589f110424a7c44f6d36f24c4ebdc2cf703174e9561ac7642",
+      "functions": [
+        {
+          "name": "PathwayWizard",
+          "params": [],
+          "exported": true,
+          "lineCount": 312
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X",
+            "ArrowRight",
+            "Compass",
+            "Target",
+            "HeartHandshake",
+            "Briefcase",
+            "MapPin",
+            "Laptop",
+            "ShieldCheck",
+            "Users",
+            "Code2",
+            "Megaphone"
+          ]
+        }
+      ],
+      "exports": [
+        "PathwayWizard"
+      ],
+      "totalLines": 317,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/home/JordanMap.jsx": {
+      "filePath": "src/components/home/JordanMap.jsx",
+      "contentHash": "00f940606fd484f9a6ce4f0bbc301d13b6b835666e171dc81a6fe73e8b11369f",
+      "functions": [
+        {
+          "name": "JordanMap",
+          "params": [],
+          "exported": true,
+          "lineCount": 140
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        }
+      ],
+      "exports": [
+        "JordanMap"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/programs/NationalPrograms.jsx": {
+      "filePath": "src/components/programs/NationalPrograms.jsx",
+      "contentHash": "964603246de90e40ac21d0c2cbe0b520ca77bcbe1f1b1216b43986578d6dc4cf",
+      "functions": [
+        {
+          "name": "NationalPrograms",
+          "params": [],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowUpLeft",
+            "Briefcase",
+            "Target",
+            "Users",
+            "Code2",
+            "HeartHandshake",
+            "Lightbulb",
+            "GraduationCap",
+            "Globe",
+            "Activity"
+          ]
+        }
+      ],
+      "exports": [
+        "NationalPrograms"
+      ],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/programs/EventsExplorer.jsx": {
+      "filePath": "src/components/programs/EventsExplorer.jsx",
+      "contentHash": "76c6d3ead323a55357570038e701a734f685f90c28109255345284630766ea1f",
+      "functions": [
+        {
+          "name": "CustomDropdown",
+          "params": [],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "EventsExplorer",
+          "params": [],
+          "exported": true,
+          "lineCount": 154
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useMemo",
+            "useRef",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowUpLeft",
+            "Search",
+            "Calendar",
+            "MapPin",
+            "Award",
+            "Timer",
+            "ChevronDown",
+            "Check"
+          ]
+        },
+        {
+          "source": "../home/JordanMap",
+          "specifiers": [
+            "JordanMap"
+          ]
+        },
+        {
+          "source": "../events/EventDetailsDrawer",
+          "specifiers": [
+            "EventDetailsDrawer"
+          ]
+        },
+        {
+          "source": "../../data",
+          "specifiers": [
+            "allEvents"
+          ]
+        }
+      ],
+      "exports": [
+        "EventsExplorer"
+      ],
+      "totalLines": 211,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/events/EventDetailsDrawer.jsx": {
+      "filePath": "src/components/events/EventDetailsDrawer.jsx",
+      "contentHash": "2205e66b529cb5fb31d403949885e8214ab299dd5a6aa2582fcb9b43d69ef40c",
+      "functions": [
+        {
+          "name": "EventDetailsDrawer",
+          "params": [],
+          "exported": true,
+          "lineCount": 269
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "react-dom",
+          "specifiers": [
+            "createPortal"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X",
+            "Calendar",
+            "MapPin",
+            "Award",
+            "Clock",
+            "ShieldCheck",
+            "Users",
+            "Info",
+            "Lock",
+            "Unlock",
+            "UserCheck",
+            "ChevronDown",
+            "ChevronUp"
+          ]
+        }
+      ],
+      "exports": [
+        "EventDetailsDrawer"
+      ],
+      "totalLines": 275,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/HomePage.jsx": {
+      "filePath": "src/pages/HomePage.jsx",
+      "contentHash": "a4a69489c3b116c27fe9a09ab8d05d7ef21a700fb36c1d8f7a7f459fe4812b32",
+      "functions": [
+        {
+          "name": "AnimatedNumber",
+          "params": [],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "HomePage",
+          "params": [],
+          "exported": true,
+          "lineCount": 97
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "AnimatePresence",
+            "motion",
+            "useMotionValue",
+            "useTransform",
+            "animate",
+            "useInView"
+          ]
+        },
+        {
+          "source": "../components/home/HomeEvents",
+          "specifiers": [
+            "HomeEvents"
+          ]
+        },
+        {
+          "source": "../components/home/PathwayWizard",
+          "specifiers": [
+            "PathwayWizard"
+          ]
+        },
+        {
+          "source": "../components/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "../components/home/LuxuryHero",
+          "specifiers": [
+            "LuxuryHero"
+          ]
+        },
+        {
+          "source": "../components/home/LuxuryPathways",
+          "specifiers": [
+            "LuxuryPathways"
+          ]
+        },
+        {
+          "source": "../components/home/EcosystemPrograms",
+          "specifiers": [
+            "EcosystemPrograms"
+          ]
+        }
+      ],
+      "exports": [
+        "HomePage"
+      ],
+      "totalLines": 132,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/ExplorerPage.jsx": {
+      "filePath": "src/pages/ExplorerPage.jsx",
+      "contentHash": "2901cbb4ddd7df7d1507f44a9764311819fbe3c33c191a42aeed2f440cbe3176",
+      "functions": [
+        {
+          "name": "ExplorerPage",
+          "params": [],
+          "exported": true,
+          "lineCount": 260
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useMemo"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "MapPin",
+            "Search",
+            "Calendar",
+            "ShieldCheck",
+            "ArrowRight",
+            "Layers"
+          ]
+        },
+        {
+          "source": "../data",
+          "specifiers": [
+            "allEvents"
+          ]
+        }
+      ],
+      "exports": [
+        "ExplorerPage"
+      ],
+      "totalLines": 266,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/Login.jsx": {
+      "filePath": "src/pages/Login.jsx",
+      "contentHash": "7e44902207709aae2f852a8cd8fb364161e210d5b39232349fb857b3a37bcf8a",
+      "functions": [
+        {
+          "name": "Login",
+          "params": [],
+          "exported": true,
+          "lineCount": 200
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowRight",
+            "User",
+            "Lock",
+            "Eye",
+            "EyeOff",
+            "Mail"
+          ]
+        }
+      ],
+      "exports": [
+        "Login"
+      ],
+      "totalLines": 205,
+      "hasStructuralAnalysis": true
+    },
+    "src/pages/ProgramDetails.jsx": {
+      "filePath": "src/pages/ProgramDetails.jsx",
+      "contentHash": "dc5190d7c965c64deb6b81adfaddc2662e437801ff0dadd4a1a169184c9dfd91",
+      "functions": [
+        {
+          "name": "ProgramDetails",
+          "params": [],
+          "exported": true,
+          "lineCount": 233
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "motion",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ArrowLeft",
+            "Building2",
+            "LayoutGrid",
+            "LayoutTemplate",
+            "Clock",
+            "GraduationCap",
+            "Award",
+            "BookOpen"
+          ]
+        }
+      ],
+      "exports": [
+        "ProgramDetails"
+      ],
+      "totalLines": 514,
+      "hasStructuralAnalysis": true
+    },
+    "index.html": {
+      "filePath": "index.html",
+      "contentHash": "1e5b1d94e22a827761daa3f8c0cb0c227a600dbf2de673caca6993bfe50a6063",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": false
+    },
+    "vite.config.js": {
+      "filePath": "vite.config.js",
+      "contentHash": "5cabb639b6b62e19064337abc9f5b4fda0f83e50a47396ca9a3bba388abfdd13",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "tailwind.config.js": {
+      "filePath": "tailwind.config.js",
+      "contentHash": "4a094af8deb0779a4117709d5782f52b6a4795a18246d99a58b3d5e90da2d560",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "postcss.config.js": {
+      "filePath": "postcss.config.js",
+      "contentHash": "f0fa2b673d30d64a5a2d090b1ec48111b0fe0159d94ff7e31afab1bcf6268fc6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "eslint.config.js": {
+      "filePath": "eslint.config.js",
+      "contentHash": "9f9b44b8e55768eaf86e417b96919510b12055d87806e0e2f0703c5a0eb64817",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@eslint/js",
+          "specifiers": [
+            "js"
+          ]
+        },
+        {
+          "source": "globals",
+          "specifiers": [
+            "globals"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-hooks",
+          "specifiers": [
+            "reactHooks"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-refresh",
+          "specifiers": [
+            "reactRefresh"
+          ]
+        },
+        {
+          "source": "eslint/config",
+          "specifiers": [
+            "defineConfig",
+            "globalIgnores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "59abddde8841c32617fbdc5743bb27407039f4f68c1a5d47cbfba8c566e1cfd5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "a2648adf2f4e92d188d79e14c2b26e207bb0654e90beb5d99e7eb594d995fe65",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "data/mockup.json": {
+      "filePath": "data/mockup.json",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

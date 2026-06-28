@@ -3,9 +3,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpLeft, ArrowLeft } from 'lucide-react';
 
-export default function EcosystemPrograms() {
+// 🟢 أضفنا onNavigate كـ Prop عشان نقدر نوجه المستخدم بسلاسة داخل التطبيق
+export default function EcosystemPrograms({ onNavigate }) {
   
-  // 🟢 نكتفي بأهم 3 برامج كعينة (Featured) لتجنب تشتت المستخدم
   const featuredPrograms = [
     { 
       id: 1, 
@@ -13,7 +13,7 @@ export default function EcosystemPrograms() {
       category: 'التعليم التقني', 
       desc: 'جامعة تطبيقية تهدف لتعزيز التعليم التقني وتخريج جيل جاهز لسوق العمل بمعايير عالمية تلامس احتياجات المستقبل.', 
       logo: '/HTU.png', 
-      bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000', // صورة معبرة (مختبر/هندسة)
+      bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000', 
       link: 'https://htu.edu.jo/ar' 
     },
     { 
@@ -22,7 +22,7 @@ export default function EcosystemPrograms() {
       category: 'التعليم التقني', 
       desc: 'مدرسة برمجة مجانية مبتكرة تعتمد على التعلم الذاتي وبدون معلمين، تخرج أمهر المبرمجين وتضعهم على طريق الريادة العالمية.', 
       logo: '/42Amman.png', 
-      bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000', // صورة معبرة (شباب يبرمجون)
+      bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000', 
       link: 'https://42amman.com/' 
     },
     { 
@@ -31,7 +31,7 @@ export default function EcosystemPrograms() {
       category: 'التطوع والمجتمع', 
       desc: 'المنصة الوطنية للتطوع ومشاركة الشباب، تربط المتطوعين بفرص حقيقية تخدم مجتمعاتهم وتصنع أثراً ملموساً في كافة المحافظات.', 
       logo: '/Nahno.png', 
-      bgImage: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2000', // صورة معبرة (تطوع/أيدي معاً)
+      bgImage: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2000', 
       link: 'https://www.nahno.org/' 
     }
   ];
@@ -44,28 +44,37 @@ export default function EcosystemPrograms() {
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         
-        {/* الترويسة */}
+        {/* =========================================
+            الترويسة (تم تعديل زر تصفح جميع البرامج هنا)
+            ========================================= */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img src="/arrow-yellow.svg" className="w-8 h-8 shrink-0" alt="" />
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#721F31] tracking-tight">
-                أبرز <span className="text-[#C08F2D]">مبادراتنا</span>
+                أبرز <span className="text-[#C08F2D]">برامجنا</span>
               </h2>
             </div>
-            <p className="text-[#4c4c4c] font-medium max-w-2xl text-lg md:text-xl leading-relaxed">
+            <p className="text-[#4c4c4c] font-medium max-w-2xl text-lg md:text-2xl   leading-relaxed">
               منظومة متكاملة من البرامج صُممت خصيصاً لتمكينك، تطوير مهاراتك، وإطلاق العنان لطموحك.
             </p>
           </div>
           
-          {/* 🟢 زر استكشاف جميع البرامج (Youth Flow) */}
-          <a href="/programs" className="hidden md:flex items-center gap-2 text-[#721F31] hover:text-[#C08F2D] font-bold text-lg transition-colors group">
-            <span>تصفح جميع البرامج</span>
-            <ArrowLeft className="w-5 h-5 rtl:-scale-x-100 transform group-hover:-translate-x-2 transition-transform" />
-          </a>
+          {/* 🟢 الزر الجديد: حجم كبير، تفاعلي، وواضح جداً للعين */}
+          <button 
+            onClick={() => onNavigate && onNavigate('programs')}
+            className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0"
+          >
+            <span className="text-[#721F31] font-black text-2xl">
+              تصفح جميع البرامج
+            </span>
+            <ArrowLeft className="w-6 h-6 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
+          </button>
+
         </div>
 
-        {/* 🟢 شبكة الكروت (3 كروت كبيرة وعملاقة) */}
+        {/* شبكة الكروت */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {featuredPrograms.map((program, index) => (
             <motion.div
@@ -74,20 +83,16 @@ export default function EcosystemPrograms() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               key={program.id}
-              // 🟢 الكرت صار أطول (h-[420px])
               className="group [perspective:1500px] h-[400px] md:h-[420px] w-full cursor-pointer"
             >
               <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-3xl shadow-lg hover:shadow-2xl">
                 
-                {/* ================= الوجه الأمامي (الصورة المعبرة + الزجاج) ================= */}
+                {/* الوجه الأمامي */}
                 <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200">
-                  {/* الصورة المعبرة كخلفية */}
                   <img src={program.bgImage} alt={program.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  {/* طبقة تعتيم متدرجة عشان النص يقرأ */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/90 via-[#1a070b]/40 to-transparent"></div>
                   
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    {/* اللوجو داخل صندوق زجاجي فخم */}
                     <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-3 mb-6 border border-white/20 shadow-xl">
                       <img src={program.logo} alt={program.name} className="max-w-full max-h-full object-contain brightness-0 invert" />
                     </div>
@@ -101,7 +106,7 @@ export default function EcosystemPrograms() {
                   </div>
                 </div>
 
-                {/* ================= الوجه الخلفي (الوصف والزر) ================= */}
+                {/* الوجه الخلفي */}
                 <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#721F31] via-[#521623] to-[#3b1019] rounded-3xl p-8 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
                   
                   <div className="flex justify-between items-start mb-6">
@@ -137,12 +142,15 @@ export default function EcosystemPrograms() {
           ))}
         </div>
 
-        {/* زر التصفح يظهر للموبايل بالأسفل */}
+        {/* 🟢 زر التصفح يظهر للموبايل بالأسفل (تم تكبير الخط هنا أيضاً) */}
         <div className="mt-12 flex justify-center md:hidden">
-          <a href="/programs" className="flex items-center gap-3 px-8 py-3.5 bg-transparent border-2 border-[#721F31] text-[#721F31] hover:bg-[#721F31] hover:text-white rounded-full font-bold text-base transition-all">
-            <span>تصفح جميع البرامج (13)</span>
-            <ArrowLeft className="w-5 h-5 rtl:-scale-x-100" />
-          </a>
+          <button 
+            onClick={() => onNavigate && onNavigate('programs')} 
+            className="flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-[#721F31] text-[#721F31] hover:bg-[#721F31] hover:text-white rounded-2xl font-black text-lg transition-all w-full justify-center group"
+          >
+            <span>تصفح جميع البرامج</span>
+            <ArrowLeft className="w-6 h-6 transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={2.5} />
+          </button>
         </div>
 
       </div>

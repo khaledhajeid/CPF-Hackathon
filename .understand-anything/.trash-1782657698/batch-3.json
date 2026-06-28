@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/data.js",
+      "type": "file",
+      "name": "Events Data",
+      "filePath": "src/data.js",
+      "summary": "Static data module containing allEvents array with 12 event objects for CPF youth programs, including details like date, city, pathway, points, and descriptions.",
+      "tags": ["data", "events", "seed-data"],
+      "complexity": "simple",
+      "languageNotes": "JavaScript data module with exported array of event objects"
+    },
+    {
+      "id": "file:src/index.css",
+      "type": "file",
+      "name": "Global Styles",
+      "filePath": "src/index.css",
+      "summary": "Global CSS with Tailwind directives (@import 'tailwindcss') and custom base styles for font family and scroll behavior.",
+      "tags": ["styles", "tailwind", "global"],
+      "complexity": "simple",
+      "languageNotes": "CSS with Tailwind CSS v4 @import directive"
+    },
+    {
+      "id": "file:src/main.jsx",
+      "type": "file",
+      "name": "Application Entry Point",
+      "filePath": "src/main.jsx",
+      "summary": "React application entry point that mounts the App component into the DOM with StrictMode enabled.",
+      "tags": ["entry-point", "react", "bootstrap"],
+      "complexity": "simple",
+      "languageNotes": "React DOM createRoot entry point"
+    },
+    {
+      "id": "file:src/pages/ExplorerPage.jsx",
+      "type": "file",
+      "name": "Explorer Page",
+      "filePath": "src/pages/ExplorerPage.jsx",
+      "summary": "Full-screen event explorer with geospatial split layout, search bar, pathway/region filters, interactive map with clickable region pins, and a scrollable events list with booking functionality.",
+      "tags": ["page", "explorer", "geospatial", "events", "map"],
+      "complexity": "complex",
+      "languageNotes": "React component with Framer Motion animations and interactive SVG map"
+    },
+    {
+      "id": "file:src/pages/HomePage.jsx",
+      "type": "file",
+      "name": "Home Page",
+      "filePath": "src/pages/HomePage.jsx",
+      "summary": "Main landing page featuring a luxury hero, animated statistics counters, ecosystem programs section, strategic pathways selector, AI-powered pathway wizard modal, and events section with filters.",
+      "tags": ["page", "home", "landing", "pathways", "statistics"],
+      "complexity": "complex",
+      "languageNotes": "React component with Framer Motion animated counters and modals"
+    },
+    {
+      "id": "file:src/pages/Login.jsx",
+      "type": "file",
+      "name": "Login Page",
+      "filePath": "src/pages/Login.jsx",
+      "summary": "Full-screen login form with national ID and password fields, show/hide password toggle, loading state, alternative login options (Google, email), and decorative hero panel with gradient overlay.",
+      "tags": ["page", "login", "authentication", "form"],
+      "complexity": "moderate",
+      "languageNotes": "React component with Framer Motion spring animations"
+    },
+    {
+      "id": "file:src/pages/ProgramDetails.jsx",
+      "type": "file",
+      "name": "Program Details Page",
+      "filePath": "src/pages/ProgramDetails.jsx",
+      "summary": "Detailed program information page with full data for 13 programs, featuring breadcrumb navigation, image header, program type/mechanism/language metadata cards, overview, facilities list, degree offerings, and FAQ accordion.",
+      "tags": ["page", "programs", "details", "faq"],
+      "complexity": "complex",
+      "languageNotes": "React component with hardcoded program data and Framer Motion"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/main.jsx",
+      "target": "file:src/index.css",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/main.jsx",
+      "target": "file:src/App.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/ExplorerPage.jsx",
+      "target": "file:src/data.js",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/HomeEvents.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/PathwayWizard.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/Footer.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryHero.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/LuxuryPathways.jsx",
+      "type": "imports",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/pages/HomePage.jsx",
+      "target": "file:src/components/home/EcosystemPrograms.jsx",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 // src/pages/AboutPage.jsx
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
 import { Target, Eye, Heart, Briefcase, Users, Award, ChevronDown, ArrowUpLeft, Milestone } from 'lucide-react';
 import Footer from '../components/Footer';
 
-// 🟢 مكون فرعي ذكي لعمل العدادات المتحركة (Animated Counter)
+// 🟢 مكون العدادات المتحركة (Animated Counter)
 function AnimatedNumber({ value, suffix = '', prefix = '', decimals = 0 }) {
   const [currentValue, setCurrentValue] = useState(0);
   const ref = useRef(null);
@@ -13,11 +13,10 @@ function AnimatedNumber({ value, suffix = '', prefix = '', decimals = 0 }) {
   useEffect(() => {
     if (isInView) {
       let startTimestamp = null;
-      const duration = 2000; // مدة العداد (ثانيتين)
+      const duration = 2000;
       const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        // استخدام easeOutQuint لتبطيء العداد في النهاية
         const easeProgress = 1 - Math.pow(1 - progress, 5);
         setCurrentValue(easeProgress * value);
         if (progress < 1) {
@@ -33,6 +32,13 @@ function AnimatedNumber({ value, suffix = '', prefix = '', decimals = 0 }) {
 
 export default function AboutPage({ onNavigate }) {
   const [activeLeaderTab, setActiveLeaderTab] = useState('board');
+  
+  // 🟢 مرجع لقسم مسيرة الأثر عشان نربط حركة الخط بالـ Scroll
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start center", "end center"]
+  });
 
   const tracks = [
     { icon: Briefcase, title: 'مسار المشاركة الاقتصادية', desc: 'تطوير المهارات التقنية والعملية للشباب، وتهيئتهم لوظائف المستقبل عبر بيئة تدعم الابتكار والريادة.' },
@@ -40,48 +46,66 @@ export default function AboutPage({ onNavigate }) {
     { icon: Users, title: 'مسار التنمية المجتمعية', desc: 'توفير منصات للتطوع ومشاركة الشباب الفعالة في تنمية مجتمعاتهم المحلية بشكل مستدام.' },
   ];
 
+  // 🟢 ضفنا صور فخمة لكل محطة زمنية
   const milestones = [
-    { year: '2015', title: 'الانطلاقة برؤية ملكية', desc: 'تأسيس مؤسسة ولي العهد لتكون المظلة الحاضنة لطموح وإبداع الشباب الأردني.' },
-    { year: '2017', title: 'جامعة الحسين التقنية', desc: 'إطلاق صرح علمي فريد لتعزيز التعليم التقني وتخريج جيل جاهز لسوق العمل.' },
-    { year: '2019', title: 'منصة نحن', desc: 'إطلاق المنصة الوطنية للتطوع لبناء مجتمع شبابي مبادر ومعطاء.' },
-    { year: '2024', title: '42 عمّان وإربد', desc: 'افتتاح مدارس البرمجة المجانية لتمكين الشباب من لغات المستقبل.' },
+    { 
+      year: '2015', 
+      title: 'الانطلاقة برؤية ملكية', 
+      desc: 'تأسيس مؤسسة ولي العهد لتكون المظلة الحاضنة لطموح وإبداع الشباب الأردني في كافة المحافظات.',
+      image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000'
+    },
+    { 
+      year: '2017', 
+      title: 'جامعة الحسين التقنية', 
+      desc: 'إطلاق صرح علمي فريد لتعزيز التعليم التقني وتخريج جيل جاهز لسوق العمل بأعلى المعايير.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000'
+    },
+    { 
+      year: '2019', 
+      title: 'منصة نحن', 
+      desc: 'إطلاق المنصة الوطنية للتطوع لبناء مجتمع شبابي مبادر ومعطاء يساهم في التنمية المستدامة.',
+      image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=1000'
+    },
+    { 
+      year: '2024', 
+      title: '42 عمّان وإربد', 
+      desc: 'افتتاح مدارس البرمجة المجانية المبتكرة لتمكين الشباب من لغات المستقبل والريادة التقنية.',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000'
+    },
   ];
 
   const leaders = {
     board: [
       { name: 'سعادة السيد عدي السلامين', role: 'رئيس مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Adey-Salamin-1.jpg' },
-      { name: 'سعادة السيد ثائر النجداوي', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Thaer-Najdawi-1.jpg' },
-      { name: 'سعادة السيدة فادية سمارة', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Fadia-Samara-1.jpg' },
-      { name: 'سعادة السيد عمر حمارنة', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Omar-Hamarneh-1.jpg' },
-      { name: 'سعادة السيد أحمد الهنداوي', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Ahmad-AlHendawi-1.jpg' },
+      { name: 'سعادة السيد ثائر النجداوي', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Thaer-Najdawi-1.jpg' },
+      { name: 'سعادة السيدة فادية سمارة', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Fadia-Samara-1.jpg' },
+      { name: 'سعادة السيد عمر حمارنة', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Omar-Hamarneh-1.jpg' },
+      { name: 'سعادة السيد أحمد الهنداوي', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Ahmad-AlHendawi-1.jpg' },
       { name: 'سعادة الدكتور أشرف بني محمد', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Ashraf-Bani-Mohammad-1.jpg' },
-            { name: 'سعادة السيد زيد الفرخ', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Zaid-Farekh-1.jpg' },
-      { name: 'سعادة السيد أسامة امسيح', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Approved-Osama-Imseeh-1.jpg' },
+      { name: 'سعادة السيد زيد الفرخ', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Zaid-Farekh-1.jpg' },
+      { name: 'سعادة السيد أسامة امسيح', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Approved-Osama-Imseeh-1.jpg' },
       { name: 'سعادة السيدة كارولين الفرج', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Caroline-Faraj-1.jpg' },
       { name: 'سعادة السيد فواز غانم', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Approved-Fawaz-Ghanem-1.jpg' },
-      { name: 'سعادة السيد طارق دروزة', role: 'عضو مجلس الأمناء', image: '	https://cpf.jo/wp-content/uploads/2026/03/Tarek-Darwazeh-1.jpg' },
-
+      { name: 'سعادة السيد طارق دروزة', role: 'عضو مجلس الأمناء', image: 'https://cpf.jo/wp-content/uploads/2026/03/Tarek-Darwazeh-1.jpg' },
     ],
     executive: [
       { name: 'تمام منكو', role: 'المدير التنفيذي', image: 'https://cpf.jo/wp-content/uploads/2025/10/Dr-Tamam-1-e1760652399421.jpg' },
-      { name: 'نجود سرحان', role: 'نائب المدير التنفيذي، مدير إدارة البرامج وتميز الأداء', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_1224-e1760953027963.jpg' },
-      { name: 'ميس الداوود', role: 'نائب المدير التنفيذي، مدير إدارة التطوير الاستراتيجي والشراكات', image: '	https://cpf.jo/wp-content/uploads/2025/10/DSC_2186-2-1.jpg' },
-      { name: 'روان خوري', role: 'مدير إدارة دائرة الاتصال', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_2166-2-1.jpg' },
-      { name: 'فارس الخطيب', role: 'مدير إدارة المالية والخدمات المساندة', image: '	https://cpf.jo/wp-content/uploads/2025/10/DSC_2189-2-1.jpg' },
+      { name: 'نجود سرحان', role: 'نائب المدير، مدير إدارة البرامج', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_1224-e1760953027963.jpg' },
+      { name: 'ميس الداوود', role: 'نائب المدير، مدير إدارة التطوير', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_2186-2-1.jpg' },
+      { name: 'روان خوري', role: 'مدير دائرة الاتصال', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_2166-2-1.jpg' },
+      { name: 'فارس الخطيب', role: 'مدير إدارة المالية والخدمات', image: 'https://cpf.jo/wp-content/uploads/2025/10/DSC_2189-2-1.jpg' },
     ]
   };
 
   return (
     <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
       
-      {/* ================= 1. Hero Section (تنظيف الخلفية) ================= */}
-      {/* 🟢 شلنا الصور المزعجة واكتفينا بتدرج عنابي فخم جداً مع زخرفة خفيفة */}
+      {/* ================= 1. Hero Section ================= */}
       <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 bg-gradient-to-br from-[#721F31] via-[#521623] to-[#1a070b] overflow-hidden min-h-[80vh] flex items-center">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
         
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center mt-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.15] tracking-tight">
               رؤية ملكية..<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6] drop-shadow-sm">
@@ -107,7 +131,6 @@ export default function AboutPage({ onNavigate }) {
       </div>
 
       {/* ================= 2. الرؤية والرسالة ================= */}
-      {/* 🟢 لكسر البياض الممل، استخدمنا خلفية #f8fafc ناعمة */}
       <div id="core-section" className="py-24 bg-[#f8fafc] relative scroll-mt-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -135,8 +158,7 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* ================= 3. إحصائيات الأثر (Animated Counters) ================= */}
-      {/* 🟢 استخدمنا عدادات ذكية تتفعل عند الوصول لها */}
+      {/* ================= 3. إحصائيات الأثر ================= */}
       <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[3rem] border border-gray-200 shadow-xl p-12 md:p-16">
@@ -146,76 +168,107 @@ export default function AboutPage({ onNavigate }) {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 divide-x divide-x-reverse divide-gray-200">
-              
               <div className="text-center px-4">
                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
                   <AnimatedNumber value={2.2} decimals={1} suffix="M" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">شاب وشابة مستفيد</p>
               </div>
-
               <div className="text-center px-4">
                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
                   <AnimatedNumber value={14} prefix="+" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">برنامج ومبادرة</p>
               </div>
-
               <div className="text-center px-4">
                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
                   <AnimatedNumber value={26} prefix="+" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">موقع استراتيجي</p>
               </div>
-
               <div className="text-center px-4">
                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
                   <AnimatedNumber value={12} />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">محافظة نغطيها</p>
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-      {/* ================= 4. مسيرة الأثر (Timeline مُكبّر وفخم) ================= */}
-      {/* 🟢 كبرنا الـ Container لـ max-w-6xl والكروت صارت أضخم وأوضح */}
-      <div className="py-28 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
+      {/* ================= 4. مسيرة الأثر (Timeline التفاعلي بالصور والأنيميشن) ================= */}
+      <div className="py-32 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-24">
+          
+          <div className="text-center mb-28 relative z-10">
             <Milestone className="w-14 h-14 text-[#C08F2D] mx-auto mb-6" />
             <h2 className="text-4xl md:text-5xl font-black text-[#721F31] mb-4">مسيرة الأثر</h2>
-            <p className="text-xl text-gray-500 font-medium">محطات صنعناها معاً، ومستمرون</p>
+            <p className="text-xl text-gray-500 font-medium">محطات صنعناها معاً، ومستمرون في العطاء</p>
           </div>
 
-          <div className="relative max-w-6xl mx-auto">
-            <div className="absolute right-8 md:left-1/2 md:-ml-px top-0 bottom-0 w-1 bg-gray-200 rounded-full"></div>
+          <div className="relative max-w-6xl mx-auto" ref={timelineRef}>
+            
+            {/* 🟢 الخط الرمادي الثابت (بالنص للكمبيوتر، عاليمين للموبايل) */}
+            <div className="absolute right-6 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gray-200 rounded-full z-0"></div>
+            
+            {/* 🟢 الخط العنابي/الذهبي المتحرك مع النزول (Scroll) */}
+            <motion.div 
+              className="absolute right-6 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C08F2D] to-[#721F31] rounded-full z-0 origin-top"
+              style={{ scaleY: scrollYProgress }}
+            ></motion.div>
 
             {milestones.map((stone, idx) => {
               const isEven = idx % 2 === 0;
+              
               return (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}
-                  className={`relative flex items-center justify-between md:justify-normal mb-16 group ${isEven ? 'md:flex-row-reverse' : ''}`}
-                >
-                  <div className="absolute right-6 md:left-1/2 md:-ml-3 w-6 h-6 rounded-full bg-white border-4 border-gray-300 group-hover:border-[#C08F2D] transition-colors duration-300 z-10"></div>
+                <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-28 group">
                   
-                  <div className="hidden md:block w-5/12"></div>
-
-                  {/* 🟢 الكرت صار w-11/12 عشان ياخذ راحته بالقراءة */}
-                  <div className="w-10/12 md:w-5/12 mr-16 md:mr-0 md:px-10">
-                    <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative">
-                      <div className={`hidden md:block absolute top-10 w-5 h-5 bg-white border-t border-r border-gray-100 transform ${isEven ? '-right-2.5 rotate-45' : '-left-2.5 -rotate-135'}`}></div>
-                      
-                      <span className="text-[#C08F2D] font-black text-3xl mb-3 block">{stone.year}</span>
-                      <h3 className="text-2xl md:text-3xl font-black text-[#721F31] mb-4">{stone.title}</h3>
-                      <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
-                    </div>
+                  {/* 🟢 النقطة التفاعلية (الدائرة اللي بالنص) */}
+                  <div className="absolute right-6 md:right-1/2 transform translate-x-1/2 w-8 h-8 rounded-full bg-white border-4 border-gray-300 z-20 flex items-center justify-center">
+                    <motion.div 
+                      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: false, margin: "-100px" }} transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                      className="w-full h-full bg-[#721F31] rounded-full"
+                    />
                   </div>
-                </motion.div>
+
+                  {/* 🟢 الكرت الأول (إما صورة أو نص حسب الترتيب) */}
+                  <div className={`w-full md:w-[45%] pr-16 md:pr-0 ${isEven ? 'order-2 md:order-1' : 'order-2'}`}>
+                    {isEven ? (
+                      // النص على اليمين (للكمبيوتر)
+                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#721F31] hover:-translate-y-2 transition-transform duration-500">
+                        <span className="text-[#C08F2D] font-black text-4xl mb-3 block drop-shadow-sm">{stone.year}</span>
+                        <h3 className="text-2xl md:text-3xl font-black text-[#721F31] mb-4">{stone.title}</h3>
+                        <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
+                      </motion.div>
+                    ) : (
+                      // الصورة على اليمين (للكمبيوتر)
+                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 group">
+                        <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* 🟢 الكرت الثاني (الجهة المقابلة) */}
+                  <div className={`w-full md:w-[45%] pr-16 md:pr-0 mt-6 md:mt-0 ${isEven ? 'order-1 md:order-2 hidden md:block' : 'order-1 hidden md:block'}`}>
+                    {isEven ? (
+                       // الصورة على اليسار
+                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 group">
+                         <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
+                       </motion.div>
+                    ) : (
+                       // النص على اليسار
+                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#C08F2D] hover:-translate-y-2 transition-transform duration-500">
+                         <span className="text-[#C08F2D] font-black text-4xl mb-3 block drop-shadow-sm">{stone.year}</span>
+                         <h3 className="text-2xl md:text-3xl font-black text-[#721F31] mb-4">{stone.title}</h3>
+                         <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
+                       </motion.div>
+                    )}
+                  </div>
+
+                </div>
               );
             })}
           </div>
@@ -281,7 +334,7 @@ export default function AboutPage({ onNavigate }) {
                   layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
                   className="bg-white p-4 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group text-center"
                 >
-                  <div className="relative overflow-hidden rounded-2xl mb-5 aspect-square bg-gray-50">
+                  <div className="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5] bg-gray-50">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                   </div>
                   <h3 className="text-lg font-black text-[#721F31] mb-1">{member.name}</h3>

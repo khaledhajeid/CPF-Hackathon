@@ -148,7 +148,6 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
 
       <Footer />
 
-      {/* المودال الخاص بالـ Wizard */}
       <AnimatePresence>
         {isWizardOpen && <PathwayWizard onClose={() => setIsWizardOpen(false)} onComplete={(wizardResult) => { setActiveFilters({ location: wizardResult.location || 'الكل', pathway: wizardResult.pathway || 'الكل' }); const eventsSection = document.getElementById('events-section'); if (eventsSection) { eventsSection.scrollIntoView({ behavior: 'smooth' }); } }} />}
       </AnimatePresence>

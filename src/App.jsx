@@ -12,12 +12,12 @@ import Login from './pages/Login';
 import ProgramDetails from './pages/ProgramDetails'; 
 import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
-import AboutPage from './pages/AboutPage';
-// 🟢 1. استيراد صفحة لوحة تحكم الإدارة
-import AdminDashboard from './pages/AdminDashboard'; 
+import AboutPage from './pages/AboutPage'; 
+import AdminDashboard from './pages/AdminDashboard';
+import PartnershipsPage from './pages/PartnershipsPage'; // 🟢 تم استيراد الصفحة بنجاح
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('home'); // 🟢 رجعت الـ default للـ home
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -35,9 +35,11 @@ function App() {
     setIsLoginOpen(true); 
   };
 
-  // 🟢 2. تعديل دالة الدخول لتستقبل نوع الحساب (الرول) وتوجهه صح
-  const handleLoginSuccess = (role = 'user') => {
-    if (role === 'user' && selectedEvent) {
+
+// ... inside App component
+
+const handleLoginSuccess = (userRole) => { // Accept role here
+    if (selectedEvent) {
       const isAlreadyBooked = myTickets.find(ticket => ticket.id === selectedEvent.id);
       if (!isAlreadyBooked) {
         setMyTickets(prevTickets => [selectedEvent, ...prevTickets]);
@@ -45,11 +47,11 @@ function App() {
       setSelectedEvent(null);
     }
     
-    // التوجيه الذكي
-    if (role === 'admin') {
-      setCurrentPage('admin'); // توجيه لصفحة الأدمن
+    // Redirect based on role
+    if (userRole === 'admin') {
+      setCurrentPage('admin');
     } else {
-      setCurrentPage('dashboard'); // توجيه لصفحة الطالب
+      setCurrentPage('dashboard');
     }
     
     window.scrollTo(0, 0); 
@@ -57,7 +59,7 @@ function App() {
     setTimeout(() => {
       setIsLoginOpen(false); 
     }, 400);
-  };
+};
 
   const pageVariants = {
     initial: { opacity: 0, y: 15 },
@@ -71,8 +73,7 @@ function App() {
       return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={setCurrentPage} userPoints={userPoints} myTickets={myTickets} /></motion.div>;
     }
     switch (currentPage) {
-      // 🟢 3. إضافة حالة (case) لصفحة الأدمن
-      case 'admin':
+       case 'admin':
         return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={setCurrentPage} /></motion.div>;
       case 'programs': 
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
@@ -84,6 +85,8 @@ function App() {
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'about':
         return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={setCurrentPage} /></motion.div>;  
+      case 'partnerships': // 🟢 إضافة التوجيه لصفحة الشراكات
+        return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
       case 'home':
       default:
         return (
@@ -98,22 +101,17 @@ function App() {
         );
     }
   };
-
-  // 🟢 4. متغير لمعرفة إذا كنا بصفحة الأدمن عشان نخفي عناصر الزوار
   const isAdminPage = currentPage === 'admin';
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
       
-      {/* 🟢 إخفاء النافبار العلوي إذا كنا في لوحة التحكم */}
-      {!isAdminPage && (
-        <Navbar 
-          currentPage={currentPage} 
-          onNavigate={setCurrentPage} 
-          onLoginClick={() => setIsLoginOpen(true)} 
-          onSearchClick={() => setIsSearchOpen(true)} 
-        />
-      )}
+      <Navbar 
+        currentPage={currentPage} 
+        onNavigate={setCurrentPage} 
+        onLoginClick={() => setIsLoginOpen(true)} 
+        onSearchClick={() => setIsSearchOpen(true)} 
+      />
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 
@@ -128,7 +126,6 @@ function App() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-[99999] bg-white overflow-y-auto"
           >
-            {/* 🟢 تمرير الدالة المحدثة لملف الـ Login */}
             <Login 
               onLogin={handleLoginSuccess} 
               onNavigateBack={() => {
@@ -142,16 +139,13 @@ function App() {
         )}
       </AnimatePresence>
       
-      {/* 🟢 إخفاء نافبار الموبايل والشات إذا كنا في لوحة التحكم */}
-      {!isAdminPage && (
-        <MobileNavBar 
-          currentPage={currentPage} 
-          onNavigate={setCurrentPage} 
-          onLoginClick={() => setIsLoginOpen(true)} 
-        />
-      )}
+      <MobileNavBar 
+        currentPage={currentPage} 
+        onNavigate={setCurrentPage} 
+        onLoginClick={() => setIsLoginOpen(true)} 
+      />
       
-      {!isAdminPage && <ChatWidget />}
+      <ChatWidget />
     </div>
   );
 }

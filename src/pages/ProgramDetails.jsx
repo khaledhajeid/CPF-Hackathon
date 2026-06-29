@@ -1,10 +1,8 @@
 // src/pages/ProgramDetails.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// 🟢 أضفنا ArrowUpLeft للأيقونات
 import { ArrowLeft, Building2, LayoutGrid, LayoutTemplate, Clock, GraduationCap, Award, BookOpen, Quote, Sparkles, ArrowUpLeft } from 'lucide-react';
 
-// 🟢 دالة تحديد ألوان المسار (نفس الموجودة في صفحة قصص النجاح)
 const getPathwayStyle = (pathway) => {
   switch(pathway) {
     case 'المشاركة الاقتصادية': return 'bg-[#721F31]/10 text-[#721F31] border-[#721F31]/20'; 
@@ -14,7 +12,6 @@ const getPathwayStyle = (pathway) => {
   }
 };
 
-// 🟢 مصفوفة القصص الشاملة لفلترتها
 const allStories = [
   {
     id: 1,
@@ -114,6 +111,7 @@ const programsFullData = {
     type: 'دراسة جامعية تطبيقية',
     mechanism: 'وجاهي',
     languages: 'العربية والإنجليزية',
+    video: '/HTU_video.mp4',
     image: 'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086',
     logo: '/HTU.png',
     about: 'هي مؤسسة تعليمية رائدة، تقدم درجات التعليم العالي في مجالات التدريب التقني والمهني في الأردن، وتهدف إلى تطويره والارتقاء به.',
@@ -325,6 +323,8 @@ const programsFullData = {
     mechanism: 'وجاهي وميداني مكثف',
     languages: 'العربية والإنجليزية',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
+    // 🟢 أضفنا رابط الفيديو هنا، سيقرأ من الـ public folder مباشرة
+    video: '/Khutwa_Al-Hussein_video.mp4', 
     logo: '/Global-Internship-Program.png',
     about: 'برنامج قيادي نوعي ونخبة موجه للشباب الجامعي الأردني لبناء قدراتهم السياسية، الاقتصادية، والاجتماعية ليكونوا صناع قرار مستقبليين.',
     overview: 'يركز برنامج خطى الحسين على تعميق الفهم بالهوية الوطنية والتحديات الاستراتيجية للمملكة. يشمل البرنامج لقاءات مع قادة فكر ومسؤولين، وتدريبات على مهارات الحوار والمناظرة، وصياغة أوراق السياسات العامة والحلول التنموية.',
@@ -428,8 +428,35 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </p>
           </div>
 
-          <div className="w-full lg:w-1/2 h-[320px] md:h-[380px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden flex-shrink-0 shadow-lg shadow-gray-200/50">
-            <img src={currentProgram.image} alt={currentProgram.title} className="w-full h-full object-cover" />
+          {/* 🟢 قسم الصورة أو الفيديو التلقائي */}
+          <div className="w-full lg:w-1/2 h-[320px] md:h-[400px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex-shrink-0 shadow-2xl shadow-gray-200/50 relative group border border-gray-100/50">
+            {currentProgram.video ? (
+              <>
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
+                >
+                  <source src={currentProgram.video} type="video/mp4" />
+                  متصفحك لا يدعم تشغيل الفيديوهات.
+                </video>
+                {/* طبقة تعتيم خفيفة جداً */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 pointer-events-none" />
+                
+                {/* 🟢 بادج لقطات حية */}
+                <div className="absolute top-6 left-6 bg-black/40 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold px-3 py-1.5 rounded-full flex items-center gap-2 z-10">
+                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  لقطات حية
+                </div>
+              </>
+            ) : (
+              <>
+                <img src={currentProgram.image} alt={currentProgram.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              </>
+            )}
           </div>
 
         </div>
@@ -608,9 +635,6 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
 
       </div>
 
-      {/* =======================================
-          🟢 قسم قصص نجاح البرنامج بالتصميم الجديد (الكروت الكبيرة)
-          ======================================= */}
       {(() => {
         const programStories = allStories
           .filter(story => story.programKey === programName)

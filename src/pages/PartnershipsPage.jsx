@@ -8,12 +8,12 @@ export default function PartnershipsPage() {
   const [partnerType, setPartnerType] = useState('organization');
 
   const partnersData = [
-    { id: 1, name: 'HTU', logo: '/HTU.png', url: 'https://htu.edu.jo/ar' },
-    { id: 2, name: 'JoCodes', logo: '/JoCodes.png', url: '#' },
-    { id: 3, name: 'Nahno', logo: '/Nahno.png', url: 'https://www.nahno.org/' },
-    { id: 4, name: 'Qusai', logo: '/Qusai.png', url: '#' },
-    { id: 5, name: 'SLP', logo: '/SLP.png', url: '#' },
-    { id: 6, name: 'The Makerspace', logo: '/The-Makerspace.png', url: 'https://cpf.jo/programs/themakerspace/' }
+    { id: 1, name: 'Zinc', logo: 'https://zinc.jo/Content/img/zinc-logo.png', url: 'https://zinc.jo/ar' },
+    { id: 2, name: 'Unicef', logo: 'https://1000logos.net/wp-content/uploads/2021/03/UNICEF-logo-1536x864.png', url: 'https://www.unicef.org/' },
+    { id: 3, name: 'Zaha', logo: 'https://www.zaha.gov.jo/zahansite/images/en-logo.png', url: 'https://www.zaha.gov.jo/zahansite/ar/default.aspx' },
+    { id: 4, name: 'ABJ', logo: 'https://abj.org.jo/wp-content/uploads/2024/01/logo.svg', url: 'https://abj.org.jo/ar' },
+    { id: 5, name: 'HTU', logo: '/HTU.png', url: 'https://htu.edu.jo/ar' },
+    { id: 6, name: 'AYC', logo: 'https://jordan.arabyouthcenter.org/storage/app/public/uploads/logo/xrFto2iHtBbycM0BeBKVvvT3FFvHlSlUd7pNFWY3.svg', url: 'https://jordan.arabyouthcenter.org/en' }
   ];
 
   const duplicatedPartners = [...partnersData, ...partnersData, ...partnersData, ...partnersData];
@@ -89,7 +89,7 @@ export default function PartnershipsPage() {
                 <img 
                   src={partner.logo} 
                   alt={partner.name} 
-                  className="h-12 md:h-16 w-auto object-contain grayscale-[30%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(192,143,45,0.6)] transition-all duration-300 ease-out" 
+                  className="h-14 md:h-18 w-auto object-contain grayscale-[30%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(192,143,45,0.6)] transition-all duration-300 ease-out" 
                 />
               </a>
             ))}

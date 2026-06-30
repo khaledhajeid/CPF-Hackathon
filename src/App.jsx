@@ -14,10 +14,10 @@ import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
 import AboutPage from './pages/AboutPage'; 
 import AdminDashboard from './pages/AdminDashboard';
-import PartnershipsPage from './pages/PartnershipsPage';
+import PartnershipsPage from './pages/PartnershipsPage'; 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('home'); 
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -28,6 +28,7 @@ function App() {
   const [savedScrollPos, setSavedScrollPos] = useState(0); 
 
   const [activeProgramName, setActiveProgramName] = useState('جامعة الحسين التقنية');
+  const [activeStoryId, setActiveStoryId] = useState(null);
 
   const handleRegisterClick = (event) => {
     setSavedScrollPos(window.scrollY); 
@@ -35,7 +36,7 @@ function App() {
     setIsLoginOpen(true); 
   };
 
-  const handleLoginSuccess = (userRole) => {
+  const handleLoginSuccess = (userRole) => { 
     if (selectedEvent) {
       const isAlreadyBooked = myTickets.find(ticket => ticket.id === selectedEvent.id);
       if (!isAlreadyBooked) {
@@ -50,6 +51,7 @@ function App() {
       setCurrentPage('dashboard');
     }
     
+    // سكرول فوري لما يعمل تسجيل دخول عشان يروح للداشبورد من فوق
     window.scrollTo(0, 0); 
     
     setTimeout(() => {
@@ -73,10 +75,32 @@ function App() {
         return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={setCurrentPage} /></motion.div>;
       case 'programs': 
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
+      
       case 'program_details': 
-        return <motion.div key="program_details" {...pageVariants}><ProgramDetails onNavigate={setCurrentPage} programName={activeProgramName} /></motion.div>; 
+        return (
+          <motion.div key="program_details" {...pageVariants}>
+            <ProgramDetails 
+              onNavigate={setCurrentPage} 
+              programName={activeProgramName} 
+              onStorySelect={(id) => {
+                setActiveStoryId(id);
+                setCurrentPage('success');
+              }} 
+            />
+          </motion.div>
+        ); 
+        
       case 'success': 
-        return <motion.div key="success" {...pageVariants}><SuccessStories onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} /></motion.div>;
+        return (
+          <motion.div key="success" {...pageVariants}>
+            <SuccessStories 
+              onNavigate={setCurrentPage} 
+              setActiveProgramName={setActiveProgramName} 
+              initialStoryId={activeStoryId} 
+            />
+          </motion.div>
+        );
+        
       case 'contact': 
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'about':
@@ -92,14 +116,14 @@ function App() {
               setActiveFilters={setActiveFilters} 
               handleRegisterClick={handleRegisterClick} 
               onNavigate={setCurrentPage} 
+              setActiveProgramName={setActiveProgramName}
             />
           </motion.div>
         );
     }
   };
-
-  // 🟢 التعديل هنا: تحديد متى يجب إخفاء النافبار (في الداشبورد ولوحة التحكم)
-  const hideLayoutElements = currentPage === 'admin' || currentPage === 'dashboard';
+  
+  const isAdminPage = currentPage === 'admin';
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
@@ -116,7 +140,10 @@ function App() {
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 
-      <AnimatePresence mode="wait">{renderPage()}</AnimatePresence>
+      {/* 🟢 التعديل السحري هنا: المتصفح ما رح يرفع الشاشة إلا بعد ما الصفحة القديمة تختفي */}
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        {renderPage()}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isLoginOpen && (
@@ -140,17 +167,16 @@ function App() {
         )}
       </AnimatePresence>
       
-      {/* 🟢 إخفاء نافبار الموبايل السفلي إذا كنا في الداشبورد */}
-      {!hideLayoutElements && (
-        <MobileNavBar 
-          currentPage={currentPage} 
-          onNavigate={setCurrentPage} 
-          onLoginClick={() => setIsLoginOpen(true)} 
-        />
+      {!isAdminPage && (
+        <>
+          <MobileNavBar 
+            currentPage={currentPage} 
+            onNavigate={setCurrentPage} 
+            onLoginClick={() => setIsLoginOpen(true)} 
+          />
+          <ChatWidget />
+        </>
       )}
-      
-      {/* 🟢 إخفاء أيقونة الشات إذا كنا في الداشبورد */}
-      {!hideLayoutElements && <ChatWidget />}
       
     </div>
   );

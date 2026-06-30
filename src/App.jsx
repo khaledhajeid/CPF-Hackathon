@@ -123,21 +123,25 @@ function App() {
     }
   };
   
+  // 🟢 حددنا متى إحنا بصفحة الأدمن
   const isAdminPage = currentPage === 'admin';
 
   return (
-    <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
+    // 🟢 التعديل الأول: شلنا مسافة הـ pb-20 (Padding Bottom) إذا كنا بصفحة الأدمن عشان ما يترك فراغ أبيض من تحت
+    <div dir="rtl" className={`min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden ${isAdminPage ? '' : 'pb-20 md:pb-0'}`}>
       
-      <Navbar 
-        currentPage={currentPage} 
-        onNavigate={setCurrentPage} 
-        onLoginClick={() => setIsLoginOpen(true)} 
-        onSearchClick={() => setIsSearchOpen(true)} 
-      />
+      {/* 🟢 التعديل الثاني: إخفاء التاب بار العلوي (النافبار) إذا كنا بصفحة الأدمن */}
+      {!isAdminPage && (
+        <Navbar 
+          currentPage={currentPage} 
+          onNavigate={setCurrentPage} 
+          onLoginClick={() => setIsLoginOpen(true)} 
+          onSearchClick={() => setIsSearchOpen(true)} 
+        />
+      )}
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 
-      {/* 🟢 التعديل السحري هنا: المتصفح ما رح يرفع الشاشة إلا بعد ما الصفحة القديمة تختفي */}
       <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
         {renderPage()}
       </AnimatePresence>
@@ -164,6 +168,7 @@ function App() {
         )}
       </AnimatePresence>
       
+      {/* 🟢 إخفاء التاب بار السفلي وأيقونة الشات في صفحة الأدمن */}
       {!isAdminPage && (
         <>
           <MobileNavBar 

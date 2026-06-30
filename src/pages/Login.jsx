@@ -79,12 +79,12 @@ export default function Login({ onLogin, onNavigateBack }) {
             </p>
           </div>
 
-          {/* 🟢 تبويبات اختيار نوع الحساب (Tabs) */}
+{/* 🟢 التاب بار الجديد (حل مشكلة الأنيميشن) */}
           <div className="flex bg-[#F8FAFC] border border-gray-100 rounded-xl p-1.5 mb-8 relative">
             <button 
               type="button"
               onClick={() => { setLoginRole('user'); setIdentifier(''); setPassword(''); }}
-              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-all z-10 cursor-pointer ${loginRole === 'user' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors z-10 cursor-pointer ${loginRole === 'user' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
             >
               <User className="w-4 h-4" />
               حساب أفراد
@@ -92,17 +92,18 @@ export default function Login({ onLogin, onNavigateBack }) {
             <button 
               type="button"
               onClick={() => { setLoginRole('admin'); setIdentifier(''); setPassword(''); }}
-              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-all z-10 cursor-pointer ${loginRole === 'admin' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
+              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors z-10 cursor-pointer ${loginRole === 'admin' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
             >
               <Building2 className="w-4 h-4" />
               حساب مكاتب
             </button>
             
+            {/* 🟢 السلايدر بانتقال صريح باستخدام transform فقط (نفس الوحدة دايماً) عشان نضمن انتقال سلس بدون قفزات */}
             <motion.div 
-              layout
-              className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-lg shadow-sm border border-gray-200/50"
-              animate={{ right: loginRole === 'user' ? '6px' : 'calc(50%)' }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              initial={false}
+              animate={{ x: loginRole === 'user' ? '0%' : '-100%' }}
+              className="absolute top-1.5 bottom-1.5 right-1.5 w-[calc(50%-6px)] bg-white rounded-lg shadow-sm border border-gray-200/50 z-0"
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           </div>
 

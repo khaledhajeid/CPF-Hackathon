@@ -14,10 +14,10 @@ import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
 import AboutPage from './pages/AboutPage'; 
 import AdminDashboard from './pages/AdminDashboard';
-import PartnershipsPage from './pages/PartnershipsPage'; // 🟢 تم استيراد الصفحة بنجاح
+import PartnershipsPage from './pages/PartnershipsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 🟢 رجعت الـ default للـ home
+  const [currentPage, setCurrentPage] = useState('home');
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -35,10 +35,7 @@ function App() {
     setIsLoginOpen(true); 
   };
 
-
-// ... inside App component
-
-const handleLoginSuccess = (userRole) => { // Accept role here
+  const handleLoginSuccess = (userRole) => {
     if (selectedEvent) {
       const isAlreadyBooked = myTickets.find(ticket => ticket.id === selectedEvent.id);
       if (!isAlreadyBooked) {
@@ -47,7 +44,6 @@ const handleLoginSuccess = (userRole) => { // Accept role here
       setSelectedEvent(null);
     }
     
-    // Redirect based on role
     if (userRole === 'admin') {
       setCurrentPage('admin');
     } else {
@@ -59,7 +55,7 @@ const handleLoginSuccess = (userRole) => { // Accept role here
     setTimeout(() => {
       setIsLoginOpen(false); 
     }, 400);
-};
+  };
 
   const pageVariants = {
     initial: { opacity: 0, y: 15 },
@@ -85,7 +81,7 @@ const handleLoginSuccess = (userRole) => { // Accept role here
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'about':
         return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={setCurrentPage} /></motion.div>;  
-      case 'partnerships': // 🟢 إضافة التوجيه لصفحة الشراكات
+      case 'partnerships': 
         return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
       case 'home':
       default:
@@ -101,17 +97,22 @@ const handleLoginSuccess = (userRole) => { // Accept role here
         );
     }
   };
-  const isAdminPage = currentPage === 'admin';
+
+  // 🟢 التعديل هنا: تحديد متى يجب إخفاء النافبار (في الداشبورد ولوحة التحكم)
+  const hideLayoutElements = currentPage === 'admin' || currentPage === 'dashboard';
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
       
-      <Navbar 
-        currentPage={currentPage} 
-        onNavigate={setCurrentPage} 
-        onLoginClick={() => setIsLoginOpen(true)} 
-        onSearchClick={() => setIsSearchOpen(true)} 
-      />
+      {/* 🟢 إخفاء النافبار العلوي إذا كنا في الداشبورد */}
+      {!hideLayoutElements && (
+        <Navbar 
+          currentPage={currentPage} 
+          onNavigate={setCurrentPage} 
+          onLoginClick={() => setIsLoginOpen(true)} 
+          onSearchClick={() => setIsSearchOpen(true)} 
+        />
+      )}
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 
@@ -139,13 +140,18 @@ const handleLoginSuccess = (userRole) => { // Accept role here
         )}
       </AnimatePresence>
       
-      <MobileNavBar 
-        currentPage={currentPage} 
-        onNavigate={setCurrentPage} 
-        onLoginClick={() => setIsLoginOpen(true)} 
-      />
+      {/* 🟢 إخفاء نافبار الموبايل السفلي إذا كنا في الداشبورد */}
+      {!hideLayoutElements && (
+        <MobileNavBar 
+          currentPage={currentPage} 
+          onNavigate={setCurrentPage} 
+          onLoginClick={() => setIsLoginOpen(true)} 
+        />
+      )}
       
-      <ChatWidget />
+      {/* 🟢 إخفاء أيقونة الشات إذا كنا في الداشبورد */}
+      {!hideLayoutElements && <ChatWidget />}
+      
     </div>
   );
 }

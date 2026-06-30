@@ -128,12 +128,15 @@ function App() {
   return (
     <div dir="rtl" className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden pb-20 md:pb-0">
       
-      <Navbar 
-        currentPage={currentPage} 
-        onNavigate={setCurrentPage} 
-        onLoginClick={() => setIsLoginOpen(true)} 
-        onSearchClick={() => setIsSearchOpen(true)} 
-      />
+      {/* 🟢 إخفاء النافبار العلوي إذا كنا في الداشبورد */}
+      {!hideLayoutElements && (
+        <Navbar 
+          currentPage={currentPage} 
+          onNavigate={setCurrentPage} 
+          onLoginClick={() => setIsLoginOpen(true)} 
+          onSearchClick={() => setIsSearchOpen(true)} 
+        />
+      )}
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 

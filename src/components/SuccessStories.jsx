@@ -1,111 +1,21 @@
 // src/components/SuccessStories.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
 import { Quote, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin } from 'lucide-react';
 import ShareStoryModal from './success/ShareStoryModal';
 
-const stories = [
-  {
-    id: 1,
-    name: 'طارق المجالي',
-    program: 'مساحة الصنّاع (TechWorks)',
-    programKey: 'مساحة الصنّاع',
-    location: 'الكرك',
-    pathway: 'المشاركة الاقتصادية',
-    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'من خلال مساحة الصنّاع، تمكنت من تحويل فكرتي المكتوبة على ورق إلى نموذج أولي حقيقي وفعّال.',
-    fullStory: 'بدأت رحلتي كطالب هندسة يمتلك فكرة لجهاز طبي يساعد كبار السن، لكنني لم أكن أملك الموارد لتصنيعه. انضممت إلى مساحة الصنّاع، وهناك وجدت كل ما أحتاجه من طابعات ثلاثية الأبعاد وخبراء وجهوني خطوة بخطوة. اليوم، شركتي الناشئة توظف 5 شباب أردنيين وبدأنا بتصدير أجهزتنا إلى السوق الإقليمي. مؤسسة ولي العهد لم تعطني مجرد مكان للعمل، بل أعطتني الثقة لأكون ريادياً.',
-  },
-  {
-    id: 2,
-    name: 'سارة العبدلله',
-    program: 'مدرسة 42 عمّان',
-    programKey: '42 عمّان و42 إربد',
-    location: 'إربد',
-    pathway: 'المشاركة الاقتصادية',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'بيئة التعلم النظير في 42 غيرت طريقة تفكيري كلياً. لم أتعلم كتابة الكود فحسب، بل تعلمت كيف أتعلم.',
-    fullStory: 'كنت أعمل في مجال بعيد تماماً عن التكنولوجيا، وكنت أظن أن البرمجة مستحيلة بالنسبة لي. دخلت معسكر التصفية (Piscine) في 42 عمّان، وكانت 4 أسابيع من التحدي والصبر. المنهجية الخالية من المعلمين جعلتني أعتمد على نفسي وعلى زملائي. بعد عام واحد فقط، حصلت على عرض عمل كمهندسة واجهات خلفية (Backend Developer) في واحدة من كبرى الشركات التقنية في الأردن.',
-  },
-  {
-    id: 3,
-    name: 'لينا حداد',
-    program: 'منصة نَحْنُ',
-    programKey: 'نَحْنُ',
-    location: 'عمان',
-    pathway: 'التنمية المجتمعية',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'التطوع لم يغير حياة الآخرين فقط، بل غيّر مساري المهني بالكامل وأعطاني شبكة علاقات لم أتخيلها.',
-    fullStory: 'بدأت بالتطوع عبر منصة "نحن" لتعبئة وقت فراغي خلال الجامعة. شاركت في أكثر من 15 مبادرة لترميم المدارس ومساعدة الأسر العفيفة. الساعات التي تم توثيقها رسمياً على المنصة كانت السبب الرئيسي في قبولي لمنحة ماجستير دولية في التنمية المستدامة، لأنها أثبتت التزامي بخدمة مجتمعي.',
-  },
-  {
-    id: 4,
-    name: 'عمر الرواشدة',
-    program: 'جامعة الحسين التقنية (HTU)',
-    programKey: 'جامعة الحسين التقنية',
-    location: 'الزرقاء',
-    pathway: 'المشاركة الاقتصادية',
-    image: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'التدريب العملي المكثف في الجامعة جعلني جاهزاً لسوق العمل قبل حتى أن أستلم وثيقة تخرجي.',
-    fullStory: 'اخترت جامعة الحسين التقنية لأنني كنت أبحث عن التعليم التطبيقي لا النظري. من السنة الأولى، كنا نعمل على مشاريع حقيقية لشركات في السوق الأردني. فترة التدريب الإلزامي لمدة 8 أشهر كانت بوابتي للحصول على وظيفتي الحالية كمهندس بيانات. الجامعة لم تمنحني شهادة، بل منحتني مسيرة مهنية.',
-  },
-  {
-    id: 5,
-    name: 'زيد النجار',
-    program: 'مبادرة حقق',
-    programKey: 'برنامج القيادة للمدارس',
-    location: 'الطفيلة',
-    pathway: 'القيادة',
-    image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'كنت خجولاً ومتردداً، لكن معسكرات "حقق" صقلت شخصيتي وجعلتني قائداً لفريقي في الجامعة.',
-    fullStory: 'في الصف التاسع، التحقت بمبادرة حقق. كنا نذهب في معسكرات ميدانية تتطلب منا التخطيط، والعمل تحت الضغط، وحل المشكلات كفريق واحد. اليوم أنا رئيس مجلس الطلبة في جامعتي، وأدير فريقاً من 50 طالباً في مبادرة وطنية. كل هذه الثقة بدأت من شرارة أوقدتها "حقق" في داخلي.',
-  },
-  {
-    id: 6,
-    name: 'سجى سلّام',
-    program: 'مبادرة قصي',
-    programKey: 'مبادرة قصي',
-    location: 'العقبة',
-    pathway: 'القيادة',
-    image: 'https://cpf.jo/wp-content/uploads/2024/05/Saja-1000x540.jpg',
-    quote: 'تأهيلي كمعالجة رياضية أنقذ حياة لاعب أمام عيني. هذا الشعور لا يقدر بثمن.',
-    fullStory: 'بصفتي خريجة تمريض، كنت أبحث عن تخصص دقيق يجمع بين شغفي بالطب والرياضة. انضممت لتدريبات مبادرة قصي وحصلت على الشهادة الدولية في الإسعاف الرياضي المتقدم. في إحدى المباريات المحلية، تعرض لاعب لبلع اللسان، وبفضل التدريب المكثف الذي تلقيته، تمكنت من التعامل مع الموقف في ثوانٍ معدودة.',
-  },
-  {
-    id: 7,
-    name: 'فيصل العتوم',
-    program: 'برنامج التدريب الدولي',
-    programKey: 'برنامج التدريب الدّولي',
-    location: 'جرش',
-    pathway: 'القيادة',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'التدريب في وكالة ناسا كان حلماً تحول إلى حقيقة بفضل مؤسسة ولي العهد.',
-    fullStory: 'عندما رأيت الإعلان عن التدريب الدولي، لم أكن أتوقع قبولي. مررت بمراحل تقييم صعبة، لكنني نجحت وسافرت للتدريب في مختبرات ناسا المتقدمة لمدة 4 أشهر. التجربة وسعت مداركي وجعلتني أرى الأردن قادراً على المنافسة في علوم الفضاء والبيانات المعقدة.',
-  },
-  {
-    id: 8,
-    name: 'نور الخالدي',
-    program: 'مبرمجو الأردن',
-    programKey: 'مبرمجو الأردن',
-    location: 'المفرق',
-    pathway: 'المشاركة الاقتصادية',
-    image: 'https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'تعلمت أساسيات الذكاء الاصطناعي من غرفتي في المفرق، واليوم أعمل كمستقلة مع شركات خليجية.',
-    fullStory: 'لم يكن لدي فرصة للانتقال إلى العاصمة لدراسة التكنولوجيا، لكن مبادرة مبرمجو الأردن وفرت لي مساقات تفاعلية عالية الجودة عبر الإنترنت. تابعت الدروس، وبنيت معرض أعمالي (Portfolio)، والآن أعمل كمطورة ويب مستقلة (Freelancer) براتب ممتاز وأنا في مدينتي.',
-  },
-  {
-    id: 9,
-    name: 'لينا حداد',
-    program: 'منصة نَحْنُ',
-    programKey: 'نَحْنُ',
-    location: 'عمان',
-    pathway: 'التنمية المجتمعية',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    quote: 'التطوع لم يغير حياة الآخرين فقط، بل غيّر مساري المهني بالكامل وأعطاني شبكة علاقات لم أتخيلها.',
-    fullStory: 'بدأت بالتطوع عبر منصة "نحن" لتعبئة وقت فراغي خلال الجامعة. شاركت في أكثر من 15 مبادرة لترميم المدارس ومساعدة الأسر العفيفة. الساعات التي تم توثيقها رسمياً على المنصة كانت السبب الرئيسي في قبولي لمنحة ماجستير دولية في التنمية المستدامة، لأنها أثبتت التزامي بخدمة مجتمعي.',
-  },
-];
+// 🟢 استيراد البيانات من الملف الموحد
+import { allStories } from '../data/programsData';
+
+const getPathwayStyle = (pathway) => {
+  switch(pathway) {
+    case 'المشاركة الاقتصادية': return 'bg-[#721F31]/10 text-[#721F31] border-[#721F31]/20'; 
+    case 'القيادة': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20'; 
+    case 'التنمية المجتمعية': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
+    default: return 'bg-gray-100 text-gray-700 border-gray-200';
+  }
+};
 
 const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
   if (!story) return null;
@@ -189,10 +99,19 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
   );
 };
 
-export default function SuccessStories({ onNavigate, setActiveProgramName }) {
+export default function SuccessStories({ onNavigate, setActiveProgramName, initialStoryId }) {
   const [activeFilter, setActiveFilter] = useState('الكل');
   const [selectedStory, setSelectedStory] = useState(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
+  // 🟢 استمعنا للـ initialStoryId الجاي من الـ App.jsx عشان نفتح المودال فوراً
+  useEffect(() => {
+    if (initialStoryId) {
+      const storyToOpen = allStories.find(s => s.id === initialStoryId);
+      if (storyToOpen) setSelectedStory(storyToOpen);
+    }
+    window.scrollTo(0, 0); // نرجع الشاشة لفوق عند فتح الصفحة
+  }, [initialStoryId]);
 
   const categories = [
     { id: 'الكل', icon: LayoutGrid },
@@ -202,17 +121,8 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
   ];
 
   const filteredStories = activeFilter === 'الكل' 
-    ? stories 
-    : stories.filter(s => s.pathway === activeFilter);
-
-  const getPathwayStyle = (pathway) => {
-    switch(pathway) {
-      case 'المشاركة الاقتصادية': return 'bg-[#721F31]/10 text-[#721F31] border-[#721F31]/20'; 
-      case 'القيادة': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20'; 
-      case 'التنمية المجتمعية': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
-    }
-  };
+    ? allStories 
+    : allStories.filter(s => s.pathway === activeFilter);
 
   return (
     <div className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col" dir="rtl">
@@ -242,8 +152,8 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
 
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-24">
         
-  {/* =======================================
-            الكرت العريض: شارك قصتك (فوق الفلاتر)
+        {/* =======================================
+            الكرت العريض: شارك قصتك 
             ======================================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} 
@@ -255,15 +165,11 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#721F31]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px' }} />
 
-          {/* 🟢 التعديل هنا: دمجنا النصوص بعمود واحد لتكون المحاذاة مثالية */}
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start text-center md:text-right gap-4 md:gap-5 w-full md:w-auto">
-            
-            {/* الأيقونة على اليمين */}
             <div className="w-7 h-7 object-contain md:mt-1">
               <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-7 md:h-7 object-contain" alt="" />
             </div>
 
-            {/* النصوص (العنوان والفقرة) مصطفة تماماً */}
             <div className="flex flex-col gap-2 md:gap-3">
               <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
                 هل أنت قصة <span className="text-[#721F31]">النجاح</span> القادمة؟
@@ -272,7 +178,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
                 أنت لست مجرد رقم. شاركنا تجربتك، وكيف تغلبت على التحديات لتُلهم آلاف الشباب الأردني. قصتك تستحق أن تُروى وتصل للجميع.
               </p>
             </div>
-            
           </div>
 
           <button
@@ -369,6 +274,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName }) {
         )}
       </AnimatePresence>
 
+      {/* 🟢 مودال مشاركة القصة */}
       <AnimatePresence>
         {isShareModalOpen && (
           <ShareStoryModal 

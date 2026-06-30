@@ -14,10 +14,10 @@ import MobileNavBar from './components/MobileNavBar';
 import SearchOverlay from './components/SearchOverlay';
 import AboutPage from './pages/AboutPage'; 
 import AdminDashboard from './pages/AdminDashboard';
-import PartnershipsPage from './pages/PartnershipsPage'; // 🟢 تم استيراد الصفحة بنجاح
+import PartnershipsPage from './pages/PartnershipsPage'; 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 🟢 رجعت الـ default للـ home
+  const [currentPage, setCurrentPage] = useState('home'); 
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userPoints, setUserPoints] = useState(300); 
@@ -28,6 +28,7 @@ function App() {
   const [savedScrollPos, setSavedScrollPos] = useState(0); 
 
   const [activeProgramName, setActiveProgramName] = useState('جامعة الحسين التقنية');
+  const [activeStoryId, setActiveStoryId] = useState(null);
 
   const handleRegisterClick = (event) => {
     setSavedScrollPos(window.scrollY); 
@@ -35,10 +36,7 @@ function App() {
     setIsLoginOpen(true); 
   };
 
-
-// ... inside App component
-
-const handleLoginSuccess = (userRole) => { // Accept role here
+  const handleLoginSuccess = (userRole) => { 
     if (selectedEvent) {
       const isAlreadyBooked = myTickets.find(ticket => ticket.id === selectedEvent.id);
       if (!isAlreadyBooked) {
@@ -47,19 +45,19 @@ const handleLoginSuccess = (userRole) => { // Accept role here
       setSelectedEvent(null);
     }
     
-    // Redirect based on role
     if (userRole === 'admin') {
       setCurrentPage('admin');
     } else {
       setCurrentPage('dashboard');
     }
     
+    // سكرول فوري لما يعمل تسجيل دخول عشان يروح للداشبورد من فوق
     window.scrollTo(0, 0); 
     
     setTimeout(() => {
       setIsLoginOpen(false); 
     }, 400);
-};
+  };
 
   const pageVariants = {
     initial: { opacity: 0, y: 15 },
@@ -77,15 +75,37 @@ const handleLoginSuccess = (userRole) => { // Accept role here
         return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={setCurrentPage} /></motion.div>;
       case 'programs': 
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
+      
       case 'program_details': 
-        return <motion.div key="program_details" {...pageVariants}><ProgramDetails onNavigate={setCurrentPage} programName={activeProgramName} /></motion.div>; 
+        return (
+          <motion.div key="program_details" {...pageVariants}>
+            <ProgramDetails 
+              onNavigate={setCurrentPage} 
+              programName={activeProgramName} 
+              onStorySelect={(id) => {
+                setActiveStoryId(id);
+                setCurrentPage('success');
+              }} 
+            />
+          </motion.div>
+        ); 
+        
       case 'success': 
-        return <motion.div key="success" {...pageVariants}><SuccessStories onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} /></motion.div>;
+        return (
+          <motion.div key="success" {...pageVariants}>
+            <SuccessStories 
+              onNavigate={setCurrentPage} 
+              setActiveProgramName={setActiveProgramName} 
+              initialStoryId={activeStoryId} 
+            />
+          </motion.div>
+        );
+        
       case 'contact': 
         return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
       case 'about':
         return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={setCurrentPage} /></motion.div>;  
-      case 'partnerships': // 🟢 إضافة التوجيه لصفحة الشراكات
+      case 'partnerships': 
         return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
       case 'home':
       default:
@@ -96,11 +116,13 @@ const handleLoginSuccess = (userRole) => { // Accept role here
               setActiveFilters={setActiveFilters} 
               handleRegisterClick={handleRegisterClick} 
               onNavigate={setCurrentPage} 
+              setActiveProgramName={setActiveProgramName}
             />
           </motion.div>
         );
     }
   };
+  
   const isAdminPage = currentPage === 'admin';
 
   return (
@@ -115,7 +137,10 @@ const handleLoginSuccess = (userRole) => { // Accept role here
       
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} handleRegisterClick={handleRegisterClick} />
 
-      <AnimatePresence mode="wait">{renderPage()}</AnimatePresence>
+      {/* 🟢 التعديل السحري هنا: المتصفح ما رح يرفع الشاشة إلا بعد ما الصفحة القديمة تختفي */}
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        {renderPage()}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isLoginOpen && (
@@ -139,13 +164,17 @@ const handleLoginSuccess = (userRole) => { // Accept role here
         )}
       </AnimatePresence>
       
-      <MobileNavBar 
-        currentPage={currentPage} 
-        onNavigate={setCurrentPage} 
-        onLoginClick={() => setIsLoginOpen(true)} 
-      />
+      {!isAdminPage && (
+        <>
+          <MobileNavBar 
+            currentPage={currentPage} 
+            onNavigate={setCurrentPage} 
+            onLoginClick={() => setIsLoginOpen(true)} 
+          />
+          <ChatWidget />
+        </>
+      )}
       
-      <ChatWidget />
     </div>
   );
 }

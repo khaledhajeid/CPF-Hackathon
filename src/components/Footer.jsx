@@ -63,7 +63,7 @@ export default function Footer() {
               className="w-full h-full bg-[#300d14] border border-white/10 text-white px-4 md:px-5 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-sm md:text-base placeholder:font-medium placeholder:text-gray-500"
             />
             {/* 🟢 تصغير البادينج وزر الاشتراك عالموبايل عشان ما ينعجق */}
-            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a1c1d] font-black px-5 md:px-8 rounded-l-xl transition-colors whitespace-nowrap text-sm md:text-base shadow-md cursor-pointer">
+            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#ffffff] font-black px-5 md:px-8 rounded-l-xl transition-colors whitespace-nowrap text-sm md:text-base shadow-md cursor-pointer">
               اشترك الآن
             </button>
           </div>

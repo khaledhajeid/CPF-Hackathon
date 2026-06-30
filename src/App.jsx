@@ -168,7 +168,6 @@ function App() {
         )}
       </AnimatePresence>
       
-      {/* 🟢 إخفاء التاب بار السفلي وأيقونة الشات في صفحة الأدمن */}
       {!isAdminPage && (
         <>
           <MobileNavBar 

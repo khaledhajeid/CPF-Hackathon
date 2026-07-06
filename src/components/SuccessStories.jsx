@@ -284,7 +284,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
         )}
       </AnimatePresence>
       
-      <Footer />
+      <Footer onNavigate="{onNavigate}"/>
     </div>
   );
 }

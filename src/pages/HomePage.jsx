@@ -142,7 +142,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </div>
       </RevealOnScroll>
 
-      <Footer />
+      <Footer onNavigate="{onNavigate}"/>
 
       <AnimatePresence>
         {isWizardOpen && (

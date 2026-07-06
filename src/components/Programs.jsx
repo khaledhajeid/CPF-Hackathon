@@ -57,7 +57,7 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
       </div>
       
       <div className="shrink-0 w-full mt-auto relative z-10">
-        <Footer />
+        <Footer onNavigate="{onNavigate}"/>
       </div>
     </div>
   );

@@ -371,7 +371,7 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      <Footer />
+      <Footer onNavigate="{onNavigate}"/>
     </div>
   );
 }

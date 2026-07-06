@@ -26,10 +26,11 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     ? 'bg-[#721F31] hover:bg-[#5a1826] text-white border-transparent py-3.5 px-8' 
     : 'bg-white/10 hover:bg-white hover:text-[#721F31] text-white border border-white/30 backdrop-blur-md py-3.5 px-8';
 
-  // 🟢 تمت إضافة "الشركاء" هنا بالترتيب المنطقي للمستخدم
+  // 🟢 ضفت "أخبارنا" للنافبار الرئيسي
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
     { id: 'programs', label: 'البرامج والفرص' },
+    { id: 'news', label: 'أخبارنا' },
     { id: 'success', label: 'قصص النجاح' },
     { id: 'partnerships', label: 'الشركاء' },
     { id: 'about', label: 'عن المؤسسة' },

@@ -6,29 +6,28 @@ const FacebookIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="cu
 const InstagramIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>);
 const LinkedinIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>);
 const YoutubeIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 1.46 5.33 2.78 2.78 0 0 0 1.94 2C8.12 19.5 15 19.5 15 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 1.46-5.33 29 29 0 0 0-1.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>);
-// 🟢 إضافة أيقونة X (تويتر سابقاً)
 const XIcon = (props) => (<svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>);
 
-export default function Footer() {
+// 🟢 مررنا onNavigate كـ Prop عشان نقدر نتنقل من الفوتر للصفحات
+export default function Footer({ onNavigate }) {
   
   const quickLinks = [
-    { name: 'الرئيسية', href: '#' },
-    { name: 'عن المؤسسة', href: '#' },
-    { name: 'البرامج والمبادرات', href: '#programs-logos' },
-    { name: 'بوصلة الفرص', href: '#events-section' },
-    { name: 'قصص النجاح', href: '#' },
-    { name: 'تواصل معنا', href: '#' }
+    { name: 'الرئيسية', id: 'home' },
+    { name: 'عن المؤسسة', id: 'about' },
+    { name: 'البرامج والمبادرات', id: 'programs' },
+    { name: 'أحدث الأخبار', id: 'news' },
+    { name: 'قصص النجاح', id: 'success' },
+    { name: 'تواصل معنا', id: 'contact' }
   ];
 
   const initiatives = [
-    { name: 'جامعة الحسين التقنية (HTU)', href: '#' },
-    { name: 'برنامج 42 عمّان و42 إربد', href: '#' },
-    { name: 'منصة نَحْنُ للتطوع', href: '#' },
-    { name: 'مصنع الأفكار (TechWorks)', href: '#' },
-    { name: 'برنامج خطى الحسين للمدارس', href: '#' }
+    { name: 'جامعة الحسين التقنية (HTU)', id: 'programs' },
+    { name: 'برنامج 42 عمّان و42 إربد', id: 'programs' },
+    { name: 'منصة نَحْنُ للتطوع', id: 'programs' },
+    { name: 'مصنع الأفكار (TechWorks)', id: 'programs' },
+    { name: 'برنامج خطى الحسين للمدارس', id: 'programs' }
   ];
 
-  // 🟢 إضافة X إلى مصفوفة الروابط ليظهر بجانب الباقي
   const socialLinks = [
     { icon: FacebookIcon, href: '#', name: 'Facebook' },
     { icon: XIcon, href: '#', name: 'X' },
@@ -76,7 +75,7 @@ export default function Footer() {
           
           <div className="space-y-5 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
-              <img src="/logo_white.png" alt="مؤسسة ولي العهد - Crown Prince Foundation" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
+              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
             <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-4 px-2 lg:px-0 text-center lg:text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
@@ -101,9 +100,12 @@ export default function Footer() {
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a href={link.href} className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit">
+                  <button 
+                    onClick={() => onNavigate && onNavigate(link.id)} 
+                    className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit cursor-pointer"
+                  >
                     <span>{link.name}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -114,9 +116,12 @@ export default function Footer() {
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {initiatives.map((item, idx) => (
                 <li key={idx}>
-                  <a href={item.href} className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit">
+                  <button 
+                    onClick={() => onNavigate && onNavigate(item.id)} 
+                    className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit cursor-pointer"
+                  >
                     <span>{item.name}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

@@ -241,7 +241,7 @@ export default function PartnershipsPage() {
         </div>
       </div>
 
-      <Footer />
+      <Footer onNavigate="{onNavigate}"/>
     </div>
   );
 }

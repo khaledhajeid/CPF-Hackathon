@@ -15,6 +15,7 @@ import SearchOverlay from './components/SearchOverlay';
 import AboutPage from './pages/AboutPage'; 
 import AdminDashboard from './pages/AdminDashboard';
 import PartnershipsPage from './pages/PartnershipsPage'; 
+import NewsPage from './pages/NewsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home'); 
@@ -71,11 +72,12 @@ function App() {
       return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={setCurrentPage} userPoints={userPoints} myTickets={myTickets} /></motion.div>;
     }
     switch (currentPage) {
-       case 'admin':
+      case 'admin':
         return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={setCurrentPage} /></motion.div>;
       case 'programs': 
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
-      
+      case 'news': 
+        return <motion.div key="news" {...pageVariants}><NewsPage onNavigate={setCurrentPage} /></motion.div>;
       case 'program_details': 
         return (
           <motion.div key="program_details" {...pageVariants}>
@@ -89,7 +91,6 @@ function App() {
             />
           </motion.div>
         ); 
-        
       case 'success': 
         return (
           <motion.div key="success" {...pageVariants}>

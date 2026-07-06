@@ -235,7 +235,7 @@ export default function Contact() {
         </AnimatePresence>
       </div>
 
-      <Footer />
+      <Footer onNavigate="{onNavigate}"/>
 
       {/* =========================================
           4. الـ Modal (نافذة إرسال الـ CV المنبثقة)

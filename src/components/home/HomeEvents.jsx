@@ -286,10 +286,10 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                   </motion.div>
 
                   {filteredEvents.length > 6 && (
-                    <div className="flex justify-center mt-2 md:mt-4">
+                    <div className="flex justify-center mt-4 md:mt-6">
                       <button
                         onClick={() => onNavigate('programs')}
-                        className="flex items-center gap-3 bg-white border-2 border-[#721F31] text-[#721F31] hover:bg-[#721F31] hover:text-white px-6 md:px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black text-[13px] md:text-sm transition-all duration-300 shadow-sm hover:shadow-lg group w-full sm:w-auto justify-center cursor-pointer"
+                        className="flex items-center gap-3 bg-white border-2 border-[#721F31] text-[#721F31] hover:bg-[#721F31] hover:text-white px-6 md:px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black text-lg md:text-2xl transition-all duration-300 shadow-sm hover:shadow-lg group w-full sm:w-auto justify-center cursor-pointer"
                       >
                         تصفح واستكشف المزيد من الفرص
                         <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" />

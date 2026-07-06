@@ -62,16 +62,16 @@ export default function EcosystemPrograms({ onNavigate }) {
           </div>
           
           {/* 🟢 الزر الجديد: حجم كبير، تفاعلي، وواضح جداً للعين */}
-          <button 
-            onClick={() => onNavigate && onNavigate('programs')}
-            className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0"
-          >
-            <span className="text-[#721F31] font-black text-2xl">
-              تصفح جميع البرامج
-            </span>
-            <ArrowLeft className="w-6 h-6 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
-          </button>
-
+           <button 
+             onClick={() => onNavigate && onNavigate('programs')}
+             className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0"
+           >
+             <span className="text-[#721F31] font-black text-2xl">
+               تصفح جميع البرامج
+             </span>
+             <ArrowLeft className="w-6 h-6 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
+           </button>
+ 
         </div>
 
         {/* شبكة الكروت */}
@@ -85,7 +85,7 @@ export default function EcosystemPrograms({ onNavigate }) {
               key={program.id}
               className="group [perspective:1500px] h-[400px] md:h-[420px] w-full cursor-pointer"
             >
-              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] rounded-3xl shadow-lg hover:shadow-2xl">
+              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(-180deg)] rounded-3xl shadow-lg hover:shadow-2xl">
                 
                 {/* الوجه الأمامي */}
                 <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200">
@@ -93,8 +93,8 @@ export default function EcosystemPrograms({ onNavigate }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/90 via-[#1a070b]/40 to-transparent"></div>
                   
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-3 mb-6 border border-white/20 shadow-xl">
-                      <img src={program.logo} alt={program.name} className="max-w-full max-h-full object-contain brightness-0 invert" />
+                    <div className="w-28 h-28 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-3 mb-6 border border-white/20 shadow-xl">
+                      <img src={program.logo} alt={program.name} className="max-w-full max-h-full object-contain" />
                     </div>
                     
                     <span className="text-[#C08F2D] font-black text-sm mb-2 drop-shadow-md">
@@ -110,8 +110,8 @@ export default function EcosystemPrograms({ onNavigate }) {
                 <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#721F31] via-[#521623] to-[#3b1019] rounded-3xl p-8 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
                   
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-16 h-16 bg-white/5 rounded-xl p-2 backdrop-blur-sm flex items-center justify-center border border-white/10">
-                      <img src={program.logo} alt="" className="max-w-full max-h-full object-contain brightness-0 invert opacity-80" />
+                    <div className="w-20 h-20 bg-white/10 rounded-xl p-2 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                      <img src={program.logo} alt="" className="max-w-full max-h-full object-contain opacity-90" />
                     </div>
                     <span className="px-4 py-1.5 bg-white/10 text-white border border-white/20 rounded-full text-xs font-bold backdrop-blur-sm">
                       {program.category}

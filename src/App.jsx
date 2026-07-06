@@ -124,7 +124,6 @@ function App() {
     }
   };
   
-  // 🟢 حددنا متى إحنا بصفحة الأدمن
   const isAdminPage = currentPage === 'admin';
 
   return (

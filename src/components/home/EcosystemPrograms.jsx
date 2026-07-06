@@ -62,16 +62,16 @@ export default function EcosystemPrograms({ onNavigate }) {
           </div>
           
           {/* 🟢 الزر الجديد: حجم كبير، تفاعلي، وواضح جداً للعين */}
-          <button 
-            onClick={() => onNavigate && onNavigate('programs')}
-            className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0"
-          >
-            <span className="text-[#721F31] font-black text-2xl">
-              تصفح جميع البرامج
-            </span>
-            <ArrowLeft className="w-6 h-6 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
-          </button>
-
+           <button 
+             onClick={() => onNavigate && onNavigate('programs')}
+             className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0"
+           >
+             <span className="text-[#721F31] font-black text-2xl">
+               تصفح جميع البرامج
+             </span>
+             <ArrowLeft className="w-6 h-6 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
+           </button>
+ 
         </div>
 
         {/* شبكة الكروت */}

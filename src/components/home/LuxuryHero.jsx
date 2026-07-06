@@ -77,18 +77,18 @@ export default function LuxuryHero({ onExploreClick }) {
 
         <motion.div variants={itemVariants}>
           {/* 🟢 التعديل الأهم: إضافة cursor-pointer ليعطي شكل الماوس الصحيح */}
-                    <button 
-              onClick={onExploreClick}
-              className="group relative flex items-center gap-4 bg-transparent border-2 border-[#C08F2D] text-white px-12 py-6 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-[#C08F2D] w-0 group-hover:w-full transition-all duration-500 ease-out z-0"></div>
-                <span className="relative z-10 text-2xl group-hover:text-gray-900 transition-colors duration-300">
-                  ابدأ رحلتك الآن
-                </span>
-              <div className="relative z-10 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center group-hover:border-gray-900/30 transition-colors duration-300">
-                <ArrowLeft className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform group-hover:text-gray-900" />
-              </div>
-            </button>
+                      <button 
+                onClick={onExploreClick}
+                className="group relative flex items-center gap-4 bg-transparent border-2 border-[#C08F2D] text-white px-12 py-6 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-[#C08F2D] w-0 group-hover:w-full transition-all duration-500 ease-out z-0"></div>
+                  <span className="relative z-10 text-2xl group-hover:text-gray-900 transition-colors duration-300">
+                    ابدأ رحلتك الآن
+                  </span>
+                <div className="relative z-10 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center group-hover:border-gray-900/30 transition-colors duration-300">
+                  <ArrowLeft className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform group-hover:text-gray-900" />
+                </div>
+              </button>
         </motion.div>
 
       </motion.div>

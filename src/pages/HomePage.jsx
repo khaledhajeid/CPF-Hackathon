@@ -116,9 +116,13 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
             <p className="text-white/90 max-w-xl mx-auto mb-8 md:mb-10 leading-[1.8rem] md:leading-[2.2rem] text-sm md:text-lg font-medium">
               هل تبحث عن برنامج طويل الأمد أم فعالية سريعة؟ أجب على 5 أسئلة، ودع الذكاء الاصطناعي يحلل شغفك ليرشح لك الخيار الأمثل لك بالضبط.
             </p>
-            <button onClick={() => setIsWizardOpen(true)} className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full font-black text-sm md:text-base transition-colors shadow-md cursor-pointer">
-              ابدأ التوجيه الذكي
-            </button>
+<button
+  onClick={() => setIsWizardOpen(true)}
+  className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-14 md:px-16 py-5 md:py-6 rounded-full font-black text-lg md:text-2xl transition-all shadow-lg cursor-pointer hover:scale-105"
+>
+  ابدأ التوجيه الذكي
+</button> 
+            
           </div>
         </div>
       </RevealOnScroll>

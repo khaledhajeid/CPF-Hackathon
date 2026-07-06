@@ -75,7 +75,7 @@ export default function ChatWidget() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#8a1538]/80 to-transparent pointer-events-none" />
             <div className="relative z-10 flex items-center gap-3">
               <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm p-1.5 shadow-inner">
-                <img src="/The-Star.png" alt="عون" className="w-full h-full object-contain drop-shadow-md" />
+                <img src="/full_white_star.png" alt="عون" className="w-full h-full object-contain drop-shadow-md" />
               </div>
               <div>
                 <h3 className="text-white font-black text-[17px] leading-tight flex items-center gap-1.5">
@@ -102,7 +102,7 @@ export default function ChatWidget() {
               <div key={idx} className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}>
                 {msg.isBot && (
                   <div className="w-6 h-6 rounded-full bg-[#8a1538] flex items-center justify-center shrink-0 ml-2 mt-auto mb-1 border border-white shadow-sm">
-                    <img src="/The-Star.png" alt="عون" className="w-3 h-3 object-contain" />
+                    <img src="/full_white_star.png" alt="عون" className="w-3 h-3 object-contain" />
                   </div>
                 )}
                 <div className={`max-w-[80%] p-3.5 text-[13px] font-bold leading-[1.8em] shadow-sm ${
@@ -119,7 +119,7 @@ export default function ChatWidget() {
             {isTyping && (
               <div className="flex justify-start items-end gap-2">
                 <div className="w-6 h-6 rounded-full bg-[#8a1538] flex items-center justify-center shrink-0 mb-1 border border-white shadow-sm">
-                  <img src="/The-Star.png" alt="عون" className="w-3 h-3 object-contain" />
+                  <img src="/full_white_star.png" alt="عون" className="w-3 h-3 object-contain" />
                 </div>
                 <div className="bg-white px-4 py-3.5 rounded-2xl rounded-br-sm shadow-sm border border-gray-100 flex gap-1.5 items-center h-10">
                   <div className="w-1.5 h-1.5 bg-[#C08F2D] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
@@ -173,7 +173,7 @@ export default function ChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className={`bg-[#8a1538] hover:bg-[#680f2a] text-white p-3.5 rounded-full shadow-2xl hover:shadow-[#8a1538]/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center cursor-pointer border-2 border-white ${isOpen ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
       >
-        <img src="/The-Star.png" alt="عون AI" className="w-8 h-8 object-contain drop-shadow-md" />
+        <img src="/full_white_star.png" alt="عون AI" className="w-8 h-8 object-contain drop-shadow-md" />
       </button>
     </div>
   );

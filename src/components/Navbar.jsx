@@ -42,9 +42,9 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
         
         <div className="flex items-center cursor-pointer group" onClick={() => onNavigate('home')}>
           <img 
-            src="/CPF-Logo.png" 
+            src={isScrolled ? "/CPF-Logo.png" : "/full_logo_white.png"} 
             alt="مؤسسة ولي العهد" 
-            className={`h-16 md:h-[75px] object-contain transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}
+            className={`h-16 md:h-[75px] object-contain transition-all duration-300 ${!isScrolled ? '' : ''}`}
           />
         </div>
 

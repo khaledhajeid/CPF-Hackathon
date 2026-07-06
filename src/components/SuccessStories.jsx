@@ -63,9 +63,7 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
           <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
         </div>
 
-        {/* ==========================================
-            القسم الأيمن: النصوص والتفاصيل
-            ========================================== */}
+
         <div className="w-full md:w-1/2 lg:w-[55%] p-6 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8 relative z-10 bg-white order-last md:order-first">
           <button onClick={onClose} className="hidden md:flex absolute top-6 right-6 md:relative md:top-0 md:right-0 md:self-end w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full items-center justify-center transition-colors mb-6 text-gray-500 z-10 cursor-pointer shrink-0">
             <X className="w-5 h-5" />
@@ -115,7 +113,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
           
           {story.video ? (
             <>
-              {/* 🟢 تشغيل الفيديو التلقائي */}
               <video 
                 ref={videoRef}
                 src={story.video}
@@ -127,7 +124,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
                 className="absolute inset-0 w-full h-full object-cover opacity-90"
               />
 
-              {/* 🟢 زر كتم/تشغيل الصوت */}
               <button
                 onClick={toggleMute}
                 className="absolute top-6 left-6 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-all duration-300 cursor-pointer shadow-md"
@@ -218,7 +214,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-24">
         
-        {/* الكرت العريض: شارك قصتك */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 

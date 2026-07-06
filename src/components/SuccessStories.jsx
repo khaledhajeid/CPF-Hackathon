@@ -1,8 +1,8 @@
 // src/components/SuccessStories.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
-import { Quote, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin } from 'lucide-react';
+import { Quote, LayoutGrid, Briefcase, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX } from 'lucide-react';
 import ShareStoryModal from './success/ShareStoryModal';
 
 // 🟢 استيراد البيانات من الملف الموحد
@@ -18,6 +18,30 @@ const getPathwayStyle = (pathway) => {
 };
 
 const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true); // 🟢 حالة الصوت (مكتوم افتراضياً بسبب سياسات المتصفح)
+
+  // 🟢 الكود السحري لإجبار الفيديو على التشغيل التلقائي
+  useEffect(() => {
+    if (story && story.video && videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      setIsMuted(true); // إعادة تعيين حالة الصوت عند فتح قصة جديدة
+      videoRef.current.play().catch(error => {
+        console.log("المتصفح منع التشغيل التلقائي:", error);
+      });
+    }
+  }, [story]);
+
+  // 🟢 دالة تبديل حالة الصوت (كتم / تشغيل)
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const newMutedState = !videoRef.current.muted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+    }
+  };
+
   if (!story) return null;
 
   return (
@@ -35,19 +59,22 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
         className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row 
                    mt-auto h-[90vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0"
       >
-        <div className="md:hidden w-full flex justify-center pt-4 pb-2 bg-white shrink-0 rounded-t-3xl">
+        <div className="md:hidden w-full flex justify-center pt-4 pb-2 bg-white shrink-0 rounded-t-3xl z-20">
           <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
         </div>
 
-        <div className="w-full md:w-3/5 p-6 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8">
+        {/* ==========================================
+            القسم الأيمن: النصوص والتفاصيل
+            ========================================== */}
+        <div className="w-full md:w-1/2 lg:w-[55%] p-6 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8 relative z-10 bg-white order-last md:order-first">
           <button onClick={onClose} className="hidden md:flex absolute top-6 right-6 md:relative md:top-0 md:right-0 md:self-end w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full items-center justify-center transition-colors mb-6 text-gray-500 z-10 cursor-pointer shrink-0">
             <X className="w-5 h-5" />
           </button>
           
-          <div className="inline-flex items-center gap-2 bg-[#721F31]/10 text-[#721F31] px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4">
+          {/* <div className="inline-flex items-center gap-2 bg-[#721F31]/10 text-[#721F31] px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4">
             <Target className="w-3.5 h-3.5 md:w-4 md:h-4" />
             {story.pathway}
-          </div>
+          </div> */}
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6 md:mb-8">{story.name}</h2>
           
@@ -65,7 +92,7 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
           <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-5 bg-gray-50 p-5 md:p-6 rounded-2xl border border-gray-200/60">
             <div className="w-full sm:w-auto text-right">
               <h4 className="font-black text-gray-900 mb-1 text-sm md:text-[1.1rem]">ألهمتك قصة {story.name.split(' ')[0]}؟</h4>
-              <p className="text-[11px] md:text-sm font-bold text-gray-500">ابدأ رحلتك الخاصة واكتشف فرصك في مبادرة {story.program}.</p>
+              <p className="text-[11px] md:text-sm font-bold text-gray-500">ابدأ رحلتك الخاصة واكتشف فرصك.</p>
             </div>
             <button
               onClick={() => {
@@ -79,14 +106,54 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
               <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1.5 transition-transform" strokeWidth={2.5} />
             </button>
           </div>
-
         </div>
 
-        <div className="w-full md:w-2/5 relative h-64 md:h-auto shrink-0 bg-gray-900 hidden md:block">
-          <img src={story.image} alt={story.name} className="w-full h-full object-cover opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        {/* ==========================================
+            القسم الأيسر: الفيديو الطولي أو الصورة
+            ========================================== */}
+        <div className="w-full md:w-1/2 lg:w-[45%] relative h-[400px] md:h-auto shrink-0 bg-gray-900 flex-grow-0 md:flex-grow order-first md:order-last">
           
-          <div className="absolute bottom-10 left-0 right-0 px-10">
+          {story.video ? (
+            <>
+              {/* 🟢 تشغيل الفيديو التلقائي */}
+              <video 
+                ref={videoRef}
+                src={story.video}
+                autoPlay 
+                loop 
+                muted 
+                defaultMuted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-90"
+              />
+
+              {/* 🟢 زر كتم/تشغيل الصوت */}
+              <button
+                onClick={toggleMute}
+                className="absolute top-6 left-6 z-20 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-all duration-300 cursor-pointer shadow-md"
+                aria-label={isMuted ? "تشغيل الصوت" : "كتم الصوت"}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-4 h-4 md:w-5 md:h-5" />
+                ) : (
+                  <Volume2 className="w-4 h-4 md:w-5 md:h-5" />
+                )}
+              </button>
+            </>
+          ) : (
+            // 🟢 الصورة البديلة
+            <img 
+              src={story.image} 
+              alt={story.name} 
+              className="absolute inset-0 w-full h-full object-cover opacity-90" 
+            />
+          )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+          
+          {/* شارة توضح أنه فيديو */}
+
+          <div className="absolute bottom-10 left-0 right-0 px-8 md:px-10 z-10">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full font-bold text-sm mb-3">
               <MapPin className="w-4 h-4" />
               {story.location}، الأردن
@@ -104,13 +171,12 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
   const [selectedStory, setSelectedStory] = useState(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
-  // 🟢 استمعنا للـ initialStoryId الجاي من الـ App.jsx عشان نفتح المودال فوراً
   useEffect(() => {
     if (initialStoryId) {
       const storyToOpen = allStories.find(s => s.id === initialStoryId);
       if (storyToOpen) setSelectedStory(storyToOpen);
     }
-    window.scrollTo(0, 0); // نرجع الشاشة لفوق عند فتح الصفحة
+    window.scrollTo(0, 0); 
   }, [initialStoryId]);
 
   const categories = [
@@ -152,9 +218,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-24">
         
-        {/* =======================================
-            الكرت العريض: شارك قصتك 
-            ======================================= */}
+        {/* الكرت العريض: شارك قصتك */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
@@ -182,7 +246,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
           <button
             onClick={() => setIsShareModalOpen(true)}
-            className="relative z-10 shrink-0 group bg-[#C08F2D] hover:bg-[#a87d25] text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto"
+            className="relative z-10 shrink-0 group bg-[#C08F2D] hover:bg-[#a87d25] text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto cursor-pointer"
           >
             <span>شارك رحلتك</span>
             <ArrowLeft className="w-5 h-5 transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={2.5} />
@@ -228,13 +292,15 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
                 >
                   <div className="relative h-56 md:h-64 overflow-hidden bg-gray-100 shrink-0">
                     <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                    
+                    {/* إضافة أيقونة Play إذا كان الكرت يحتوي على فيديو */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     
-                    <div className="absolute top-4 right-4 md:top-5 md:right-5 z-10">
+                    {/* <div className="absolute top-4 right-4 md:top-5 md:right-5 z-10">
                       <span className={`flex items-center gap-1.5 px-2.5 md:px-3 py-1 md:py-1.5 rounded-lg text-[9px] md:text-[10px] font-black backdrop-blur-md shadow-sm bg-white/95 border ${tagStyle.split(' ')[2]} ${tagStyle.split(' ')[1]}`}>
                         {story.pathway}
                       </span>
-                    </div>
+                    </div> */}
 
                     <div className="absolute bottom-4 left-4 right-4 md:bottom-5 md:left-5 md:right-5 z-10 flex justify-between items-end">
                        <div>
@@ -274,7 +340,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
         )}
       </AnimatePresence>
 
-      {/* 🟢 مودال مشاركة القصة */}
       <AnimatePresence>
         {isShareModalOpen && (
           <ShareStoryModal 

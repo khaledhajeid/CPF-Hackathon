@@ -6,6 +6,8 @@ const FacebookIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="cu
 const InstagramIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>);
 const LinkedinIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>);
 const YoutubeIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 1.46 5.33 2.78 2.78 0 0 0 1.94 2C8.12 19.5 15 19.5 15 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 1.46-5.33 29 29 0 0 0-1.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>);
+// 🟢 إضافة أيقونة X (تويتر سابقاً)
+const XIcon = (props) => (<svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>);
 
 export default function Footer() {
   
@@ -26,11 +28,13 @@ export default function Footer() {
     { name: 'برنامج خطى الحسين للمدارس', href: '#' }
   ];
 
+  // 🟢 إضافة X إلى مصفوفة الروابط ليظهر بجانب الباقي
   const socialLinks = [
     { icon: FacebookIcon, href: '#', name: 'Facebook' },
+    { icon: XIcon, href: '#', name: 'X' },
     { icon: InstagramIcon, href: '#', name: 'Instagram' },
     { icon: LinkedinIcon, href: '#', name: 'LinkedIn' },
-    { icon: YoutubeIcon, href: '#', name: 'YouTube' }
+    { icon: YoutubeIcon, href: '#', name: 'YouTube' },
   ];
 
   const scrollToTop = () => {
@@ -49,7 +53,6 @@ export default function Footer() {
         
         {/* قسم النشرة الإخبارية */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 pb-10 md:pb-12 mb-10 md:mb-12 border-b border-white/10">
-          {/* 🟢 توسيط النص للموبايل ومحاذاة لليمين للكمبيوتر */}
           <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-10">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
             <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed px-4 lg:px-0">
@@ -62,7 +65,6 @@ export default function Footer() {
               placeholder="البريد الإلكتروني..." 
               className="w-full h-full bg-[#300d14] border border-white/10 text-white px-4 md:px-5 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-sm md:text-base placeholder:font-medium placeholder:text-gray-500"
             />
-            {/* 🟢 تصغير البادينج وزر الاشتراك عالموبايل عشان ما ينعجق */}
             <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#ffffff] font-black px-5 md:px-8 rounded-l-xl transition-colors whitespace-nowrap text-sm md:text-base shadow-md cursor-pointer">
               اشترك الآن
             </button>
@@ -72,12 +74,10 @@ export default function Footer() {
         {/* الشبكة الرئيسية */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-10 md:pb-12 border-b border-white/10">
           
-          {/* 🟢 توسيط اللوجو عالموبايل */}
           <div className="space-y-5 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
               <img src="/logo_white.png" alt="مؤسسة ولي العهد - Crown Prince Foundation" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
-            {/* 🟢 إزالة الـ pe-4 عالموبايل عشان النص ياخذ راحته */}
             <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-4 px-2 lg:px-0 text-center lg:text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
             </p>
@@ -129,7 +129,6 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />
                 <span className="leading-relaxed font-medium">عمان، مجمع الملك حسين للأعمال<br />مبنى رقم 3</span>
               </li>
-              {/* 🟢 تم إصلاح مشكلة الـ LTR للأيقونات عالموبايل، الـ LTR الآن يطبق على النص فقط */}
               <li className="flex items-center justify-center md:justify-start gap-3 md:gap-4">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />
                 <span className="font-sans font-black tracking-wider text-white pt-1" dir="ltr">+962 6 555 5555</span>

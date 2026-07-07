@@ -44,7 +44,6 @@ const RevealOnScroll = ({ children, delay = 0 }) => (
   </motion.div>
 );
 
-// 🟢 استقبلنا setActiveProgramName في الـ Props
 export default function HomePage({ activeFilters, setActiveFilters, handleRegisterClick, onNavigate, setActiveProgramName }) {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
 

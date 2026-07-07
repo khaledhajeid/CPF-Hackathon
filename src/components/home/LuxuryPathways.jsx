@@ -25,7 +25,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
         '42 عمّان و42 إربد', 
         'كلية التدريب المهني المتقدم', 
         'مساحة الصنّاع', 
-        'مبرمجو الأردن'
+        'مبرمجو الأردن',
+        'برنامج التدريب الدّولي'
       ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071',
@@ -41,8 +42,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لتمكينهم من ترك أثر إيجابي دائم في مجتمعاتهم.',
       brands: [
         'برنامج خطى الحسين', 
-        'برنامج القيادة للمدارس', 
-        'برنامج التدريب الدّولي'
+        'برنامج القيادة للمدارس'
       ],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
@@ -56,7 +56,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       shortName: 'اصنع الأثر',
       number: 'الثالث',
       desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تخدم مجتمعك وتساهم في التنمية المستدامة في كافة المحافظات.',
-      brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية'],
+      brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
       closedOverlay: 'bg-[#1f5412]/85', 

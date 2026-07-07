@@ -266,13 +266,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     
-                    {/* 🟢 تفعيل Tag المسار وتلوينه بشكل ديناميكي */}
-                    <div className="absolute top-4 right-4 md:top-5 md:right-5 z-10">
-                      <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-black backdrop-blur-md shadow-sm bg-white/95 border ${tagStyle.split(' ')[2]} ${tagStyle.split(' ')[1]}`}>
-                        {story.pathway}
-                      </span>
-                    </div>
-
                     <div className="absolute bottom-4 left-4 right-4 md:bottom-5 md:left-5 md:right-5 z-10 flex justify-between items-end">
                        <div>
                          <h3 className="font-black text-xl md:text-2xl text-white leading-tight drop-shadow-md">{story.name}</h3>

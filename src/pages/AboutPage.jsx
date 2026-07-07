@@ -1,7 +1,7 @@
 // src/pages/AboutPage.jsx
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
-import { Target, Eye, Heart, Briefcase, Users, Award, ChevronDown, ArrowUpLeft, Milestone } from 'lucide-react';
+import { motion, AnimatePresence, useInView, useScroll } from 'framer-motion';
+import { Target, Eye, Heart, Users, ChevronDown, Milestone, BookOpen } from 'lucide-react';
 import Footer from '../components/Footer';
 
 // 🟢 مكون العدادات المتحركة (Animated Counter)
@@ -33,20 +33,31 @@ function AnimatedNumber({ value, suffix = '', prefix = '', decimals = 0 }) {
 export default function AboutPage({ onNavigate }) {
   const [activeLeaderTab, setActiveLeaderTab] = useState('board');
   
-  // 🟢 مرجع لقسم مسيرة الأثر عشان نربط حركة الخط بالـ Scroll
   const timelineRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start center", "end center"]
   });
 
+  // 🟢 المسارات الاستراتيجية المحدثة
   const tracks = [
-    { icon: Briefcase, title: 'مسار المشاركة الاقتصادية', desc: 'تطوير المهارات التقنية والعملية للشباب، وتهيئتهم لوظائف المستقبل عبر بيئة تدعم الابتكار والريادة.' },
-    { icon: Award, title: 'مسار القيادة', desc: 'بناء وتطوير القدرات القيادية للشباب الأردني، وتمكينهم من صناعة القرار وترك أثر إيجابي دائم.' },
-    { icon: Users, title: 'مسار التنمية المجتمعية', desc: 'توفير منصات للتطوع ومشاركة الشباب الفعالة في تنمية مجتمعاتهم المحلية بشكل مستدام.' },
+    { 
+      icon: BookOpen, 
+      title: 'تعلّم', 
+      desc: 'تطوير المهارات التقنية والعملية للشباب، وتهيئتهم لوظائف المستقبل عبر بيئة تدعم الابتكار والريادة الرقمية.' 
+    },
+    { 
+      icon: Target, 
+      title: 'قُد', 
+      desc: 'بناء وتطوير القدرات القيادية للشباب الأردني، وتمكينهم من صناعة القرار وترك أثر إيجابي دائم.' 
+    },
+    { 
+      icon: Users, 
+      title: 'اصنع الأثر', 
+      desc: 'توفير منصات للتطوع ومشاركة الشباب الفعالة في تنمية مجتمعاتهم المحلية بشكل مستدام.' 
+    },
   ];
 
-  // 🟢 ضفنا صور فخمة لكل محطة زمنية
   const milestones = [
     { 
       year: '2015', 
@@ -101,7 +112,7 @@ export default function AboutPage({ onNavigate }) {
     <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
       
       {/* ================= 1. Hero Section ================= */}
-      <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 bg-gradient-to-br from-[#721F31] via-[#521623] to-[#1a070b] overflow-hidden min-h-[80vh] flex items-center">
+      <div className="relative pt-32 pb-24 md:pt-48 md:pb-32 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden min-h-[80vh] flex items-center">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
         
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center mt-8">
@@ -135,21 +146,21 @@ export default function AboutPage({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-white p-10 md:p-14 rounded-[2rem] border border-gray-100 hover:border-[#C08F2D]/40 hover:shadow-2xl transition-all duration-500 group">
-              <div className="w-16 h-16 bg-[#721F31]/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#721F31] transition-colors duration-500">
-                <Eye className="w-8 h-8 text-[#721F31] group-hover:text-white transition-colors" />
+              <div className="w-16 h-16 bg-[#8a1538]/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#8a1538] transition-colors duration-500">
+                <Eye className="w-8 h-8 text-[#8a1538] group-hover:text-white transition-colors" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#721F31] mb-6">رؤيتنا</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-6">رؤيتنا</h2>
               <h3 className="text-2xl font-black text-[#C08F2D] mb-4">"شباب قادر لأردن طموح"</h3>
               <p className="text-lg text-gray-600 leading-relaxed font-medium">
                 تتمحور جهود المؤسسة حول هذه الرؤية بهدف الربط بين الشباب والمؤسسات الوطنية، لتوجيه طاقاتهم وقدرتهم على الإبداع والابتكار نحو التطوير والنمو الدائم.
               </p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="bg-white p-10 md:p-14 rounded-[2rem] border border-gray-100 hover:border-[#721F31]/40 hover:shadow-2xl transition-all duration-500 group">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="bg-white p-10 md:p-14 rounded-[2rem] border border-gray-100 hover:border-[#8a1538]/40 hover:shadow-2xl transition-all duration-500 group">
               <div className="w-16 h-16 bg-[#C08F2D]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#C08F2D] transition-colors duration-500">
                 <Target className="w-8 h-8 text-[#C08F2D] group-hover:text-white transition-colors" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#721F31] mb-6">رسالتنا</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-6">رسالتنا</h2>
               <p className="text-lg text-gray-600 leading-relaxed font-medium mt-12">
                 دعم الشباب وتمكينهم وتزويدهم بالمعرفة والخبرات اللازمة. نحن نؤمن أننا بمساعدتهم على التقدم والتطور نضمن مستقبلاً مشرقاً لهم ولعائلاتهم ومجتمعاتهم، وللأردن.
               </p>
@@ -163,31 +174,31 @@ export default function AboutPage({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[3rem] border border-gray-200 shadow-xl p-12 md:p-16">
             <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-black text-[#721F31] mb-3">نموذج وطني قوي</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-3">نموذج وطني قوي</h2>
               <p className="text-gray-500 font-medium text-lg md:text-xl">أرقام تعكس حجم الأثر في كافة المحافظات</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 divide-x divide-x-reverse divide-gray-200">
               <div className="text-center px-4">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-4">
                   <AnimatedNumber value={2.2} decimals={1} suffix="M" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">شاب وشابة مستفيد</p>
               </div>
               <div className="text-center px-4">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-4">
                   <AnimatedNumber value={14} prefix="+" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">برنامج ومبادرة</p>
               </div>
               <div className="text-center px-4">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-4">
                   <AnimatedNumber value={26} prefix="+" />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">موقع استراتيجي</p>
               </div>
               <div className="text-center px-4">
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#721F31] mb-4">
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-4">
                   <AnimatedNumber value={12} />
                 </h3>
                 <p className="text-sm md:text-base font-bold text-gray-600">محافظة نغطيها</p>
@@ -197,24 +208,22 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* ================= 4. مسيرة الأثر (Timeline التفاعلي بالصور والأنيميشن) ================= */}
+      {/* ================= 4. مسيرة الأثر ================= */}
       <div className="py-32 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           
           <div className="text-center mb-28 relative z-10">
             <Milestone className="w-14 h-14 text-[#C08F2D] mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-black text-[#721F31] mb-4">مسيرة الأثر</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-[#8a1538] mb-4">مسيرة الأثر</h2>
             <p className="text-xl text-gray-500 font-medium">محطات صنعناها معاً، ومستمرون في العطاء</p>
           </div>
 
           <div className="relative max-w-6xl mx-auto" ref={timelineRef}>
             
-            {/* 🟢 الخط الرمادي الثابت (بالنص للكمبيوتر، عاليمين للموبايل) */}
             <div className="absolute right-6 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gray-200 rounded-full z-0"></div>
             
-            {/* 🟢 الخط العنابي/الذهبي المتحرك مع النزول (Scroll) */}
             <motion.div 
-              className="absolute right-6 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C08F2D] to-[#721F31] rounded-full z-0 origin-top"
+              className="absolute right-6 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C08F2D] to-[#8a1538] rounded-full z-0 origin-top"
               style={{ scaleY: scrollYProgress }}
             ></motion.div>
 
@@ -224,25 +233,21 @@ export default function AboutPage({ onNavigate }) {
               return (
                 <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-28 group">
                   
-                  {/* 🟢 النقطة التفاعلية (الدائرة اللي بالنص) */}
                   <div className="absolute right-6 md:right-1/2 transform translate-x-1/2 w-8 h-8 rounded-full bg-white border-4 border-gray-300 z-20 flex items-center justify-center">
                     <motion.div 
                       initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: false, margin: "-100px" }} transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                      className="w-full h-full bg-[#721F31] rounded-full"
+                      className="w-full h-full bg-[#8a1538] rounded-full"
                     />
                   </div>
 
-                  {/* 🟢 الكرت الأول (إما صورة أو نص حسب الترتيب) */}
                   <div className={`w-full md:w-[45%] pr-16 md:pr-0 ${isEven ? 'order-2 md:order-1' : 'order-2'}`}>
                     {isEven ? (
-                      // النص على اليمين (للكمبيوتر)
-                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#721F31] hover:-translate-y-2 transition-transform duration-500">
+                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#8a1538] hover:-translate-y-2 transition-transform duration-500">
                         <span className="text-[#C08F2D] font-black text-4xl mb-3 block drop-shadow-sm">{stone.year}</span>
-                        <h3 className="text-2xl md:text-3xl font-black text-[#721F31] mb-4">{stone.title}</h3>
+                        <h3 className="text-2xl md:text-3xl font-black text-[#8a1538] mb-4">{stone.title}</h3>
                         <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
                       </motion.div>
                     ) : (
-                      // الصورة على اليمين (للكمبيوتر)
                       <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 group">
                         <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
@@ -250,19 +255,16 @@ export default function AboutPage({ onNavigate }) {
                     )}
                   </div>
 
-                  {/* 🟢 الكرت الثاني (الجهة المقابلة) */}
                   <div className={`w-full md:w-[45%] pr-16 md:pr-0 mt-6 md:mt-0 ${isEven ? 'order-1 md:order-2 hidden md:block' : 'order-1 hidden md:block'}`}>
                     {isEven ? (
-                       // الصورة على اليسار
                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl h-64 md:h-80 group">
                          <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
                        </motion.div>
                     ) : (
-                       // النص على اليسار
                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#C08F2D] hover:-translate-y-2 transition-transform duration-500">
                          <span className="text-[#C08F2D] font-black text-4xl mb-3 block drop-shadow-sm">{stone.year}</span>
-                         <h3 className="text-2xl md:text-3xl font-black text-[#721F31] mb-4">{stone.title}</h3>
+                         <h3 className="text-2xl md:text-3xl font-black text-[#8a1538] mb-4">{stone.title}</h3>
                          <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
                        </motion.div>
                     )}
@@ -275,11 +277,11 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* ================= 5. المسارات التنموية ================= */}
+      {/* ================= 5. المسارات التنموية (تحديث للمسارات الثلاثة الجديدة) ================= */}
       <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-[#721F31] mb-4">مساراتنا الاستراتيجية</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-4">مساراتنا الاستراتيجية</h2>
             <p className="text-lg text-gray-500 font-medium max-w-3xl mx-auto">
               بهدف بناء قدرات الشباب وتوفير الأدوات والمنصات اللازمة، ركزنا عملنا الميداني والمؤسسي ضمن ثلاثة مسارات أساسية.
             </p>
@@ -290,12 +292,12 @@ export default function AboutPage({ onNavigate }) {
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="bg-[#f8fafc] p-10 rounded-3xl border border-gray-100 hover:border-[#C08F2D]/50 hover:shadow-[0_10px_30px_rgba(114,31,49,0.08)] transition-all duration-500 group"
+                className="bg-[#f8fafc] p-10 rounded-3xl border border-gray-100 hover:border-[#C08F2D]/50 hover:shadow-[0_10px_30px_rgba(138,21,56,0.08)] transition-all duration-500 group"
               >
-                <div className="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#721F31] transition-colors duration-500">
-                  <track.icon className="w-8 h-8 text-[#721F31] group-hover:text-white transition-colors" />
+                <div className="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#8a1538] transition-colors duration-500">
+                  <track.icon className="w-8 h-8 text-[#8a1538] group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-2xl font-black text-[#721F31] mb-4">{track.title}</h3>
+                <h3 className="text-2xl font-black text-[#8a1538] mb-4">{track.title}</h3>
                 <p className="text-gray-500 font-medium leading-relaxed text-lg">{track.desc}</p>
               </motion.div>
             ))}
@@ -307,19 +309,19 @@ export default function AboutPage({ onNavigate }) {
       <div className="py-24 bg-[#f8fafc] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-[#721F31] mb-4">قيادات المؤسسة</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-4">قيادات المؤسسة</h2>
             <p className="text-lg text-gray-500 font-medium mb-10">كفاءات وطنية توجه البوصلة نحو تحقيق الرؤية الملكية</p>
             
             <div className="inline-flex bg-gray-200/60 p-1.5 rounded-full mb-12">
               <button 
                 onClick={() => setActiveLeaderTab('board')}
-                className={`px-8 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 ${activeLeaderTab === 'board' ? 'bg-white text-[#721F31] shadow-md' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`px-8 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 ${activeLeaderTab === 'board' ? 'bg-white text-[#8a1538] shadow-md' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 مجلس الأمناء
               </button>
               <button 
                 onClick={() => setActiveLeaderTab('executive')}
-                className={`px-8 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 ${activeLeaderTab === 'executive' ? 'bg-white text-[#721F31] shadow-md' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`px-8 py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 ${activeLeaderTab === 'executive' ? 'bg-white text-[#8a1538] shadow-md' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 الفريق الإداري
               </button>
@@ -337,7 +339,7 @@ export default function AboutPage({ onNavigate }) {
                   <div className="relative overflow-hidden rounded-2xl mb-5 aspect-[4/5] bg-gray-50">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                   </div>
-                  <h3 className="text-lg font-black text-[#721F31] mb-1">{member.name}</h3>
+                  <h3 className="text-lg font-black text-[#8a1538] mb-1">{member.name}</h3>
                   <p className="text-[#C08F2D] font-bold text-sm">{member.role}</p>
                 </motion.div>
               ))}
@@ -349,7 +351,7 @@ export default function AboutPage({ onNavigate }) {
       {/* ================= 7. Call to Action ================= */}
       <div className="py-24 bg-white relative px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-[#721F31] via-[#5a1826] to-[#3b1019] rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl">
+          <div className="bg-gradient-to-br from-[#8a1538] via-[#5a1826] to-[#3b1019] rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl">
             <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
             
             <div className="relative z-10">
@@ -371,7 +373,7 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      <Footer onNavigate="{onNavigate}"/>
+      <Footer onNavigate={onNavigate}/>
     </div>
   );
 }

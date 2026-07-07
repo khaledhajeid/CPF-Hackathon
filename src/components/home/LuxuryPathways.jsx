@@ -1,69 +1,70 @@
 // src/components/home/LuxuryPathways.jsx
 import React, { useState, useEffect } from 'react';
-import { ArrowUpLeft, Target, Users, Briefcase } from 'lucide-react';
+import { ArrowUpLeft, Target, Users, BookOpen } from 'lucide-react';
 
 export default function LuxuryPathways({ onPathwaySelect }) {
-  const [activeCard, setActiveCard] = useState(1);
+  const [activeCard, setActiveCard] = useState(0); // 🟢 خليت الافتراضي 0 (المسار الأول)
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
 
+  // 🟢 المسارات الثلاثة الرسمية بعد تنظيف البرامج الملغية وتحديث الأسماء
   const pathways = [
     {
-      id: 'القيادة',
-      goal: 'أريد أن أكون قائداً وصانع قرار',
-      name: 'مسار القيادة',
-      shortName: 'القيادة',
-      number: 'الأول',
-      desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لتمكينهم من ترك أثر إيجابي دائم في مجتمعاتهم.',
-      brands: ['برنامج القيادة للمدارس', 'برنامج خطى الحسين'],
-      icon: Target,
-      bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
-      closedOverlay: 'bg-[#2b307e]/80', 
-      openGradient: 'from-[#121433] via-[#2b307e]/90 to-transparent' 
-    },
-    {
-      id: 'المشاركة الاقتصادية',
+      id: 'تعلّم',
       goal: 'أريد تطوير مهاراتي التقنية والعملية',
-      name: 'مسار المشاركة الاقتصادية',
-      shortName: 'الاقتصاد',
-      number: 'الثاني',
+      name: 'تعلّم',
+      shortName: 'تعلّم',
+      number: 'الأول',
       desc: 'منظومة متكاملة تهدف لإعداد الشباب لوظائف المستقبل، وتزويدهم بأحدث مهارات الابتكار والبرمجة والتصنيع الرقمي.',
       brands: [
         'جامعة الحسين التقنية', 
         'مركز التميز للريادة والابتكار', 
         '42 عمّان و42 إربد', 
-        'كلية التدريب المهني المتقدم في الأردن', 
+        'كلية التدريب المهني المتقدم', 
         'مساحة الصنّاع', 
-        'مبرمجو الأردن', 
-        'منصة التّعلم الرقمي لجامعة الحسين التقنية', 
-        'برنامج التدريب الدّولي', 
-        'مبادرة قصي'
+        'مبرمجو الأردن'
       ],
-      icon: Briefcase,
+      icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071',
-      closedOverlay: 'bg-[#721F31]/85', 
-      openGradient: 'from-[#3b1019] via-[#721F31]/95 to-transparent' 
+      closedOverlay: 'bg-[#2b307e]/85', 
+      openGradient: 'from-[#121433] via-[#2b307e]/50 to-transparent' 
     },
     {
-      id: 'التنمية المجتمعية',
+      id: 'قُد',
+      goal: 'أريد أن أكون قائداً وصانع قرار',
+      name: 'قُد',
+      shortName: 'قُد',
+      number: 'الثاني',
+      desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لتمكينهم من ترك أثر إيجابي دائم في مجتمعاتهم.',
+      brands: [
+        'برنامج خطى الحسين', 
+        'برنامج القيادة للمدارس', 
+        'برنامج التدريب الدّولي'
+      ],
+      icon: Target,
+      bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
+      closedOverlay: 'bg-[#8a1538]/85', // 🟢 توحيد اللون العنابي
+      openGradient: 'from-[#3b1019] via-[#8a1538]/50 to-transparent' 
+    },
+    {
+      id: 'اصنع الأثر',
       goal: 'أريد التطوع وخدمة مجتمعي',
-      name: 'مسار التنمية المجتمعية',
-      shortName: 'المجتمع',
+      name: 'اصنع الأثر',
+      shortName: 'اصنع الأثر',
       number: 'الثالث',
-      desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تخدم مجتمعك وتساهم في التنمية المستدامة في كافة محافظات المملكة.',
+      desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تخدم مجتمعك وتساهم في التنمية المستدامة في كافة المحافظات.',
       brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
       closedOverlay: 'bg-[#1f5412]/85', 
-      openGradient: 'from-[#0e2608] via-[#1f5412]/95 to-transparent'
+      openGradient: 'from-[#0e2608] via-[#1f5412]/50 to-transparent'
     }
   ];
 
   return (
-    // 🟢 التعديل هنا: إضافة id="strategic-pathways" وكلاسات الـ scroll-mt المتجاوبة
     <div 
       id="strategic-pathways" 
       className="py-20 md:py-24 bg-white relative overflow-hidden w-full font-sans scroll-mt-20 lg:scroll-mt-28" 
@@ -73,7 +74,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12 text-right mb-10 md:mb-16 relative z-10">
         <div className="flex items-center gap-3 mb-4">
           <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-8 md:h-8 shrink-0" alt="" />
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#721F31] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#8a1538] tracking-tight">
             طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
           </h2>
         </div>
@@ -121,7 +122,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               <div className={`absolute inset-0 p-6 lg:p-8 flex flex-col transition-opacity duration-300
                 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-150'}`}
               >
-                <div className="hidden lg:block absolute top-8 right-8 px-4 py-1.5 bg-[#721F31] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
+                {/* 🟢 توحيد لون زر المسار الصغير */}
+                <div className="hidden lg:block absolute top-8 right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
                    {`المسار ${path.number}`}
                 </div>
 

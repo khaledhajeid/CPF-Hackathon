@@ -16,7 +16,7 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
       
       {/* الهيدر الثابت المندمج */}
       <div className="bg-[#1a0409] relative pt-28 pb-16 lg:pt-40 lg:pb-32 overflow-hidden shadow-md shrink-0 rounded-b-[2.5rem] md:rounded-b-[4rem]">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#721F31]/90 via-[#3b1019] to-[#1a070b]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 via-[#3b1019] to-[#1a070b]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
         
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 text-center">
@@ -35,7 +35,7 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
         <div className="bg-white p-2 rounded-full shadow-xl border border-gray-100 flex gap-2 w-fit mb-12 mx-auto overflow-x-auto max-w-full scrollbar-hide">
           <button 
             onClick={() => setActiveTab('programs')} 
-            className={`flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-black text-sm transition-all duration-300 whitespace-nowrap cursor-pointer ${activeTab === 'programs' ? 'bg-[#721F31] text-white shadow-md' : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
+            className={`flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-black text-sm transition-all duration-300 whitespace-nowrap cursor-pointer ${activeTab === 'programs' ? 'bg-[#8a1538] text-white shadow-md' : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
           >
             <LayoutGrid className="w-5 h-5" /> البرامج والمبادرات
           </button>
@@ -57,7 +57,7 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
       </div>
       
       <div className="shrink-0 w-full mt-auto relative z-10">
-        <Footer onNavigate="{onNavigate}"/>
+        <Footer onNavigate={onNavigate}/>
       </div>
     </div>
   );

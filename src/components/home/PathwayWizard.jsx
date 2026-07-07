@@ -1,7 +1,7 @@
 // src/components/home/PathwayWizard.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Compass, Target, HeartHandshake, Briefcase, MapPin, Laptop, ShieldCheck, Users, Code2, Megaphone, Clock, Calendar, GraduationCap, User, ArrowLeft } from 'lucide-react';
+import { X, Compass, Target, HeartHandshake, Briefcase, MapPin, Laptop, ShieldCheck, Users, Code2, Megaphone, Clock, Calendar, GraduationCap, User, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function PathwayWizard({ onClose, onComplete }) {
   const [step, setStep] = useState(1);
@@ -14,11 +14,11 @@ export default function PathwayWizard({ onClose, onComplete }) {
   });
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // س1: الشغف
+  // 🟢 س1: الشغف (محدث ليعكس المسارات الثلاثة الجديدة)
   const question1Options = [
-    { id: 'المشاركة الاقتصادية', title: 'التكنولوجيا، البرمجة، وريادة الأعمال', desc: 'أحب بناء المشاريع والتعامل مع التقنيات الحديثة.', icon: Code2 },
-    { id: 'القيادة', title: 'القيادة، التأثير، وصناعة القرار', desc: 'أطمح لتطوير شخصيتي القيادية وتوجيه فرق العمل.', icon: Target },
-    { id: 'التنمية المجتمعية', title: 'التطوع، وخدمة المجتمع', desc: 'أشعر بالرضا عندما أساعد الآخرين في الميدان.', icon: HeartHandshake }
+    { id: 'تعلّم', title: 'التكنولوجيا، البرمجة، والابتكار', desc: 'أحب بناء المشاريع والتعامل مع التقنيات الحديثة.', icon: BookOpen },
+    { id: 'قُد', title: 'القيادة، التأثير، وصناعة القرار', desc: 'أطمح لتطوير شخصيتي القيادية وتوجيه فرق العمل.', icon: Target },
+    { id: 'اصنع الأثر', title: 'التطوع، وخدمة المجتمع', desc: 'أشعر بالرضا عندما أساعد الآخرين في الميدان.', icon: HeartHandshake }
   ];
 
   // س2: أسلوب التعلم
@@ -57,37 +57,37 @@ export default function PathwayWizard({ onClose, onComplete }) {
     }, 2500);
   };
 
-  // 🟢 اللوجيك الدقيق: نتيجة واحدة حاسمة (إما برنامج أو فعالية)
+  // 🟢 اللوجيك الدقيق محدث للمسارات والبرامج الحالية
   const getSmartResult = () => {
     const { q1_passion, q3_commitment, q4_stage, location } = answers;
 
     if (q3_commitment === 'طويل') {
       let programName = 'جامعة الحسين التقنية';
       
-      if (q1_passion === 'المشاركة الاقتصادية') {
+      if (q1_passion === 'تعلّم') {
         if (q4_stage === 'مدرسة') programName = 'مبرمجو الأردن';
         else if (q4_stage === 'جامعة') programName = '42 عمّان و42 إربد';
         else programName = 'مساحة الصنّاع';
-      } else if (q1_passion === 'القيادة') {
-        if (q4_stage === 'مدرسة') programName = 'برنامج القيادة للمدارس';
+      } else if (q1_passion === 'قُد') {
+        if (q4_stage === 'مدرسة') programName = 'برنامج القيادة للمدارس (حقق)';
         else if (q4_stage === 'جامعة') programName = 'برنامج خطى الحسين';
         else programName = 'برنامج التدريب الدّولي';
-      } else {
+      } else { // اصنع الأثر
         programName = 'نَحْنُ';
       }
 
       return {
         type: 'program',
         title: programName,
-        desc: `لأنك تبحث عن التزام طويل الأمد يبني مسيرتك في مجال ${q1_passion}، هذا البرنامج هو وجهتك المثالية لبدء رحلتك الحقيقية.`
+        desc: `لأنك تبحث عن التزام طويل الأمد يبني مسيرتك في مسار "${q1_passion}"، هذا البرنامج هو وجهتك المثالية لبدء رحلتك الحقيقية.`
       };
     } else {
       return {
         type: 'event',
         pathway: q1_passion,
         location: location === 'أونلاين' ? 'الكل' : location,
-        title: `فرص وفعاليات ${q1_passion}`,
-        desc: `بما أن وقتك ضيق وتفضل التطوير السريع، قمنا بفلترة أحدث الفرص والورش المتاحة حالياً في منطقتك لتناسب جدولك.`
+        title: `فرص وفعاليات مسار "${q1_passion}"`,
+        desc: `بما أن وقتك ضيق وتفضل التطوير السريع، قمنا بفلترة أحدث الفرص والورش المتاحة حالياً في منطقتك لتناسب جدولك ضمن هذا المسار.`
       };
     }
   };

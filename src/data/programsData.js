@@ -8,7 +8,7 @@ export const allStories = [
     program: 'مساحة الصنّاع (TechWorks)',
     programKey: 'مساحة الصنّاع',
     location: 'الكرك',
-    video: '/public/Tariq Al-Majali store.mp4',
+    video: 'https://drive.google.com/file/d/1Vh9R7Ry3hchXMkY2LkK4V7U_80fKGTMM/view?usp=sharing',
     pathway: 'المشاركة الاقتصادية',
     image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     quote: 'من خلال مساحة الصنّاع، تمكنت من تحويل فكرتي المكتوبة على ورق إلى نموذج أولي حقيقي وفعّال.',

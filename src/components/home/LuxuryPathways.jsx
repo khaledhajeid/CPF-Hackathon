@@ -30,8 +30,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071',
-      closedOverlay: 'bg-[#2b307e]/85', 
-      openGradient: 'from-[#121433] via-[#2b307e]/50 to-transparent' 
+      closedOverlay: 'bg-[#8a1538]/85', 
+      openGradient: 'from-[#3b1019] via-[#8a1538]/50 to-transparent' 
     },
     {
       id: 'قُد',
@@ -46,8 +46,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       ],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
-      closedOverlay: 'bg-[#8a1538]/85', // 🟢 توحيد اللون العنابي
-      openGradient: 'from-[#3b1019] via-[#8a1538]/50 to-transparent' 
+      closedOverlay: 'bg-[#2b307e]/85', // 🟢 توحيد اللون العنابي
+      openGradient: 'from-[#121433] via-[#2b307e]/50 to-transparent' 
     },
     {
       id: 'اصنع الأثر',

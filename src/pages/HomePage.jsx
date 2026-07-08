@@ -53,7 +53,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
       {/* 1. الهيرو */}
       <LuxuryHero onExploreClick={() => { document.getElementById('strategic-pathways')?.scrollIntoView({ behavior: 'smooth' }); }} />
 
-      {/* 2. الإحصائيات */}
+      {/* 2. الإحصائيات (تم تحديث اللون لـ #8a1538) */}
       <div className="relative z-30 -mt-4 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }} 
@@ -64,25 +64,25 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-8">
             <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
                 <AnimatedNumber value={2.2} decimals={1} suffix="M" />
               </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">شاب وشابة مستفيد</p>
             </div>
             <div className="text-center flex flex-col justify-center border-l-0 md:border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
                 <AnimatedNumber value={14} prefix="+" />
               </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">برنامج ومبادرة</p>
             </div>
             <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
                 <AnimatedNumber value={26} prefix="+" />
               </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">موقع استراتيجي</p>
             </div>
             <div className="text-center flex flex-col justify-center">
-              <h3 className="text-3xl md:text-5xl font-black text-[#721F31] mb-1 md:mb-2">
+              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
                 <AnimatedNumber value={12} />
               </h3>
               <p className="text-[11px] md:text-[12px] font-bold text-gray-500">محافظة نغطيها</p>
@@ -91,7 +91,7 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </motion.div>
       </div>
 
-      {/* 3. المسارات الاستراتيجية (الإطار العام للمؤسسة) */}
+      {/* 3. المسارات الاستراتيجية */}
       <div id="strategic-pathways">
         <RevealOnScroll delay={0.1}>
           <LuxuryPathways onPathwaySelect={(pathwayId) => {
@@ -101,9 +101,9 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </RevealOnScroll>
       </div>
 
-      {/* 4. التوجيه الذكي (الذكاء الاصطناعي لحل الحيرة) */}
+      {/* 4. التوجيه الذكي (تم تحديث الخلفية لـ #8a1538) */}
       <RevealOnScroll>
-        <div className="bg-[#721F31] pt-20 pb-24 md:pt-24 md:pb-28 relative overflow-hidden">
+        <div className="bg-[#8a1538] pt-20 pb-24 md:pt-24 md:pb-28 relative overflow-hidden">
           <div className="absolute bottom-0 left-0 right-0 h-40 z-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px', backgroundRepeat: 'repeat-x', backgroundPosition: 'bottom' }} />
           <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-20 text-center flex flex-col items-center">
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6">
@@ -115,25 +115,24 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
             <p className="text-white/90 max-w-xl mx-auto mb-8 md:mb-10 leading-[1.8rem] md:leading-[2.2rem] text-sm md:text-lg font-medium">
               هل تبحث عن برنامج طويل الأمد أم فعالية سريعة؟ أجب على 5 أسئلة، ودع الذكاء الاصطناعي يحلل شغفك ليرشح لك الخيار الأمثل لك بالضبط.
             </p>
-<button
-  onClick={() => setIsWizardOpen(true)}
-  className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-14 md:px-16 py-5 md:py-6 rounded-full font-black text-lg md:text-2xl transition-all shadow-lg cursor-pointer hover:scale-105"
->
-  ابدأ التوجيه الذكي
-</button> 
-            
+            <button
+              onClick={() => setIsWizardOpen(true)}
+              className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-14 md:px-16 py-5 md:py-6 rounded-full font-black text-lg md:text-2xl transition-all shadow-lg cursor-pointer hover:scale-105"
+            >
+              ابدأ التوجيه الذكي
+            </button> 
           </div>
         </div>
       </RevealOnScroll>
 
-      {/* 5. أبرز البرامج (لأصحاب الالتزام الطويل) */}
+      {/* 5. أبرز البرامج */}
       <div id="programs-section">
         <RevealOnScroll>
           <EcosystemPrograms onNavigate={onNavigate} />
         </RevealOnScroll>
       </div>
 
-      {/* 6. الفعاليات والفرص (لأصحاب الالتزام القصير والميداني) */}
+      {/* 6. الفعاليات والفرص */}
       <RevealOnScroll>
         <div id="events-section" className="relative z-30 bg-[#f8fafc] pt-8 md:pt-12">
           <HomeEvents 
@@ -145,7 +144,8 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
         </div>
       </RevealOnScroll>
 
-      <Footer onNavigate="{onNavigate}"/>
+      {/* 🟢 تم إصلاح الغلطة القاتلة هنا: إزالة علامات التنصيص من الـ Prop */}
+      <Footer onNavigate={onNavigate} />
 
       <AnimatePresence>
         {isWizardOpen && (
@@ -153,10 +153,9 @@ export default function HomePage({ activeFilters, setActiveFilters, handleRegist
             onClose={() => setIsWizardOpen(false)} 
             onComplete={(wizardResult) => { 
               setIsWizardOpen(false);
-              // 🟢 اللوجيك الجديد: توجيه حتمي لخيار واحد فقط
               if (wizardResult.type === 'program') {
                 setActiveProgramName(wizardResult.programName);
-                onNavigate('program_details'); // يوديه لصفحة تفاصيل البرنامج المختار
+                onNavigate('program_details'); 
               } else {
                 setActiveFilters({ location: wizardResult.location, pathway: wizardResult.pathway }); 
                 const eventsSection = document.getElementById('events-section'); 

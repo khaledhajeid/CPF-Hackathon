@@ -132,7 +132,7 @@ export default function Footer({ onNavigate }) {
             <ul className="space-y-4 md:space-y-6 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               <li className="flex items-start justify-center md:justify-start gap-3 md:gap-4">
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />
-                <span className="leading-relaxed font-medium">عمان، مجمع الملك حسين للأعمال<br />مبنى رقم 3</span>
+                <span className="leading-relaxed font-medium">عمان، دابوق – شارع محمد السعد البطاينة</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-3 md:gap-4">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />

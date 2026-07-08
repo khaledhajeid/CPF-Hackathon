@@ -101,7 +101,7 @@ export default function Contact() {
                   
                   <div className="space-y-8">
                     {[
-                      { icon: MapPin, title: 'العنوان', desc: 'عمان، مجمع الملك حسين للأعمال، مبنى رقم 3' },
+                      { icon: MapPin, title: 'العنوان', desc: 'عمان، دابوق – شارع محمد السعد البطاينة' },
                       { icon: Phone, title: 'الهاتف', desc: '+962 6 555 5555', ltr: true },
                       { icon: Mail, title: 'البريد الإلكتروني', desc: 'info@cpf.jo' },
                       { icon: Clock, title: 'ساعات العمل', desc: 'الأحد - الخميس (08:00 ص - 04:00 م)' }

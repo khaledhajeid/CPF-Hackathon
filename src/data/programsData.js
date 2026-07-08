@@ -79,7 +79,7 @@ export const allStories = [
     program: 'جامعة الحسين التقنية',
     programKey: 'جامعة الحسين التقنية',
     location: 'عمان',
-    video: null,
+    video: 'https://res.cloudinary.com/dj1jhzfrj/video/upload/v1783420134/FSF_impact_story_V2_1_lu1k19.mp4',
     pathway: 'تعلّم',
     image: 'https://cpf.jo/wp-content/uploads/2024/06/%D8%B3%D9%8A%D9%81.jpg',
     quote: 'اكتسبت مهارات عملية مميزة لأن الجامعة تركز على تقنيات العمل بالإضافة للمعرفة النظرية.',

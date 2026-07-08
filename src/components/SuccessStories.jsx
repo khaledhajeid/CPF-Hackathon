@@ -180,7 +180,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
         
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10 text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-3 md:mb-4 tracking-tight">
-            قصص <span className="text-[#C08F2D]">النجاح</span>
+            قصص <span className="text-[#C08F2D]">شبابنا</span>
           </h1>
           <p className="text-white/90 text-[13px] md:text-[15px] font-bold max-w-2xl mx-auto leading-relaxed px-2">
             لم تكن البرامج يوماً مجرد محطات عابرة، بل كانت نقطة انطلاق. تعرّف على شباب أردنيين استثمروا الفرص لتحقيق تغيير جذري في مسيراتهم.
@@ -207,10 +207,10 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
             <div className="flex flex-col gap-2 md:gap-3">
               <h3 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
-                هل أنت قصة <span className="text-[#8a1538]">النجاح</span> القادمة؟
+               كل واحد إله <span className="text-[#8a1538]">قصة...</span> شو قصتك؟
               </h3>
               <p className="text-gray-500 font-medium text-base md:text-lg max-w-xl leading-relaxed">
-                أنت لست مجرد رقم. شاركنا تجربتك، وكيف تغلبت على التحديات لتُلهم آلاف الشباب الأردني. قصتك تستحق أن تُروى وتصل للجميع.
+                أنت لست مجرد رقم. شاركنا تجربتك، وكيف تغلبت على التحديات، قصتك تستحق أن تُروى.
               </p>
             </div>
           </div>

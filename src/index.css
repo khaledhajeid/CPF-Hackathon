@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
-body {
-  font-family: 'Cairo', 'Tajawal', sans-serif;
+@layer base {
+  html, body {
+    font-family: 'Cairo', sans-serif !important;
+  }
+  
+  body {
+    /* 🟢 إجبار المتصفحات والويندوز على تنعيم الخط ليظهر فخم مثل الماك */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 }

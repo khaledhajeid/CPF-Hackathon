@@ -6,9 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      // 🟢 تعريف خط Tajawal كخط أساسي للتطبيق بالكامل
+      // 🟢 اعتماد خط Cairo كخط أساسي للتطبيق بالكامل
       fontFamily: {
-        sans: ['Tajawal', 'sans-serif'], 
+        sans: ['Cairo', 'sans-serif'], 
       },
     },
   },

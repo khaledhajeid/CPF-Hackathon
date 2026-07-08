@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🟢 إجبار المتصفحات على تنعيم الخطوط */
+@layer base {
+  html {
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // 🟢 تعريف خط Tajawal كخط أساسي للتطبيق بالكامل
+      fontFamily: {
+        sans: ['Tajawal', 'sans-serif'], 
+      },
+    },
   },
   plugins: [],
 }

@@ -35,7 +35,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     },
     {
       id: 'قُد',
-      goal: 'أريد أن أكون قائداً وصانع قرار',
+      goal: 'أريد أن أكون قائداً',
       name: 'قُد',
       shortName: 'قُد',
       number: 'الثاني',

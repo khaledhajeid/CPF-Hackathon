@@ -174,6 +174,7 @@ function App() {
             currentPage={currentPage} 
             onNavigate={setCurrentPage} 
             onLoginClick={() => setIsLoginOpen(true)} 
+            onSearchClick={() => setIsSearchOpen(true)} /* 🟢 ضفنا هاي */
           />
           <ChatWidget />
         </>

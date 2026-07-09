@@ -30,7 +30,7 @@ export default function LuxuryHero({ onExploreClick }) {
       {/* 🟢 تخفيف الـ mix-blend على الموبايل لرفع الأداء */}
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 0.15 }} transition={{ duration: 1.5 }}
-        className="absolute inset-0 z-0 opacity-20 md:mix-blend-overlay"
+        className="absolute inset-0 z-0 opacity-20 hidden sm:block md:mix-blend-overlay"
       >
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>

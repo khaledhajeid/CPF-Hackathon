@@ -63,7 +63,6 @@ export default function EventsExplorer({ handleRegisterClick }) {
   const [eventLocation, setEventLocation] = useState('الكل');
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  // 🟢 تحديث الأقسام للمسارات الثلاثة المعتمدة
   const categories = ['الكل', 'تعلّم', 'قُد', 'اصنع الأثر'];
   const eventTypes = ['الكل', 'ورشة عمل', 'فرصة تدريب', 'مسابقة وهاكاثون', 'فرصة تطوع', 'مؤتمر'];
   const ageRanges = ['الكل', '13 - 17', '18 - 23', '24 - 30'];
@@ -95,6 +94,16 @@ export default function EventsExplorer({ handleRegisterClick }) {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
       
+      {/* 🟢 إضافة العنوان بالهوية البصرية كما طلبت */}
+      <div className="mb-6 md:mb-8 text-right">
+        <div className="flex items-center gap-2 md:gap-3">
+          <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-8 md:h-8 shrink-0" alt="" />
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-[#8a1538] tracking-tight">
+            اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span>
+          </h2>
+        </div>
+      </div>
+
       <div className="bg-white p-4 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 mb-8 flex flex-col xl:flex-row items-start xl:items-center gap-4 w-full">
         
         <div className="w-full xl:w-auto xl:flex-grow relative z-0">
@@ -103,7 +112,7 @@ export default function EventsExplorer({ handleRegisterClick }) {
           </div>
           <input
             type="text" placeholder="ابحث عن فعالية، مدينة، أو مجال..." value={eventSearch} onChange={(e) => setEventSearch(e.target.value)}
-            className="w-full bg-gray-50 border border-transparent text-gray-900 font-bold text-sm py-3.5 pr-11 pl-4 rounded-xl hover:bg-gray-100 focus:bg-white focus:border-[#C08F2D]/50 focus:ring-4 focus:ring-[#C08F2D]/10 outline-none transition-all"
+            className="w-full bg-gray-50 border border-transparent text-gray-900 font-bold text-[13px] md:text-sm py-3.5 pr-11 pl-4 rounded-xl hover:bg-gray-100 focus:bg-white focus:border-[#C08F2D]/50 focus:ring-4 focus:ring-[#C08F2D]/10 outline-none transition-all"
           />
         </div>
 
@@ -118,9 +127,9 @@ export default function EventsExplorer({ handleRegisterClick }) {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
         <div className="w-full lg:w-[35%] xl:w-[36%] shrink-0 lg:sticky lg:top-24 z-10">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[400px] lg:min-h-[640px]">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[350px] lg:min-h-[640px]">
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none rounded-3xl overflow-hidden">
               <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid-pattern-2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#8a1538" strokeWidth="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid-pattern-2)" /></svg>
             </div>
@@ -161,12 +170,12 @@ export default function EventsExplorer({ handleRegisterClick }) {
                         )}
                         <div className={`absolute top-3 right-3 px-2.5 py-1.5 text-[10px] font-black rounded-md shadow-sm border ${tagStyle}`}>{event.pathway}</div>
                       </div>
-                      <div className="p-5 flex flex-col flex-grow">
-                        <div className="mb-5">
-                          <h3 className="font-black text-[15px] text-gray-900 mb-3 line-clamp-2 group-hover:text-[#8a1538] transition-colors leading-relaxed">{event.title}</h3>
-                          <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-gray-500 text-xs font-bold"><Calendar className="w-3.5 h-3.5 text-[#C08F2D]" /> {event.date}</div>
-                            <div className="flex items-center gap-2 text-gray-500 text-xs font-bold"><MapPin className="w-3.5 h-3.5 text-[#C08F2D]" /> <span className="truncate">{event.city} - {event.location}</span></div>
+                      <div className="p-4 md:p-5 flex flex-col flex-grow">
+                        <div className="mb-4 md:mb-5">
+                          <h3 className="font-black text-[14px] md:text-[15px] text-gray-900 mb-3 line-clamp-2 group-hover:text-[#8a1538] transition-colors leading-relaxed">{event.title}</h3>
+                          <div className="space-y-1.5 md:space-y-2">
+                            <div className="flex items-center gap-2 text-gray-500 text-[11px] md:text-xs font-bold"><Calendar className="w-3.5 h-3.5 text-[#C08F2D]" /> {event.date}</div>
+                            <div className="flex items-center gap-2 text-gray-500 text-[11px] md:text-xs font-bold"><MapPin className="w-3.5 h-3.5 text-[#C08F2D]" /> <span className="truncate">{event.city} - {event.location}</span></div>
                           </div>
                         </div>
                         <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
@@ -174,9 +183,10 @@ export default function EventsExplorer({ handleRegisterClick }) {
                             <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">المكافأة</span>
                             <div className="flex items-center gap-1"><Award className="w-4 h-4 text-[#C08F2D]" /><span className="text-[#C08F2D] font-black text-[11px] md:text-xs">+{event.points} نقطة</span></div>
                           </div>
+                          {/* 🟢 تم التعديل ليفتح الـ Drawer بدل الـ Register المباشر */}
                           <button 
                             onClick={(e) => { e.stopPropagation(); setSelectedEvent(event); }} 
-                            className="flex items-center gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-4 md:px-5 py-2.5 rounded-xl font-black text-[11px] md:text-xs transition-colors shadow-md group/btn"
+                            className="flex items-center gap-1.5 md:gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-black text-[11px] md:text-xs transition-colors shadow-md group/btn"
                           >
                             التفاصيل <ArrowUpLeft className="w-3.5 h-3.5 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                           </button>
@@ -187,10 +197,10 @@ export default function EventsExplorer({ handleRegisterClick }) {
                 })}
               </motion.div>
             ) : (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-20 flex flex-col items-center justify-center text-center bg-white rounded-3xl border border-dashed border-gray-200 h-full">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-16 md:py-20 flex flex-col items-center justify-center text-center bg-white rounded-3xl border border-dashed border-gray-200 h-full">
                 <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-5"><Search className="w-8 h-8 text-gray-300" /></div>
                 <p className="text-gray-900 font-black text-xl mb-2">لا توجد نتائج مطابقة</p>
-                <p className="text-gray-500 font-medium text-sm max-w-sm mx-auto mb-6 px-4">لم نتمكن من إيجاد فرص تطابق الفلاتر المحددة. جرب تغيير الإعدادات.</p>
+                <p className="text-gray-500 font-medium text-[13px] md:text-sm max-w-sm mx-auto mb-6 px-4">لم نتمكن من إيجاد فرص تطابق الفلاتر المحددة. جرب تغيير الإعدادات.</p>
                 <button onClick={() => { setEventTypeFilter('الكل'); setEventPathwayFilter('الكل'); setEventAgeFilter('الكل'); setEventLocation('الكل'); setEventSearch(''); }} className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-6 py-3 rounded-xl font-black text-sm transition-colors shadow-lg cursor-pointer">إعادة ضبط جميع الفلاتر</button>
               </motion.div>
             )}

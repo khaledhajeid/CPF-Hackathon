@@ -1,9 +1,11 @@
 // src/components/home/EcosystemPrograms.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpLeft, ArrowLeft } from 'lucide-react';
+import { ArrowUpLeft, ArrowLeft, RefreshCcw } from 'lucide-react'; // 🟢 ضفنا أيقونة الدوران للموبايل
 
 export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) {
+  // 🟢 State عشان نتبع أي كرت مقلوب حالياً على الموبايل
+  const [flippedCardId, setFlippedCardId] = useState(null);
   
   const featuredPrograms = [
     { 
@@ -23,11 +25,20 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
     }
   ];
 
-  // 🟢 توجيه داخلي لصفحة تفاصيل البرنامج الخاصة بنا
   const handleProgramClick = (programName) => {
     if (setActiveProgramName) setActiveProgramName(programName);
     if (onNavigate) onNavigate('program_details');
     window.scrollTo(0, 0);
+  };
+
+  const handleCardInteraction = (program) => {
+    // 🟢 إذا الشاشة موبايل، الكبسة على الكرت بتقلبه
+    if (window.innerWidth < 768) {
+      setFlippedCardId(flippedCardId === program.id ? null : program.id);
+    } else {
+      // 🟢 إذا الشاشة كمبيوتر، الكبسة بتودي للتفاصيل مباشرة (لأن الـ Hover شغال)
+      handleProgramClick(program.name);
+    }
   };
 
   return (
@@ -50,52 +61,67 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
            </button>
         </div>
 
-        {/* 🟢 Mobile: Horizontal Swipe, Desktop: Grid */}
         <div className="flex flex-row md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {featuredPrograms.map((program, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.1 }}
-              key={program.id}
-              onClick={() => handleProgramClick(program.name)}
-              className="group [perspective:1500px] h-[380px] md:h-[420px] w-[85vw] md:w-full shrink-0 snap-center cursor-pointer"
-            >
-              <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(-180deg)] rounded-3xl shadow-md hover:shadow-2xl">
-                
-                <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200 bg-black">
-                  <img src={program.bgImage} alt={program.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/95 via-[#1a070b]/50 to-transparent"></div>
-                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                    <div className="w-20 h-20 md:w-28 md:h-28 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center p-3 mb-4 md:mb-6 border border-white/20 shadow-xl">
-                      <img src={program.logo} alt={program.name} className="max-w-full max-h-full object-contain" />
-                    </div>
-                    <span className="text-[#C08F2D] font-black text-xs md:text-sm mb-1 md:mb-2">{program.category}</span>
-                    <h3 className="font-black text-white text-2xl md:text-3xl leading-tight">{program.name}</h3>
-                  </div>
-                </div>
+          {featuredPrograms.map((program, index) => {
+            const isFlipped = flippedCardId === program.id;
 
-                <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a0409] rounded-3xl p-6 md:p-8 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
-                  <div className="flex justify-between items-start mb-4 md:mb-6">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-xl p-2 flex items-center justify-center border border-white/10">
-                      <img src={program.logo} alt="" className="max-w-full max-h-full object-contain opacity-90" />
+            return (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.1 }}
+                key={program.id}
+                onClick={() => handleCardInteraction(program)} // 🟢 التوجيه حسب نوع الجهاز
+                className="group [perspective:1500px] h-[380px] md:h-[420px] w-[85vw] md:w-full shrink-0 snap-center cursor-pointer"
+              >
+                <div 
+                  // 🟢 الديسكتوب بيعتمد على group-hover، والموبايل بيعتمد على الـ State
+                  className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-md hover:shadow-2xl`}
+                >
+                  
+                  {/* الوجه الأمامي */}
+                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200 bg-black">
+                    <img src={program.bgImage} alt={program.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/95 via-[#1a070b]/50 to-transparent"></div>
+                    
+                    {/* 🟢 مؤشر بصري للموبايل عشان يعرف إنه بيقدر يكبس ويقلب الكرت */}
+                    <div className="absolute top-4 left-4 md:hidden bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 animate-pulse">
+                      <RefreshCcw className="w-3.5 h-3.5 text-white" />
+                      <span className="text-[10px] text-white font-bold">اضغط للتفاصيل</span>
                     </div>
-                    <span className="px-3 py-1 bg-white/10 text-white border border-white/20 rounded-full text-[10px] md:text-xs font-bold">{program.category}</span>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="font-black text-[#C08F2D] text-xl md:text-2xl mb-2 md:mb-4">{program.name}</h3>
-                    <p className="text-white/90 text-sm md:text-base font-medium leading-relaxed line-clamp-4 md:line-clamp-none">{program.desc}</p>
-                  </div>
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); handleProgramClick(program.name); }}
-                    className="flex items-center justify-between group/btn w-full px-5 py-3.5 bg-[#C08F2D] hover:bg-[#a67b25] transition-colors rounded-xl mt-4 md:mt-6"
-                  >
-                    <span className="text-white font-black text-base md:text-lg">عرض التفاصيل</span>
-                    <ArrowUpLeft className="w-5 h-5 text-white transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
-                  </button>
-                </div>
 
-              </div>
-            </motion.div>
-          ))}
+                    <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                      <div className="w-20 h-20 md:w-28 md:h-28 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center p-3 mb-4 md:mb-6 border border-white/20 shadow-xl">
+                        <img src={program.logo} alt={program.name} className="max-w-full max-h-full object-contain" />
+                      </div>
+                      <span className="text-[#C08F2D] font-black text-xs md:text-sm mb-1 md:mb-2">{program.category}</span>
+                      <h3 className="font-black text-white text-2xl md:text-3xl leading-tight">{program.name}</h3>
+                    </div>
+                  </div>
+
+                  {/* الوجه الخلفي */}
+                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a0409] rounded-3xl p-6 md:p-8 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
+                    <div className="flex justify-between items-start mb-4 md:mb-6">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-xl p-2 flex items-center justify-center border border-white/10">
+                        <img src={program.logo} alt="" className="max-w-full max-h-full object-contain opacity-90" />
+                      </div>
+                      <span className="px-3 py-1 bg-white/10 text-white border border-white/20 rounded-full text-[10px] md:text-xs font-bold">{program.category}</span>
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="font-black text-[#C08F2D] text-xl md:text-2xl mb-2 md:mb-4">{program.name}</h3>
+                      <p className="text-white/90 text-sm md:text-base font-medium leading-relaxed line-clamp-4 md:line-clamp-none">{program.desc}</p>
+                    </div>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleProgramClick(program.name); }}
+                      className="flex items-center justify-between group/btn w-full px-5 py-3.5 bg-[#C08F2D] hover:bg-[#a67b25] transition-colors rounded-xl mt-4 md:mt-6 cursor-pointer relative z-20"
+                    >
+                      <span className="text-white font-black text-base md:text-lg">عرض التفاصيل</span>
+                      <ArrowUpLeft className="w-5 h-5 text-white transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
+                    </button>
+                  </div>
+
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className="mt-8 flex justify-center md:hidden px-2">

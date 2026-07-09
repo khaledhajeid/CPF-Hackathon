@@ -56,12 +56,12 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
             <img 
               src={isScrolled ? "/CPF-Logo.png" : "/full_logo_white.png"} 
               alt="مؤسسة ولي العهد" 
-              className="h-12 md:h-14 xl:h-[70px] object-contain transition-all duration-300"
+              className="h-12 md:h-16 lg:h-[75px] object-contain transition-all duration-300"
             />
           </div>
 
           {/* روابط الديسكتوب */}
-          <div className="hidden xl:flex items-center gap-6 xl:gap-8 font-bold text-[16px] xl:text-[17px]">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 font-bold text-[16px] xl:text-[17px]">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (
@@ -84,14 +84,14 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
             </button>
 
             {/* زر تسجيل الدخول (ديسكتوب فقط) */}
-            <button onClick={onLoginClick} className={`hidden xl:flex items-center gap-3 rounded-lg font-bold text-[14px] xl:text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
+            <button onClick={onLoginClick} className={`hidden lg:flex items-center gap-3 rounded-lg font-bold text-[14px] xl:text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
               <ShieldCheck className="w-5 h-5" /> تسجيل الدخول
             </button>
 
             {/* 🟢 زر القائمة الجانبية (Hamburger Menu) للموبايل فقط */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
-              className={`xl:hidden p-2 rounded-xl transition-all duration-300 cursor-pointer ${isScrolled ? 'text-[#8a1538] hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
+              className={`lg:hidden p-2 rounded-xl transition-all duration-300 cursor-pointer ${isScrolled ? 'text-[#8a1538] hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
             >
               <Menu className="w-7 h-7" />
             </button>
@@ -110,7 +110,7 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] xl:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] lg:hidden"
             />
 
             {/* الدرج الذي يسحب من اليمين */}
@@ -119,7 +119,7 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#fcfcfc] shadow-2xl z-[120] xl:hidden flex flex-col overflow-hidden"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#fcfcfc] shadow-2xl z-[120] lg:hidden flex flex-col overflow-hidden"
               dir="rtl"
             >
               {/* هيدر القائمة */}

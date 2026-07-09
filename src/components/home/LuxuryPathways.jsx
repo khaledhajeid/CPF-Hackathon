@@ -14,7 +14,16 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     {
       id: 'تعلّم', goal: 'أريد تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم', number: 'الأول',
       desc: 'منظومة متكاملة تهدف لإعداد الشباب لوظائف المستقبل، وتزويدهم بأحدث مهارات الابتكار والبرمجة والتصنيع الرقمي.',
-      brands: ['جامعة الحسين التقنية', '42 عمّان وإربد', 'مساحة الصنّاع', 'مبرمجو الأردن'],
+      brands: [
+      'جامعة الحسين التقنية',
+      'مركز التميز للريادة والابتكار',
+      '42 عمّان و42 إربد',
+      'كلية التدريب المهني المتقدم',
+      'مساحة الصنّاع',
+      'مبرمجو الأردن',
+      'برنامج التدريب الدّولي',
+      'HTUx'
+      ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000',
       closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/50 to-transparent' 
@@ -22,7 +31,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     {
       id: 'قُد', goal: 'أريد أن أكون قائداً', name: 'قُد', shortName: 'قُد', number: 'الثاني',
       desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لترك أثر إيجابي دائم في مجتمعاتهم.',
-      brands: ['خطى الحسين', 'القيادة للمدارس', 'التدريب الدّولي'],
+      brands: ['برنامج خطى الحسين', 'مبادرة حقق', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية'],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000',
       closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/50 to-transparent' 
@@ -30,7 +39,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     {
       id: 'اصنع الأثر', goal: 'أريد التطوع وخدمة مجتمعي', name: 'اصنع الأثر', shortName: 'اصنع الأثر', number: 'الثالث',
       desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تساهم في التنمية المستدامة.',
-      brands: ['نَحْنُ', 'الاستجابات الإنسانية', 'جائزة العمل التطوعي'],
+      brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
       closedOverlay: 'bg-[#1f5412]/85', openGradient: 'from-[#0e2608] via-[#1f5412]/50 to-transparent'
@@ -108,7 +117,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                   <p className="text-white/90 font-medium text-xs md:text-sm lg:text-base leading-relaxed mb-4 lg:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
                   
                   <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-8 w-full">
-                    {path.brands.slice(0, 3).map(brand => ( // نعرض 3 بس عالموبايل عشان المساحة
+                    {path.brands.map(brand => (
                       <span key={brand} className="text-[9px] md:text-[11px] lg:text-[12px] font-black text-white bg-[#C08F2D]/20 px-2 md:px-3 py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>
                     ))}
                   </div>

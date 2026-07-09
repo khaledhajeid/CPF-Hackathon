@@ -7,9 +7,6 @@ export default {
   theme: {
     extend: {
       // 🟢 اعتماد خط Cairo كخط أساسي للتطبيق بالكامل
-      fontFamily: {
-        sans: ['Cairo', 'sans-serif'], 
-      },
     },
   },
   plugins: [],

@@ -1,14 +1,42 @@
 @import "tailwindcss";
 
+/* 🟢 1. تعريف الخط الرسمي - الوزن العادي (للأوصاف والنصوص) */
+@font-face {
+  font-family: 'CPF-Font';
+  src: url('/fonts/alfont_com_AlFont_com_helveticaneueltarabicroman1.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🟢 2. تعريف الخط الرسمي - الوزن العريض (للعناوين البارزة) */
+@font-face {
+  font-family: 'CPF-Font';
+  src: url('/fonts/HelveticaNeueLT Arabic 75 Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🟢 3. ربط الخط بـ Tailwind v4 */
+@theme {
+  --font-sans: "CPF-Font", sans-serif;
+}
+
 @layer base {
-  html, body {
-    font-family: 'Cairo', sans-serif !important;
+  html {
+    font-family: var(--font-sans);
   }
-  
+
   body {
-    /* 🟢 إجبار المتصفحات والويندوز على تنعيم الخط ليظهر فخم مثل الماك */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* 🟢 الخدعة السحرية: تسمين الخط الرسمي ليعطي فخامة Cairo */
+  h1, h2, h3, h4, h5, h6, .font-black, .font-bold {
+    -webkit-text-stroke: 0.6px currentColor; /* بتعطي سماكة إضافية بنفس لون النص */
+    letter-spacing: -0.02em; /* بتلم الحروف على بعض شوي لتبين أرتب */
   }
 }

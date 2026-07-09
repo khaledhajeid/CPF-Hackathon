@@ -5,7 +5,6 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function LuxuryHero({ onExploreClick }) {
   
-  // 🟢 إعدادات الأنيميشن: يبدأ مخفي تماماً وبيدخل بتسلسل
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -23,9 +22,10 @@ export default function LuxuryHero({ onExploreClick }) {
   };
 
   return (
-    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#1a070b] font-sans" dir="rtl">
+    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#1a0409] font-sans" dir="rtl">
       
-      <div className="absolute inset-0 bg-gradient-to-br from-[#721F31] via-[#3b1019] to-[#1a070b] z-0"></div>
+      {/* 🟢 تم تحديث التدرج اللوني للون العنابي المعتمد الجديد */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] z-0"></div>
 
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 0.15 }} transition={{ duration: 2 }}
@@ -56,7 +56,6 @@ export default function LuxuryHero({ onExploreClick }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b] via-[#1a070b]/40 to-transparent"></div>
       </motion.div>
 
-      {/* 🟢 استخدمنا animate="show" لضمان عمل الأنيميشن فور تحميل الصفحة */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -76,19 +75,18 @@ export default function LuxuryHero({ onExploreClick }) {
         </motion.p>
 
         <motion.div variants={itemVariants}>
-          {/* 🟢 التعديل الأهم: إضافة cursor-pointer ليعطي شكل الماوس الصحيح */}
-                      <button 
-                onClick={onExploreClick}
-                className="group relative flex items-center gap-4 bg-transparent border-2 border-[#C08F2D] text-white px-12 py-6 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 cursor-pointer"
-              >
-                <div className="absolute inset-0 bg-[#C08F2D] w-0 group-hover:w-full transition-all duration-500 ease-out z-0"></div>
-                  <span className="relative z-10 text-2xl group-hover:text-gray-900 transition-colors duration-300">
-                    ابدأ رحلتك الآن
-                  </span>
-                <div className="relative z-10 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center group-hover:border-gray-900/30 transition-colors duration-300">
-                  <ArrowLeft className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform group-hover:text-gray-900" />
-                </div>
-              </button>
+          <button 
+            onClick={onExploreClick}
+            className="group relative flex items-center gap-4 bg-transparent border-2 border-[#C08F2D] text-white px-12 py-6 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-[#C08F2D] w-0 group-hover:w-full transition-all duration-500 ease-out z-0"></div>
+              <span className="relative z-10 text-2xl group-hover:text-gray-900 transition-colors duration-300 font-black">
+                ابدأ رحلتك الآن
+              </span>
+            <div className="relative z-10 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center group-hover:border-gray-900/30 transition-colors duration-300">
+              <ArrowLeft className="w-6 h-6 transform group-hover:-translate-x-1 transition-transform group-hover:text-gray-900" />
+            </div>
+          </button>
         </motion.div>
 
       </motion.div>

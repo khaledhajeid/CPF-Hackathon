@@ -151,7 +151,7 @@ export default function AboutPage({ onNavigate }) {
 
   const milestones = [
     { year: '2015', title: 'الانطلاقة برؤية ملكية', desc: 'تأسيس مؤسسة ولي العهد لتكون المظلة الحاضنة لطموح وإبداع الشباب الأردني.', image: 'https://cpf.jo/wp-content/uploads/2025/08/7.jpg' },
-    { year: '2017', title: 'جامعة الحسين التقنية', desc: 'إطلاق صرح علمي فريد لتعزيز التعليم التقني وتخريج جيل جاهز لسوق العمل.', image: 'https://scontent.famm9-1.fna.fbcdn.net/v/t39.30808-6/487461094_1127895732713188_8029452272954392609_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=zB6f64iZQQQQ7kNvwGI8kqr&_nc_oc=AdrqanoyxJpXuVbdA1j7jvYuvc_dapGAozwpYSgd1fJRM-6Immzk1h0lLxCZfSlt1ws&_nc_zt=23&_nc_ht=scontent.famm9-1.fna&_nc_gid=no3evjKdmhHPm9vJkwXKTw&_nc_ss=7b289&oh=00_Af-66Nr59D0jrvezDv7QCAewdj_yFZSpjlGxZeeid9XecA&oe=6A47724E' },
+    { year: '2017', title: 'جامعة الحسين التقنية', desc: 'إطلاق صرح علمي فريد لتعزيز التعليم التقني وتخريج جيل جاهز لسوق العمل.', image: 'https://cpfredesign.vercel.app/images/programs/HTU.png' },
     { year: '2019', title: 'منصة نحن', desc: 'إطلاق المنصة الوطنية للتطوع لبناء مجتمع شبابي مبادر ومعطاء.', image: 'https://cpf.jo/wp-content/uploads/2026/04/DSC09593.jpg' },
     { year: '2024', title: '42 عمّان وإربد', desc: 'افتتاح مدارس البرمجة المجانية المبتكرة لتمكين الشباب من لغات المستقبل.', image: 'https://rhc.jo/uploads/mig/Amman%2042-8.7.24-09-default.webp' },
   ];

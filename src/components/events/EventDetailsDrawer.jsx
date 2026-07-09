@@ -17,7 +17,6 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
     if (event) setActiveEvent(event);
     if (isOpen) {
       setIsExpanded(false);
-      // منع السكرول للصفحة اللي ورا المودال
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -60,22 +59,12 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
     visible: { opacity: 1, backdropFilter: "blur(4px)", transition: { duration: 0.3 } }
   };
 
-  // 🟢 التعديل الأهم: تحويل الـ Drawer لـ Bottom Sheet عالموبايل و Side Drawer عالكمبيوتر
+  const isMobile = window.innerWidth < 768;
+
   const drawerVariants = {
-    hidden: { 
-      y: window.innerWidth < 768 ? '100%' : 0, 
-      x: window.innerWidth >= 768 ? '-100%' : 0 
-    }, 
-    visible: { 
-      y: 0, 
-      x: 0, 
-      transition: { type: 'spring', damping: 25, stiffness: 200 } 
-    },
-    exit: { 
-      y: window.innerWidth < 768 ? '100%' : 0, 
-      x: window.innerWidth >= 768 ? '-100%' : 0, 
-      transition: { type: 'tween', duration: 0.3 } 
-    }
+    hidden: isMobile ? { y: '100%', x: 0 } : { x: '-100%', y: 0 },
+    visible: { y: 0, x: 0, transition: { type: 'spring', damping: 25, stiffness: 200 } },
+    exit: isMobile ? { y: '100%', x: 0 } : { x: '-100%', y: 0, transition: { type: 'tween', duration: 0.3 } }
   };
 
   const dummyLongDescription = `هذه الفعالية مصممة خصيصاً للشباب الطموح لتطوير مهاراتهم وبناء قدراتهم. ستحصل على فرصة للتعلم من خبراء متخصصين، وتوسيع شبكة علاقاتك، والمساهمة في بناء مجتمعك بشكل فعال. تتضمن الفعالية ورش عمل مكثفة في مجالات متعددة، منها التفكير النقدي، مهارات التواصل الفعال، والعمل الجماعي. سيتم تقديم دراسات حالة واقعية لمناقشتها وإيجاد حلول مبتكرة لها. بالإضافة إلى ذلك، ستتمكن من لقاء شخصيات قيادية وملهمة ستشاركك قصص نجاحها وتحدياتها. نهدف من خلال هذه الفرصة إلى صقل شخصيتك وتمكينك من أخذ دور ريادي في مجتمعك وصناعة تأثير حقيقي يدوم طويلاً.`;
@@ -98,11 +87,8 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
             variants={drawerVariants}
             initial="hidden" animate="visible" exit="exit"
             dir="rtl"
-            // 🟢 كلاسات متجاوبة: Bottom Sheet (للموبايل) | Side Drawer (للـ PC)
-            className="fixed z-[9999] bg-white shadow-2xl flex flex-col overflow-hidden 
-                       bottom-0 left-0 right-0 w-full rounded-t-3xl max-h-[90vh] md:max-h-none md:rounded-t-none md:rounded-r-3xl md:top-0 md:left-0 md:w-[450px]"
-          >
-             {/* 🟢 شريط السحب للموبايل (Pull Bar) */}
+            // 🟢 إجبار العنصر على الالتصاق بالشمال وإلغاء تأثير right-0 على الشاشات الكبيرة
+            className="fixed z-[9999] bg-white shadow-2xl flex flex-col bottom-0 left-0 right-0 w-full rounded-t-3xl max-h-[90vh] md:max-h-none md:rounded-t-none md:rounded-r-3xl md:top-0 md:bottom-0 md:right-auto md:left-0 md:w-[450px] h-full"          >
              <div className="md:hidden w-full flex justify-center pt-3 pb-1 shrink-0 bg-white">
                <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
              </div>
@@ -125,7 +111,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                 </div>
              </div>
 
-             <div className="flex-1 overflow-y-auto p-5 md:p-8 scrollbar-hide pb-24 md:pb-8">
+             <div className="flex-1 overflow-y-auto p-5 md:p-8 scrollbar-hide">
                 <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-5 md:mb-6 leading-tight">
                   {currentEvent.title}
                 </h2>
@@ -246,10 +232,13 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                 </div>
              </div>
 
-             <div className="absolute bottom-0 left-0 right-0 border-t border-gray-100 p-4 md:p-6 bg-white shrink-0 shadow-[0_-10px_20px_rgba(0,0,0,0.03)] z-20">
-                {canRegister ? (
+              <div className="shrink-0 p-4 md:p-6 bg-white border-t border-gray-100 shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
+                  {canRegister ? (
                   <button 
-                    onClick={() => onRegister(currentEvent)}
+                    onClick={() => {
+                      onRegister(currentEvent);
+                      onClose();
+                    }}
                     className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] text-white rounded-xl md:rounded-2xl font-black text-[13px] md:text-sm py-3.5 md:py-4 flex items-center justify-center gap-2 md:gap-3 transition-all shadow-md cursor-pointer"
                   >
                     <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D]" />
@@ -264,7 +253,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                     <span className="truncate">{lockReason}</span>
                   </button>
                 )}
-             </div>
+              </div>
           </motion.div>
         </>
       )}

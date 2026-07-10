@@ -84,7 +84,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
                 onClick={() => handleCardInteraction(program)}
                 className="group [perspective:1500px] h-[380px] md:h-[420px] w-full cursor-pointer"
               >
-                <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(180deg)] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} rounded-3xl shadow-lg hover:shadow-2xl`}>
+                <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-lg hover:shadow-2xl`}>
                   
                   {/* الوجه الأمامي */}
                   <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200 bg-gray-50">

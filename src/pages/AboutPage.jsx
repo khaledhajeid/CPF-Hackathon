@@ -68,25 +68,20 @@ const LeaderModal = ({ leader, onClose }) => {
         onClick={(e) => e.stopPropagation()}
         className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row mt-auto h-[90vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0 relative"
       >
-        {/* 🟢 زر إغلاق دائم (Mobile & Desktop) */}
         <button onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-white/20 md:bg-gray-100 hover:bg-white/40 md:hover:bg-gray-200 backdrop-blur-md md:backdrop-blur-none rounded-full flex items-center justify-center transition-colors text-gray-800 md:text-gray-500 z-50 cursor-pointer shadow-sm md:shadow-none">
            <X className="w-5 h-5" />
         </button>
 
-        {/* 🟢 شريط سحب للإغلاق */}
         <div className="md:hidden w-full absolute top-0 left-0 right-0 flex justify-center pt-3 pb-4 z-40 cursor-grab active:cursor-grabbing" onClick={onClose}>
           <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
         </div>
 
-        {/* القسم الأيمن */}
         <div className="w-full md:w-1/2 lg:w-[55%] p-6 pt-16 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8 relative z-10 bg-white order-last md:order-first mt-[-20px] md:mt-0 rounded-t-3xl md:rounded-none">
           <div className="inline-flex items-center gap-2 bg-[#8a1538]/10 text-[#8a1538] px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4">
             <Briefcase className="w-3.5 h-3.5 md:w-4 md:h-4" />
             {leader.role}
           </div>
-
           <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4 md:mb-6 pr-8 md:pr-0">{leader.name}</h2>
-          
           <div className="flex-grow">
             <p className="text-gray-700 text-[14px] md:text-base lg:text-lg leading-relaxed md:leading-[2.2rem] font-medium text-justify">
               {leader.bio || 'يتمتع بخبرة واسعة في العمل التنموي والمؤسسي، ويسهم بشكل فاعل في توجيه استراتيجيات المؤسسة نحو تمكين الشباب الأردني وتحقيق رؤية القيادة الهاشمية في بناء مستقبل واعد ومستدام.'}
@@ -94,7 +89,6 @@ const LeaderModal = ({ leader, onClose }) => {
           </div>
         </div>
 
-        {/* القسم الأيسر */}
         <div className="w-full md:w-1/2 lg:w-[45%] relative h-[300px] md:h-auto shrink-0 bg-gray-900 flex-grow-0 md:flex-grow order-first md:order-last pb-6 md:pb-0">
           {leader.video ? (
             <>
@@ -106,7 +100,6 @@ const LeaderModal = ({ leader, onClose }) => {
           ) : (
             <img src={leader.image} alt={leader.name} className="absolute inset-0 w-full h-full object-cover opacity-90 object-top" />
           )}
-
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
           
           <div className="absolute bottom-12 md:bottom-6 left-0 right-0 px-6 md:px-8 z-10 md:hidden">
@@ -162,24 +155,20 @@ export default function AboutPage({ onNavigate }) {
   };
 
   return (
-    <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
+    <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white overflow-x-hidden" dir="rtl">
       
       {/* 1. Hero Section */}
       <div className="relative pt-28 pb-16 md:pt-48 md:pb-32 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden min-h-[60vh] md:min-h-[80vh] flex items-center">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
-        
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center mt-6 md:mt-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-5 md:mb-8 leading-[1.15] tracking-tight">
               رؤية ملكية..<br className="md:hidden" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6] drop-shadow-sm px-2 md:px-0">
-                بطموح شبابي
-              </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6] drop-shadow-sm px-2 md:px-0">بطموح شبابي</span>
             </h1>
             <p className="text-[15px] md:text-xl text-white/90 font-medium max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
               تنفيذاً لرؤية صاحب السموّ الأمير الحسين بن عبدالله الثاني، ولي العهد المعظم. بدأنا عملنا انطلاقاً من الإيمان العميق بأن الشباب هم الأساس في تشكيل مستقبل المملكة، ليكون لهم دور فعّال، ومؤهلين لنهضة أنفسهم ومجتمعاتهم.
             </p>
-            
             <motion.div 
               animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}
               className="flex justify-center mt-6 md:mt-8 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
@@ -203,9 +192,7 @@ export default function AboutPage({ onNavigate }) {
               </div>
               <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3 md:mb-6">رؤيتنا</h2>
               <h3 className="text-lg md:text-2xl font-black text-[#C08F2D] mb-3 md:mb-4">"شباب قادر لأردن طموح"</h3>
-              <p className="text-[15px] md:text-lg text-gray-600 leading-relaxed font-medium">
-                تتمحور جهود المؤسسة حول هذه الرؤية بهدف الربط بين الشباب والمؤسسات الوطنية، لتوجيه طاقاتهم وقدرتهم على الإبداع والابتكار نحو التطوير والنمو الدائم.
-              </p>
+              <p className="text-[15px] md:text-lg text-gray-600 leading-relaxed font-medium">تتمحور جهود المؤسسة حول هذه الرؤية بهدف الربط بين الشباب والمؤسسات الوطنية، لتوجيه طاقاتهم وقدرتهم على الإبداع والابتكار نحو التطوير والنمو الدائم.</p>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="bg-white p-6 md:p-14 rounded-3xl md:rounded-[2rem] border border-gray-100 hover:border-[#8a1538]/40 hover:shadow-2xl transition-all duration-500 group">
@@ -213,9 +200,7 @@ export default function AboutPage({ onNavigate }) {
                 <Target className="w-7 h-7 md:w-8 md:h-8 text-[#C08F2D] group-hover:text-white transition-colors" />
               </div>
               <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3 md:mb-6">رسالتنا</h2>
-              <p className="text-[15px] md:text-lg text-gray-600 leading-relaxed font-medium mt-4 md:mt-12">
-                دعم الشباب وتمكينهم وتزويدهم بالمعرفة والخبرات اللازمة. نحن نؤمن أننا بمساعدتهم على التقدم والتطور نضمن مستقبلاً مشرقاً لهم ولعائلاتهم ومجتمعاتهم، وللأردن.
-              </p>
+              <p className="text-[15px] md:text-lg text-gray-600 leading-relaxed font-medium mt-4 md:mt-12">دعم الشباب وتمكينهم وتزويدهم بالمعرفة والخبرات اللازمة. نحن نؤمن أننا بمساعدتهم على التقدم والتطور نضمن مستقبلاً مشرقاً لهم ولعائلاتهم ومجتمعاتهم، وللأردن.</p>
             </motion.div>
           </div>
         </div>
@@ -232,27 +217,19 @@ export default function AboutPage({ onNavigate }) {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-10 md:divide-x md:divide-x-reverse divide-gray-200">
               <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4">
-                  <AnimatedNumber value={2.2} decimals={1} suffix="M" />
-                </h3>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={2.2} decimals={1} suffix="M" /></h3>
                 <p className="text-[11px] md:text-base font-bold text-gray-600">شاب وشابة مستفيد</p>
               </div>
               <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4">
-                  <AnimatedNumber value={14} prefix="+" />
-                </h3>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={14} prefix="+" /></h3>
                 <p className="text-[11px] md:text-base font-bold text-gray-600">برنامج ومبادرة</p>
               </div>
               <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4">
-                  <AnimatedNumber value={26} prefix="+" />
-                </h3>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={26} prefix="+" /></h3>
                 <p className="text-[11px] md:text-base font-bold text-gray-600">موقع استراتيجي</p>
               </div>
               <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4">
-                  <AnimatedNumber value={12} />
-                </h3>
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={12} /></h3>
                 <p className="text-[11px] md:text-base font-bold text-gray-600">محافظة نغطيها</p>
               </div>
             </div>
@@ -260,7 +237,7 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 4. مسيرة الأثر */}
+      {/* 4. مسيرة الأثر 🟢 (تم إصلاح الـ Timeline للموبايل ليكون على جهة واحدة وواضح) */}
       <div className="py-16 md:py-32 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-12 md:mb-28 relative z-10">
@@ -270,6 +247,7 @@ export default function AboutPage({ onNavigate }) {
           </div>
 
           <div className="relative max-w-6xl mx-auto" ref={timelineRef}>
+            {/* خط المنتصف للكمبيوتر، وخط أقصى اليمين للموبايل */}
             <div className="absolute right-4 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gray-200 rounded-full z-0"></div>
             <motion.div 
               className="absolute right-4 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C08F2D] to-[#8a1538] rounded-full z-0 origin-top"
@@ -279,40 +257,52 @@ export default function AboutPage({ onNavigate }) {
             {milestones.map((stone, idx) => {
               const isEven = idx % 2 === 0;
               return (
-                <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-12 md:mb-28 group pl-4 md:pl-0">
-                  <div className="absolute right-4 md:right-1/2 transform translate-x-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-white border-4 border-gray-300 z-20 flex items-center justify-center">
+                <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-12 md:mb-28 group pr-12 md:pr-0">
+                  {/* النقطة الدائرية */}
+                  <div className="absolute right-[0.4rem] md:right-1/2 transform md:translate-x-1/2 w-5 h-5 md:w-8 md:h-8 rounded-full bg-white border-4 border-gray-300 z-20 flex items-center justify-center top-6 md:top-auto">
                     <motion.div 
-                      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: false, margin: "-100px" }} transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                      initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: false, margin: "-50px" }} transition={{ type: "spring", stiffness: 200, damping: 10 }}
                       className="w-full h-full bg-[#8a1538] rounded-full"
                     />
                   </div>
 
-                  <div className={`w-full md:w-[45%] pr-12 md:pr-0 ${isEven ? 'order-2 md:order-1' : 'order-2'}`}>
-                    {isEven ? (
-                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-6 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#8a1538] hover:-translate-y-2 transition-transform duration-500">
+                  {/* 🟢 على الموبايل: الكرت يحتوي الصورة والنص تحت بعض. على الكمبيوتر: التخطيط التبادلي */}
+                  <div className={`w-full md:w-[45%] md:pr-0 ${isEven ? 'order-2 md:order-1' : 'order-2'}`}>
+                    <motion.div 
+                      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6 }} 
+                      className={`bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden hover:-translate-y-2 transition-transform duration-500 ${!isEven ? 'md:hidden' : ''}`}
+                    >
+                      <div className="md:hidden w-full h-40 relative">
+                         <img src={stone.image} alt={stone.title} className="w-full h-full object-cover" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      </div>
+                      <div className={`p-6 md:p-12 border-t-4 ${isEven ? 'border-t-[#8a1538]' : 'border-t-[#C08F2D] md:border-t-0'}`}>
                         <span className="text-[#C08F2D] font-black text-2xl md:text-4xl mb-2 md:mb-3 block drop-shadow-sm">{stone.year}</span>
                         <h3 className="text-xl md:text-3xl font-black text-[#8a1538] mb-2 md:mb-4">{stone.title}</h3>
-                        <p className="text-gray-500 font-medium text-[15px] md:text-lg leading-relaxed">{stone.desc}</p>
-                      </motion.div>
-                    ) : (
-                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video md:aspect-auto md:h-80 group mt-4 md:mt-0">
+                        <p className="text-gray-500 font-medium text-[14px] md:text-lg leading-relaxed">{stone.desc}</p>
+                      </div>
+                    </motion.div>
+
+                    {/* الصورة الجانبية تظهر للكمبيوتر فقط */}
+                    {!isEven && (
+                      <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="hidden md:block relative rounded-3xl overflow-hidden shadow-2xl h-80 group">
                         <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
                       </motion.div>
                     )}
                   </div>
 
-                  <div className={`w-full md:w-[45%] pr-12 md:pr-0 mt-4 md:mt-0 ${isEven ? 'order-1 md:order-2' : 'order-1'}`}>
+                  <div className={`hidden md:block w-full md:w-[45%] md:pr-0 ${isEven ? 'order-1 md:order-2' : 'order-1'}`}>
                     {isEven ? (
-                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video md:aspect-auto md:h-80 group">
+                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden shadow-2xl h-80 group">
                          <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
                        </motion.div>
                     ) : (
-                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="bg-white p-6 md:p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#C08F2D] hover:-translate-y-2 transition-transform duration-500 mt-4 md:mt-0">
-                         <span className="text-[#C08F2D] font-black text-2xl md:text-4xl mb-2 md:mb-3 block drop-shadow-sm">{stone.year}</span>
-                         <h3 className="text-xl md:text-3xl font-black text-[#8a1538] mb-2 md:mb-4">{stone.title}</h3>
-                         <p className="text-gray-500 font-medium text-[15px] md:text-lg leading-relaxed">{stone.desc}</p>
+                       <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="bg-white p-12 rounded-3xl border border-gray-100 shadow-xl border-t-4 border-t-[#C08F2D] hover:-translate-y-2 transition-transform duration-500">
+                         <span className="text-[#C08F2D] font-black text-4xl mb-3 block drop-shadow-sm">{stone.year}</span>
+                         <h3 className="text-3xl font-black text-[#8a1538] mb-4">{stone.title}</h3>
+                         <p className="text-gray-500 font-medium text-lg leading-relaxed">{stone.desc}</p>
                        </motion.div>
                     )}
                   </div>
@@ -323,7 +313,7 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 5. المسارات التنموية */}
+      {/* 5. المسارات التنموية 🟢 (تم إصلاح العرض ليكون بنفس الطول بدون تقطيع) */}
       <div className="py-12 md:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-16">
@@ -333,25 +323,25 @@ export default function AboutPage({ onNavigate }) {
             </p>
           </div>
           
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-8 pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-8 pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 items-stretch">
             {tracks.map((track, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="bg-[#f8fafc] p-6 md:p-10 rounded-[2rem] border border-gray-100 hover:border-[#C08F2D]/50 hover:shadow-[0_10px_30px_rgba(138,21,56,0.08)] transition-all duration-500 group w-[260px] md:w-auto md:min-w-0 snap-center shrink-0"
+                className="bg-[#f8fafc] p-6 md:p-10 rounded-[2rem] border border-gray-100 hover:border-[#C08F2D]/50 hover:shadow-[0_10px_30px_rgba(138,21,56,0.08)] transition-all duration-500 group w-[260px] md:w-auto md:min-w-0 snap-center shrink-0 flex flex-col h-auto"
               >
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white shadow-sm rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-8 group-hover:bg-[#8a1538] transition-colors duration-500">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white shadow-sm rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-8 group-hover:bg-[#8a1538] transition-colors duration-500 shrink-0">
                   <track.icon className="w-6 h-6 md:w-8 md:h-8 text-[#8a1538] group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="text-lg md:text-2xl font-black text-[#8a1538] mb-2 md:mb-4">{track.title}</h3>
-                <p className="text-gray-500 font-medium leading-relaxed text-[14px] md:text-lg">{track.desc}</p>
+                <p className="text-gray-500 font-medium leading-relaxed text-[14px] md:text-lg flex-grow">{track.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 6. قيادات المؤسسة */}
+      {/* 6. قيادات المؤسسة 🟢 (تم إزالة الفراغات البيضاء/المؤثرات التي كانت تسبب التداخل) */}
       <div className="py-12 md:py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-12">
@@ -361,45 +351,40 @@ export default function AboutPage({ onNavigate }) {
             <div className="w-full max-w-sm mx-auto bg-gray-200/60 p-1 rounded-full mb-8 md:mb-12 flex">
               <button 
                 onClick={() => setActiveLeaderTab('board')}
-                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 ${activeLeaderTab === 'board' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 cursor-pointer ${activeLeaderTab === 'board' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 مجلس الأمناء
               </button>
               <button 
                 onClick={() => setActiveLeaderTab('executive')}
-                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 ${activeLeaderTab === 'executive' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 cursor-pointer ${activeLeaderTab === 'executive' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 الفريق الإداري
               </button>
             </div>
           </div>
 
-          <div className="relative">
-            <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
-              <AnimatePresence mode="popLayout">
-                {leaders[activeLeaderTab].map((member, idx) => (
-                  <motion.div 
-                    key={member.name}
-                    onClick={() => setSelectedLeader(member)}
-                    layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
-                    className="bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group text-center w-[150px] sm:w-[180px] md:w-auto md:min-w-0 snap-center shrink-0 cursor-pointer"
-                  >
-                    <div className="relative overflow-hidden rounded-xl md:rounded-2xl mb-3 md:mb-5 aspect-[4/5] bg-gray-50">
-                      <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"/>
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span className="text-white text-xs font-bold border border-white/50 px-3 py-1 rounded-full">عرض التفاصيل</span>
-                      </div>
+          <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+            <AnimatePresence mode="popLayout">
+              {leaders[activeLeaderTab].map((member, idx) => (
+                <motion.div 
+                  key={member.name}
+                  onClick={() => setSelectedLeader(member)}
+                  layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
+                  className="bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group text-center w-[150px] sm:w-[180px] md:w-auto md:min-w-0 snap-center shrink-0 cursor-pointer flex flex-col"
+                >
+                  <div className="relative overflow-hidden rounded-xl md:rounded-2xl mb-3 md:mb-5 aspect-[4/5] bg-gray-50">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"/>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs font-bold border border-white/50 px-3 py-1 rounded-full">عرض التفاصيل</span>
                     </div>
-                    <h3 className="text-[13px] md:text-lg font-black text-[#8a1538] mb-1">{member.name}</h3>
-                    <p className="text-[#C08F2D] font-bold text-[10px] md:text-sm leading-tight">{member.role}</p>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-            
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-full bg-gradient-to-l from-[#f8fafc] to-transparent pointer-events-none md:hidden z-10" />
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-full bg-gradient-to-r from-[#f8fafc] to-transparent pointer-events-none md:hidden z-10" />
-          </div>
+                  </div>
+                  <h3 className="text-[13px] md:text-lg font-black text-[#8a1538] mb-1 leading-tight">{member.name}</h3>
+                  <p className="text-[#C08F2D] font-bold text-[10px] md:text-sm leading-tight mb-1 mt-auto">{member.role}</p>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
 
@@ -428,7 +413,6 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 🟢 مودال القائد يظهر عند النقر */}
       <AnimatePresence>
         {selectedLeader && (
           <LeaderModal 

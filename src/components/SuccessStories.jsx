@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import { Quote, LayoutGrid, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX, BookOpen } from 'lucide-react';
 import ShareStoryModal from './success/ShareStoryModal';
 
-// 🟢 استيراد البيانات من الملف الموحد
+// استيراد البيانات من الملف الموحد
 import { allStories } from '../data/programsData';
 
 const getPathwayStyle = (pathway) => {
@@ -54,20 +54,21 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
         exit={{ y: window.innerWidth < 768 ? '100%' : 20, opacity: window.innerWidth < 768 ? 1 : 0 }}
         transition={{ type: 'spring', damping: 25, stiffness: window.innerWidth < 768 ? 250 : 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row 
-                   mt-auto h-[92vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0"
+        className="bg-white overflow-hidden shadow-2xl w-full flex flex-col md:flex-row mt-auto h-[92vh] rounded-t-3xl md:h-auto md:max-h-[90vh] md:max-w-5xl md:rounded-[2rem] md:mt-0 relative"
       >
-        <div className="md:hidden w-full flex justify-center pt-4 pb-2 bg-white shrink-0 rounded-t-3xl z-20">
+        {/* 🟢 زر الإغلاق الدائم (Mobile & Desktop) */}
+        <button onClick={onClose} className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-white/20 md:bg-gray-100 hover:bg-white/40 md:hover:bg-gray-200 backdrop-blur-md md:backdrop-blur-none rounded-full flex items-center justify-center transition-colors text-gray-800 md:text-gray-500 z-50 cursor-pointer shadow-sm md:shadow-none">
+           <X className="w-5 h-5" />
+        </button>
+
+        {/* شريط السحب للموبايل الدال على الإغلاق */}
+        <div className="md:hidden w-full absolute top-0 left-0 right-0 flex justify-center pt-3 pb-4 z-40 cursor-grab active:cursor-grabbing" onClick={onClose}>
           <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
         </div>
 
-        {/* 🟢 القسم الأيمن للمودال */}
-        <div className="w-full md:w-1/2 lg:w-[55%] p-5 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8 relative z-10 bg-white order-last md:order-first">
-          <button onClick={onClose} className="hidden md:flex absolute top-6 right-6 md:relative md:top-0 md:right-0 md:self-end w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full items-center justify-center transition-colors mb-6 text-gray-500 z-10 cursor-pointer shrink-0">
-            <X className="w-5 h-5" />
-          </button>
-          
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4 md:mb-8">{story.name}</h2>
+        {/* القسم الأيمن للمودال */}
+        <div className="w-full md:w-1/2 lg:w-[55%] p-5 pt-12 md:p-8 lg:p-12 overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-8 relative z-10 bg-white order-last md:order-first mt-[-20px] md:mt-0 rounded-t-3xl md:rounded-none">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4 md:mb-8 pr-8 md:pr-0">{story.name}</h2>
           
           <div className="flex gap-2.5 md:gap-4 mb-5 md:mb-8 bg-gray-50 p-4 md:p-6 rounded-xl md:rounded-2xl border-r-4 border-[#C08F2D]">
             <Quote className="w-5 h-5 md:w-8 md:h-8 text-[#C08F2D]/50 rotate-180 shrink-0" />
@@ -99,23 +100,18 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
           </div>
         </div>
 
-        {/* 🟢 القسم الأيسر للمودال */}
-        {/* تصغير الارتفاع على الموبايل من 400px إلى 280px ليتناسب مع الشاشة */}
-        <div className="w-full md:w-1/2 lg:w-[45%] relative h-[280px] md:h-auto shrink-0 bg-gray-900 flex-grow-0 md:flex-grow order-first md:order-last">
+        {/* القسم الأيسر للمودال */}
+        <div className="w-full md:w-1/2 lg:w-[45%] relative h-[300px] md:h-auto shrink-0 bg-gray-900 flex-grow-0 md:flex-grow order-first md:order-last pb-6 md:pb-0">
           
           {story.video ? (
             <>
               <video 
-                ref={videoRef}
-                src={story.video}
-                autoPlay loop muted defaultMuted playsInline
+                ref={videoRef} src={story.video} autoPlay loop muted defaultMuted playsInline
                 className="absolute inset-0 w-full h-full object-cover opacity-90"
               />
-
               <button
                 onClick={toggleMute}
-                className="absolute top-4 md:top-6 left-4 md:left-6 z-20 w-9 h-9 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-all duration-300 cursor-pointer shadow-md"
-                aria-label={isMuted ? "تشغيل الصوت" : "كتم الصوت"}
+                className="absolute top-16 md:top-6 left-4 md:left-6 z-20 w-9 h-9 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/60 transition-all duration-300 cursor-pointer shadow-md"
               >
                 {isMuted ? <VolumeX className="w-4 h-4 md:w-5 md:h-5" /> : <Volume2 className="w-4 h-4 md:w-5 md:h-5" />}
               </button>
@@ -124,9 +120,10 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
             <img src={story.image} alt={story.name} className="absolute inset-0 w-full h-full object-cover opacity-90" />
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
           
-          <div className="absolute bottom-6 md:bottom-10 left-0 right-0 px-6 md:px-10 z-10">
+          {/* رفع المحتوى للأعلى قليلاً على الموبايل لتجنب التداخل مع الجزء الأبيض */}
+          <div className="absolute bottom-12 md:bottom-10 left-0 right-0 px-6 md:px-10 z-10">
             <div className="inline-flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-full font-bold text-xs md:text-sm mb-2 md:mb-3">
               <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4" />
               {story.location}، الأردن
@@ -166,7 +163,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
   return (
     <div className="min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col" dir="rtl">
       
-      {/* 🟢 الهيدر */}
+      {/* ההيدر */}
       <div className="bg-[#1a0409] h-[280px] md:h-[380px] pt-24 md:pt-32 pb-12 md:pb-20 relative overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-md shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 to-[#1a0409]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
@@ -191,7 +188,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
       <div className="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8 -mt-8 md:-mt-10 relative z-20 flex-grow pb-16 md:pb-24">
         
-        {/* 🟢 كرت "شارك رحلتك" مخصص للموبايل (Padding أقل، زر عريض) */}
+        {/* كرت شارك رحلتك */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
           className="relative max-w-[1000px] mx-auto bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 shadow-xl shadow-gray-200/50 border border-gray-100 mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-8 overflow-hidden z-20"
@@ -224,7 +221,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
           </button>
         </motion.div>
 
-        {/* 🟢 الفلاتر (سحب أفقي على الموبايل) */}
+        {/* الفلاتر */}
         <div className="flex overflow-x-auto gap-2 justify-start bg-white p-1.5 md:p-2.5 rounded-xl md:rounded-2xl shadow-sm border border-gray-100 mb-8 md:mb-16 mx-auto w-full md:w-fit scrollbar-hide snap-x -mx-4 px-4 md:mx-0 md:px-0">
           {categories.map(category => {
             const Icon = category.icon;
@@ -246,26 +243,25 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
           })}
         </div>
 
-        {/* 🟢 القصص: سحب أفقي للموبايل (Horizontal Swipe) وشبكة للكمبيوتر (Masonry Grid) */}
-        <AnimatePresence mode="wait">
+        {/* 🟢 القصص مع حل مشكلة الفلتر (إضافة key للمصفوفة) */}
+        <AnimatePresence mode="popLayout">
           <motion.div
-            key={activeFilter}
+            key={activeFilter} // 🟢 هذا المفتاح يضمن أن Framer Motion سيعيد رسم العناصر بشكل صحيح عند تغير الفلتر
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 md:gap-0 pb-8 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 md:block md:columns-2 lg:columns-3 md:space-y-8"
+            className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredStories.map((story) => {
               const tagStyle = getPathwayStyle(story.pathway);
               
               return (
-                <div 
+                <motion.div 
+                  layout // 🟢 يضمن تحرك الكروت بسلاسة لملء الفراغات عند الفلترة
                   key={story.id} 
                   onClick={() => setSelectedStory(story)}
-                  // الكرت على الموبايل له عرض ثابت ليدعم السحب (280px)
-                  className="w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center md:inline-block break-inside-avoid group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col"
+                  className="w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center break-inside-avoid group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col"
                 >
                   <div className="relative h-48 md:h-64 overflow-hidden bg-gray-100 shrink-0">
                     <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
-                    
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     
                     <div className="absolute top-3 right-3 md:top-5 md:right-5 z-10">
@@ -293,7 +289,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
                       "{story.quote}"
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </motion.div>

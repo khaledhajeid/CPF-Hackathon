@@ -95,9 +95,10 @@ export const newsList = [
 ];
 
 export const pulseImages = [
-  { id: 1, type: 'featured', title: 'مختبرات التصنيع الرقمي', url: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1200&auto=format&fit=crop' },
-  { id: 2, type: 'normal', title: 'العمل الجماعي في 42', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop' },
-  { id: 3, type: 'tall', title: 'حملات التطوع الميدانية', url: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=800&auto=format&fit=crop' },
-  { id: 4, type: 'normal', title: 'توزيع القوافل الإنسانية', url: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=800&auto=format&fit=crop' },
-  { id: 5, type: 'normal', title: 'بناء النماذج الهندسية', url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop' }
+  { id: 1, type: 'featured', title: 'تدريب الجرار بين الماضي والحاضر في الزرقاء', url: 'https://cpf.jo/wp-content/uploads/2025/05/6-3.jpg' },
+  { id: 2, type: 'normal', title: 'يوم العلم الأردني', url: 'https://cpf.jo/wp-content/uploads/2025/04/18-1.jpg' },
+  { id: 3, type: 'normal', title: 'تدريب صناعة الألعاب الالكترونية في مادبا', url: 'https://cpf.jo/wp-content/uploads/2025/03/2-2.jpg' },
+  { id: 4, type: 'normal', title: 'ورشة صناعة المحتوى في الكرك', url: 'https://cpf.jo/wp-content/uploads/2025/02/19-1.jpg' },
+  { id: 5, type: 'tall', title: 'زيارة مشاركي خطى الحسين لمتحف صرح الشهيد', url: 'https://cpf.jo/wp-content/uploads/2024/12/1-598.jpg' },
+  { id: 6, type: 'normal', title: 'الواقع الافتراضي والواقع المعزز-مادبا', url: 'https://cpf.jo/wp-content/uploads/2025/01/6.jpg' }
 ];

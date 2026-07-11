@@ -1,5 +1,5 @@
 // src/components/programs/NationalPrograms.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpLeft, Briefcase, Target, Users, Code2, HeartHandshake, Lightbulb, GraduationCap, RefreshCcw } from 'lucide-react';
 
@@ -41,6 +41,28 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
     }
   };
 
+  // 🟢 إعدادات الأنيميشن الخفيفة (Lightweight Animation)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.05 } 
+    },
+    exit: { 
+      opacity: 0, 
+      transition: { duration: 0.2 } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.4, ease: "easeOut" } 
+    }
+  };
+
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} dir="rtl">
       
@@ -71,9 +93,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
             
             return (
               <motion.div 
-                layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                variants={itemVariants}
                 key={program.id} 
                 onClick={() => handleCardInteraction(program)}
                 // 🟢 تصغير ارتفاع الكرت على الموبايل من 320px إلى 280px
@@ -86,6 +106,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
                     <img 
                       src={program.image} alt={program.title} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 lg:group-hover:scale-110" 
+                      loading="lazy" // 🟢 تحسين إضافي للموبايل لتسريع تحميل الصور
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/95 via-[#1a070b]/40 to-transparent"></div>
                     
@@ -145,8 +166,8 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
               </motion.div>
             );
           })}
-        </AnimatePresence>
-      </motion.div>
+        </motion.div>
+      </AnimatePresence>
 
     </motion.div>
   );

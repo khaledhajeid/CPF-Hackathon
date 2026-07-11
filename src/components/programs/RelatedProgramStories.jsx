@@ -55,9 +55,9 @@ export default function RelatedProgramStories({ programName, onNavigate, onStory
                   key={story.id}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }}
                   onClick={() => onStoryClick(story.id)}
-                  // 🟢 توحيد كلاسات الكرت لتطابق تصميم صفحة القصص بالكامل
                   className="w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center break-inside-avoid group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col h-full"
                 >
+                  {/* 🟢 رجعنا الارتفاع الأنيق للصورة */}
                   <div className="relative h-48 md:h-64 overflow-hidden bg-gray-100 shrink-0">
                     <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />

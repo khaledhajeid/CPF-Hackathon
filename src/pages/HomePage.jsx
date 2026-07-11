@@ -10,31 +10,22 @@ import EcosystemPrograms from "../components/home/EcosystemPrograms";
 
 function AnimatedNumber({ value, suffix = "", prefix = "", decimals = 0 }) {
   const [currentValue, setCurrentValue] = useState(0);
-
   const ref = useRef(null);
-
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
     if (isInView) {
       let startTimestamp = null;
-
       const duration = 2000;
-
       const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
-
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
         const easeProgress = 1 - Math.pow(1 - progress, 5);
-
         setCurrentValue(easeProgress * value);
-
         if (progress < 1) {
           window.requestAnimationFrame(step);
         }
       };
-
       window.requestAnimationFrame(step);
     }
   }, [isInView, value]);
@@ -50,13 +41,10 @@ function AnimatedNumber({ value, suffix = "", prefix = "", decimals = 0 }) {
 
 const RevealOnScroll = ({ children, delay = 0 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 50 }}
-
+    initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-
     viewport={{ once: true, margin: "-100px" }}
-
-    transition={{ duration: 0.7, ease: "easeOut", delay }}
+    transition={{ duration: 0.6, ease: "easeOut", delay }}
   >
     {children}
   </motion.div>
@@ -73,11 +61,9 @@ export default function HomePage({
 
   return (
     <div
-      className="w-full bg-[#fcfcfc] text-[#4c4c4c] selection:bg-[#C08F2D] selection:text-white font-sans"
+      className="w-full bg-[#fcfcfc] text-[#4c4c4c] selection:bg-[#C08F2D] selection:text-white font-sans overflow-x-hidden"
       dir="rtl"
     >
-      {/* 1. الهيرو */}
-
       <LuxuryHero
         onExploreClick={() => {
           document
@@ -86,57 +72,49 @@ export default function HomePage({
         }}
       />
 
-      {/* 2. الإحصائيات (تم تحديث اللون لـ #8a1538) */}
-
-      <div className="relative z-30 -mt-4 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
+      {/* 🟢 تقليل السحب للأعلى (mt) ليظهر الكرت كاملاً داخل الشاشة (بدلاً من mt-16 جعلناها mt-8) */}
+      <div className="relative z-30 -mt-8 lg:-mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-
           whileInView={{ opacity: 1, y: 0 }}
-
           viewport={{ once: true }}
-
           transition={{ duration: 0.8, delay: 0.1 }}
-
-          className="bg-white rounded-xl shadow-lg p-6 md:p-12 border border-gray-50"
+          // 🟢 تقليل الـ Padding الداخلي قليلاً لعدم زيادة ارتفاع الكرت بشكل مبالغ فيه
+          className="bg-white rounded-xl lg:rounded-2xl shadow-lg p-6 lg:p-8 border border-gray-50"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-8">
-            <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-0 divide-x divide-x-reverse divide-gray-100 lg:divide-x lg:divide-x-reverse">
+            <div className="text-center flex flex-col justify-center">
+              <h3 className="text-3xl lg:text-4xl font-black text-[#8a1538] mb-1 lg:mb-2">
                 <AnimatedNumber value={2.2} decimals={1} suffix="M" />
               </h3>
-
-              <p className="text-[11px] md:text-[12px] font-bold text-gray-500">
+              <p className="text-[11px] lg:text-[13px] font-bold text-gray-500">
                 شاب وشابة مستفيد
               </p>
             </div>
 
-            <div className="text-center flex flex-col justify-center border-l-0 md:border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
+            <div className="text-center flex flex-col justify-center border-t border-gray-100 pt-6 mt-6 lg:border-t-0 lg:pt-0 lg:mt-0 col-span-1 lg:col-span-1">
+              <h3 className="text-3xl lg:text-4xl font-black text-[#8a1538] mb-1 lg:mb-2">
                 <AnimatedNumber value={14} prefix="+" />
               </h3>
-
-              <p className="text-[11px] md:text-[12px] font-bold text-gray-500">
+              <p className="text-[11px] lg:text-[13px] font-bold text-gray-500">
                 برنامج ومبادرة
               </p>
             </div>
 
-            <div className="text-center flex flex-col justify-center border-l border-gray-200">
-              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
+            <div className="text-center flex flex-col justify-center border-t border-gray-100 pt-6 mt-6 lg:border-t-0 lg:pt-0 lg:mt-0 col-span-1 lg:col-span-1">
+              <h3 className="text-3xl lg:text-4xl font-black text-[#8a1538] mb-1 lg:mb-2">
                 <AnimatedNumber value={26} prefix="+" />
               </h3>
-
-              <p className="text-[11px] md:text-[12px] font-bold text-gray-500">
+              <p className="text-[11px] lg:text-[13px] font-bold text-gray-500">
                 موقع استراتيجي
               </p>
             </div>
 
             <div className="text-center flex flex-col justify-center">
-              <h3 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-1 md:mb-2">
+              <h3 className="text-3xl lg:text-4xl font-black text-[#8a1538] mb-1 lg:mb-2">
                 <AnimatedNumber value={12} />
               </h3>
-
-              <p className="text-[11px] md:text-[12px] font-bold text-gray-500">
+              <p className="text-[11px] lg:text-[13px] font-bold text-gray-500">
                 محافظة نغطيها
               </p>
             </div>
@@ -144,14 +122,11 @@ export default function HomePage({
         </motion.div>
       </div>
 
-      {/* 3. المسارات الاستراتيجية */}
-
       <div id="strategic-pathways">
         <RevealOnScroll delay={0.1}>
           <LuxuryPathways
             onPathwaySelect={(pathwayId) => {
               setActiveFilters((prev) => ({ ...prev, pathway: pathwayId }));
-
               document
                 .getElementById("events-section")
                 ?.scrollIntoView({ behavior: "smooth" });
@@ -160,10 +135,8 @@ export default function HomePage({
         </RevealOnScroll>
       </div>
 
-      {/* 4. التوجيه الذكي (تم تحديث الخلفية لـ #721F31) */}
-
       <RevealOnScroll>
-        <div className="bg-[#721F31] pt-20 pb-24 md:pt-24 md:pb-28 relative overflow-hidden">
+        <div className="bg-[#721F31] pt-16 pb-20 lg:pt-20 lg:pb-24 relative overflow-hidden">
           <div
             className="absolute bottom-0 left-0 right-0 h-40 z-0 opacity-[0.15] pointer-events-none mix-blend-overlay"
             style={{
@@ -178,24 +151,22 @@ export default function HomePage({
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6">
               <img
                 src="/arrow-yellow.svg"
-                className="w-6 h-6 md:w-8 md:h-8 shrink-0"
+                className="w-6 h-6 lg:w-8 lg:h-8 shrink-0"
                 alt=""
               />
-
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight drop-shadow-sm">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-sm">
                 محتار من وين تبدأ <span className="text-[#C08F2D]">مسارك؟</span>
               </h2>
             </div>
 
-            <p className="text-white/90 max-w-xl mx-auto mb-8 md:mb-10 leading-[1.8rem] md:leading-[2.2rem] text-sm md:text-lg font-medium">
+            <p className="text-white/90 max-w-xl mx-auto mb-8 md:mb-10 leading-[1.8rem] md:leading-[2.2rem] text-sm lg:text-lg font-medium">
               هل تبحث عن برنامج طويل الأمد أم فعالية سريعة؟ أجب على 5 أسئلة، ودع
               الذكاء الاصطناعي يحلل شغفك ليرشح لك الخيار الأمثل لك بالضبط.
             </p>
 
             <button
               onClick={() => setIsWizardOpen(true)}
-
-              className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-14 md:px-16 py-5 md:py-6 rounded-full font-black text-lg md:text-2xl transition-all shadow-lg cursor-pointer hover:scale-105"
+              className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-10 py-4 lg:px-14 lg:py-5 rounded-full font-black text-base lg:text-xl transition-all shadow-lg cursor-pointer hover:scale-105"
             >
               ابدأ التوجيه الذكي
             </button>
@@ -203,15 +174,11 @@ export default function HomePage({
         </div>
       </RevealOnScroll>
 
-      {/* 5. أبرز البرامج */}
-
       <div id="programs-section">
         <RevealOnScroll>
-          <EcosystemPrograms onNavigate={onNavigate} />
+          <EcosystemPrograms onNavigate={onNavigate} setActiveProgramName={setActiveProgramName} />
         </RevealOnScroll>
       </div>
-
-      {/* 6. الفعاليات والفرص */}
 
       <RevealOnScroll>
         <div
@@ -220,17 +187,12 @@ export default function HomePage({
         >
           <HomeEvents
             activeFilters={activeFilters}
-
             setActiveFilters={setActiveFilters}
-
             handleRegisterClick={handleRegisterClick}
-
             onNavigate={onNavigate}
           />
         </div>
       </RevealOnScroll>
-
-      {/* 🟢 تم إصلاح الغلطة القاتلة هنا: إزالة علامات التنصيص من الـ Prop */}
 
       <Footer onNavigate={onNavigate} />
 
@@ -238,22 +200,17 @@ export default function HomePage({
         {isWizardOpen && (
           <PathwayWizard
             onClose={() => setIsWizardOpen(false)}
-
             onComplete={(wizardResult) => {
               setIsWizardOpen(false);
-
               if (wizardResult.type === "program") {
                 setActiveProgramName(wizardResult.programName);
-
                 onNavigate("program_details");
               } else {
                 setActiveFilters({
                   location: wizardResult.location,
                   pathway: wizardResult.pathway,
                 });
-
                 const eventsSection = document.getElementById("events-section");
-
                 if (eventsSection) {
                   eventsSection.scrollIntoView({ behavior: "smooth" });
                 }

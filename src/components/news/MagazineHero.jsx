@@ -40,7 +40,7 @@ export default function MagazineHero({ onNewsClick }) {
                 ) : (
                   <img src={mainNews.mediaUrl} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/90 via-[#1a0409]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/40 to-transparent" />
                 
                 <div className="absolute inset-0 p-[clamp(1.25rem,4vw,3rem)] flex flex-col justify-end text-right z-10 pb-[clamp(2.5rem,6vw,3rem)]">
                   <span className="bg-[#8a1538] text-white font-bold text-[clamp(0.6rem,0.9vw,0.75rem)] px-[clamp(0.5rem,1.5vw,1rem)] py-[clamp(0.2rem,0.5vw,0.35rem)] rounded-md w-fit mb-[clamp(0.5rem,1.5vw,1rem)]">
@@ -76,21 +76,28 @@ export default function MagazineHero({ onNewsClick }) {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-[35%] mt-6 md:mt-0 px-4 md:px-0">
-            <div className="bg-gray-50 rounded-[clamp(1rem,3vw,2rem)] p-[clamp(1.25rem,3vw,2rem)] h-full border border-gray-100 flex flex-col">
-              <div className="flex items-center gap-[clamp(0.35rem,1vw,0.75rem)] mb-[clamp(1rem,3vw,2rem)]">
-                <div className="w-1.5 md:w-2 h-[clamp(1.25rem,2.5vw,2rem)] bg-[#C08F2D] rounded-full" />
-                <h3 className="text-[clamp(1.1rem,1.8vw,1.5rem)] font-black text-[#1a1c1d]">أبرز التحديثات</h3>
+          {/* 🟢 الموبايل: تحويل الأخبار لقائمة عمودية فخمة (Vertical Feed) بدل السحب المزعج */}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-1/3 px-4 md:px-0">
+            <div className="bg-gray-50 rounded-[2rem] md:rounded-3xl lg:rounded-3xl xl:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-8 xl:p-10 2xl:p-14 h-full border border-gray-100 flex flex-col shadow-sm md:shadow-none">
+              
+              <div className="flex items-center gap-3 lg:gap-3 xl:gap-4 mb-6 md:mb-8 lg:mb-6 xl:mb-10 2xl:mb-12">
+                <div className="w-2 h-6 md:w-2 md:h-8 lg:w-1.5 lg:h-6 xl:w-2 xl:h-8 2xl:w-3 2xl:h-10 bg-[#C08F2D] rounded-full" />
+                <h3 className="text-xl md:text-2xl lg:text-xl xl:text-3xl 2xl:text-4xl font-black text-[#1a1c1d]">أبرز التحديثات</h3>
               </div>
 
-              <div className="flex overflow-x-auto md:flex-col snap-x snap-mandatory gap-[clamp(0.75rem,2vw,1.5rem)] flex-grow pb-4 md:pb-0 scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0">
+              {/* 🟢 الحل الجذري للموبايل: flex-col للجميع، كروت بيضاء عالموبايل وشفافة عالديسكتوب */}
+              <div className="flex flex-col gap-4 md:gap-6 lg:gap-5 xl:gap-8 2xl:gap-10 flex-grow">
                 {sideNews.map((news) => (
-                  <div key={news.id} onClick={() => onNewsClick(news)} className="group cursor-pointer bg-white md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none border md:border-b border-gray-100 md:border-gray-200 md:pb-[clamp(1rem,2vw,1.5rem)] last:border-0 min-w-[240px] md:min-w-0 snap-center shrink-0 text-right shadow-sm md:shadow-none">
-                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[clamp(0.6rem,0.9vw,0.7rem)] mb-[clamp(0.25rem,0.5vw,0.35rem)]">
-                      <Clock className="w-3 h-3" />
+                  <div 
+                    key={news.id} 
+                    onClick={() => onNewsClick(news)} 
+                    className="group cursor-pointer bg-white md:bg-transparent p-5 md:p-0 rounded-2xl md:rounded-none border border-gray-100 md:border-b md:border-x-0 md:border-t-0 md:border-gray-200 md:pb-6 lg:pb-5 xl:pb-8 2xl:pb-10 last:border-0 text-right shadow-sm md:shadow-none flex flex-col justify-center transition-all hover:shadow-md md:hover:shadow-none"
+                  >
+                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[11px] md:text-[12px] lg:text-[11px] xl:text-[13px] 2xl:text-base mb-2 2xl:mb-3">
+                      <Clock className="w-3.5 h-3.5 lg:w-3 lg:h-3 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5" />
                       {news.date}
                     </span>
-                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-[1.4] line-clamp-2 text-[clamp(0.85rem,1.2vw,1.125rem)]">
+                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-relaxed line-clamp-2 text-[14px] sm:text-[15px] md:text-lg lg:text-[14px] xl:text-[1.1rem] 2xl:text-2xl">
                       {news.title}
                     </h4>
                   </div>

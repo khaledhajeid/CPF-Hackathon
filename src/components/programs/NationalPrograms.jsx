@@ -19,7 +19,6 @@ const nationalProgramsData = [
 
 export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
   const [activeProgramFilter, setActiveProgramFilter] = useState('الكل');
-  // 🟢 State لقلب الكرت على الموبايل
   const [flippedCardId, setFlippedCardId] = useState(null);
   
   const categories = ['الكل', 'تعلّم', 'قُد', 'اصنع الأثر'];
@@ -28,36 +27,31 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
     ? nationalProgramsData 
     : nationalProgramsData.filter(p => p.pathway === activeProgramFilter);
 
-  // 🟢 توجيه داخلي للصفحة التفصيلية
   const handleProgramClick = (programName) => {
     setActiveProgramName(programName);
     onNavigate('program_details');
     window.scrollTo(0, 0);
   };
 
-  // 🟢 التعامل مع الكرت حسب نوع الشاشة
   const handleCardInteraction = (program) => {
     if (window.innerWidth < 1024) {
-      // عالموبايل والتابلت: اقلب الكرت
       setFlippedCardId(flippedCardId === program.id ? null : program.id);
     } else {
-      // عالديسكتوب: الـ Hover شغال، فلما يكبس وديه للتفاصيل فوراً
       handleProgramClick(program.title);
     }
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} dir="rtl">
       
-      {/* 🟢 الفلاتر */}
-      <div className="flex flex-wrap gap-2 md:gap-3 w-full mb-8 md:mb-12 justify-start lg:justify-center overflow-x-auto pb-2 scrollbar-hide">
+      <div className="flex flex-wrap gap-[clamp(0.5rem,1vw,0.75rem)] w-full mb-[clamp(1.5rem,3vw,3rem)] justify-start lg:justify-center overflow-x-auto pb-2 scrollbar-hide">
         {categories.map(category => {
           const isActive = activeProgramFilter === category;
           return (
             <button
               key={category} 
               onClick={() => setActiveProgramFilter(category)}
-              className={`px-5 md:px-8 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-sm transition-all duration-300 whitespace-nowrap border-2 cursor-pointer shrink-0
+              className={`px-[clamp(1.25rem,2vw,2rem)] py-[clamp(0.6rem,1vw,0.75rem)] rounded-full font-bold text-[clamp(0.75rem,1.2vw,0.875rem)] transition-all duration-300 whitespace-nowrap border-2 cursor-pointer shrink-0
                 ${isActive 
                   ? 'bg-[#8a1538] text-white border-[#8a1538] shadow-xl shadow-[#8a1538]/20 scale-105' 
                   : 'bg-white text-gray-500 border-gray-100 hover:border-[#C08F2D] hover:text-[#8a1538]'
@@ -69,7 +63,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
         })}
       </div>
 
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,2.5rem)]">
         <AnimatePresence>
           {filteredPrograms.map((program, index) => {
             const PathwayIcon = program.icon;
@@ -82,63 +76,67 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 key={program.id} 
                 onClick={() => handleCardInteraction(program)}
-                className="group [perspective:1500px] h-[380px] md:h-[420px] w-full cursor-pointer"
+                // 🟢 تصغير ارتفاع الكرت على الموبايل من 320px إلى 280px
+                className="group [perspective:1500px] h-[clamp(280px,40vh,420px)] w-full cursor-pointer"
               >
                 <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-lg hover:shadow-2xl`}>
                   
                   {/* الوجه الأمامي */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-3xl overflow-hidden border border-gray-200 bg-gray-50">
+                  <div className="absolute inset-0 [backface-visibility:hidden] rounded-[clamp(1.25rem,2vw,1.5rem)] overflow-hidden border border-gray-200 bg-gray-50">
                     <img 
                       src={program.image} alt={program.title} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 lg:group-hover:scale-110" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/95 via-[#1a070b]/40 to-transparent"></div>
                     
-                    {/* 🟢 أيقونة اضغط للتفاصيل (موبايل فقط) */}
                     <div className="absolute top-4 left-4 lg:hidden bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 animate-pulse">
                       <RefreshCcw className="w-3.5 h-3.5 text-white" />
-                      <span className="text-[10px] text-white font-bold">اضغط للتفاصيل</span>
+                      <span className="text-[9px] text-white font-bold">اضغط للتفاصيل</span>
                     </div>
 
-                    <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                      <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-3 mb-4 md:mb-6 border border-white/20 shadow-xl">
-                        <PathwayIcon className="w-8 h-8 text-white drop-shadow-md" />
+                    {/* 🟢 تصغير البادينغ الداخلي ليناسب الحجم الجديد */}
+                    <div className="absolute inset-0 p-[clamp(1rem,2.5vw,2rem)] flex flex-col justify-end">
+                      <div className="w-[clamp(3rem,4.5vw,4rem)] h-[clamp(3rem,4.5vw,4rem)] bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-[clamp(0.5rem,1vw,0.75rem)] mb-[clamp(0.75rem,2vw,1.5rem)] border border-white/20 shadow-xl">
+                        <PathwayIcon className="w-[clamp(1.25rem,2.5vw,2rem)] h-[clamp(1.25rem,2.5vw,2rem)] text-white drop-shadow-md" />
                       </div>
-                      <span className="text-[#C08F2D] font-black text-xs md:text-sm mb-1 md:mb-2 drop-shadow-md">
+                      <span className="text-[#C08F2D] font-black text-[clamp(0.65rem,1vw,0.875rem)] mb-[clamp(0.2rem,0.5vw,0.5rem)] drop-shadow-md">
                         {program.pathway}
                       </span>
-                      <h3 className="font-black text-white text-2xl md:text-3xl leading-tight drop-shadow-lg">
+                      {/* 🟢 تصغير خط العنوان الرئيسي */}
+                      <h3 className="font-black text-white text-[clamp(1.15rem,2.5vw,1.875rem)] leading-tight drop-shadow-lg">
                         {program.title}
                       </h3>
                     </div>
                   </div>
 
                   {/* الوجه الخلفي */}
-                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#3b1019] rounded-3xl p-6 md:p-8 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
+                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#3b1019] rounded-[clamp(1.25rem,2vw,1.5rem)] p-[clamp(1rem,2.5vw,2rem)] flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
                     
-                    <div className="flex justify-between items-start mb-4 md:mb-6">
-                      <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
-                         <PathwayIcon className="w-5 h-5 md:w-6 md:h-6 text-white opacity-80" />
+                    <div className="flex justify-between items-start mb-[clamp(0.75rem,2vw,1.5rem)]">
+                      <div className="w-[clamp(2.25rem,3.5vw,3.5rem)] h-[clamp(2.25rem,3.5vw,3.5rem)] bg-white/5 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
+                         <PathwayIcon className="w-[clamp(1rem,1.5vw,1.5rem)] h-[clamp(1rem,1.5vw,1.5rem)] text-white opacity-80" />
                       </div>
-                      <span className="px-3 md:px-4 py-1.5 bg-white/10 text-white border border-white/20 rounded-full text-[10px] md:text-xs font-bold backdrop-blur-sm">
+                      <span className="px-[clamp(0.6rem,1.2vw,1rem)] py-[clamp(0.2rem,0.5vw,0.375rem)] bg-white/10 text-white border border-white/20 rounded-full text-[clamp(0.55rem,0.8vw,0.75rem)] font-bold backdrop-blur-sm">
                         {program.pathway}
                       </span>
                     </div>
 
                     <div className="flex-grow">
-                      <h3 className="font-black text-[#C08F2D] text-xl md:text-2xl mb-2 md:mb-4">{program.title}</h3>
-                      <p className="text-white/90 text-sm md:text-base font-medium leading-relaxed line-clamp-5 md:line-clamp-none">
+                      {/* 🟢 تصغير خط العنوان في الوجه الخلفي */}
+                      <h3 className="font-black text-[#C08F2D] text-[clamp(1rem,1.8vw,1.5rem)] mb-[clamp(0.35rem,1vw,1rem)]">{program.title}</h3>
+                      {/* 🟢 تصغير خط الوصف ليناسب مساحة الموبايل */}
+                      <p className="text-white/90 text-[clamp(0.75rem,1.1vw,1rem)] font-medium leading-relaxed line-clamp-5 lg:line-clamp-4 2xl:line-clamp-none">
                         {program.description}
                       </p>
                     </div>
 
-                    {/* 🟢 زر التوجيه للتفاصيل الداخلية */}
                     <button 
                       onClick={(e) => { e.stopPropagation(); handleProgramClick(program.title); }}
-                      className="flex items-center justify-between group/btn w-full px-5 md:px-6 py-3.5 md:py-4 bg-[#C08F2D] hover:bg-[#a67b25] transition-colors rounded-xl mt-4 md:mt-6 cursor-pointer relative z-20"
+                      className="flex items-center justify-between group/btn w-full px-[clamp(0.85rem,1.5vw,1.5rem)] py-[clamp(0.65rem,1vw,1rem)] bg-[#C08F2D] hover:bg-[#a67b25] transition-colors rounded-xl mt-[clamp(0.75rem,1.5vw,1.5rem)] cursor-pointer relative z-20"
                     >
-                      <span className="text-white font-black text-sm md:text-lg">التفاصيل والتقديم</span>
-                      <ArrowUpLeft className="w-5 h-5 md:w-6 md:h-6 text-white transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
+                      {/* 🟢 تصغير خط الزر */}
+                      <span className="text-white font-black text-[clamp(0.75rem,1.1vw,1.125rem)]">التفاصيل والتقديم</span>
+                      <ArrowUpLeft className="w-[clamp(0.85rem,1.25vw,1.25rem)] h-[clamp(0.85rem,1.25vw,1.25rem)] text-white transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
                     </button>
 
                   </div>

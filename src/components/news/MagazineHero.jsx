@@ -23,16 +23,15 @@ export default function MagazineHero({ onNewsClick }) {
   }, [currentSlide]);
 
   return (
-    // 🟢 الموبايل: بدون padding يمين/يسار، الكمبيوتر: padding طبيعي
-    <div className="pt-20 md:pt-32 pb-8 md:pb-16 bg-[#fcfcfc] border-b border-gray-100">
-      <div className="max-w-[1450px] mx-auto px-0 md:px-8">
-        <div className="flex flex-col lg:flex-row gap-0 md:gap-8 h-auto lg:h-[600px]">
+    <div className="pt-[clamp(5rem,12vh,8rem)] pb-[clamp(2rem,6vh,4rem)] bg-[#fcfcfc] border-b border-gray-100" dir="rtl">
+      {/* 🟢 تطبيق الحاوية المرنة */}
+      <div className="max-w-[1450px] xl:max-w-[1150px] 2xl:max-w-[1450px] mx-auto px-0 md:px-[clamp(1rem,4vw,2rem)]">
+        <div className="flex flex-col lg:flex-row gap-[clamp(1rem,2vw,2rem)] h-auto lg:h-[clamp(400px,55vh,600px)]">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             onClick={() => onNewsClick(mainNews)}
-            // 🟢 الموبايل: حواف حادة (Edge-to-edge)، الكمبيوتر: حواف دائرية
-            className="lg:w-2/3 relative rounded-none md:rounded-3xl overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[400px] md:h-[450px] lg:h-full"
+            className="lg:w-[65%] relative rounded-none md:rounded-[clamp(1rem,3vw,2rem)] overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[clamp(350px,50vh,450px)] lg:h-full"
           >
             <AnimatePresence mode="wait">
               <motion.div key={mainNews.id} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} className="absolute inset-0">
@@ -43,65 +42,62 @@ export default function MagazineHero({ onNewsClick }) {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/90 via-[#1a0409]/40 to-transparent" />
                 
-                {/* 🟢 تعديل التموضع ليتناسب مع الموبايل */}
-                <div className="absolute inset-0 p-5 md:p-12 flex flex-col justify-end text-right z-10 pb-10 md:pb-12">
-                  <span className="bg-[#8a1538] text-white font-bold text-[10px] md:text-xs px-3 py-1 md:px-4 md:py-1.5 rounded-md w-fit mb-3">
+                <div className="absolute inset-0 p-[clamp(1.25rem,4vw,3rem)] flex flex-col justify-end text-right z-10 pb-[clamp(2.5rem,6vw,3rem)]">
+                  <span className="bg-[#8a1538] text-white font-bold text-[clamp(0.6rem,0.9vw,0.75rem)] px-[clamp(0.5rem,1.5vw,1rem)] py-[clamp(0.2rem,0.5vw,0.35rem)] rounded-md w-fit mb-[clamp(0.5rem,1.5vw,1rem)]">
                     {mainNews.category}
                   </span>
-                  <h2 className="text-2xl md:text-4xl lg:text-3xl font-black text-white leading-tight mb-2 md:mb-4 drop-shadow-md">
+                  <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-black text-white leading-tight mb-[clamp(0.5rem,1.5vw,1rem)] drop-shadow-md">
                     {mainNews.title}
                   </h2>
-                  <p className="text-white/80 font-medium text-xs md:text-base line-clamp-2 max-w-2xl mb-4">
+                  <p className="text-white/80 font-medium text-[clamp(0.75rem,1.1vw,1rem)] line-clamp-2 max-w-2xl mb-[clamp(0.75rem,2vw,1rem)]">
                     {mainNews.desc}
                   </p>
-                  <div className="flex items-center gap-1.5 text-[#C08F2D] font-bold text-xs md:text-sm">
-                    {mainNews.type === 'video' && <Play className="w-3 h-3 md:w-4 md:h-4" />}
+                  <div className="flex items-center gap-[clamp(0.25rem,0.8vw,0.5rem)] text-[#C08F2D] font-bold text-[clamp(0.65rem,1vw,0.875rem)]">
+                    {mainNews.type === 'video' && <Play className="w-[clamp(0.75rem,1.2vw,1rem)] h-[clamp(0.75rem,1.2vw,1rem)]" />}
                     <span>اقرأ التفاصيل</span>
-                    <ArrowUpLeft className="w-3 h-3 md:w-4 md:h-4" />
+                    <ArrowUpLeft className="w-[clamp(0.75rem,1.2vw,1rem)] h-[clamp(0.75rem,1.2vw,1rem)]" />
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
             {/* الأزرار والمؤشرات */}
-            <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-1.5 md:p-2 rounded-full backdrop-blur-md">
-              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
+            <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute left-[clamp(0.5rem,1.5vw,1rem)] top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-[clamp(0.35rem,1vw,0.5rem)] rounded-full backdrop-blur-md">
+              <ChevronLeft className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)]" />
             </button>
-            <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-1.5 md:p-2 rounded-full backdrop-blur-md">
-              <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+            <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute right-[clamp(0.5rem,1.5vw,1rem)] top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-[clamp(0.35rem,1vw,0.5rem)] rounded-full backdrop-blur-md">
+              <ChevronRight className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)]" />
             </button>
 
-            <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+            <div className="absolute bottom-[clamp(0.75rem,2vw,1.5rem)] left-1/2 -translate-x-1/2 flex gap-[clamp(0.25rem,0.5vw,0.35rem)] z-20">
               {heroSliderNews.map((_, index) => (
-                <button key={index} onClick={(e) => { e.stopPropagation(); setCurrentSlide(index); }} className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-5 md:w-8 bg-white' : 'w-1.5 md:w-2 bg-white/50'}`} />
+                <button key={index} onClick={(e) => { e.stopPropagation(); setCurrentSlide(index); }} className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-[clamp(1.25rem,2vw,2rem)] bg-white' : 'w-1.5 md:w-2 bg-white/50'}`} />
               ))}
             </div>
           </motion.div>
 
-          {/* 🟢 الموبايل: سحب أفقي للأخبار الجانبية بدل القائمة العمودية المزعجة */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-1/3 mt-6 md:mt-0 px-4 md:px-0">
-            <div className="bg-gray-50 rounded-2xl md:rounded-3xl p-5 md:p-8 h-full border border-gray-100 flex flex-col">
-              <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8">
-                <div className="w-1.5 h-5 md:w-2 md:h-8 bg-[#C08F2D] rounded-full" />
-                <h3 className="text-lg md:text-2xl font-black text-[#1a1c1d]">أبرز التحديثات</h3>
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-[35%] mt-6 md:mt-0 px-4 md:px-0">
+            <div className="bg-gray-50 rounded-[clamp(1rem,3vw,2rem)] p-[clamp(1.25rem,3vw,2rem)] h-full border border-gray-100 flex flex-col">
+              <div className="flex items-center gap-[clamp(0.35rem,1vw,0.75rem)] mb-[clamp(1rem,3vw,2rem)]">
+                <div className="w-1.5 md:w-2 h-[clamp(1.25rem,2.5vw,2rem)] bg-[#C08F2D] rounded-full" />
+                <h3 className="text-[clamp(1.1rem,1.8vw,1.5rem)] font-black text-[#1a1c1d]">أبرز التحديثات</h3>
               </div>
 
-              {/* 🟢 Swiper للموبايل / Grid للكمبيوتر */}
-              <div className="flex overflow-x-auto md:flex-col snap-x snap-mandatory gap-3 md:gap-6 flex-grow pb-4 md:pb-0 scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0">
+              <div className="flex overflow-x-auto md:flex-col snap-x snap-mandatory gap-[clamp(0.75rem,2vw,1.5rem)] flex-grow pb-4 md:pb-0 scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0">
                 {sideNews.map((news) => (
-                  <div key={news.id} onClick={() => onNewsClick(news)} className="group cursor-pointer bg-white md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none border md:border-b border-gray-100 md:border-gray-200 md:pb-6 last:border-0 min-w-[240px] md:min-w-0 snap-center shrink-0 text-right shadow-sm md:shadow-none">
-                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[10px] md:text-[11px] mb-1.5">
+                  <div key={news.id} onClick={() => onNewsClick(news)} className="group cursor-pointer bg-white md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none border md:border-b border-gray-100 md:border-gray-200 md:pb-[clamp(1rem,2vw,1.5rem)] last:border-0 min-w-[240px] md:min-w-0 snap-center shrink-0 text-right shadow-sm md:shadow-none">
+                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[clamp(0.6rem,0.9vw,0.7rem)] mb-[clamp(0.25rem,0.5vw,0.35rem)]">
                       <Clock className="w-3 h-3" />
                       {news.date}
                     </span>
-                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-snug line-clamp-2 text-[13px] md:text-lg">
+                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-[1.4] line-clamp-2 text-[clamp(0.85rem,1.2vw,1.125rem)]">
                       {news.title}
                     </h4>
                   </div>
                 ))}
               </div>
 
-              <button className="w-full mt-2 md:mt-6 py-3 rounded-xl bg-white border border-gray-200 text-[#1a1c1d] font-bold text-xs md:text-sm hover:border-[#8a1538] transition-colors">
+              <button className="w-full mt-[clamp(0.5rem,2vw,1.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-xl bg-white border border-gray-200 text-[#1a1c1d] font-bold text-[clamp(0.75rem,1vw,0.875rem)] hover:border-[#8a1538] transition-colors">
                 عرض النشرة الإخبارية
               </button>
             </div>

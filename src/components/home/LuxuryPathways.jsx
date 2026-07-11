@@ -48,22 +48,22 @@ export default function LuxuryPathways({ onPathwaySelect }) {
   ];
 
   return (
-    <div id="strategic-pathways" className="py-16 md:py-24 bg-white relative overflow-hidden w-full font-sans scroll-mt-20" dir="rtl">
+    <div id="strategic-pathways" className="py-16 md:py-20 lg:py-20 xl:py-24 bg-white relative overflow-hidden w-full font-sans scroll-mt-20" dir="rtl">
       
-      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 md:mb-16 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12 text-right mb-8 md:mb-12 xl:mb-16 relative z-10">
         <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-          <img src="/arrow-yellow.svg" className="w-5 h-5 md:w-8 md:h-8 shrink-0" alt="" />
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#8a1538] tracking-tight">
+          <img src="/arrow-yellow.svg" className="w-5 h-5 md:w-6 md:h-6 xl:w-8 xl:h-8 shrink-0" alt="" />
+          <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-[clamp(1.875rem,3.5vw,3rem)] font-black text-[#8a1538] tracking-tight">
             طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
           </h2>
         </div>
-        <p className="mt-2 md:mt-4 text-gray-500 font-medium max-w-2xl text-sm md:text-lg leading-relaxed">
+        <p className="mt-2 md:mt-4 text-gray-500 font-medium max-w-2xl text-sm md:text-base xl:text-lg leading-relaxed">
           لا تبحث عن المسميات، ابحث عن شغفك. اختر الهدف الذي تسعى إليه وسنقوم بتوجيهك للبرامج المناسبة.
         </p>
       </div>
 
       {/* 🟢 التعديل السحري: على الموبايل (flex-row overflow-x-auto snap-x) للسحب، وعلى الديسكتوب بظل زي ما هو */}
-      <div className="flex flex-row lg:flex-row gap-4 md:gap-6 h-[450px] md:h-[500px] lg:h-[600px] w-full px-4 lg:px-8 mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 lg:pb-0">
+      <div className="flex flex-row lg:flex-row gap-4 md:gap-5 xl:gap-6 h-[450px] md:h-[500px] lg:h-[480px] xl:h-[550px] 2xl:h-[600px] w-full px-4 lg:px-6 xl:px-8 mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 lg:pb-0">
         {pathways.map((path, index) => {
           const isActive = isTouchDevice ? true : activeCard === index; // عالموبايل كل الكروت بتكون "مفتوحة" ومقروءة عشان السحب
           const Icon = path.icon;
@@ -87,25 +87,25 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               <div className={`absolute inset-0 bg-gradient-to-t ${path.openGradient} transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
 
               {/* هذا القسم بيختفي لما الكرت يفتح */}
-              <div className={`absolute inset-0 p-6 lg:p-8 flex flex-col transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                <div className="hidden lg:block absolute top-8 right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
+              <div className={`absolute inset-0 p-6 lg:p-6 xl:p-8 flex flex-col transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <div className="hidden lg:block absolute top-6 xl:top-8 right-6 xl:right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
                    {`المسار ${path.number}`}
                 </div>
                 <div className="flex flex-col items-center justify-center my-auto lg:mt-auto gap-4">
-                  <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center border border-white/40 shrink-0">
-                    <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                  <div className="w-16 h-16 lg:w-14 lg:h-14 xl:w-16 xl:h-16 rounded-full bg-transparent flex items-center justify-center border border-white/40 shrink-0">
+                    <Icon className="w-8 h-8 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-white" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-black text-[#C08F2D] text-2xl tracking-wide drop-shadow-md">{path.shortName}</h3>
                 </div>
               </div>
 
               {/* محتوى الكرت المفتوح */}
-              <div className={`absolute bottom-0 right-0 p-5 md:p-8 lg:p-12 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[600px] ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <div className="hidden lg:flex items-center gap-4 relative z-10 mb-8 pt-4">
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
-                    <Icon className="w-8 h-8 text-[#C08F2D]" />
+              <div className={`absolute bottom-0 right-0 p-5 md:p-8 lg:p-8 xl:p-12 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[480px] xl:w-[560px] 2xl:w-[600px] ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <div className="hidden lg:flex items-center gap-3 xl:gap-4 relative z-10 mb-6 xl:mb-8 pt-4">
+                  <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
+                    <Icon className="w-7 h-7 xl:w-8 xl:h-8 text-[#C08F2D]" />
                   </div>
-                  <div className="px-5 py-2 bg-[#C08F2D] rounded-lg text-[13px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
+                  <div className="px-4 xl:px-5 py-2 bg-[#C08F2D] rounded-lg text-[12px] xl:text-[13px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
                 </div>
 
                 <div className="w-full relative z-10 mt-auto lg:pt-4 text-right">
@@ -114,10 +114,10 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                      <Icon className="w-5 h-5 text-[#C08F2D]" />
                   </div>
 
-                  <h3 className="font-black text-white text-xl md:text-3xl lg:text-4xl leading-tight mb-2 lg:mb-4 drop-shadow-lg">{path.goal}</h3>
-                  <p className="text-white/90 font-medium text-xs md:text-sm lg:text-base leading-relaxed mb-4 lg:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
+                  <h3 className="font-black text-white text-xl md:text-3xl lg:text-[clamp(1.5rem,2.5vw,2.25rem)] leading-tight mb-2 lg:mb-3 xl:mb-4 drop-shadow-lg">{path.goal}</h3>
+                  <p className="text-white/90 font-medium text-xs md:text-sm lg:text-sm xl:text-base leading-relaxed mb-4 lg:mb-6 xl:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
                   
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-8 w-full">
+                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-5 lg:mb-6 xl:mb-8 w-full">
                     {path.brands.map(brand => (
                       <span key={brand} className="text-[9px] md:text-[11px] lg:text-[12px] font-black text-white bg-[#C08F2D]/20 px-2 md:px-3 py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>
                     ))}

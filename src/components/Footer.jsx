@@ -40,64 +40,64 @@ export default function Footer({ onNavigate }) {
   };
 
   return (
-    // 🟢 تدرج مساحات الفوتر بشكل مريح
-    <footer className="bg-[#3b1019] text-gray-200 pt-12 lg:pt-16 xl:pt-20 2xl:pt-28 pb-6 lg:pb-8 xl:pb-10 2xl:pb-14 relative overflow-hidden font-sans border-t-[6px] border-[#C08F2D]" dir="rtl">
+    // 🟢 تقليل الـ Padding العمودي بشكل كبير ليصبح أنيقاً
+    <footer className="bg-[#3b1019] text-gray-200 pt-12 md:pt-14 lg:pt-16 pb-6 lg:pb-8 relative overflow-hidden font-sans border-t-[4px] border-[#C08F2D]" dir="rtl">
       
       <div className="absolute inset-0 bg-gradient-to-t from-[#8a1538]/20 to-transparent pointer-events-none z-0" />
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay z-0"
         style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px', backgroundRepeat: 'repeat' }}
       />
 
-      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      <div className="max-w-[1400px] xl:max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
-        {/* قسم النشرة الإخبارية */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 pb-10 lg:pb-12 xl:pb-16 2xl:pb-20 mb-10 lg:mb-12 xl:mb-16 2xl:mb-20 border-b border-white/10">
-          <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-6 xl:pe-10">
-            <h3 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl font-black text-white mb-2 lg:mb-3 2xl:mb-5 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
-            <p className="text-gray-300 text-sm lg:text-[13px] xl:text-base 2xl:text-2xl font-medium leading-relaxed px-4 lg:px-0">
+        {/* 🟢 قسم النشرة الإخبارية: مساحات أضيق وأحجام خطوط منطقية */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 pb-8 md:pb-10 lg:pb-12 mb-8 md:mb-10 lg:mb-12 border-b border-white/10">
+          <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-6">
+            <h3 className="text-xl md:text-2xl lg:text-[1.35rem] xl:text-2xl font-black text-white mb-2 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
+            <p className="text-gray-300 text-sm md:text-base lg:text-[13px] xl:text-sm font-medium leading-relaxed">
               كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
             </p>
           </div>
-          <div className="w-full lg:w-1/2 flex items-center h-12 lg:h-12 xl:h-14 2xl:h-20 mt-2 lg:mt-0">
+          <div className="w-full lg:w-1/2 flex items-center h-12 md:h-14 lg:h-12 xl:h-14 mt-2 lg:mt-0">
             <input 
               type="email" 
               placeholder="البريد الإلكتروني..." 
-              className="w-full h-full bg-[#300d14] border border-white/10 text-white px-4 xl:px-5 2xl:px-8 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-sm lg:text-[13px] xl:text-base 2xl:text-2xl placeholder:font-medium placeholder:text-gray-500"
+              className="w-full h-full bg-[#300d14] border border-white/10 text-white px-4 xl:px-5 rounded-r-xl focus:outline-none focus:border-[#C08F2D] transition-colors font-bold text-sm lg:text-[13px] xl:text-sm placeholder:font-medium placeholder:text-gray-500"
             />
-            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#ffffff] font-black px-5 lg:px-6 xl:px-8 2xl:px-12 rounded-l-xl transition-colors whitespace-nowrap text-sm lg:text-[13px] xl:text-base 2xl:text-2xl shadow-md cursor-pointer">
+            <button className="h-full bg-[#C08F2D] hover:bg-[#a67b25] text-[#ffffff] font-black px-6 md:px-8 lg:px-6 xl:px-8 rounded-l-xl transition-colors whitespace-nowrap text-sm lg:text-[13px] xl:text-sm shadow-md cursor-pointer">
               اشترك الآن
             </button>
           </div>
         </div>
 
-        {/* الشبكة الرئيسية: تدرج الـ gap عشان ما تنضغط الأعمدة على الـ 13 إنش */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 xl:gap-12 2xl:gap-20 pb-10 lg:pb-12 xl:pb-16 2xl:pb-20 border-b border-white/10">
+        {/* 🟢 الشبكة الرئيسية: أحجام نصوص ثابتة ومناسبة */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-6 xl:gap-10 pb-8 md:pb-10 lg:pb-12 border-b border-white/10">
           
-          <div className="space-y-5 lg:space-y-5 xl:space-y-6 2xl:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-right">
+          <div className="space-y-4 lg:space-y-5 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
-              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 lg:h-16 xl:h-20 2xl:h-32 max-w-[280px] 2xl:max-w-md object-contain drop-shadow-lg" />
+              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-14 md:h-16 lg:h-14 xl:h-16 max-w-[240px] object-contain drop-shadow-lg" />
             </div>
-            <p className="text-sm lg:text-[12px] xl:text-[14px] 2xl:text-xl leading-relaxed text-gray-200 font-medium lg:pe-2 xl:pe-4 px-2 lg:px-0 text-center lg:text-justify">
+            <p className="text-sm md:text-sm lg:text-[12px] xl:text-[13px] leading-relaxed text-gray-200 font-medium text-center lg:text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
             </p>
-            <div className="flex items-center justify-center lg:justify-start gap-2 xl:gap-3 2xl:gap-5 pt-2">
+            <div className="flex items-center justify-center lg:justify-start gap-2.5 pt-1">
               {socialLinks.map((social, idx) => {
                 const Icon = social.icon;
                 return (
                   <a 
                     key={idx} href={social.href} aria-label={social.name}
-                    className="w-10 h-10 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-16 2xl:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D]/30 transition-all duration-300"
+                    className="w-9 h-9 md:w-10 md:h-10 lg:w-8 lg:h-8 xl:w-9 xl:h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D]/30 transition-all duration-300"
                   >
-                    <Icon className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-7 2xl:h-7" />
+                    <Icon className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4" />
                   </a>
                 );
               })}
             </div>
           </div>
 
-          <div className="text-center md:text-right lg:pe-6 xl:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg lg:text-base xl:text-xl 2xl:text-3xl mb-5 lg:mb-4 xl:mb-6 2xl:mb-8">روابط سريعة</h4>
-            <ul className="space-y-3 lg:space-y-3 xl:space-y-4 2xl:space-y-6 text-[13px] lg:text-[12px] xl:text-[15px] 2xl:text-xl font-bold text-gray-200 flex flex-col items-center md:items-start">
+          <div className="text-center md:text-right lg:pe-4 xl:pe-8 border-t border-white/5 md:border-t-0 pt-6 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl lg:text-[15px] xl:text-lg mb-4 md:mb-5">روابط سريعة</h4>
+            <ul className="space-y-3 lg:space-y-2.5 xl:space-y-3 text-[13px] md:text-sm lg:text-[12px] xl:text-[13px] font-bold text-gray-200 flex flex-col items-center md:items-start">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
                   <button 
@@ -111,9 +111,9 @@ export default function Footer({ onNavigate }) {
             </ul>
           </div>
 
-          <div className="text-center md:text-right lg:pe-6 xl:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg lg:text-base xl:text-xl 2xl:text-3xl mb-5 lg:mb-4 xl:mb-6 2xl:mb-8">أبرز المبادرات</h4>
-            <ul className="space-y-3 lg:space-y-3 xl:space-y-4 2xl:space-y-6 text-[13px] lg:text-[12px] xl:text-[15px] 2xl:text-xl font-bold text-gray-200 flex flex-col items-center md:items-start">
+          <div className="text-center md:text-right lg:pe-4 xl:pe-8 border-t border-white/5 md:border-t-0 pt-6 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl lg:text-[15px] xl:text-lg mb-4 md:mb-5">أبرز المبادرات</h4>
+            <ul className="space-y-3 lg:space-y-2.5 xl:space-y-3 text-[13px] md:text-sm lg:text-[12px] xl:text-[13px] font-bold text-gray-200 flex flex-col items-center md:items-start">
               {initiatives.map((item, idx) => (
                 <li key={idx}>
                   <button 
@@ -127,19 +127,19 @@ export default function Footer({ onNavigate }) {
             </ul>
           </div>
 
-          <div className="text-center md:text-right lg:pe-2 xl:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg lg:text-base xl:text-xl 2xl:text-3xl mb-5 lg:mb-4 xl:mb-6 2xl:mb-8">معلومات الاتصال</h4>
-            <ul className="space-y-4 lg:space-y-4 xl:space-y-6 2xl:space-y-8 text-[13px] lg:text-[12px] xl:text-[15px] 2xl:text-xl font-bold text-gray-200 flex flex-col items-center md:items-start">
-              <li className="flex items-start justify-center md:justify-start gap-3 lg:gap-2 xl:gap-4">
-                <MapPin className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-5 xl:h-5 2xl:w-8 2xl:h-8 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />
+          <div className="text-center md:text-right lg:pe-2 border-t border-white/5 md:border-t-0 pt-6 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl lg:text-[15px] xl:text-lg mb-4 md:mb-5">معلومات الاتصال</h4>
+            <ul className="space-y-3 lg:space-y-3 xl:space-y-4 text-[13px] md:text-sm lg:text-[12px] xl:text-[13px] font-bold text-gray-200 flex flex-col items-center md:items-start">
+              <li className="flex items-start justify-center md:justify-start gap-2.5">
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 text-[#C08F2D] shrink-0 mt-0.5" strokeWidth={2} />
                 <span className="leading-relaxed font-medium">عمان، دابوق – شارع محمد السعد البطاينة</span>
               </li>
-              <li className="flex items-center justify-center md:justify-start gap-3 lg:gap-2 xl:gap-4">
-                <Phone className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-5 xl:h-5 2xl:w-8 2xl:h-8 text-[#C08F2D] shrink-0" strokeWidth={2} />
-                <span className="font-sans font-black tracking-wider text-white pt-1" dir="ltr">+962 6 555 5555</span>
+              <li className="flex items-center justify-center md:justify-start gap-2.5">
+                <Phone className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 text-[#C08F2D] shrink-0" strokeWidth={2} />
+                <span className="font-sans font-black tracking-wider text-white pt-0.5" dir="ltr">+962 6 555 5555</span>
               </li>
-              <li className="flex items-center justify-center md:justify-start gap-3 lg:gap-2 xl:gap-4">
-                <Mail className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-5 xl:h-5 2xl:w-8 2xl:h-8 text-[#C08F2D] shrink-0" strokeWidth={2} />
+              <li className="flex items-center justify-center md:justify-start gap-2.5">
+                <Mail className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 text-[#C08F2D] shrink-0" strokeWidth={2} />
                 <a href="mailto:info@cpf.jo" className="hover:text-white transition-colors font-sans text-gray-200 font-bold" dir="ltr">info@cpf.jo</a>
               </li>
             </ul>
@@ -147,18 +147,18 @@ export default function Footer({ onNavigate }) {
 
         </div>
 
-        {/* القسم السفلي */}
-        <div className="pt-6 lg:pt-6 xl:pt-8 2xl:pt-12 flex flex-col md:flex-row-reverse items-center justify-between gap-5 md:gap-6 text-[11px] lg:text-[11px] xl:text-[13px] 2xl:text-xl font-bold text-gray-500">
+        {/* 🟢 القسم السفلي: أحجام نص صغيرة ورسمية */}
+        <div className="pt-6 md:pt-8 flex flex-col md:flex-row-reverse items-center justify-between gap-4 md:gap-6 text-[11px] md:text-xs lg:text-[11px] xl:text-[12px] font-bold text-gray-500">
           
           <button 
             onClick={scrollToTop}
-            className="flex items-center justify-center w-full md:w-auto gap-2 text-gray-300 hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-3 lg:px-4 lg:py-2 xl:px-5 xl:py-2.5 2xl:px-8 2xl:py-4 rounded-xl md:rounded-full transition-all border border-white/10 shadow-lg group cursor-pointer"
+            className="flex items-center justify-center w-full md:w-auto gap-2 text-gray-300 hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-2.5 lg:px-4 lg:py-2 xl:px-5 xl:py-2.5 rounded-xl md:rounded-full transition-all border border-white/10 shadow-sm group cursor-pointer"
           >
             <span>أعلى الصفحة</span>
-            <ArrowUpLeft className="w-4 h-4 2xl:w-6 2xl:h-6 transform rotate-45 transition-transform duration-300 group-hover:-translate-y-1" />
+            <ArrowUpLeft className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 transform rotate-45 transition-transform duration-300 group-hover:-translate-y-1" />
           </button>
 
-          <div className="flex items-center gap-4 xl:gap-6 2xl:gap-10">
+          <div className="flex items-center gap-4 md:gap-6">
             <a href="#" className="hover:text-white transition-colors">شروط الاستخدام</a>
             <a href="#" className="hover:text-white transition-colors">سياسة الخصوصية</a>
           </div>

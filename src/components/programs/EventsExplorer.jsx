@@ -24,10 +24,11 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
     <div className="relative w-full sm:w-auto flex-grow" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between bg-white border border-gray-200 text-gray-700 font-bold text-sm py-3.5 px-4 rounded-xl hover:border-gray-300 focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all cursor-pointer"
+        // 🟢 تصغير البادينج الداخلي للقائمة المنسدلة للـ lg عشان توسع الفلاتر كلها
+        className="w-full flex items-center justify-between bg-white border border-gray-200 text-gray-700 font-bold text-sm lg:text-[12px] xl:text-sm py-3.5 px-4 lg:py-2.5 lg:px-3 xl:py-3.5 xl:px-4 rounded-xl hover:border-gray-300 focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all cursor-pointer"
       >
         <span className="truncate ml-2">{value === 'الكل' ? placeholder : value}</span>
-        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 text-gray-400 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       
       <AnimatePresence>
@@ -94,7 +95,6 @@ export default function EventsExplorer({ handleRegisterClick }) {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
       
-      {/* 🟢 إضافة العنوان بالهوية البصرية كما طلبت */}
       <div className="mb-6 md:mb-8 text-right">
         <div className="flex items-center gap-2 md:gap-3">
           <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-8 md:h-8 shrink-0" alt="" />
@@ -104,21 +104,22 @@ export default function EventsExplorer({ handleRegisterClick }) {
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 mb-8 flex flex-col xl:flex-row items-start xl:items-center gap-4 w-full">
+      <div className="bg-white p-4 lg:p-3 xl:p-4 rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 mb-8 flex flex-col xl:flex-row items-start xl:items-center gap-4 w-full">
         
-        <div className="w-full xl:w-auto xl:flex-grow relative z-0">
+        {/* 🟢 xl:flex-1 عشان يمتص الحقل المساحة الزايدة وما تطلع الفلاتر برا السطر */}
+        <div className="w-full xl:w-auto xl:flex-1 relative z-0">
           <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
             <Search className="h-5 w-5 text-gray-400" />
           </div>
           <input
             type="text" placeholder="ابحث عن فعالية، مدينة، أو مجال..." value={eventSearch} onChange={(e) => setEventSearch(e.target.value)}
-            className="w-full bg-gray-50 border border-transparent text-gray-900 font-bold text-[13px] md:text-sm py-3.5 pr-11 pl-4 rounded-xl hover:bg-gray-100 focus:bg-white focus:border-[#C08F2D]/50 focus:ring-4 focus:ring-[#C08F2D]/10 outline-none transition-all"
+            className="w-full bg-gray-50 border border-transparent text-gray-900 font-bold text-[13px] md:text-sm lg:text-[12px] xl:text-sm py-3.5 lg:py-2.5 xl:py-3.5 pr-11 pl-4 rounded-xl hover:bg-gray-100 focus:bg-white focus:border-[#C08F2D]/50 focus:ring-4 focus:ring-[#C08F2D]/10 outline-none transition-all"
           />
         </div>
 
         <div className="hidden xl:block w-px h-8 bg-gray-200"></div>
 
-        <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-3 relative z-40">
+        <div className="w-full xl:w-auto flex flex-col sm:flex-row gap-3 lg:gap-2 xl:gap-3 relative z-40">
           <CustomDropdown options={eventTypes} value={eventTypeFilter} onChange={setEventTypeFilter} placeholder="نوع الفرصة" />
           <CustomDropdown options={categories} value={eventPathwayFilter} onChange={setEventPathwayFilter} placeholder="المسار" />
           <div className="sm:w-36 flex-grow relative z-30">
@@ -127,9 +128,10 @@ export default function EventsExplorer({ handleRegisterClick }) {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-start">
         <div className="w-full lg:w-[35%] xl:w-[36%] shrink-0 lg:sticky lg:top-24 z-10">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[350px] lg:min-h-[640px]">
+          {/* 🟢 خفضنا ارتفاع الخريطة للـ lg عشان ما تاخذ كل شاشة اللابتوب */}
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[350px] lg:min-h-[480px] xl:min-h-[640px]">
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none rounded-3xl overflow-hidden">
               <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid-pattern-2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#8a1538" strokeWidth="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid-pattern-2)" /></svg>
             </div>
@@ -163,16 +165,17 @@ export default function EventsExplorer({ handleRegisterClick }) {
                       variants={fadeUpVariants} key={event.id} onClick={() => setSelectedEvent(event)} 
                       className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full cursor-pointer"
                     >
-                      <div className="relative h-44 md:h-48 overflow-hidden bg-gray-100 shrink-0">
+                      {/* 🟢 الصورة: تصغير لـ 40 للـ lg عشان ما يطول الكرت زيادة عن اللزوم */}
+                      <div className="relative h-44 lg:h-40 xl:h-48 overflow-hidden bg-gray-100 shrink-0">
                         <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                         {isUrgent && (
                           <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-2.5 py-1.5 rounded-md text-[10px] font-black flex items-center gap-1.5 shadow-lg"><Timer className="w-3 h-3" /> متاح الآن</div>
                         )}
                         <div className={`absolute top-3 right-3 px-2.5 py-1.5 text-[10px] font-black rounded-md shadow-sm border ${tagStyle}`}>{event.pathway}</div>
                       </div>
-                      <div className="p-4 md:p-5 flex flex-col flex-grow">
+                      <div className="p-4 md:p-5 lg:p-4 xl:p-5 flex flex-col flex-grow">
                         <div className="mb-4 md:mb-5">
-                          <h3 className="font-black text-[14px] md:text-[15px] text-gray-900 mb-3 line-clamp-2 group-hover:text-[#8a1538] transition-colors leading-relaxed">{event.title}</h3>
+                          <h3 className="font-black text-[14px] md:text-[15px] lg:text-[14px] xl:text-[15px] text-gray-900 mb-3 line-clamp-2 group-hover:text-[#8a1538] transition-colors leading-relaxed">{event.title}</h3>
                           <div className="space-y-1.5 md:space-y-2">
                             <div className="flex items-center gap-2 text-gray-500 text-[11px] md:text-xs font-bold"><Calendar className="w-3.5 h-3.5 text-[#C08F2D]" /> {event.date}</div>
                             <div className="flex items-center gap-2 text-gray-500 text-[11px] md:text-xs font-bold"><MapPin className="w-3.5 h-3.5 text-[#C08F2D]" /> <span className="truncate">{event.city} - {event.location}</span></div>
@@ -183,10 +186,9 @@ export default function EventsExplorer({ handleRegisterClick }) {
                             <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">المكافأة</span>
                             <div className="flex items-center gap-1"><Award className="w-4 h-4 text-[#C08F2D]" /><span className="text-[#C08F2D] font-black text-[11px] md:text-xs">+{event.points} نقطة</span></div>
                           </div>
-                          {/* 🟢 تم التعديل ليفتح الـ Drawer بدل الـ Register المباشر */}
                           <button 
                             onClick={(e) => { e.stopPropagation(); setSelectedEvent(event); }} 
-                            className="flex items-center gap-1.5 md:gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-black text-[11px] md:text-xs transition-colors shadow-md group/btn"
+                            className="flex items-center gap-1.5 md:gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-4 md:px-5 lg:px-4 xl:px-5 py-2 md:py-2.5 lg:py-2 xl:py-2.5 rounded-xl font-black text-[11px] md:text-xs transition-colors shadow-md group/btn"
                           >
                             التفاصيل <ArrowUpLeft className="w-3.5 h-3.5 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                           </button>

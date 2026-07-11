@@ -48,24 +48,25 @@ export default function LuxuryPathways({ onPathwaySelect }) {
   ];
 
   return (
-    <div id="strategic-pathways" className="py-16 md:py-24 bg-white relative overflow-hidden w-full font-sans scroll-mt-20" dir="rtl">
+    // 🟢 تقليل الـ padding العمودي قليلاً في الـ lg ورفعه في الـ 2xl
+    <div id="strategic-pathways" className="py-16 lg:py-20 xl:py-24 2xl:py-32 bg-white relative overflow-hidden w-full font-sans scroll-mt-20" dir="rtl">
       
-      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 md:mb-16 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 lg:mb-12 xl:mb-16 relative z-10">
         <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
           <img src="/arrow-yellow.svg" className="w-5 h-5 md:w-8 md:h-8 shrink-0" alt="" />
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#8a1538] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
             طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
           </h2>
         </div>
-        <p className="mt-2 md:mt-4 text-gray-500 font-medium max-w-2xl text-sm md:text-lg leading-relaxed">
+        <p className="mt-2 md:mt-4 text-gray-500 font-medium max-w-2xl text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed">
           لا تبحث عن المسميات، ابحث عن شغفك. اختر الهدف الذي تسعى إليه وسنقوم بتوجيهك للبرامج المناسبة.
         </p>
       </div>
 
-      {/* 🟢 التعديل السحري: على الموبايل (flex-row overflow-x-auto snap-x) للسحب، وعلى الديسكتوب بظل زي ما هو */}
-      <div className="flex flex-row lg:flex-row gap-4 md:gap-6 h-[450px] md:h-[500px] lg:h-[600px] w-full px-4 lg:px-8 mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 lg:pb-0">
+      {/* 🟢 التدرج السحري للارتفاع: 480px للـ 13 إنش، 550px للـ 15 إنش، و 650px للشاشات العملاقة */}
+      <div className="flex flex-row lg:flex-row gap-4 lg:gap-5 xl:gap-6 2xl:gap-8 h-[450px] lg:h-[480px] xl:h-[550px] 2xl:h-[650px] w-full px-4 lg:px-8 xl:px-12 mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 lg:pb-0">
         {pathways.map((path, index) => {
-          const isActive = isTouchDevice ? true : activeCard === index; // عالموبايل كل الكروت بتكون "مفتوحة" ومقروءة عشان السحب
+          const isActive = isTouchDevice ? true : activeCard === index; 
           const Icon = path.icon;
 
           return (
@@ -73,7 +74,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               key={path.id}
               onMouseEnter={() => { if (!isTouchDevice) setActiveCard(index); }}
               onClick={() => onPathwaySelect(path.id)}
-              // 🟢 عرض الكرت عالموبايل بياخذ 85% من الشاشة عشان يبين طرف الكرت الثاني للمستخدم ويفهم إنه بيقدر يسحب
               className={`relative rounded-[2rem] overflow-hidden cursor-pointer group transition-[flex,shadow] duration-500 ease-in-out border border-gray-100 will-change-[flex] snap-center shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto
                 ${isTouchDevice ? 'shadow-lg' : (isActive ? 'flex-[4] shadow-2xl z-10' : 'flex-[1] shadow-md hover:shadow-xl')}
               `}
@@ -86,46 +86,46 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               <div className={`absolute inset-0 ${path.closedOverlay} transition-opacity duration-500 ${isActive ? 'opacity-0' : 'opacity-100'}`}></div>
               <div className={`absolute inset-0 bg-gradient-to-t ${path.openGradient} transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
 
-              {/* هذا القسم بيختفي لما الكرت يفتح */}
-              <div className={`absolute inset-0 p-6 lg:p-8 flex flex-col transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                <div className="hidden lg:block absolute top-8 right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] font-black border border-white/20 shadow-md">
+              <div className={`absolute inset-0 p-6 lg:p-6 xl:p-8 2xl:p-10 flex flex-col transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <div className="hidden lg:block absolute top-6 xl:top-8 right-6 xl:right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] xl:text-[13px] font-black border border-white/20 shadow-md">
                    {`المسار ${path.number}`}
                 </div>
-                <div className="flex flex-col items-center justify-center my-auto lg:mt-auto gap-4">
-                  <div className="w-16 h-16 rounded-full bg-transparent flex items-center justify-center border border-white/40 shrink-0">
-                    <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                <div className="flex flex-col items-center justify-center my-auto lg:mt-auto gap-3 xl:gap-4">
+                  {/* 🟢 أيقونة الكرت المغلق تتدرج بالحجم */}
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full bg-transparent flex items-center justify-center border border-white/40 shrink-0">
+                    <Icon className="w-6 h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-white" strokeWidth={1.5} />
                   </div>
-                  <h3 className="font-black text-[#C08F2D] text-2xl tracking-wide drop-shadow-md">{path.shortName}</h3>
+                  <h3 className="font-black text-[#C08F2D] text-xl lg:text-xl xl:text-2xl 2xl:text-3xl tracking-wide drop-shadow-md">{path.shortName}</h3>
                 </div>
               </div>
 
-              {/* محتوى الكرت المفتوح */}
-              <div className={`absolute bottom-0 right-0 p-5 md:p-8 lg:p-12 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[600px] ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                <div className="hidden lg:flex items-center gap-4 relative z-10 mb-8 pt-4">
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
-                    <Icon className="w-8 h-8 text-[#C08F2D]" />
+              {/* 🟢 عرض الكرت المفتوح: 450px للـ lg عشان يتنفس، و 600px للـ xl */}
+              <div className={`absolute bottom-0 right-0 p-5 lg:p-8 xl:p-10 2xl:p-14 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[450px] xl:w-[600px] 2xl:w-[700px] ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                <div className="hidden lg:flex items-center gap-3 xl:gap-4 relative z-10 mb-8 pt-4">
+                  <div className="w-12 h-12 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
+                    <Icon className="w-6 h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-[#C08F2D]" />
                   </div>
-                  <div className="px-5 py-2 bg-[#C08F2D] rounded-lg text-[13px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
+                  <div className="px-4 py-1.5 xl:px-5 xl:py-2 2xl:px-6 2xl:py-3 bg-[#C08F2D] rounded-lg text-[12px] xl:text-[13px] 2xl:text-[15px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
                 </div>
 
                 <div className="w-full relative z-10 mt-auto lg:pt-4 text-right">
-                  {/* 🟢 أيقونة صغيرة عالموبايل فقط */}
                   <div className="lg:hidden w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
                      <Icon className="w-5 h-5 text-[#C08F2D]" />
                   </div>
 
-                  <h3 className="font-black text-white text-xl md:text-3xl lg:text-4xl leading-tight mb-2 lg:mb-4 drop-shadow-lg">{path.goal}</h3>
-                  <p className="text-white/90 font-medium text-xs md:text-sm lg:text-base leading-relaxed mb-4 lg:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
+                  {/* 🟢 تدرج أحجام النصوص للكرت المفتوح */}
+                  <h3 className="font-black text-white text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl leading-tight mb-2 lg:mb-3 xl:mb-4 drop-shadow-lg">{path.goal}</h3>
+                  <p className="text-white/90 font-medium text-xs lg:text-sm xl:text-base 2xl:text-lg leading-relaxed mb-4 lg:mb-6 xl:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
                   
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-8 w-full">
+                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-6 xl:mb-8 w-full">
                     {path.brands.map(brand => (
-                      <span key={brand} className="text-[9px] md:text-[11px] lg:text-[12px] font-black text-white bg-[#C08F2D]/20 px-2 md:px-3 py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>
+                      <span key={brand} className="text-[9px] lg:text-[10px] xl:text-[12px] 2xl:text-[14px] font-black text-white bg-[#C08F2D]/20 px-2 lg:px-2.5 xl:px-3 py-1 lg:py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>
                     ))}
                   </div>
                   
-                  <button className="flex items-center gap-2 text-white font-black text-[13px] md:text-base hover:text-[#C08F2D] transition-colors w-fit group/btn cursor-pointer">
+                  <button className="flex items-center gap-2 text-white font-black text-[13px] lg:text-sm xl:text-base 2xl:text-xl hover:text-[#C08F2D] transition-colors w-fit group/btn cursor-pointer">
                     <span>استكشف المبادرات</span> 
-                    <ArrowUpLeft className="w-4 h-4 md:w-5 md:h-5 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
+                    <ArrowUpLeft className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 transform group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform" strokeWidth={2.5} />
                   </button>
                 </div>
               </div>

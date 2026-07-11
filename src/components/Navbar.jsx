@@ -32,10 +32,10 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     
   const textColor = isScrolled ? 'text-[#1a1c1d]' : 'text-white';
   
-  // 🟢 تصغير البادينج (Padding) للزر في شاشات lg وتكبيره في xl
+  // 🟢 1. تكبير البادينج تبع الزر عشان يصير أعرض وأفخم
   const buttonClass = isScrolled 
-    ? 'bg-[#8a1538] hover:bg-[#680f2a] text-white border-transparent py-2 px-4 xl:py-3 xl:px-6' 
-    : 'bg-white/10 hover:bg-white hover:text-[#8a1538] text-white border border-white/30 backdrop-blur-md py-2 px-4 xl:py-3 xl:px-6';
+    ? 'bg-[#8a1538] hover:bg-[#680f2a] text-white border-transparent py-2 px-4 lg:py-2.5 lg:px-5 xl:py-3 xl:px-6' 
+    : 'bg-white/10 hover:bg-white hover:text-[#8a1538] text-white border border-white/30 backdrop-blur-md py-2 px-4 lg:py-2.5 lg:px-5 xl:py-3 xl:px-6';
 
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
@@ -49,21 +49,21 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ease-in-out font-sans ${navBg} ${isScrolled ? 'py-3 xl:py-4' : 'py-4 xl:py-6'}`}>
-        {/* 🟢 تقليل الـ Padding الجانبي لـ lg لترك مساحة للروابط */}
-        <div className="max-w-[1600px] mx-auto px-4 lg:px-6 xl:px-12 flex justify-between items-center">
+      {/* 🟢 2. زيادة الـ py (Padding-Y) عشان النافبار نفسها تصير أسمك وأعرض */}
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ease-in-out font-sans ${navBg} ${isScrolled ? 'py-3 lg:py-4 xl:py-5' : 'py-5 lg:py-6 xl:py-8'}`}>
+        <div className="max-w-[1600px] mx-auto px-4 lg:px-6 xl:px-12 flex justify-between items-center gap-2">
           
           <div className="flex items-center cursor-pointer group shrink-0" onClick={() => onNavigate('home')}>
             <img 
               src={isScrolled ? "/CPF-Logo.png" : "/full_logo_white.png"} 
               alt="مؤسسة ولي العهد" 
-              // 🟢 تصغير الشعار في اللابتوبات الصغيرة
-              className="h-10 lg:h-12 xl:h-16 object-contain transition-all duration-300"
+              // 🟢 3. تكبير حجم اللوجو (lg:h-14 بدلاً من 11)
+              className="h-10 lg:h-14 xl:h-16 object-contain transition-all duration-300"
             />
           </div>
 
-          {/* 🟢 روابط الديسكتوب: تصغير الخط والمسافات (gap) لشاشات اللابتوب الصغيرة */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-8 font-bold text-[13px] lg:text-[14px] xl:text-[16px]">
+          {/* 🟢 4. تكبير خط الروابط (lg:text-[14px] بدلاً من 13) */}
+          <div className="hidden lg:flex items-center justify-center gap-3 xl:gap-5 2xl:gap-8 font-bold text-[13px] lg:text-[14px] xl:text-[16px] flex-grow">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (
@@ -79,11 +79,12 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
             })}
           </div>
 
-          <div className="flex items-center gap-2 lg:gap-3 xl:gap-5 shrink-0">
-            <button onClick={onSearchClick} className={`p-2 lg:p-2.5 xl:p-3 rounded-full transition-all duration-300 cursor-pointer ${isScrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
+          <div className="flex items-center gap-2 lg:gap-3 xl:gap-4 shrink-0">
+            <button onClick={onSearchClick} className={`p-2 lg:p-2.5 rounded-full transition-all duration-300 cursor-pointer ${isScrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
               <Search className="w-5 h-5 xl:w-6 xl:h-6" />
             </button>
 
+            {/* 🟢 5. تكبير خط الأيقونة وزر تسجيل الدخول */}
             <button onClick={onLoginClick} className={`hidden lg:flex items-center gap-2 xl:gap-3 rounded-lg font-bold text-[13px] lg:text-[14px] xl:text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
               <ShieldCheck className="w-4 h-4 xl:w-5 xl:h-5" /> تسجيل الدخول
             </button>

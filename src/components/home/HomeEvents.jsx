@@ -43,13 +43,13 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
   };
 
   return (
-    <div id="events-section" className="py-16 md:py-20 lg:py-20 xl:py-24 bg-[#F4F7FA] relative font-sans" dir="rtl">
+    <div id="events-section" className="py-16 md:py-24 bg-[#F4F7FA] relative font-sans" dir="rtl">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="mb-6 md:mb-10 text-right">
           <div className="flex items-center gap-2 md:gap-3">
-            <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-6 md:h-6 xl:w-8 xl:h-8 shrink-0" alt="" />
-            <h2 className="text-2xl md:text-3xl lg:text-[clamp(1.75rem,3.5vw,3rem)] font-black text-[#8a1538] tracking-tight">
+            <img src="/arrow-yellow.svg" className="w-6 h-6 md:w-8 md:h-8 shrink-0" alt="" />
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-[#8a1538] tracking-tight">
               {isPersonalized ? "فرص مصممة خصيصاً لك" : "اكتشف أحدث الفرص المتاحة"}
             </h2>
           </div>
@@ -118,10 +118,10 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 xl:gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-10 items-start">
           
           <div className="w-full lg:w-[35%] xl:w-[32%] shrink-0 lg:sticky lg:top-24">
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[300px] md:min-h-[520px] xl:min-h-[600px] 2xl:min-h-[640px]">
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-5 md:p-6 relative flex flex-col min-h-[300px] md:min-h-[640px]">
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-4 border-b border-gray-100 pb-4 shrink-0">
                   <div>
@@ -174,7 +174,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                           className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl sm:hover:-translate-y-1 transition-all duration-300 flex flex-col h-full cursor-pointer w-[85vw] sm:w-full shrink-0 snap-center"
                           onClick={() => setSelectedEvent(event)}
                         >
-                          <div className="relative h-40 md:h-44 xl:h-48 overflow-hidden bg-gray-100 shrink-0">
+                          <div className="relative h-40 md:h-48 overflow-hidden bg-gray-100 shrink-0">
                             <img src={event.image} alt={event.title} className="w-full h-full object-cover sm:group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                             {isUrgent && (
                               <div className="absolute top-3 left-3 bg-red-600/90 text-white px-2 py-1 rounded-md text-[10px] font-black flex items-center gap-1 shadow-md">
@@ -228,7 +228,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                     <div className="flex justify-center mt-2 md:mt-4">
                       <button
                         onClick={() => onNavigate('programs')}
-                        className="flex items-center gap-2 bg-white border-2 border-[#8a1538] text-[#8a1538] hover:bg-[#8a1538] hover:text-white px-6 py-3 rounded-xl font-black text-sm md:text-base xl:text-lg transition-all w-full sm:w-auto justify-center cursor-pointer"
+                        className="flex items-center gap-2 bg-white border-2 border-[#8a1538] text-[#8a1538] hover:bg-[#8a1538] hover:text-white px-6 py-3 rounded-xl font-black text-sm md:text-lg transition-all w-full sm:w-auto justify-center cursor-pointer"
                       >
                         استكشف المزيد من الفرص
                       </button>

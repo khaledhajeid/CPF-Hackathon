@@ -48,17 +48,17 @@ export default function Footer({ onNavigate }) {
         style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px', backgroundRepeat: 'repeat' }}
       />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* قسم النشرة الإخبارية */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 pb-10 lg:pb-10 xl:pb-12 mb-10 lg:mb-10 xl:mb-12 border-b border-white/10">
-          <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-6 xl:pe-10">
-            <h3 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black text-white mb-2 md:mb-3 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 pb-10 md:pb-12 mb-10 md:mb-12 border-b border-white/10">
+          <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-10">
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
             <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed px-4 lg:px-0">
               كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
             </p>
           </div>
-          <div className="w-full lg:w-1/2 flex items-center h-12 lg:h-12 xl:h-14 mt-2 lg:mt-0">
+          <div className="w-full lg:w-1/2 flex items-center h-12 md:h-14 mt-2 lg:mt-0">
             <input 
               type="email" 
               placeholder="البريد الإلكتروني..." 
@@ -71,11 +71,11 @@ export default function Footer({ onNavigate }) {
         </div>
 
         {/* الشبكة الرئيسية */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 xl:gap-12 pb-10 md:pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-10 md:pb-12 border-b border-white/10">
           
-          <div className="space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
+          <div className="space-y-5 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
-              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-16 xl:h-20 max-w-[280px] object-contain drop-shadow-lg" />
+              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
             <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-4 px-2 lg:px-0 text-center lg:text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
@@ -95,8 +95,8 @@ export default function Footer({ onNavigate }) {
             </div>
           </div>
 
-          <div className="text-center md:text-right lg:pe-8 xl:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg md:text-lg xl:text-xl mb-5 md:mb-5 xl:mb-6">روابط سريعة</h4>
+          <div className="text-center md:text-right lg:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">روابط سريعة</h4>
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
@@ -111,8 +111,8 @@ export default function Footer({ onNavigate }) {
             </ul>
           </div>
 
-          <div className="text-center md:text-right lg:pe-8 xl:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg md:text-lg xl:text-xl mb-5 md:mb-5 xl:mb-6">أبرز المبادرات</h4>
+          <div className="text-center md:text-right lg:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">أبرز المبادرات</h4>
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {initiatives.map((item, idx) => (
                 <li key={idx}>
@@ -127,8 +127,8 @@ export default function Footer({ onNavigate }) {
             </ul>
           </div>
 
-          <div className="text-center md:text-right lg:pe-4 xl:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg md:text-lg xl:text-xl mb-5 md:mb-5 xl:mb-6">معلومات الاتصال</h4>
+          <div className="text-center md:text-right lg:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
+            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">معلومات الاتصال</h4>
             <ul className="space-y-4 md:space-y-6 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               <li className="flex items-start justify-center md:justify-start gap-3 md:gap-4">
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />

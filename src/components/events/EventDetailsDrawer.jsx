@@ -87,69 +87,72 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
             variants={drawerVariants}
             initial="hidden" animate="visible" exit="exit"
             dir="rtl"
-            // 🟢 إجبار العنصر على الالتصاق بالشمال وإلغاء تأثير right-0 على الشاشات الكبيرة
-            className="fixed z-[9999] bg-white shadow-2xl flex flex-col bottom-0 left-0 right-0 w-full rounded-t-3xl max-h-[90vh] md:max-h-none md:rounded-t-none md:rounded-r-3xl md:top-0 md:bottom-0 md:right-auto md:left-0 md:w-[450px] h-full"          >
+            // 🟢 تدرج عرض الـ Drawer: 400px لـ lg, 480px لـ xl, و 600px لـ 2xl
+            className="fixed z-[9999] bg-white shadow-2xl flex flex-col bottom-0 left-0 right-0 w-full rounded-t-3xl max-h-[90vh] md:max-h-none md:rounded-t-none md:rounded-r-3xl md:top-0 md:bottom-0 md:right-auto md:left-0 lg:w-[400px] xl:w-[480px] 2xl:w-[600px] h-full"
+          >
              <div className="md:hidden w-full flex justify-center pt-3 pb-1 shrink-0 bg-white">
                <div className="w-12 h-1.5 bg-gray-300 rounded-full"></div>
              </div>
 
-             <div className="relative h-48 md:h-64 shrink-0 bg-gray-100">
+             {/* 🟢 تدرج ارتفاع الصورة العلوية */}
+             <div className="relative h-48 lg:h-52 xl:h-64 2xl:h-80 shrink-0 bg-gray-100">
                 <img src={currentEvent.image} alt={currentEvent.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent" />
                 
                 <button 
                   onClick={onClose} 
-                  className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 hover:scale-110 transition-all cursor-pointer"
+                  className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 hover:scale-110 transition-all cursor-pointer"
                 >
-                  <X className="w-4 h-4 md:w-5 md:h-5" />
+                  <X className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6" />
                 </button>
 
                 <div className="absolute bottom-4 right-4 left-4 md:bottom-6 md:right-6 md:left-6 flex justify-between items-end">
-                   <span className={`${pathwayColor} text-white text-[10px] md:text-xs font-black px-3 py-1 md:px-4 md:py-1.5 rounded-lg shadow-sm border border-white/20 backdrop-blur-sm`}>
+                   <span className={`${pathwayColor} text-white text-[10px] lg:text-[11px] xl:text-xs 2xl:text-base font-black px-3 py-1 lg:px-3 lg:py-1 xl:px-4 xl:py-1.5 2xl:px-5 2xl:py-2 rounded-lg shadow-sm border border-white/20 backdrop-blur-sm`}>
                      {currentEvent.pathway}
                    </span>
                 </div>
              </div>
 
-             <div className="flex-1 overflow-y-auto p-5 md:p-8 scrollbar-hide">
-                <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-5 md:mb-6 leading-tight">
+             {/* 🟢 تدرج البادينج الداخلي للمحتوى لتوفير المساحة البيضاء */}
+             <div className="flex-1 overflow-y-auto p-5 lg:p-6 xl:p-8 2xl:p-12 scrollbar-hide">
+                <h2 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black text-gray-900 mb-4 lg:mb-5 xl:mb-6 leading-tight">
                   {currentEvent.title}
                 </h2>
 
-                <div className="grid grid-cols-2 gap-x-3 gap-y-4 md:gap-x-4 md:gap-y-6 mb-6 md:mb-10 bg-[#F8FAFC] p-4 md:p-5 rounded-2xl border border-gray-100">
-                   <div className="flex items-start gap-2.5 md:gap-3">
-                     <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[#8a1538] mt-0.5 shrink-0" />
+                <div className="grid grid-cols-2 gap-x-3 gap-y-4 lg:gap-x-3 lg:gap-y-4 xl:gap-x-4 xl:gap-y-6 2xl:gap-y-8 mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 bg-[#F8FAFC] p-4 lg:p-4 xl:p-5 2xl:p-8 rounded-2xl border border-gray-100">
+                   <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
+                     <Calendar className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] md:text-[10px] text-gray-400 font-bold mb-0.5 md:mb-1">التاريخ</p>
-                       <p className="text-[12px] md:text-sm font-black text-gray-800">{currentEvent.date}</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">التاريخ</p>
+                       <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800">{currentEvent.date}</p>
                      </div>
                    </div>
-                   <div className="flex items-start gap-2.5 md:gap-3">
-                     <Clock className="w-4 h-4 md:w-5 md:h-5 text-[#8a1538] mt-0.5 shrink-0" />
+                   <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
+                     <Clock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] md:text-[10px] text-gray-400 font-bold mb-0.5 md:mb-1">الوقت</p>
-                       <p className="text-[12px] md:text-sm font-black text-gray-800">04:00 - 06:00 م</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">الوقت</p>
+                       <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800">04:00 - 06:00 م</p>
                      </div>
                    </div>
-                   <div className="flex items-start gap-2.5 md:gap-3">
-                     <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#8a1538] mt-0.5 shrink-0" />
+                   <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
+                     <MapPin className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] md:text-[10px] text-gray-400 font-bold mb-0.5 md:mb-1">الموقع</p>
-                       <p className="text-[12px] md:text-sm font-black text-gray-800 leading-snug">{currentEvent.city} - {currentEvent.location || 'المركز الشبابي'}</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">الموقع</p>
+                       <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800 leading-snug">{currentEvent.city} - {currentEvent.location || 'المركز الشبابي'}</p>
                      </div>
                    </div>
-                   <div className="flex items-start gap-2.5 md:gap-3">
-                     <Award className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] mt-0.5 shrink-0" />
+                   <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
+                     <Award className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#C08F2D] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] md:text-[10px] text-[#C08F2D] font-bold mb-0.5 md:mb-1">المكافأة</p>
-                       <p className="text-[12px] md:text-sm font-black text-[#C08F2D]">+{currentEvent.points} نقطة</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-[#C08F2D] font-bold mb-0.5">المكافأة</p>
+                       <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-[#C08F2D]">+{currentEvent.points} نقطة</p>
                      </div>
                    </div>
                 </div>
 
-                <div className="mb-6 md:mb-10">
-                  <h3 className="flex items-center gap-2 text-[14px] md:text-base font-black text-gray-900 mb-2.5 md:mb-3">
-                    <Info className="w-4 h-4 md:w-5 md:h-5 text-[#8a1538]" /> عن الفرصة
+                <div className="mb-6 lg:mb-8 xl:mb-10 2xl:mb-12">
+                  <h3 className="flex items-center gap-2 text-[14px] lg:text-[15px] xl:text-base 2xl:text-xl font-black text-gray-900 mb-2.5 lg:mb-3 2xl:mb-4">
+                    <Info className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538]" /> عن الفرصة
                   </h3>
                   
                   <div className="relative">
@@ -158,7 +161,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                       animate={{ height: !isLongText || isExpanded ? "auto" : "70px" }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-600 text-[13px] md:text-sm font-medium leading-relaxed pb-1 text-justify">
+                      <p className="text-gray-600 text-[13px] lg:text-[13px] xl:text-sm 2xl:text-lg font-medium leading-relaxed pb-1 text-justify">
                         {descriptionToShow}
                       </p>
                     </motion.div>
@@ -171,58 +174,58 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                   {isLongText && (
                     <button 
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="mt-2 text-[#C08F2D] font-black text-xs flex items-center gap-1 hover:text-[#a67b25] transition-colors cursor-pointer"
+                      className="mt-2 text-[#C08F2D] font-black text-xs 2xl:text-sm flex items-center gap-1 hover:text-[#a67b25] transition-colors cursor-pointer"
                     >
                       {isExpanded ? (
-                        <>عرض أقل <ChevronUp className="w-4 h-4" /></>
+                        <>عرض أقل <ChevronUp className="w-4 h-4 2xl:w-5 2xl:h-5" /></>
                       ) : (
-                        <>اقرأ المزيد <ChevronDown className="w-4 h-4" /></>
+                        <>اقرأ المزيد <ChevronDown className="w-4 h-4 2xl:w-5 2xl:h-5" /></>
                       )}
                     </button>
                   )}
                 </div>
 
                 <div>
-                  <h3 className="flex items-center gap-2 text-[14px] md:text-base font-black text-gray-900 mb-3 md:mb-4">
-                    <Users className="w-4 h-4 md:w-5 md:h-5 text-[#8a1538]" /> الشروط والأهلية
+                  <h3 className="flex items-center gap-2 text-[14px] lg:text-[15px] xl:text-base 2xl:text-xl font-black text-gray-900 mb-3 lg:mb-4 2xl:mb-5">
+                    <Users className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538]" /> الشروط والأهلية
                   </h3>
-                  <div className="flex flex-col gap-2.5">
+                  <div className="flex flex-col gap-2.5 2xl:gap-4">
                     
-                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 rounded-xl">
-                      <UserCheck className={`w-4 h-4 md:w-5 md:h-5 shrink-0 ${isAgeEligible ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
-                      <span className="text-[12px] md:text-sm font-bold text-gray-700 flex-1 leading-snug">العمر المطلوب: {currentEvent.ageRange || '18 - 24'} سنة</span>
+                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
+                      <UserCheck className={`w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 ${isAgeEligible ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
+                      <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">العمر المطلوب: {currentEvent.ageRange || '18 - 24'} سنة</span>
                       {isAgeEligible ? (
-                        <span className="text-[9px] md:text-[10px] bg-white border border-gray-200 text-gray-500 px-2 md:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
+                        <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
                       ) : (
-                        <span className="text-[9px] md:text-[10px] bg-[#8a1538]/10 text-[#8a1538] px-2 md:px-2.5 py-1 rounded-md font-black shrink-0">غير مطابق</span>
+                        <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-[#8a1538]/10 text-[#8a1538] px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">غير مطابق</span>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 rounded-xl">
-                      <MapPin className={`w-4 h-4 md:w-5 md:h-5 shrink-0 ${isCityEligible ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
-                      <span className="text-[12px] md:text-sm font-bold text-gray-700 flex-1 leading-snug">متاح لسكان: {currentEvent.city}</span>
+                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
+                      <MapPin className={`w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 ${isCityEligible ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
+                      <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">متاح لسكان: {currentEvent.city}</span>
                       {isCityEligible ? (
-                        <span className="text-[9px] md:text-[10px] bg-white border border-gray-200 text-gray-500 px-2 md:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
+                        <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
                       ) : (
-                        <span className="text-[9px] md:text-[10px] bg-[#8a1538]/10 text-[#8a1538] px-2 md:px-2.5 py-1 rounded-md font-black shrink-0">غير مطابق</span>
+                        <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-[#8a1538]/10 text-[#8a1538] px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">غير مطابق</span>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 rounded-xl">
+                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
                       {requiredPoints === 0 ? (
                         <>
-                           <Unlock className="w-4 h-4 md:w-5 md:h-5 shrink-0 text-gray-400" />
-                           <span className="text-[12px] md:text-sm font-bold text-gray-700 flex-1 leading-snug">مستوى النقاط:</span>
-                           <span className="text-[9px] md:text-[10px] bg-gray-200 text-gray-600 px-2 md:px-2.5 py-1 rounded-md font-black shrink-0">متاح للجميع</span>
+                           <Unlock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 text-gray-400" />
+                           <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">مستوى النقاط:</span>
+                           <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-gray-200 text-gray-600 px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">متاح للجميع</span>
                         </>
                       ) : (
                         <>
-                           <Lock className={`w-4 h-4 md:w-5 md:h-5 shrink-0 ${userPoints >= requiredPoints ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
-                           <span className="text-[12px] md:text-sm font-bold text-gray-700 flex-1 leading-snug">النقاط المطلوبة: {requiredPoints} نقطة</span>
+                           <Lock className={`w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 ${userPoints >= requiredPoints ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
+                           <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">النقاط المطلوبة: {requiredPoints} نقطة</span>
                            {userPoints >= requiredPoints ? (
-                             <span className="text-[9px] md:text-[10px] bg-white border border-gray-200 text-gray-500 px-2 md:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مؤهل</span>
+                             <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مؤهل</span>
                            ) : (
-                             <span className="text-[9px] md:text-[10px] bg-[#8a1538]/10 text-[#8a1538] px-2 md:px-2.5 py-1 rounded-md font-black shrink-0">غير مؤهل</span>
+                             <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-[#8a1538]/10 text-[#8a1538] px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">غير مؤهل</span>
                            )}
                         </>
                       )}
@@ -232,24 +235,25 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                 </div>
              </div>
 
-              <div className="shrink-0 p-4 md:p-6 bg-white border-t border-gray-100 shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
+              {/* 🟢 زر التسجيل متدرج الحجم */}
+              <div className="shrink-0 p-4 lg:p-5 xl:p-6 2xl:p-10 bg-white border-t border-gray-100 shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
                   {canRegister ? (
                   <button 
                     onClick={() => {
                       onRegister(currentEvent);
                       onClose();
                     }}
-                    className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] text-white rounded-xl md:rounded-2xl font-black text-[13px] md:text-sm py-3.5 md:py-4 flex items-center justify-center gap-2 md:gap-3 transition-all shadow-md cursor-pointer"
+                    className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] text-white rounded-xl lg:rounded-xl xl:rounded-2xl font-black text-[13px] lg:text-[13px] xl:text-sm 2xl:text-2xl py-3.5 lg:py-3.5 xl:py-4 2xl:py-6 flex items-center justify-center gap-2 lg:gap-2 xl:gap-3 transition-all shadow-md cursor-pointer"
                   >
-                    <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D]" />
+                    <ShieldCheck className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#C08F2D]" />
                     <span>تسجيل الدخول عبر سند للمتابعة</span>
                   </button>
                 ) : (
                   <button 
                     disabled
-                    className="w-full bg-gray-100 text-gray-400 rounded-xl md:rounded-2xl font-black text-[13px] md:text-sm py-3.5 md:py-4 flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
+                    className="w-full bg-gray-100 text-gray-400 rounded-xl lg:rounded-xl xl:rounded-2xl font-black text-[13px] lg:text-[13px] xl:text-sm 2xl:text-2xl py-3.5 lg:py-3.5 xl:py-4 2xl:py-6 flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
                   >
-                    <Lock className="w-4 h-4 shrink-0" />
+                    <Lock className="w-4 h-4 2xl:w-6 2xl:h-6 shrink-0" />
                     <span className="truncate">{lockReason}</span>
                   </button>
                 )}

@@ -39,13 +39,13 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
   };
 
   return (
-    // 🟢 تدرج مسافات الـ padding الخارجي
     <div className="py-16 lg:py-20 xl:py-28 2xl:py-32 bg-[#fcfcfc] relative font-sans overflow-hidden" dir="rtl">
       <div className="absolute top-0 left-0 right-0 h-64 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
 
-      <div className="max-w-[1500px] mx-auto px-4 md:px-6 xl:px-10 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-0 md:px-6 xl:px-10 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 xl:mb-16 gap-6">
+        {/* 🟢 الهيدر محمي بـ px-4 للموبايل */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 xl:mb-16 gap-6 px-4 md:px-0">
           <div>
             <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
               <img src="/arrow-yellow.svg" className="w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8 shrink-0" alt="" />
@@ -53,25 +53,28 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
             </div>
             <p className="text-[#4c4c4c] font-medium max-w-2xl text-sm lg:text-base xl:text-xl 2xl:text-2xl leading-relaxed">منظومة متكاملة من البرامج صُممت خصيصاً لتمكينك، تطوير مهاراتك، وإطلاق العنان لطموحك.</p>
           </div>
-           {/* 🟢 تصغير حجم زر التصفح للـ 13 إنش ليكمل أناقة القسم */}
            <button onClick={() => onNavigate && onNavigate('programs')} className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-6 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-3 xl:py-4 2xl:py-5 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0">
              <span className="text-[#8a1538] font-black text-sm lg:text-base xl:text-xl 2xl:text-2xl">تصفح جميع البرامج</span>
              <ArrowLeft className="w-5 h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8 text-[#C08F2D] transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={3.5} />
            </button>
         </div>
 
-        {/* 🟢 تدرج المسافات بين الكروت gap-5 إلى gap-12 */}
-        <div className="flex flex-row md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 xl:gap-8 2xl:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* 🟢 السر هنا للموبايل: -mx-4 عشان الكروت تلزق بالحفة وقت السحب، و px-4 عشان أول كرت يبدأ من جوا، و w-[280px] عشان يبين الكرت اللي جنبه! */}
+        <div className="flex flex-row md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-6 xl:gap-8 2xl:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
           {featuredPrograms.map((program, index) => {
             const isFlipped = flippedCardId === program.id;
 
             return (
               <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: index * 0.1 }}
+                // 🟢 أنيميشن خفيف جداً، بيشتغل لما يبين 10% من الكرت (amount: 0.1) عشان ما يعلّق السحب عالموبايل
+                initial={{ opacity: 0, y: 20 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true, amount: 0.1 }} 
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 key={program.id}
                 onClick={() => handleCardInteraction(program)} 
-                // 🟢 تدرج ارتفاع الكرت: 360px يمنع الاختناق على 13 إنش، 420px فخم على 15 إنش
-                className="group [perspective:1500px] h-[360px] lg:h-[360px] xl:h-[420px] 2xl:h-[480px] w-[85vw] md:w-full shrink-0 snap-center cursor-pointer"
+                // 🟢 عرض الكرت عالموبايل 280px، هاد المقاس المثالي ليظهر 20% من الكرت التالي كـ Hint للسحب
+                className="group [perspective:1500px] h-[360px] lg:h-[360px] xl:h-[420px] 2xl:h-[480px] w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center cursor-pointer"
               >
                 <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-md hover:shadow-2xl`}>
                   
@@ -97,7 +100,7 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
                   {/* الوجه الخلفي */}
                   <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a0409] rounded-3xl p-6 lg:p-6 xl:p-8 2xl:p-10 flex flex-col justify-between border border-[#C08F2D]/30 shadow-inner">
                     <div className="flex justify-between items-start mb-4 xl:mb-6">
-                      <div className="w-14 h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 bg-white/5 rounded-xl p-2 flex items-center justify-center border border-white/10">
+                      <div className="w-12 h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 bg-white/5 rounded-xl p-2 flex items-center justify-center border border-white/10">
                         <img src={program.logo} alt="" className="max-w-full max-h-full object-contain opacity-90" />
                       </div>
                       <span className="px-3 py-1 2xl:px-4 2xl:py-1.5 bg-white/10 text-white border border-white/20 rounded-full text-[10px] lg:text-[11px] xl:text-xs 2xl:text-sm font-bold">{program.category}</span>
@@ -121,10 +124,11 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
           })}
         </div>
 
-        <div className="mt-8 flex justify-center md:hidden px-2">
-          <button onClick={() => onNavigate && onNavigate('programs')} className="flex items-center gap-3 px-6 py-3.5 bg-transparent border-2 border-[#8a1538] text-[#8a1538] hover:bg-[#8a1538] hover:text-white rounded-xl font-black text-base transition-all w-full justify-center group cursor-pointer">
+        {/* 🟢 زر الموبايل محمي بـ px-4 */}
+        <div className="mt-8 flex justify-center md:hidden px-4">
+          <button onClick={() => onNavigate && onNavigate('programs')} className="flex items-center gap-3 px-6 py-3.5 bg-transparent border-2 border-[#8a1538] text-[#8a1538] hover:bg-[#8a1538] hover:text-white rounded-xl font-black text-[14px] transition-all w-full justify-center group cursor-pointer shadow-sm">
             <span>تصفح جميع البرامج</span>
-            <ArrowLeft className="w-5 h-5 transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={2.5} />
+            <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-2 transition-transform duration-300" strokeWidth={2.5} />
           </button>
         </div>
 

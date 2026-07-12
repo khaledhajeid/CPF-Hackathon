@@ -32,7 +32,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     
   const textColor = isScrolled ? 'text-[#1a1c1d]' : 'text-white';
   
-  // 🟢 الزر: حجم أنيق للـ xl، وحجم فخم للـ 2xl
   const buttonClass = isScrolled 
     ? 'bg-[#8a1538] hover:bg-[#680f2a] text-white border-transparent py-2 px-4 lg:py-2 lg:px-4 xl:py-2.5 xl:px-5 2xl:py-3 2xl:px-6' 
     : 'bg-white/10 hover:bg-white hover:text-[#8a1538] text-white border border-white/30 backdrop-blur-md py-2 px-4 lg:py-2 lg:px-4 xl:py-2.5 xl:px-5 2xl:py-3 2xl:px-6';
@@ -49,7 +48,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
 
   return (
     <>
-      {/* 🟢 النافبار: مساحة متوسطة للـ xl، ومساحة واسعة للـ 2xl */}
       <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ease-in-out font-sans ${navBg} ${isScrolled ? 'py-3 lg:py-3 xl:py-3.5 2xl:py-5' : 'py-5 lg:py-5 xl:py-6 2xl:py-8'}`}>
         <div className="max-w-[1700px] mx-auto px-4 lg:px-6 xl:px-8 2xl:px-12 flex justify-between items-center gap-2">
           
@@ -57,12 +55,10 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
             <img 
               src={isScrolled ? "/CPF-Logo.png" : "/full_logo_white.png"} 
               alt="مؤسسة ولي العهد" 
-              // 🟢 اللوجو: يحترم شاشة الـ 13 إنش بـ h-12، ويكبر بـ h-16 للـ 15 إنش
               className="h-10 lg:h-11 xl:h-12 2xl:h-16 object-contain transition-all duration-300"
             />
           </div>
 
-          {/* 🟢 الروابط: gap-6 للـ 13 إنش (لتجنب التلزيق)، و gap-10 للـ 15 إنش */}
           <div className="hidden lg:flex items-center justify-center gap-3 xl:gap-6 2xl:gap-10 font-bold text-[13px] lg:text-[13px] xl:text-[14px] 2xl:text-[16px] flex-grow">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
@@ -84,7 +80,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
               <Search className="w-5 h-5 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6" />
             </button>
 
-            {/* 🟢 زر تسجيل الدخول: يكبر نصه للـ 15 إنش */}
             <button onClick={onLoginClick} className={`hidden lg:flex items-center gap-2 xl:gap-2.5 2xl:gap-3 rounded-lg font-bold text-[13px] lg:text-[13px] xl:text-[14px] 2xl:text-[15px] transition-all duration-300 shadow-sm cursor-pointer ${buttonClass}`}>
               <ShieldCheck className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5" /> تسجيل الدخول
             </button>
@@ -100,7 +95,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
         </div>
       </nav>
 
-      {/* ================== القائمة الجانبية للموبايل ================== */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>

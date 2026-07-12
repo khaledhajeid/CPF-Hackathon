@@ -22,8 +22,9 @@ export default function LuxuryHero({ onExploreClick }) {
   };
 
   return (
-    // 🟢 استخدام dvh يعطي قراءة دقيقة للشاشة. pb يتدرج لتوفير المساحة البيضاء.
-    <div className="relative min-h-[85dvh] lg:min-h-[75dvh] xl:min-h-[80dvh] 2xl:min-h-[85dvh] flex items-center justify-center overflow-hidden bg-[#1a0409] font-sans pb-16 lg:pb-16 xl:pb-20 2xl:pb-24" dir="rtl">
+    // 🟢 الحل الجذري هنا: استخدام max() يمنع الهيرو من الانضغاط على الشاشات القصيرة (أقل من 680px)
+    // 🟢 إضافة pt (Padding Top) و pb (Padding Bottom) لضمان تمركز النص بين النافبار والكرت السفلي
+    <div className="relative min-h-[max(85dvh,500px)] lg:min-h-[max(75dvh,600px)] xl:min-h-[max(80dvh,680px)] 2xl:min-h-[max(85dvh,800px)] flex items-center justify-center overflow-hidden bg-[#1a0409] font-sans pt-24 pb-16 lg:pt-28 lg:pb-24 xl:pt-32 xl:pb-32 2xl:pt-40 2xl:pb-36" dir="rtl">
       
       <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] z-0"></div>
 
@@ -61,10 +62,10 @@ export default function LuxuryHero({ onExploreClick }) {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center mt-6 lg:mt-8 xl:mt-12 2xl:mt-16"
+        // 🟢 إزالة الـ mt المبالغ فيه لتوسيط المحتوى داخل الـ Paddings الجديدة
+        className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center mt-2 lg:mt-4 xl:mt-6 2xl:mt-10"
       >
         
-        {/* 🟢 العنوان: 5xl للـ 13 إنش، 6xl للـ 15 إنش، 7xl للشاشات العملاقة */}
         <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-4 lg:mb-5 xl:mb-6 tracking-tight leading-[1.2]">
           شباب قادر..<br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6]">
@@ -77,7 +78,6 @@ export default function LuxuryHero({ onExploreClick }) {
         </motion.p>
 
         <motion.div variants={itemVariants}>
-          {/* 🟢 الزر: يتضخم بشكل تصاعدي من الـ xl وصولاً للـ 2xl */}
           <button 
             onClick={onExploreClick}
             className="group relative flex items-center gap-3 lg:gap-3 xl:gap-4 2xl:gap-5 bg-transparent border-2 border-[#C08F2D] text-white px-6 lg:px-6 xl:px-8 2xl:px-12 py-3 lg:py-3 xl:py-3.5 2xl:py-5 rounded-full font-bold overflow-hidden transition-all active:scale-95 hover:scale-105 cursor-pointer"
@@ -94,11 +94,12 @@ export default function LuxuryHero({ onExploreClick }) {
 
       </motion.div>
 
+      {/* 🟢 رفع مؤشر السهم (Scroll Indicator) قليلاً للأعلى لتجنب الاصطدام بكرت الإحصائيات */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ duration: 2, delay: 2, repeat: Infinity }}
-        className="hidden md:flex absolute bottom-8 lg:bottom-10 xl:bottom-12 2xl:bottom-16 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-60"
+        className="hidden md:flex absolute bottom-8 lg:bottom-12 xl:bottom-16 2xl:bottom-20 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-60"
       >
         <span className="text-[11px] xl:text-[12px] text-white tracking-widest font-bold">اكتشف</span>
         <div className="w-[2px] h-8 lg:h-8 xl:h-10 2xl:h-12 bg-gradient-to-b from-[#C08F2D] to-transparent rounded-full"></div>

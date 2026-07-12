@@ -23,16 +23,17 @@ export default function MagazineHero({ onNewsClick }) {
   }, [currentSlide]);
 
   return (
-    // 🟢 تقليل الفراغ العلوي (Padding Top) لضغط الهيدر للأعلى
-    <div className="pt-[clamp(4.5rem,10vh,7rem)] pb-[clamp(1.5rem,4vh,3rem)] bg-[#fcfcfc] border-b border-gray-100" dir="rtl">
-      <div className="max-w-[1450px] xl:max-w-[1150px] 2xl:max-w-[1450px] mx-auto px-0 md:px-[clamp(1rem,4vw,2rem)]">
-        <div className="flex flex-col lg:flex-row gap-[clamp(1rem,2vw,2rem)] h-auto lg:h-[clamp(360px,50vh,550px)]">
+    // 🟢 تدرج طبيعي ومدروس للـ Padding العلوي والسفلي لضمان الـ White Spaces
+    <div className="pt-24 md:pt-32 lg:pt-28 xl:pt-36 2xl:pt-48 pb-12 md:pb-16 lg:pb-16 xl:pb-20 2xl:pb-24 bg-[#fcfcfc] border-b border-gray-100" dir="rtl">
+      <div className="max-w-[1400px] xl:max-w-[1500px] 2xl:max-w-[1700px] mx-auto px-4 md:px-8">
+        
+        {/* 🟢 تدرج ارتفاع الهيرو: 450px للـ lg (عشان شاشة 13 انش تتنفس)، ويفرد للـ xl و 2xl */}
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-6 xl:gap-8 2xl:gap-12 h-auto lg:h-[450px] xl:h-[550px] 2xl:h-[650px]">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             onClick={() => onNewsClick(mainNews)}
-            // 🟢 تقليل ارتفاع الهيدر الرئيسي على الموبايل بشكل ملحوظ (260px)
-            className="lg:w-[65%] relative rounded-none md:rounded-[clamp(1rem,3vw,2rem)] overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[clamp(260px,40vh,450px)] lg:h-full"
+            className="lg:w-2/3 relative rounded-2xl md:rounded-3xl xl:rounded-[2rem] overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[350px] sm:h-[450px] lg:h-full"
           >
             <AnimatePresence mode="wait">
               <motion.div key={mainNews.id} initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} className="absolute inset-0">
@@ -41,67 +42,74 @@ export default function MagazineHero({ onNewsClick }) {
                 ) : (
                   <img src={mainNews.mediaUrl} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/90 via-[#1a0409]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/40 to-transparent" />
                 
-                {/* 🟢 تصغير المساحات الداخلية للنصوص */}
-                <div className="absolute inset-0 p-[clamp(1rem,3vw,3rem)] flex flex-col justify-end text-right z-10 pb-[clamp(1.5rem,4vw,3rem)]">
-                  <span className="bg-[#8a1538] text-white font-bold text-[clamp(0.55rem,0.8vw,0.75rem)] px-[clamp(0.5rem,1vw,1rem)] py-[clamp(0.2rem,0.4vw,0.35rem)] rounded-md w-fit mb-[clamp(0.4rem,1vw,1rem)]">
+                {/* 🟢 تدرج المسافات الداخلية للنصوص بدون Clamp */}
+                <div className="absolute inset-0 p-6 md:p-10 lg:p-8 xl:p-12 2xl:p-16 flex flex-col justify-end text-right z-10 pb-10 md:pb-12 lg:pb-10 xl:pb-12 2xl:pb-16">
+                  <span className="bg-[#8a1538] text-white font-bold text-[10px] md:text-xs lg:text-[11px] xl:text-xs 2xl:text-sm px-3 py-1 md:px-4 md:py-1.5 rounded-md w-fit mb-3 xl:mb-4">
                     {mainNews.category}
                   </span>
-                  {/* 🟢 تصغير خط العنوان ليناسب الارتفاع الجديد */}
-                  <h2 className="text-[clamp(1.1rem,2.5vw,2.25rem)] font-black text-white leading-tight mb-[clamp(0.4rem,1vw,1rem)] drop-shadow-md">
+                  
+                  <h2 className="text-2xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-white leading-tight mb-3 lg:mb-2 xl:mb-4 drop-shadow-md">
                     {mainNews.title}
                   </h2>
-                  <p className="text-white/80 font-medium text-[clamp(0.7rem,1vw,1rem)] line-clamp-2 max-w-2xl mb-[clamp(0.5rem,1.5vw,1rem)]">
+                  
+                  <p className="text-white/80 font-medium text-xs md:text-sm lg:text-[13px] xl:text-base 2xl:text-lg line-clamp-2 max-w-2xl 2xl:max-w-4xl mb-4 lg:mb-3 xl:mb-5 2xl:mb-6 leading-relaxed">
                     {mainNews.desc}
                   </p>
-                  <div className="flex items-center gap-[clamp(0.25rem,0.8vw,0.5rem)] text-[#C08F2D] font-bold text-[clamp(0.6rem,0.9vw,0.875rem)]">
-                    {mainNews.type === 'video' && <Play className="w-[clamp(0.7rem,1vw,1rem)] h-[clamp(0.7rem,1vw,1rem)]" />}
+                  
+                  <div className="flex items-center gap-1.5 text-[#C08F2D] font-bold text-xs md:text-sm lg:text-[13px] xl:text-sm 2xl:text-base">
+                    {mainNews.type === 'video' && <Play className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5" />}
                     <span>اقرأ التفاصيل</span>
-                    <ArrowUpLeft className="w-[clamp(0.7rem,1vw,1rem)] h-[clamp(0.7rem,1vw,1rem)]" />
+                    <ArrowUpLeft className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5" />
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* الأزرار والمؤشرات */}
-            <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute left-[clamp(0.5rem,1.5vw,1rem)] top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-[clamp(0.35rem,1vw,0.5rem)] rounded-full backdrop-blur-md">
-              <ChevronLeft className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)]" />
+            <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute left-4 lg:left-5 xl:left-6 2xl:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 lg:p-2 xl:p-2.5 2xl:p-3 rounded-full backdrop-blur-md cursor-pointer">
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6" />
             </button>
-            <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute right-[clamp(0.5rem,1.5vw,1rem)] top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-[clamp(0.35rem,1vw,0.5rem)] rounded-full backdrop-blur-md">
-              <ChevronRight className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)]" />
+            <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute right-4 lg:right-5 xl:right-6 2xl:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 lg:p-2 xl:p-2.5 2xl:p-3 rounded-full backdrop-blur-md cursor-pointer">
+              <ChevronRight className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6" />
             </button>
 
-            <div className="absolute bottom-[clamp(0.5rem,1.5vw,1.5rem)] left-1/2 -translate-x-1/2 flex gap-[clamp(0.25rem,0.5vw,0.35rem)] z-20">
+            <div className="absolute bottom-4 md:bottom-6 lg:bottom-5 xl:bottom-6 2xl:bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
               {heroSliderNews.map((_, index) => (
-                <button key={index} onClick={(e) => { e.stopPropagation(); setCurrentSlide(index); }} className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-[clamp(1rem,2vw,2rem)] bg-white' : 'w-1.5 md:w-2 bg-white/50'}`} />
+                <button key={index} onClick={(e) => { e.stopPropagation(); setCurrentSlide(index); }} className={`h-1.5 lg:h-1.5 xl:h-2 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-6 md:w-8 lg:w-6 xl:w-8 2xl:w-10 bg-white' : 'w-2 lg:w-1.5 xl:w-2 bg-white/50'}`} />
               ))}
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-[35%] mt-4 md:mt-0 px-4 md:px-0">
-            <div className="bg-gray-50 rounded-[clamp(1rem,2vw,2rem)] p-[clamp(1rem,2.5vw,2rem)] h-full border border-gray-100 flex flex-col">
-              <div className="flex items-center gap-[clamp(0.35rem,1vw,0.75rem)] mb-[clamp(0.75rem,2vw,2rem)]">
-                <div className="w-1.5 md:w-2 h-[clamp(1.1rem,2vw,2rem)] bg-[#C08F2D] rounded-full" />
-                <h3 className="text-[clamp(1rem,1.6vw,1.5rem)] font-black text-[#1a1c1d]">أبرز التحديثات</h3>
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-1/3 mt-2 md:mt-0">
+            <div className="bg-gray-50 rounded-2xl md:rounded-3xl xl:rounded-[2rem] p-6 md:p-8 lg:p-6 xl:p-8 2xl:p-10 h-full border border-gray-100 flex flex-col shadow-sm md:shadow-none">
+              
+              <div className="flex items-center gap-3 lg:gap-2 xl:gap-3 mb-6 md:mb-8 lg:mb-5 xl:mb-8">
+                <div className="w-1.5 md:w-2 h-6 md:h-8 lg:w-1.5 lg:h-6 xl:w-2 xl:h-8 bg-[#C08F2D] rounded-full" />
+                <h3 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl font-black text-[#1a1c1d]">أبرز التحديثات</h3>
               </div>
 
-              {/* 🟢 تقليل الفجوات والـ Padding الجانبي ليكون أرشق */}
-              <div className="flex overflow-x-auto md:flex-col snap-x snap-mandatory gap-[clamp(0.5rem,1.5vw,1.5rem)] flex-grow pb-4 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+              {/* 🟢 الحل الجذري للموبايل: flex-col للجميع، ما في سحب أفقي، بس كروت مرتبة تحت بعض */}
+              <div className="flex flex-col gap-4 md:gap-5 lg:gap-4 xl:gap-6 2xl:gap-8 flex-grow">
                 {sideNews.map((news) => (
-                  <div key={news.id} onClick={() => onNewsClick(news)} className="group cursor-pointer bg-white md:bg-transparent p-3 md:p-0 rounded-xl md:rounded-none border md:border-b border-gray-100 md:border-gray-200 md:pb-[clamp(0.75rem,1.5vw,1.5rem)] last:border-0 min-w-[220px] md:min-w-0 snap-center shrink-0 text-right shadow-sm md:shadow-none">
-                    <span className="flex items-center gap-1 text-gray-400 font-bold text-[clamp(0.55rem,0.8vw,0.7rem)] mb-[clamp(0.2rem,0.4vw,0.35rem)]">
-                      <Clock className="w-3 h-3" />
+                  <div 
+                    key={news.id} 
+                    onClick={() => onNewsClick(news)} 
+                    // عالموبايل: كرت أبيض مع shadow. عالديسكتوب: شفاف مع border سفلي.
+                    className="group cursor-pointer bg-white md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none border border-gray-100 md:border-b md:border-x-0 md:border-t-0 md:border-gray-200 md:pb-5 lg:pb-4 xl:pb-6 2xl:pb-8 last:border-0 text-right shadow-sm md:shadow-none flex flex-col justify-center transition-all hover:shadow-md md:hover:shadow-none"
+                  >
+                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[11px] md:text-xs lg:text-[11px] xl:text-xs 2xl:text-sm mb-2">
+                      <Clock className="w-3.5 h-3.5 lg:w-3 lg:h-3 xl:w-4 xl:h-4" />
                       {news.date}
                     </span>
-                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-[1.4] line-clamp-2 text-[clamp(0.75rem,1.1vw,1.125rem)]">
+                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-relaxed line-clamp-2 text-[14px] md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-xl">
                       {news.title}
                     </h4>
                   </div>
                 ))}
               </div>
 
-              <button className="w-full mt-[clamp(0.5rem,1.5vw,1.5rem)] py-[clamp(0.5rem,1.2vw,0.875rem)] rounded-xl bg-white border border-gray-200 text-[#1a1c1d] font-bold text-[clamp(0.7rem,0.9vw,0.875rem)] hover:border-[#8a1538] transition-colors">
+              <button className="w-full mt-6 md:mt-8 lg:mt-6 xl:mt-8 py-3 lg:py-2.5 xl:py-3.5 2xl:py-4 rounded-xl bg-white border border-gray-200 text-[#1a1c1d] font-bold text-[13px] md:text-sm lg:text-[12px] xl:text-sm 2xl:text-base hover:border-[#8a1538] hover:text-[#8a1538] shadow-sm hover:shadow-md transition-all cursor-pointer">
                 عرض النشرة الإخبارية
               </button>
             </div>

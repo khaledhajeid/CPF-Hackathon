@@ -72,55 +72,55 @@ export default function HomePage({
         }}
       />
 
-      {/* 🟢 تدرج ذكي للسحب للأعلى (mt) حسب حجم الشاشة */}
-      <div className="relative z-30 -mt-10 sm:-mt-12 lg:-mt-10 xl:-mt-16 mx-4 sm:mx-8 xl:mx-auto max-w-[1400px]">
+      {/* 🟢 السحب للأعلى: -mt-12 للـ xl عشان ما يكون كبير زيادة */}
+      <div className="relative z-30 -mt-10 sm:-mt-12 lg:-mt-10 xl:-mt-12 2xl:-mt-16 mx-4 sm:mx-8 xl:mx-auto max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          // 🟢 تدرج البادينج والحواف: ملموم عالموبايل والـ 13 إنش، وفخم عالشاشات الكبيرة
-          className="bg-white rounded-2xl md:rounded-3xl xl:rounded-[2rem] shadow-xl p-6 sm:p-8 lg:p-6 xl:p-12 border border-gray-100 mx-auto w-full lg:w-11/12 xl:w-10/12"
+          // 🟢 البادينج: p-8 للـ xl عشان الـ 13 إنش، و p-12 للشاشات العملاقة (2xl)
+          className="bg-white rounded-2xl md:rounded-3xl xl:rounded-[2rem] shadow-xl p-6 sm:p-8 lg:p-6 xl:p-8 2xl:p-12 border border-gray-100 mx-auto w-full lg:w-11/12 2xl:w-10/12"
         >
-          {/* 🟢 الشبكة الذكية: بدون فراغات عشوائية، بتعتمد على الـ Borders المرتبة */}
           <div className="grid grid-cols-2 lg:grid-cols-4 relative">
             
             {/* العنصر 1 */}
             <div className="flex flex-col items-center justify-center text-center border-l border-b border-gray-100 lg:border-b-0 pb-6 lg:pb-0">
-              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-5xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+              {/* 🟢 حجم الخط: text-4xl للـ xl (أنيق)، و text-6xl للشاشات العملاقة */}
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
                 <AnimatedNumber value={2.2} decimals={1} suffix="M" />
               </h3>
-              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
                 مستفيد
               </p>
             </div>
 
             {/* العنصر 2 */}
             <div className="flex flex-col items-center justify-center text-center border-b border-gray-100 lg:border-b-0 lg:border-l pb-6 lg:pb-0">
-              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-5xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
                 <AnimatedNumber value={14} prefix="+" />
               </h3>
-              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
                 برنامج ومبادرة
               </p>
             </div>
 
             {/* العنصر 3 */}
             <div className="flex flex-col items-center justify-center text-center border-l border-gray-100 pt-6 lg:pt-0">
-              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-5xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
                 <AnimatedNumber value={26} prefix="+" />
               </h3>
-              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
                 موقع استراتيجي
               </p>
             </div>
 
             {/* العنصر 4 */}
             <div className="flex flex-col items-center justify-center text-center pt-6 lg:pt-0">
-              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-5xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
                 <AnimatedNumber value={12} />
               </h3>
-              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
                 محافظة نغطيها
               </p>
             </div>
@@ -143,7 +143,6 @@ export default function HomePage({
       </div>
 
       <RevealOnScroll>
-        {/* 🟢 قسم الذكاء الاصطناعي: ضبط البادينج وأحجام الخطوط لتناسب الموبايل والشاشات كلها */}
         <div className="bg-[#721F31] pt-12 pb-16 lg:pt-16 lg:pb-20 xl:pt-24 xl:pb-28 relative overflow-hidden">
           <div
             className="absolute bottom-0 left-0 right-0 h-40 z-0 opacity-[0.15] pointer-events-none mix-blend-overlay"

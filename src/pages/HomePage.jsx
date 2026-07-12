@@ -72,7 +72,6 @@ export default function HomePage({
         }}
       />
 
-      {/* 🟢 السحب للأعلى: -mt-12 للـ xl عشان ما يكون كبير زيادة */}
       <div className="relative z-30 -mt-10 sm:-mt-12 lg:-mt-10 xl:-mt-12 2xl:-mt-16 mx-4 sm:mx-8 xl:mx-auto max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

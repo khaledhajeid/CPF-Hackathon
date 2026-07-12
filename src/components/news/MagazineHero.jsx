@@ -23,13 +23,12 @@ export default function MagazineHero({ onNewsClick }) {
   }, [currentSlide]);
 
   return (
-    // 🟢 تدرج طبيعي ومدروس للـ Padding العلوي والسفلي لضمان الـ White Spaces
     <div className="pt-24 md:pt-32 lg:pt-28 xl:pt-36 2xl:pt-48 pb-12 md:pb-16 lg:pb-16 xl:pb-20 2xl:pb-24 bg-[#fcfcfc] border-b border-gray-100" dir="rtl">
       <div className="max-w-[1400px] xl:max-w-[1500px] 2xl:max-w-[1700px] mx-auto px-4 md:px-8">
         
-        {/* 🟢 تدرج ارتفاع الهيرو: 450px للـ lg (عشان شاشة 13 انش تتنفس)، ويفرد للـ xl و 2xl */}
         <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-6 xl:gap-8 2xl:gap-12 h-auto lg:h-[450px] xl:h-[550px] 2xl:h-[650px]">
           
+          {/* 🟢 القسم الأيمن (الخبر الرئيسي) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             onClick={() => onNewsClick(mainNews)}
@@ -44,7 +43,6 @@ export default function MagazineHero({ onNewsClick }) {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/40 to-transparent" />
                 
-                {/* 🟢 تدرج المسافات الداخلية للنصوص بدون Clamp */}
                 <div className="absolute inset-0 p-6 md:p-10 lg:p-8 xl:p-12 2xl:p-16 flex flex-col justify-end text-right z-10 pb-10 md:pb-12 lg:pb-10 xl:pb-12 2xl:pb-16">
                   <span className="bg-[#8a1538] text-white font-bold text-[10px] md:text-xs lg:text-[11px] xl:text-xs 2xl:text-sm px-3 py-1 md:px-4 md:py-1.5 rounded-md w-fit mb-3 xl:mb-4">
                     {mainNews.category}
@@ -81,37 +79,36 @@ export default function MagazineHero({ onNewsClick }) {
             </div>
           </motion.div>
 
+          {/* 🟢 القسم الأيسر (أبرز التحديثات) بعد إزالة الزر */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="lg:w-1/3 mt-2 md:mt-0">
-            <div className="bg-gray-50 rounded-2xl md:rounded-3xl xl:rounded-[2rem] p-6 md:p-8 lg:p-6 xl:p-8 2xl:p-10 h-full border border-gray-100 flex flex-col shadow-sm md:shadow-none">
+            {/* 🟢 زدنا البادينج الداخلي (p-6 => p-8 مثلاً) لتعويض غياب الزر ولإضافة فخامة للكرت */}
+            <div className="bg-gray-50 rounded-2xl md:rounded-3xl xl:rounded-[2rem] p-6 md:p-8 lg:p-8 xl:p-10 2xl:p-12 h-full border border-gray-100 flex flex-col shadow-sm md:shadow-none">
               
-              <div className="flex items-center gap-3 lg:gap-2 xl:gap-3 mb-6 md:mb-8 lg:mb-5 xl:mb-8">
+              <div className="flex items-center gap-3 lg:gap-3 xl:gap-4 mb-6 md:mb-8 lg:mb-8 xl:mb-10 2xl:mb-12 shrink-0">
                 <div className="w-1.5 md:w-2 h-6 md:h-8 lg:w-1.5 lg:h-6 xl:w-2 xl:h-8 bg-[#C08F2D] rounded-full" />
                 <h3 className="text-xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl font-black text-[#1a1c1d]">أبرز التحديثات</h3>
               </div>
 
-              {/* 🟢 الحل الجذري للموبايل: flex-col للجميع، ما في سحب أفقي، بس كروت مرتبة تحت بعض */}
-              <div className="flex flex-col gap-4 md:gap-5 lg:gap-4 xl:gap-6 2xl:gap-8 flex-grow">
+              {/* 🟢 إضافة justify-center لتوسيط الأخبار عمودياً وترك مساحة بيضاء متساوية فوق وتحت */}
+              <div className="flex flex-col justify-center gap-4 md:gap-5 lg:gap-5 xl:gap-8 2xl:gap-10 flex-grow">
                 {sideNews.map((news) => (
                   <div 
                     key={news.id} 
                     onClick={() => onNewsClick(news)} 
-                    // عالموبايل: كرت أبيض مع shadow. عالديسكتوب: شفاف مع border سفلي.
-                    className="group cursor-pointer bg-white md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none border border-gray-100 md:border-b md:border-x-0 md:border-t-0 md:border-gray-200 md:pb-5 lg:pb-4 xl:pb-6 2xl:pb-8 last:border-0 text-right shadow-sm md:shadow-none flex flex-col justify-center transition-all hover:shadow-md md:hover:shadow-none"
+                    // 🟢 إضافة last:pb-0 عشان الخبر الأخير ما يكون تحته فراغ يخرّب التوسيط العمودي
+                    className="group cursor-pointer bg-white md:bg-transparent p-5 md:p-0 rounded-2xl md:rounded-none border border-gray-100 md:border-b md:border-x-0 md:border-t-0 md:border-gray-200 md:pb-5 lg:pb-5 xl:pb-8 2xl:pb-10 last:border-0 last:pb-0 text-right shadow-sm md:shadow-none flex flex-col justify-center transition-all hover:shadow-md md:hover:shadow-none"
                   >
-                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[11px] md:text-xs lg:text-[11px] xl:text-xs 2xl:text-sm mb-2">
+                    <span className="flex items-center gap-1.5 text-gray-400 font-bold text-[11px] md:text-xs lg:text-[11px] xl:text-xs 2xl:text-sm mb-2 md:mb-2.5">
                       <Clock className="w-3.5 h-3.5 lg:w-3 lg:h-3 xl:w-4 xl:h-4" />
                       {news.date}
                     </span>
-                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-relaxed line-clamp-2 text-[14px] md:text-[15px] lg:text-[13px] xl:text-base 2xl:text-xl">
+                    <h4 className="font-black text-[#1a1c1d] group-hover:text-[#8a1538] transition-colors leading-relaxed line-clamp-2 text-[14px] md:text-[16px] lg:text-[14px] xl:text-[1.1rem] 2xl:text-2xl">
                       {news.title}
                     </h4>
                   </div>
                 ))}
               </div>
 
-              <button className="w-full mt-6 md:mt-8 lg:mt-6 xl:mt-8 py-3 lg:py-2.5 xl:py-3.5 2xl:py-4 rounded-xl bg-white border border-gray-200 text-[#1a1c1d] font-bold text-[13px] md:text-sm lg:text-[12px] xl:text-sm 2xl:text-base hover:border-[#8a1538] hover:text-[#8a1538] shadow-sm hover:shadow-md transition-all cursor-pointer">
-                عرض النشرة الإخبارية
-              </button>
             </div>
           </motion.div>
 

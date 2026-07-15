@@ -27,7 +27,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000',
-      closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/50 to-transparent' 
+      closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/10 to-transparent' 
     },
     {
       id: 'قُد', goal: 'أريد أن أكون قائداً', name: 'قُد', shortName: 'قُد', number: 'الثاني',
@@ -35,7 +35,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       brands: ['برنامج خطى الحسين', 'مبادرة حقق', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000',
-      closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/50 to-transparent' 
+      closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/10 to-transparent' 
     },
     {
       id: 'اصنع الأثر', goal: 'أريد التطوع وخدمة مجتمعي', name: 'اصنع الأثر', shortName: 'اصنع الأثر', number: 'الثالث',
@@ -43,7 +43,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
-      closedOverlay: 'bg-[#1f5412]/85', openGradient: 'from-[#0e2608] via-[#1f5412]/50 to-transparent'
+      closedOverlay: 'bg-[#1f5412]/85', openGradient: 'from-[#0e2608] via-[#1f5412]/10 to-transparent'
     }
   ];
 

@@ -4,29 +4,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
 import { 
   MapPin, Phone, Mail, Send, Clock, Building2, CheckCircle2, ChevronDown, 
-  Briefcase, GraduationCap, UploadCloud, X, Map
+  Briefcase, GraduationCap, UploadCloud, X
 } from 'lucide-react';
 
 const officesData = [
-  { id: 'amman', shortName: 'عمّان', name: 'المقر الرئيسي - عمّان', address: 'دابوق - شارع محمد السعد البطاينة', phone: '+962 6 5806161', ext: '412', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'irbid', shortName: 'إربد', name: 'مكتب إربد', address: 'شارع فراس العجلوني بالقرب من دوّار القبة', phone: '+962 6 5806161', ext: '2010 - 2011', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'zarqa', shortName: 'الزرقاء', name: 'مكتب الزرقاء', address: 'شارع الأميرة سلمى - مركز الأميرة سلمى للطفولة', phone: '+962 6 5806161', ext: '2050 - 2051', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'balqa', shortName: 'البلقاء', name: 'مكتب البلقاء', address: 'طريق السلط - جسر الدبابنة - عمارة بنك الاتحاد', phone: '+962 6 5806161', ext: '2070 - 2071', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'madaba', shortName: 'مادبا', name: 'مكتب مادبا', address: 'ش. مأدبا الغربي، مديرية عمل محافظة مادبا', phone: '+962 6 5806161', ext: '2060 - 2061', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'jerash', shortName: 'جرش', name: 'مكتب جرش', address: 'شارع الملك عبدالله الثاني - مقابل شركة اورنج', phone: '+962 6 5806161', ext: '2100 - 2101', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'ajloun', shortName: 'عجلون', name: 'مكتب عجلون', address: 'شارع الحسام - المركز الثقافي - بجانب مبنى محافظة عجلون', phone: '+962 6 5806161', ext: '2110 - 2111', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'mafraq', shortName: 'المفرق', name: 'مكتب المفرق', address: 'شارع الكرامة - بجانب جمعية الكاريتاس', phone: '+962 6 5806161', ext: '2040', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'karak', shortName: 'الكرك', name: 'مكتب الكرك', address: 'إشارة كلية الكرك - بجانب "وزارة العمل" مديرية عمل الكرك – الطابق الثاني', phone: '+962 6 5806161', ext: '2090 - 2091', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'tafilah', shortName: 'الطفيلة', name: 'مكتب الطفيلة', address: 'طريق الطفيلة - بلدية الطفيلة الجديدة – الطابق الرابع', phone: '+962 6 5806161', ext: '2080 - 2081', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'maan', shortName: 'معان', name: 'مكتب معان', address: 'طريق المدورة - مركز الحسين بن عبدالله الثاني الثقافي', phone: '+962 6 5806161', ext: '2030', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
-  { id: 'aqaba', shortName: 'العقبة', name: 'مكتب العقبة', address: 'مجمع صندوق إدخار الملكية الأردنية – الطابق الثاني', phone: '+962 6 5806161', ext: '2020', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'amman', name: 'المقر الرئيسي - عمّان', address: 'دابوق - شارع محمد السعد البطاينة', phone: '+962 6 5806161', ext: '412', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'irbid', name: 'مكتب إربد', address: 'شارع فراس العجلوني بالقرب من دوّار القبة', phone: '+962 6 5806161', ext: '2010 - 2011', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'zarqa', name: 'مكتب الزرقاء', address: 'شارع الأميرة سلمى - مركز الأميرة سلمى للطفولة', phone: '+962 6 5806161', ext: '2050 - 2051', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'balqa', name: 'مكتب البلقاء', address: 'طريق السلط - جسر الدبابنة - عمارة بنك الاتحاد', phone: '+962 6 5806161', ext: '2070 - 2071', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'madaba', name: 'مكتب مادبا', address: 'ش. مأدبا الغربي، مديرية عمل محافظة مادبا', phone: '+962 6 5806161', ext: '2060 - 2061', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'jerash', name: 'مكتب جرش', address: 'شارع الملك عبدالله الثاني - مقابل شركة اورنج', phone: '+962 6 5806161', ext: '2100 - 2101', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'ajloun', name: 'مكتب عجلون', address: 'شارع الحسام - المركز الثقافي - بجانب مبنى محافظة عجلون', phone: '+962 6 5806161', ext: '2110 - 2111', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'mafraq', name: 'مكتب المفرق', address: 'شارع الكرامة - بجانب جمعية الكاريتاس', phone: '+962 6 5806161', ext: '2040', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'karak', name: 'مكتب الكرك', address: 'إشارة كلية الكرك - بجانب "وزارة العمل" مديرية عمل الكرك – الطابق الثاني', phone: '+962 6 5806161', ext: '2090 - 2091', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'tafilah', name: 'مكتب الطفيلة', address: 'طريق الطفيلة - بلدية الطفيلة الجديدة – الطابق الرابع', phone: '+962 6 5806161', ext: '2080 - 2081', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'maan', name: 'مكتب معان', address: 'طريق المدورة - مركز الحسين بن عبدالله الثاني الثقافي', phone: '+962 6 5806161', ext: '2030', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
+  { id: 'aqaba', name: 'مكتب العقبة', address: 'مجمع صندوق إدخار الملكية الأردنية – الطابق الثاني', phone: '+962 6 5806161', ext: '2020', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
 ];
 
 export default function Contact({ onNavigate }) { 
-  const [activeTab, setActiveTab] = useState('contact'); 
-  const [selectedOffice, setSelectedOffice] = useState(officesData[0]);
+  const [activeTab, setActiveTab] = useState('contact');
   
-  // 🟢 حالة فتح وإغلاق القائمة المنسدلة المخصصة
+  // 🟢 حالة المكتب المختار
+  const [selectedOffice, setSelectedOffice] = useState(officesData[0]);
+  // 🟢 حالة لفتح وإغلاق القائمة المنسدلة
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -34,7 +35,7 @@ export default function Contact({ onNavigate }) {
   const [isSent, setIsSent] = useState(false);
   const [modalType, setModalType] = useState(null); 
 
-  // إغلاق القائمة عند النقر خارجها
+  // 🟢 إغلاق القائمة المنسدلة عند النقر خارجها
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -63,7 +64,7 @@ export default function Contact({ onNavigate }) {
   return (
     <div className="min-h-[100dvh] bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col relative" dir="rtl">
       
-      {/* ההيدر */}
+      {/* 1. الهيدر الفخم */}
       <div className="bg-[#1a070b] pt-[clamp(6rem,14vh,10rem)] pb-[clamp(3rem,8vh,6rem)] relative overflow-hidden rounded-b-[clamp(1.5rem,4vw,3.5rem)] shadow-xl shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#721F31]/90 via-[#3b1019] to-[#1a070b]" />
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
@@ -78,7 +79,7 @@ export default function Contact({ onNavigate }) {
         </div>
       </div>
 
-      {/* التبويبات */}
+      {/* 2. التبويبات الرئيسية */}
       <div className="max-w-[450px] mx-auto w-full px-[clamp(1rem,4vw,1.5rem)] -mt-[clamp(1.25rem,3vw,1.75rem)] relative z-30">
         <div className="bg-white p-[clamp(0.25rem,0.8vw,0.35rem)] rounded-full shadow-xl border border-gray-100 flex">
           <button 
@@ -96,6 +97,7 @@ export default function Contact({ onNavigate }) {
         </div>
       </div>
 
+      {/* 3. المحتوى المتغير */}
       <div className="max-w-[1300px] xl:max-w-[1150px] 2xl:max-w-[1300px] mx-auto w-full px-[clamp(1rem,4vw,2rem)] mt-[clamp(2rem,5vh,4rem)] mb-[clamp(4rem,8vh,6rem)] relative z-20 flex-grow">
         <AnimatePresence mode="wait">
           
@@ -107,93 +109,92 @@ export default function Contact({ onNavigate }) {
               className="bg-white rounded-[clamp(1.5rem,3vw,2.5rem)] shadow-xl shadow-[#721F31]/5 flex flex-col lg:flex-row overflow-visible border border-gray-100 min-h-0"
             >
               
-              <div className="lg:w-2/5 relative bg-[#1a070b] p-[clamp(1.5rem,3vw,3.5rem)] flex flex-col shrink-0 rounded-t-[clamp(1.5rem,3vw,2.5rem)] lg:rounded-t-none lg:rounded-r-[clamp(1.5rem,3vw,2.5rem)] z-20">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#721F31] to-[#3b1019] rounded-t-[clamp(1.5rem,3vw,2.5rem)] lg:rounded-t-none lg:rounded-r-[clamp(1.5rem,3vw,2.5rem)] overflow-hidden" />
-                <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#C08F2D]/20 rounded-full blur-[60px] overflow-hidden" />
+              <div className="lg:w-2/5 relative bg-[#1a070b] p-[clamp(1.5rem,3vw,3.5rem)] flex flex-col shrink-0 rounded-t-[clamp(1.5rem,3vw,2.5rem)] lg:rounded-tr-[clamp(1.5rem,3vw,2.5rem)] lg:rounded-bl-[clamp(1.5rem,3vw,2.5rem)] lg:rounded-tl-none overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#721F31] to-[#3b1019]" />
+                <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#C08F2D]/20 rounded-full blur-[60px]" />
                 
                 <div className="relative z-10 flex flex-col h-full">
                   
-                  {/* 🟢 القائمة المنسدلة المخصصة والشبابية (Custom Dropdown) */}
-                  <div className="mb-[clamp(1.5rem,3vw,2.5rem)] relative" ref={dropdownRef}>
-                    <p className="text-white/70 font-bold text-[clamp(0.65rem,0.9vw,0.8rem)] mb-[clamp(0.35rem,0.8vw,0.5rem)] pr-2">الموقع الجغرافي للمكتب:</p>
+                  {/* 🟢 القائمة المنسدلة العصرية (Custom Dropdown) */}
+                  <div className="mb-[clamp(1.5rem,3vw,2.5rem)] border-b border-white/10 pb-[clamp(1rem,2vw,1.5rem)]" ref={dropdownRef}>
+                    <h4 className="text-white/80 font-bold text-[clamp(0.7rem,1vw,0.85rem)] mb-[clamp(0.5rem,1vw,0.75rem)] pr-1">اختر المحافظة لمعرفة مواقعنا:</h4>
                     
-                    <button 
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="w-full flex items-center justify-between bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-md px-[clamp(1rem,2vw,1.5rem)] py-[clamp(0.75rem,1.5vw,1rem)] rounded-2xl transition-all duration-300 cursor-pointer shadow-sm group"
-                    >
-                      <div className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)]">
-                        <Map className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)] text-[#C08F2D]" />
-                        <span className="text-white font-black text-[clamp(0.85rem,1.2vw,1.1rem)] tracking-wide">{selectedOffice.name}</span>
-                      </div>
-                      <ChevronDown className={`w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)] text-white/70 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                    </button>
+                    <div className="relative">
+                      {/* زر تشغيل القائمة */}
+                      <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`w-full flex items-center justify-between bg-white/5 hover:bg-white/10 border px-[clamp(1rem,1.5vw,1.5rem)] py-[clamp(0.75rem,1.2vw,1rem)] rounded-xl transition-all duration-300 cursor-pointer backdrop-blur-sm ${isDropdownOpen ? 'border-[#C08F2D] shadow-[0_0_15px_rgba(192,143,45,0.2)]' : 'border-white/10'}`}
+                      >
+                        <div className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)]">
+                          <Building2 className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] text-[#C08F2D]" />
+                          <span className="text-white font-black text-[clamp(0.85rem,1.2vw,1rem)]">{selectedOffice.name}</span>
+                        </div>
+                        <ChevronDown className={`w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] text-white/70 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-[#C08F2D]' : ''}`} />
+                      </button>
 
-                    {/* 🟢 الشبكة المنبثقة لاختيار المحافظة (تأثير زجاجي حديث) */}
-                    <AnimatePresence>
-                      {isDropdownOpen && (
-                        <motion.div 
-                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 right-0 mt-3 bg-[#2a0b12]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-[clamp(0.75rem,1.5vw,1.25rem)] shadow-2xl z-50"
-                        >
-                          <div className="grid grid-cols-2 md:grid-cols-3 gap-[clamp(0.35rem,0.8vw,0.5rem)]">
-                            {officesData.map((office) => (
-                              <button
-                                key={office.id}
-                                onClick={() => {
-                                  setSelectedOffice(office);
-                                  setIsDropdownOpen(false);
-                                }}
-                                className={`text-center px-2 py-[clamp(0.5rem,1vw,0.75rem)] rounded-xl font-bold text-[clamp(0.7rem,1vw,0.85rem)] transition-all duration-300 ${
-                                  selectedOffice.id === office.id
-                                    ? 'bg-[#C08F2D] text-white shadow-md'
-                                    : 'bg-white/5 hover:bg-white/10 text-white/80 hover:text-white'
-                                }`}
-                              >
-                                {office.shortName}
-                              </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      {/* قائمة الخيارات المنبثقة */}
+                      <AnimatePresence>
+                        {isDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
+                            className="absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-[#2b0811]/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50"
+                          >
+                            <div className="max-h-[240px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                              {officesData.map((office) => (
+                                <button
+                                  key={office.id}
+                                  onClick={() => {
+                                    setSelectedOffice(office);
+                                    setIsDropdownOpen(false);
+                                  }}
+                                  className={`w-full text-right px-[clamp(1rem,1.5vw,1.5rem)] py-[clamp(0.75rem,1vw,0.875rem)] transition-colors flex items-center justify-between group cursor-pointer ${
+                                    selectedOffice.id === office.id 
+                                      ? 'bg-[#C08F2D]/20 text-[#C08F2D]' 
+                                      : 'text-white/80 hover:bg-white/10 hover:text-white'
+                                  }`}
+                                >
+                                  <span className="font-bold text-[clamp(0.75rem,1vw,0.9rem)]">{office.name}</span>
+                                  {selectedOffice.id === office.id && <CheckCircle2 className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] text-[#C08F2D]" />}
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                   
-                  {/* التفاصيل المرتبطة بالمكتب */}
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-[clamp(1.25rem,2.5vw,2rem)] backdrop-blur-sm shadow-inner flex-grow relative overflow-hidden">
-                    <AnimatePresence mode="wait">
-                      <motion.div 
-                        key={selectedOffice.id}
-                        initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.3 }}
-                        className="space-y-[clamp(1.25rem,2.5vw,2rem)]"
-                      >
-                        {[
-                          { icon: MapPin, title: 'العنوان', desc: selectedOffice.address },
-                          { icon: Phone, title: 'الهاتف', desc: `${selectedOffice.phone} (فرعي: ${selectedOffice.ext})`, ltr: true },
-                          { icon: Mail, title: 'البريد الإلكتروني', desc: 'info@cpf.jo', ltr: true },
-                          { icon: Clock, title: 'ساعات العمل', desc: selectedOffice.hours }
-                        ].map((info, idx) => (
-                          <div key={idx} className="flex items-start gap-[clamp(0.75rem,1.5vw,1.25rem)] group cursor-default">
-                            <div className="w-[clamp(2.25rem,3.5vw,3rem)] h-[clamp(2.25rem,3.5vw,3rem)] rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0 group-hover:bg-[#C08F2D] group-hover:border-[#C08F2D] transition-all duration-300 shadow-sm">
-                              <info.icon className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)] text-white/90 group-hover:text-white" />
-                            </div>
-                            <div className="pt-1">
-                              <h3 className="font-bold text-[#C08F2D] text-[clamp(0.6rem,0.8vw,0.7rem)] uppercase tracking-widest mb-[clamp(0.2rem,0.5vw,0.35rem)]">{info.title}</h3>
-                              <p className="text-white text-[clamp(0.85rem,1.1vw,1.05rem)] font-bold leading-relaxed" dir={info.ltr ? "ltr" : "rtl"}>{info.desc}</p>
-                            </div>
+                  {/* التفاصيل تتغير بناءً على الاختيار */}
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={selectedOffice.id}
+                      initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 15 }} transition={{ duration: 0.3 }}
+                      className="space-y-[clamp(1.25rem,2.5vw,2rem)] flex-grow mt-2"
+                    >
+                      {[
+                        { icon: MapPin, title: 'العنوان', desc: selectedOffice.address },
+                        { icon: Phone, title: 'الهاتف', desc: `${selectedOffice.phone} (فرعي: ${selectedOffice.ext})`, ltr: true },
+                        { icon: Mail, title: 'البريد الإلكتروني', desc: 'info@cpf.jo', ltr: true },
+                        { icon: Clock, title: 'ساعات العمل', desc: selectedOffice.hours }
+                      ].map((info, idx) => (
+                        <div key={idx} className="flex items-start gap-[clamp(0.75rem,1.5vw,1.25rem)] group cursor-default">
+                          <div className="w-[clamp(2.25rem,3.5vw,3rem)] h-[clamp(2.25rem,3.5vw,3rem)] rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#C08F2D]/20 group-hover:border-[#C08F2D]/50 transition-all duration-300 shadow-sm">
+                            <info.icon className="w-[clamp(1rem,1.5vw,1.25rem)] h-[clamp(1rem,1.5vw,1.25rem)] text-white/90 group-hover:text-[#C08F2D]" />
                           </div>
-                        ))}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
+                          <div className="pt-1">
+                            <h3 className="font-bold text-[#C08F2D] text-[clamp(0.6rem,0.8vw,0.7rem)] uppercase tracking-widest mb-[clamp(0.2rem,0.5vw,0.35rem)]">{info.title}</h3>
+                            <p className="text-white text-[clamp(0.8rem,1.1vw,1rem)] font-bold leading-relaxed" dir={info.ltr ? "ltr" : "rtl"}>{info.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </motion.div>
+                  </AnimatePresence>
 
                 </div>
               </div>
 
-              {/* الفورم */}
-              <div className="lg:w-3/5 p-[clamp(1.5rem,4vw,3.5rem)] bg-white relative flex flex-col justify-center z-10">
+              {/* الفورم (نموذج الإرسال) */}
+              <div className="lg:w-3/5 p-[clamp(1.5rem,4vw,3.5rem)] bg-white relative flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                   {isSent ? (
                     <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="text-center py-10">
@@ -202,7 +203,7 @@ export default function Contact({ onNavigate }) {
                       </div>
                       <h2 className="text-[clamp(1.25rem,2.5vw,2rem)] font-black text-[#721F31] mb-[clamp(0.75rem,1.5vw,1rem)]">استلمنا رسالتك بنجاح</h2>
                       <p className="text-gray-500 font-bold text-[clamp(0.75rem,1vw,0.9rem)] leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)] max-w-sm mx-auto">سيقوم الفريق المختص بمراجعة رسالتك والرد عليك في أقرب وقت ممكن.</p>
-                      <button onClick={() => setIsSent(false)} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.5vw,1rem)] rounded-xl font-black text-[clamp(0.75rem,1vw,0.85rem)] transition-all cursor-pointer">
+                      <button onClick={() => setIsSent(false)} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.5vw,1rem)] rounded-xl font-black text-[clamp(0.75rem,1vw,0.85rem)] transition-all">
                         إرسال رسالة أخرى
                       </button>
                     </motion.div>
@@ -309,7 +310,7 @@ export default function Contact({ onNavigate }) {
         <Footer onNavigate={onNavigate}/>
       </div>
 
-      {/* الـ Modal */}
+      {/* 4. الـ Modal (نافذة إرسال الـ CV المنبثقة) */}
       <AnimatePresence>
         {modalType && (
           <>
@@ -379,7 +380,7 @@ export default function Contact({ onNavigate }) {
               </div>
             </motion.div>
           </>
-        )}  
+        )}
       </AnimatePresence>
 
     </div>

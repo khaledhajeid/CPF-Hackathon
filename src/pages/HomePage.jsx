@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import LuxuryHero from "../components/home/LuxuryHero";
 import LuxuryPathways from "../components/home/LuxuryPathways";
 import EcosystemPrograms from "../components/home/EcosystemPrograms";
+import AlertSideTab from "../components/home/AlertSideTab";
 
 function AnimatedNumber({ value, suffix = "", prefix = "", decimals = 0 }) {
   const [currentValue, setCurrentValue] = useState(0);
@@ -64,6 +65,8 @@ export default function HomePage({
       className="w-full bg-[#fcfcfc] text-[#4c4c4c] selection:bg-[#C08F2D] selection:text-white font-sans overflow-x-hidden"
       dir="rtl"
     >
+      <AlertSideTab />
+
       <LuxuryHero
         onExploreClick={() => {
           document

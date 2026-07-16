@@ -1,5 +1,5 @@
 // src/components/home/AlertSideTab.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Megaphone, X, ArrowLeft } from 'lucide-react';
 
@@ -15,18 +15,49 @@ const alerts = [
 const OPEN_TRANSITION = { duration: 0.36, ease: [0.16, 1, 0.3, 1] };
 const CLOSE_TRANSITION = { duration: 0.24, ease: [0.4, 0, 1, 1] };
 
+// المسافة (بالبكسل) قبل نهاية الصفحة التي يختفي عندها الشريط الجانبي لتجنب تصادمه مع الفوتر
+const FOOTER_PROXIMITY_PX = 700;
+
 export default function AlertSideTab() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
 
   const handleToggle = () => setIsOpen((prev) => !prev);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const checkFooterProximity = () => {
+      const distanceFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      const near = distanceFromBottom < FOOTER_PROXIMITY_PX;
+      setIsNearFooter(near);
+      if (near) setIsOpen(false);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkFooterProximity);
+      }
+    };
+
+    checkFooterProximity();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   return (
     <motion.div
       initial={false}
-      animate={{ x: isOpen ? '0%' : '100%' }}
+      animate={{ x: isOpen ? '0%' : '100%', opacity: isNearFooter ? 0 : 1 }}
       transition={isOpen ? OPEN_TRANSITION : CLOSE_TRANSITION}
       style={{ willChange: 'transform' }}
-      className="fixed top-[30%] right-0 z-[90] w-[82vw] max-w-[340px] sm:w-[380px] lg:w-[420px]"
+      className={`fixed top-[30%] right-0 z-[90] w-[82vw] max-w-[340px] sm:w-[380px] lg:w-[420px] ${isNearFooter ? 'pointer-events-none' : ''}`}
       dir="rtl"
     >
       {/* Docked trigger tab: larger, with a continuous attention ripple while collapsed.

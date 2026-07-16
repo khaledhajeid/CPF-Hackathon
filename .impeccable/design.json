@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-16T00:00:00.000Z",
+  "title": "Design System: Crown Prince Foundation",
+  "extensions": {
+    "colorMeta": {
+      "cpf-red": { "role": "primary", "displayName": "CPF Red (Burgundy)", "canonical": "#721F31", "tonalRamp": ["#3C101A", "#6A1D2E", "#982941", "#C63655", "#D4617A", "#E18FA1", "#EDBDC8", "#FAEBEE"] },
+      "interactive-red": { "role": "primary-variant", "displayName": "Interactive Red", "canonical": "#8a1538", "tonalRamp": ["#420A1B", "#75122F", "#A81944", "#DA2159", "#E5517D", "#EC84A3", "#F4B6C9", "#FCE9EE"] },
+      "gold": { "role": "secondary", "displayName": "Gold", "canonical": "#C08F2D", "tonalRamp": ["#3E2E0F", "#6D511A", "#9C7425", "#CC9830", "#D9B05D", "#E4C78C", "#EFDEBB", "#FAF5EA"] },
+      "surface-bg": { "role": "neutral", "displayName": "Paper", "canonical": "#fcfcfc" },
+      "surface-panel": { "role": "neutral", "displayName": "Panel", "canonical": "#F8FAFC" },
+      "ink-black": { "role": "neutral", "displayName": "Ink Black", "canonical": "#1a0409" },
+      "footer-black": { "role": "neutral", "displayName": "Footer Black", "canonical": "#3b1019" },
+      "text-body": { "role": "neutral", "displayName": "Ink Body", "canonical": "#4c4c4c" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero stat numerals, top-of-page headline figures." },
+      "headline": { "displayName": "Headline", "purpose": "Section-level headings." },
+      "title": { "displayName": "Title", "purpose": "Card and column headers." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy and list items, capped at 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Badges, pills, small status tags. Normal case, not uppercase." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 10px 40px rgba(0,0,0,0.08)", "purpose": "Default resting elevation for panels, cards, dropdowns." },
+      { "name": "ceremonial-lift", "value": "0 25px 50px -20px rgba(0,0,0,0.5)", "purpose": "Large soft blur for signature surfaces: Footer contact CTA, AlertSideTab drawer panel." },
+      { "name": "gold-glow", "value": "0 0 20px rgba(192,143,45,0.4)", "purpose": "Gold-accented interactive moments: button hover states, active badges." },
+      { "name": "red-tinted-lift", "value": "0 10px 30px rgba(138,21,56,0.08)", "purpose": "Brand-tinted alternative to a pure-black card shadow." }
+    ],
+    "motion": [
+      { "name": "ease-open", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Drawer/panel open transitions - deliberately slower (~0.36s) than close." },
+      { "name": "ease-close", "value": "cubic-bezier(0.4, 0, 1, 1)", "purpose": "Drawer/panel close transitions - ~35% shorter duration than open, so closing never reads as sluggish." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pill-shaped primary CTA in Interactive Red with white text; hover deepens and lifts.",
+      "html": "<button class=\"ds-btn-primary\">تسجيل الدخول</button>",
+      "css": ".ds-btn-primary { background: #8a1538; color: #ffffff; font-weight: 900; -webkit-text-stroke: 0.6px currentColor; letter-spacing: -0.02em; border: none; border-radius: 9999px; padding: 0.875rem 2rem; font-size: 0.9375rem; box-shadow: 0 4px 12px rgba(0,0,0,0.12); transition: background 0.3s, box-shadow 0.3s; cursor: pointer; } .ds-btn-primary:hover { background: #680f2a; box-shadow: 0 10px 25px rgba(0,0,0,0.18); } .ds-btn-primary:focus-visible { outline: 3px solid rgba(138,21,56,0.4); outline-offset: 2px; }"
+    },
+    {
+      "name": "Gold CTA Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Ceremonial secondary CTA in Gold that inverts to white-on-red on hover; reserved for the single most significant action on a surface (e.g. Footer contact CTA).",
+      "html": "<button class=\"ds-btn-gold\">تواصل معنا</button>",
+      "css": ".ds-btn-gold { background: #C08F2D; color: #ffffff; font-weight: 900; border: none; border-radius: 0.75rem; padding: 0.875rem 1.5rem; width: 100%; font-size: 0.9375rem; box-shadow: 0 10px 20px -8px rgba(0,0,0,0.3); transition: background 0.3s, color 0.3s; cursor: pointer; } .ds-btn-gold:hover { background: #ffffff; color: #8a1538; } .ds-btn-gold:focus-visible { outline: 3px solid rgba(192,143,45,0.5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Small pill badge; red-tinted at rest, flips to solid red with white text on hover/active.",
+      "html": "<span class=\"ds-chip\">متاح الآن</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 700; font-size: 0.6875rem; background: rgba(138,21,56,0.05); color: #8a1538; border: 1px solid rgba(138,21,56,0.1); transition: background 0.3s, color 0.3s; } .ds-chip:hover { background: #8a1538; color: #ffffff; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Panel-background input with a soft red focus ring instead of a hard outline.",
+      "html": "<input class=\"ds-input\" placeholder=\"البريد الإلكتروني\" />",
+      "css": ".ds-input { width: 100%; background: #F8FAFC; border: 1px solid #e5e7eb; color: #111827; font-weight: 700; font-size: 0.9375rem; padding: 0.875rem 1rem; border-radius: 0.75rem; outline: none; transition: background 0.2s, border-color 0.2s, box-shadow 0.2s; } .ds-input:hover { background: #f9fafb; } .ds-input:focus { background: #ffffff; border-color: #8a1538; box-shadow: 0 0 0 4px rgba(138,21,56,0.1); }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Default white card: rounded-2xl, gray-100 border, soft card-lift shadow.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">14+</h3><p class=\"ds-card-label\">برنامج ومبادرة</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #f3f4f6; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; } .ds-card-title { font-weight: 900; -webkit-text-stroke: 0.6px currentColor; letter-spacing: -0.02em; font-size: 2.25rem; color: #8a1538; margin: 0 0 0.25rem; } .ds-card-label { font-weight: 700; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }"
+    },
+    {
+      "name": "Nav Link (Active)",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Top-nav link with a gold underline bar growing from 0 to full width on active/hover, instead of a background pill.",
+      "html": "<a href=\"#\" class=\"ds-nav-link ds-nav-link--active\">الرئيسية</a>",
+      "css": ".ds-nav-link { position: relative; display: inline-block; padding-bottom: 0.5rem; font-weight: 700; font-size: 0.875rem; color: #374151; text-decoration: none; } .ds-nav-link::after { content: ''; position: absolute; bottom: 0; right: 0; height: 3px; width: 0; background: #C08F2D; transition: width 0.3s; } .ds-nav-link:hover::after, .ds-nav-link--active::after { width: 100%; }"
+    },
+    {
+      "name": "Ceremonial Contact CTA Card",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature Footer component: burgundy-to-black gradient card with a gold icon badge and a full-width gold button that inverts on hover. The site's single deliberate contact entry point.",
+      "html": "<div class=\"ds-cta-card\"><div class=\"ds-cta-icon\">&#9993;</div><h4 class=\"ds-cta-title\">لديك استفسار؟</h4><p class=\"ds-cta-copy\">فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.</p><button class=\"ds-cta-btn\">تواصل معنا</button></div>",
+      "css": ".ds-cta-card { position: relative; overflow: hidden; border-radius: 1rem; padding: 1.75rem; background: linear-gradient(135deg, #8a1538, #4d0c1c); border: 1px solid rgba(192,143,45,0.25); box-shadow: 0 25px 50px -20px rgba(0,0,0,0.5); } .ds-cta-icon { width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; background: rgba(192,143,45,0.15); border: 1px solid rgba(192,143,45,0.3); color: #C08F2D; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; } .ds-cta-title { color: #ffffff; font-weight: 900; font-size: 1.125rem; margin: 0 0 0.5rem; } .ds-cta-copy { color: rgba(255,255,255,0.75); font-size: 0.875rem; line-height: 1.6; margin: 0 0 1.5rem; } .ds-cta-btn { width: 100%; background: #C08F2D; color: #ffffff; font-weight: 900; border: none; border-radius: 0.75rem; padding: 0.875rem 1.5rem; cursor: pointer; transition: background 0.3s, color 0.3s; } .ds-cta-btn:hover { background: #ffffff; color: #8a1538; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The National Atrium",
+    "overview": "A grand public hall, not a boardroom and not a bazaar: dignified enough that a minister feels at home, warm enough that a nineteen-year-old doesn't feel lectured at. Every surface carries the same three-word brief the client confirmed - prestigious/national/aspirational, warm/empowering/youthful, confident/modern/results-driven - held together rather than traded off against each other. The system is Arabic-first and RTL-native from the ground up. The palette is Committed, not Restrained: CPF Red carries large flat surfaces and headline weight, while Gold is rationed to functional signal. This system explicitly rejects the generic SaaS/startup toolkit: no gradient text, no side-stripe borders, no tiny uppercase tracked eyebrows, no icon-in-a-circle card grids, no hero-metric-template clichés. Performance is treated as part of the luxury: every animation is authored as a hardware-accelerated transform/opacity tween so it stays smooth on low-end mobile devices and older desktops.",
+    "keyCharacteristics": [
+      "Committed color strategy: CPF Red owns the surface, Gold marks significance",
+      "RTL-first Arabic typography, artificially weighted via a global stroke trick",
+      "Soft-lifted, diffuse shadows in place of hard-edged elevation",
+      "Pill-shaped primary CTAs; rounded-xl for functional/form surfaces",
+      "Compositor-only motion (transform/opacity), asymmetric open/close timing",
+      "No generic SaaS-marketing patterns: no gradient text, no side-stripe accents, no eyebrow labels, no card-grid monoculture"
+    ],
+    "rules": [
+      { "name": "The Red Duality Rule", "body": "CPF Red (#721F31) owns large flat surfaces; Interactive Red (#8a1538) owns anything touchable or readable. Never swap their jobs.", "section": "colors" },
+      { "name": "The Gold Discipline Rule", "body": "Gold never fills a surface; it marks. If gold is covering more than a badge, a seam, an underline, or a single CTA, it has drifted from accent to wallpaper.", "section": "colors" },
+      { "name": "The Weighted Stroke Rule", "body": "Every h1-h6, .font-black, and .font-bold element gets a global -webkit-text-stroke: 0.6px currentColor plus -0.02em letter-spacing, simulating extra heft since no true black-weight file exists. Never add a manual stroke to an individual component.", "section": "typography" },
+      { "name": "The Soft-Lift Rule", "body": "Elevation always reads as a large, low-opacity blur, never a small tight shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep CPF Red (#721F31) on large flat surfaces and Interactive Red (#8a1538) on anything touchable.",
+      "Do ration gold to badges, seams, underlines, and single ceremonial CTAs.",
+      "Do animate only transform/opacity; treat animated box-shadow or layout properties as a bug.",
+      "Do respect prefers-reduced-motion on every animation with a crossfade or instant fallback.",
+      "Do validate every layout in RTL directly.",
+      "Do keep the UI lightweight enough for low-end mobile devices and older desktop computers."
+    ],
+    "donts": [
+      "Don't use gradient text for emphasis.",
+      "Don't use a colored border-left/border-right as a decorative stripe.",
+      "Don't add a tiny uppercase tracked eyebrow label above every section.",
+      "Don't default to identical icon-in-a-circle card grids.",
+      "Don't reach for the generic hero-metric-template.",
+      "Don't let gold cover more surface than a badge, seam, or single CTA."
+    ]
+  }
+}

@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Claude Code: local, per-machine settings (not shared with the team)
+.claude/settings.local.json
+
+# Impeccable design skill: local/ephemeral cache, not shared project state
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/config.local.json
+
+# Understand Anything: local codebase-analysis cache
+.understand-anything/

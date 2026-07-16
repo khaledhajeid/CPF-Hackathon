@@ -1,6 +1,6 @@
 // src/components/Footer.jsx
 import React from 'react';
-import { Mail, Phone, MapPin, ArrowUpLeft } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpLeft, ArrowLeft, MessageCircle } from 'lucide-react';
 
 const FacebookIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>);
 const InstagramIcon = (props) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>);
@@ -18,14 +18,6 @@ export default function Footer({ onNavigate }) {
     { name: 'أحدث الأخبار', id: 'news' },
     { name: 'قصص النجاح', id: 'success' },
     { name: 'تواصل معنا', id: 'contact' }
-  ];
-
-  const initiatives = [
-    { name: 'جامعة الحسين التقنية (HTU)', id: 'programs' },
-    { name: 'برنامج 42 عمّان و42 إربد', id: 'programs' },
-    { name: 'منصة نَحْنُ للتطوع', id: 'programs' },
-    { name: 'مصنع الأفكار (TechWorks)', id: 'programs' },
-    { name: 'برنامج خطى الحسين للمدارس', id: 'programs' }
   ];
 
   const socialLinks = [
@@ -71,20 +63,20 @@ export default function Footer({ onNavigate }) {
         </div>
 
         {/* الشبكة الرئيسية */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-10 md:pb-12 border-b border-white/10">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.15fr_0.85fr_1fr] gap-10 lg:gap-14 xl:gap-16 pb-10 md:pb-12 border-b border-white/10">
+
           <div className="space-y-5 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
               <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
-            <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-4 px-2 lg:px-0 text-center lg:text-justify">
+            <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-8 px-2 lg:px-0 text-center lg:text-justify">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
             </p>
             <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
               {socialLinks.map((social, idx) => {
                 const Icon = social.icon;
                 return (
-                  <a 
+                  <a
                     key={idx} href={social.href} aria-label={social.name}
                     className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D]/30 transition-all duration-300"
                   >
@@ -95,13 +87,13 @@ export default function Footer({ onNavigate }) {
             </div>
           </div>
 
-          <div className="text-center md:text-right lg:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
+          <div className="text-center md:text-right lg:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
             <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">روابط سريعة</h4>
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {quickLinks.map((link, idx) => (
                 <li key={idx}>
-                  <button 
-                    onClick={() => onNavigate && onNavigate(link.id)} 
+                  <button
+                    onClick={() => onNavigate && onNavigate(link.id)}
                     className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit cursor-pointer"
                   >
                     <span>{link.name}</span>
@@ -111,38 +103,46 @@ export default function Footer({ onNavigate }) {
             </ul>
           </div>
 
-          <div className="text-center md:text-right lg:pe-12 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">أبرز المبادرات</h4>
-            <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
-              {initiatives.map((item, idx) => (
-                <li key={idx}>
-                  <button 
-                    onClick={() => onNavigate && onNavigate(item.id)} 
-                    className="text-gray-200 hover:text-white hover:-translate-x-1 inline-block transition-all duration-300 flex items-center gap-2 group w-fit cursor-pointer"
-                  >
-                    <span>{item.name}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* بطاقة تواصل معنا: نقطة الدخول الرئيسية للتواصل بعد إزالتها من القائمة العلوية */}
+          <div className="border-t border-white/5 md:border-t-0 pt-8 md:pt-0 md:col-span-2 lg:col-span-1">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#8a1538] to-[#4d0c1c] border border-[#C08F2D]/25 shadow-[0_25px_50px_-20px_rgba(0,0,0,0.5)] p-6 md:p-7">
+              <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-[#C08F2D]/20 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-12 -right-8 w-32 h-32 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
-          <div className="text-center md:text-right lg:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
-            <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">معلومات الاتصال</h4>
-            <ul className="space-y-4 md:space-y-6 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
-              <li className="flex items-start justify-center md:justify-start gap-3 md:gap-4">
-                <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0 mt-1" strokeWidth={2} />
-                <span className="leading-relaxed font-medium">عمان، دابوق – شارع محمد السعد البطاينة</span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start gap-3 md:gap-4">
-                <Phone className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />
-                <span className="font-sans font-black tracking-wider text-white pt-1" dir="ltr">+962 6 555 5555</span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start gap-3 md:gap-4">
-                <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#C08F2D] shrink-0" strokeWidth={2} />
-                <a href="mailto:info@cpf.jo" className="hover:text-white transition-colors font-sans text-gray-200 font-bold" dir="ltr">info@cpf.jo</a>
-              </li>
-            </ul>
+              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-right">
+                <div className="w-11 h-11 rounded-xl bg-[#C08F2D]/15 border border-[#C08F2D]/30 flex items-center justify-center mb-4">
+                  <MessageCircle className="w-5 h-5 text-[#C08F2D]" strokeWidth={2} />
+                </div>
+
+                <h4 className="text-white font-black text-lg md:text-xl mb-2">لديك استفسار؟</h4>
+                <p className="text-white/75 text-sm font-medium leading-relaxed mb-6">
+                  فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+                </p>
+
+                <ul className="space-y-3.5 text-[13px] md:text-sm font-bold text-white/85 mb-7 w-full">
+                  <li className="flex items-start justify-center md:justify-start gap-3">
+                    <MapPin className="w-4 h-4 text-[#C08F2D] shrink-0 mt-0.5" strokeWidth={2} />
+                    <span className="leading-relaxed font-medium">عمان، دابوق – شارع محمد السعد البطاينة</span>
+                  </li>
+                  <li className="flex items-center justify-center md:justify-start gap-3">
+                    <Phone className="w-4 h-4 text-[#C08F2D] shrink-0" strokeWidth={2} />
+                    <span className="font-sans font-black tracking-wider text-white" dir="ltr">+962 6 555 5555</span>
+                  </li>
+                  <li className="flex items-center justify-center md:justify-start gap-3">
+                    <Mail className="w-4 h-4 text-[#C08F2D] shrink-0" strokeWidth={2} />
+                    <a href="mailto:info@cpf.jo" className="hover:text-white transition-colors font-sans" dir="ltr">info@cpf.jo</a>
+                  </li>
+                </ul>
+
+                <button
+                  onClick={() => onNavigate && onNavigate('contact')}
+                  className="w-full flex items-center justify-center gap-2 bg-[#C08F2D] hover:bg-white text-white hover:text-[#8a1538] font-black px-6 py-3.5 rounded-xl transition-all duration-300 shadow-lg cursor-pointer group"
+                >
+                  <span>تواصل معنا</span>
+                  <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+                </button>
+              </div>
+            </div>
           </div>
 
         </div>

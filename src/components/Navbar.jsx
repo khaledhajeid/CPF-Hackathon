@@ -43,7 +43,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     { id: 'success', label: 'قصص شبابنا' },
     { id: 'partnerships', label: 'الشركاء' },
     { id: 'about', label: 'عن المؤسسة' },
-    { id: 'contact', label: 'تواصل معنا' }
   ];
 
   return (

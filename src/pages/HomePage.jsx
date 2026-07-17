@@ -6,7 +6,7 @@ import PathwayWizard from "../components/home/PathwayWizard";
 import Footer from "../components/Footer";
 import LuxuryHero from "../components/home/LuxuryHero";
 import LuxuryPathways from "../components/home/LuxuryPathways";
-import EcosystemPrograms from "../components/home/EcosystemPrograms";
+import RegistrationStrip from "../components/home/RegistrationStrip";
 import AlertSideTab from "../components/home/AlertSideTab";
 
 function AnimatedNumber({ value, suffix = "", prefix = "", decimals = 0 }) {
@@ -174,11 +174,9 @@ export default function HomePage({
         </div>
       </RevealOnScroll>
 
-      <div id="programs-section">
-        <RevealOnScroll>
-          <EcosystemPrograms onNavigate={onNavigate} setActiveProgramName={setActiveProgramName} />
-        </RevealOnScroll>
-      </div>
+      <RevealOnScroll>
+        <RegistrationStrip onNavigate={onNavigate} />
+      </RevealOnScroll>
 
       <RevealOnScroll>
         <div

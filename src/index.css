@@ -42,3 +42,13 @@
     letter-spacing: -0.02em; /* بتلم الحروف على بعض شوي لتبين أرتب */
   }
 }
+
+/* 🟢 يخفي شريط التمرير بصرياً مع إبقاء التمرير فعّالاً — مستخدم عبر المشروع بالكامل */
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

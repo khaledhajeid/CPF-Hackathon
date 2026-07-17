@@ -32,7 +32,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     {
       id: 'قُد', goal: 'أريد أن أكون قائداً', name: 'قُد', shortName: 'قُد', number: 'الثاني',
       desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لترك أثر إيجابي دائم في مجتمعاتهم.',
-      brands: ['برنامج خطى الحسين', 'مبادرة حقق', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
+      brands: ['برنامج خطى الحسين', 'برنامج القيادة للمدارس', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000',
       closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/10 to-transparent' 

@@ -2,20 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
-import { Quote, LayoutGrid, Target, Users, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX, BookOpen } from 'lucide-react';
+import { Quote, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX } from 'lucide-react';
 import ShareStoryModal from './success/ShareStoryModal';
 
 // استيراد البيانات من الملف الموحد
 import { allStories } from '../data/programsData';
-
-const getPathwayStyle = (pathway) => {
-  switch(pathway) {
-    case 'تعلّم': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20'; 
-    case 'قُد': return 'bg-[#8a1538]/10 text-[#8a1538] border-[#8a1538]/20'; 
-    case 'اصنع الأثر': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
-    default: return 'bg-gray-100 text-gray-700 border-gray-200';
-  }
-};
 
 const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
   const videoRef = useRef(null);
@@ -132,7 +123,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
 };
 
 export default function SuccessStories({ onNavigate, setActiveProgramName, initialStoryId }) {
-  const [activeFilter, setActiveFilter] = useState('الكل');
   const [selectedStory, setSelectedStory] = useState(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
@@ -144,21 +134,10 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
     window.scrollTo(0, 0); 
   }, [initialStoryId]);
 
-  const categories = [
-    { id: 'الكل', icon: LayoutGrid },
-    { id: 'تعلّم', icon: BookOpen },
-    { id: 'قُد', icon: Target },
-    { id: 'اصنع الأثر', icon: Users },
-  ];
-
-  const filteredStories = activeFilter === 'الكل' 
-    ? allStories 
-    : allStories.filter(s => s.pathway === activeFilter);
-
   return (
     <div className="min-h-[100dvh] bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white flex flex-col" dir="rtl">
       
-      {/* ההيدر */}
+      {/* الهيدر */}
       <div className="bg-[#1a0409] min-h-[clamp(280px,40vh,380px)] pt-[clamp(6rem,12vh,8rem)] pb-[clamp(3rem,8vh,5rem)] relative overflow-hidden rounded-b-[clamp(1.5rem,4vw,3rem)] shadow-md shrink-0 flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538]/90 to-[#1a0409]" />
         <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
@@ -181,7 +160,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
         </div>
       </div>
 
-      {/* 2. حاوية المحتوى الرئيسي */}
+      {/* حاوية المحتوى الرئيسي */}
       <div className="max-w-[1400px] xl:max-w-[1150px] 2xl:max-w-[1400px] mx-auto w-full px-[clamp(1rem,4vw,2rem)] -mt-[clamp(2rem,4vw,2.5rem)] relative z-20 flex-grow pb-[clamp(4rem,8vh,6rem)]">
         
         {/* كرت شارك رحلتك */}
@@ -217,39 +196,13 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
           </button>
         </motion.div>
 
-        {/* الفلاتر */}
-        <div className="flex overflow-x-auto gap-[clamp(0.5rem,1vw,0.75rem)] justify-start bg-white p-[clamp(0.35rem,1vw,0.5rem)] rounded-[clamp(0.75rem,2vw,1rem)] shadow-sm border border-gray-100 mb-[clamp(2rem,6vw,4rem)] mx-auto w-full md:w-fit scrollbar-hide snap-x -mx-4 px-4 md:mx-0 md:px-0">
-          {categories.map(category => {
-            const Icon = category.icon;
-            const isActive = activeFilter === category.id;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                className={`flex items-center justify-center gap-[clamp(0.35rem,1vw,0.5rem)] whitespace-nowrap shrink-0 snap-center px-[clamp(1rem,3vw,1.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-[clamp(0.5rem,1.5vw,0.75rem)] font-black text-[clamp(0.75rem,1.2vw,0.875rem)] transition-all duration-300 cursor-pointer border ${
-                  isActive 
-                    ? 'bg-[#8a1538] text-white shadow-md border-[#8a1538]' 
-                    : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900 border-transparent'
-                }`}
-              >
-                <Icon className={`w-[clamp(0.85rem,1.2vw,1rem)] h-[clamp(0.85rem,1.2vw,1rem)] ${isActive ? 'text-[#C08F2D]' : ''}`} />
-                <span>{category.id}</span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* القصص */}
         <AnimatePresence mode="popLayout">
-          {/* 🟢 تم إرجاع الكروت إلى نظام 3 أعمدة دائمًا (lg:grid-cols-3) */}
           <motion.div
-            key={activeFilter}
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
             className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-[clamp(1rem,2vw,1.5rem)] pb-8 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3"
           >
-            {filteredStories.map((story) => {
-              const tagStyle = getPathwayStyle(story.pathway);
-              
+            {allStories.map((story) => {
               return (
                 <motion.div 
                   layout
@@ -261,12 +214,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
                     <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     
-                    <div className="absolute top-[clamp(0.75rem,1.5vw,1.25rem)] right-[clamp(0.75rem,1.5vw,1.25rem)] z-10">
-                      <span className={`flex items-center gap-[clamp(0.25rem,0.5vw,0.35rem)] px-[clamp(0.5rem,1vw,0.75rem)] py-[clamp(0.25rem,0.5vw,0.35rem)] rounded-[clamp(0.35rem,0.8vw,0.5rem)] text-[clamp(0.5rem,0.8vw,0.6rem)] font-black backdrop-blur-md shadow-sm bg-white/95 border ${tagStyle.split(' ')[2]} ${tagStyle.split(' ')[1]}`}>
-                        {story.pathway}
-                      </span>
-                    </div>
-
                     <div className="absolute bottom-[clamp(0.75rem,1.5vw,1.25rem)] left-[clamp(0.75rem,1.5vw,1.25rem)] right-[clamp(0.75rem,1.5vw,1.25rem)] z-10 flex justify-between items-end">
                        <div>
                          <h3 className="font-black text-[clamp(1.125rem,2vw,1.5rem)] text-white leading-tight drop-shadow-md">{story.name}</h3>

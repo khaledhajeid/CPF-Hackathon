@@ -105,7 +105,7 @@ export default function ShareStoryModal({ isOpen, onClose }) {
                       <label className="block text-sm font-bold text-gray-900 mb-2">البرنامج أو المبادرة</label>
                       <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 focus:bg-white focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all font-bold text-gray-800">
                         <option value="">اختر المبادرة...</option>
-                        <option value="42">42 عمّان</option>
+                        <option value="42">42 عمّان و42 إربد</option>
                         <option value="htu">جامعة الحسين التقنية</option>
                         <option value="nahno">منصة نحن</option>
                         <option value="makerspace">مساحة الصنّاع</option>

@@ -63,10 +63,10 @@ export default function PathwayWizard({ onClose, onComplete }) {
         else if (q4_stage === 'جامعة') programName = '42 عمّان و42 إربد';
         else programName = 'مساحة الصنّاع';
       } else if (q1_passion === 'قُد') {
-        if (q4_stage === 'مدرسة') programName = 'برنامج القيادة للمدارس (حقق)';
+        if (q4_stage === 'مدرسة') programName = 'برنامج القيادة للمدارس';
         else if (q4_stage === 'جامعة') programName = 'برنامج خطى الحسين';
-        else programName = 'برنامج التدريب الدّولي';
-      } else { 
+        else programName = 'مركز الشباب العربي-الاردن';
+      } else {
         programName = 'نَحْنُ';
       }
 

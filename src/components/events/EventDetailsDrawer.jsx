@@ -34,9 +34,9 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
 
   const getPathwayColor = (pathway) => {
     switch(pathway) {
-      case 'المشاركة الاقتصادية': return 'bg-[#721F31]'; 
-      case 'القيادة': return 'bg-[#2b307e]'; 
-      case 'التنمية المجتمعية': return 'bg-[#1f5412]'; 
+      case 'تعلّم': return 'bg-[#8a1538]';
+      case 'قُد': return 'bg-[#2b307e]';
+      case 'اصنع الأثر': return 'bg-[#1f5412]';
       default: return 'bg-gray-800';
     }
   };
@@ -193,7 +193,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                     
                     <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
                       <UserCheck className={`w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 ${isAgeEligible ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
-                      <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">العمر المطلوب: {currentEvent.ageRange || '18 - 24'} سنة</span>
+                      <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">العمر المطلوب: {currentEvent.ageRange || '18 - 25'} سنة</span>
                       {isAgeEligible ? (
                         <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
                       ) : (

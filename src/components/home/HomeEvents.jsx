@@ -11,7 +11,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedEvent, setSelectedEvent] = useState(null);
   
-  const ageRanges = ['الكل', '13 - 17', '18 - 23', '24 - 30'];
+  const ageRanges = ['الكل', '14 - 17', '18 - 25', '26 - 30', '31 - 35', '35+'];
 
   const pathwaysData = [
     { id: 'الكل', icon: LayoutGrid },

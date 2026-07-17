@@ -12,7 +12,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
 
   const pathways = [
     {
-      id: 'تعلّم', goal: 'أريد تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم', number: 'الأول',
+      id: 'تعلّم', goal: 'أسعى إلى تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم', number: 'الأول',
       desc: 'منظومة متكاملة تهدف لإعداد الشباب لوظائف المستقبل، وتزويدهم بأحدث مهارات الابتكار والبرمجة والتصنيع الرقمي.',
       brands: [
       'جامعة الحسين التقنية',
@@ -21,24 +21,23 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       'كلية التدريب المهني المتقدم',
       'مساحة الصنّاع',
       'مبرمجو الأردن',
-      'برنامج التدريب الدّولي',
       'HTUx',
       'ملتقى الصناع'
       ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000',
-      closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/10 to-transparent' 
+      closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/10 to-transparent'
     },
     {
-      id: 'قُد', goal: 'أريد أن أكون قائداً', name: 'قُد', shortName: 'قُد', number: 'الثاني',
+      id: 'قُد', goal: 'اسعى الى ان أكون قائدا وصانع للتغيير', name: 'قُد', shortName: 'قُد', number: 'الثاني',
       desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لترك أثر إيجابي دائم في مجتمعاتهم.',
-      brands: ['برنامج خطى الحسين', 'برنامج القيادة للمدارس', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
+      brands: ['برنامج خطى الحسين', 'برنامج القيادة للمدارس', 'مركز الشباب العربي-الاردن', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000',
-      closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/10 to-transparent' 
+      closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/10 to-transparent'
     },
     {
-      id: 'اصنع الأثر', goal: 'أريد التطوع وخدمة مجتمعي', name: 'اصنع الأثر', shortName: 'اصنع الأثر', number: 'الثالث',
+      id: 'اصنع الأثر', goal: 'اسعى الى التطوع و خدمة المجتمع', name: 'اصنع الأثر', shortName: 'اصنع الأثر', number: 'الثالث',
       desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تساهم في التنمية المستدامة.',
       brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
@@ -86,8 +85,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                 </div>
                 <div className="flex flex-col items-center justify-center my-auto lg:mt-auto gap-3 xl:gap-4">
                   {/* 🟢 أيقونة الكرت المغلق تتدرج بالحجم */}
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full bg-transparent flex items-center justify-center border border-white/40 shrink-0">
-                    <Icon className="w-6 h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-white" strokeWidth={1.5} />
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full bg-black/15 backdrop-blur-sm flex items-center justify-center border border-white/40 shrink-0">
+                    <Icon className="w-6 h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-black text-[#C08F2D] text-xl lg:text-xl xl:text-2xl 2xl:text-3xl tracking-wide drop-shadow-md">{path.shortName}</h3>
                 </div>
@@ -96,15 +95,15 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               {/* 🟢 عرض الكرت المفتوح: 450px للـ lg عشان يتنفس، و 600px للـ xl */}
               <div className={`absolute bottom-0 right-0 p-5 lg:p-8 xl:p-10 2xl:p-14 flex flex-col justify-end lg:justify-between h-full transition-opacity duration-500 ease-out shrink-0 w-full lg:w-[450px] xl:w-[600px] 2xl:w-[700px] ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div className="hidden lg:flex items-center gap-3 xl:gap-4 relative z-10 mb-8 pt-4">
-                  <div className="w-12 h-12 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
-                    <Icon className="w-6 h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-[#C08F2D]" />
+                  <div className="w-12 h-12 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-2xl bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
+                    <Icon className="w-6 h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" />
                   </div>
                   <div className="px-4 py-1.5 xl:px-5 xl:py-2 2xl:px-6 2xl:py-3 bg-[#C08F2D] rounded-lg text-[12px] xl:text-[13px] 2xl:text-[15px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
                 </div>
 
                 <div className="w-full relative z-10 mt-auto lg:pt-4 text-right">
-                  <div className="lg:hidden w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
-                     <Icon className="w-5 h-5 text-[#C08F2D]" />
+                  <div className="lg:hidden w-10 h-10 bg-black/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+                     <Icon className="w-5 h-5 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" />
                   </div>
 
                   {/* 🟢 تدرج أحجام النصوص للكرت المفتوح */}

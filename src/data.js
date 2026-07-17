@@ -9,7 +9,7 @@ export const allEvents = [
     location: 'مجمع الملك الحسين للأعمال - مصنع الأفكار',
     pathway: 'تعلّم',
     points: 150,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070',
     description: 'معسكر مكثف يهدف إلى تعريف الشباب بأحدث تقنيات التصنيع الرقمي والطباعة ثلاثية الأبعاد وكيفية تحويل الأفكار إلى نماذج ملموسة. يتضمن المعسكر تدريباً عملياً على أجهزة القطع بالليزر والراوتر.'
   },
@@ -21,7 +21,7 @@ export const allEvents = [
     location: 'مركز شباب إربد',
     pathway: 'تعلّم',
     points: 100,
-    ageRange: '24 - 30',
+    ageRange: '26 - 30',
     image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2064',
     description: 'ورشة عمل تفاعلية تزود الشباب بالمهارات اللازمة لتحويل أفكارهم الريادية إلى مشاريع قابلة للتطبيق، بدءاً من دراسة الجدوى وتحديد الجمهور المستهدف وصولاً إلى كتابة خطة العمل والتسويق.'
   },
@@ -33,7 +33,7 @@ export const allEvents = [
     location: 'محمية غابات عجلون',
     pathway: 'اصنع الأثر',
     points: 50,
-    ageRange: '13 - 17',
+    ageRange: '14 - 17',
     image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013',
     description: 'حملة تطوعية بيئية تهدف لزيادة الرقعة الخضراء في محافظة عجلون وتعزيز الوعي البيئي لدى الشباب بأهمية الحفاظ على التنوع الحيوي ومواجهة التغير المناخي.'
   },
@@ -45,7 +45,7 @@ export const allEvents = [
     location: 'مركز شباب العقبة النموذجي',
     pathway: 'قُد',
     points: 120,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049',
     description: 'برنامج تدريبي نوعي يركز على تطوير المهارات القيادية وفن التفاوض وحل المشكلات والتفكير النقدي، لإعداد جيل قادر على إحداث التغيير الإيجابي في مجتمعاتهم.'
   },
@@ -57,7 +57,7 @@ export const allEvents = [
     location: 'عبر الإنترنت (منصة Zoom)',
     pathway: 'تعلّم',
     points: 200,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070',
     description: 'مخيم تقني مكثف يُعقد عن بُعد لتعليم أساسيات البرمجة وتطوير تطبيقات الأندرويد والـ iOS باستخدام أحدث المنصات واللغات البرمجية.'
   },
@@ -69,7 +69,7 @@ export const allEvents = [
     location: 'قضاء البادية الشمالية',
     pathway: 'اصنع الأثر',
     points: 75,
-    ageRange: '24 - 30',
+    ageRange: '26 - 30',
     image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070',
     description: 'مبادرة إنسانية تهدف لتقديم الدعم والمساعدة للأسر العفيفة قبل حلول فصل الشتاء، من خلال أعمال ترميم بسيطة للمنازل وتوزيع المساعدات العينية الأساسية.'
   },
@@ -81,7 +81,7 @@ export const allEvents = [
     location: 'مركز الملك عبدالله الثاني الثقافي',
     pathway: 'قُد',
     points: 80,
-    ageRange: '13 - 17',
+    ageRange: '14 - 17',
     image: 'https://nahno-new.s3.eu-west-3.amazonaws.com/project_vip/cover-241001123739B3NCq.png',
     description: 'ورشة عمل متخصصة لتدريب الشباب على مهارات التواصل الفعال، التخلص من رهبة المسرح، وبناء الثقة بالنفس للتعبير عن الأفكار بقوة ووضوح.'
   },
@@ -93,7 +93,7 @@ export const allEvents = [
     location: 'جامعة الحسين التقنية (HTU)',
     pathway: 'تعلّم',
     points: 250,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070',
     description: 'مسابقة وتحدي تقني يجمع المبرمجين الشباب لحل معضلات برمجية واقتراح حلول مبتكرة في مجال أمن المعلومات والشبكات خلال 48 ساعة متواصلة.'
   },
@@ -105,7 +105,7 @@ export const allEvents = [
     location: 'جامعة البلقاء التطبيقية',
     pathway: 'اصنع الأثر',
     points: 60,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070',
     description: 'حملة تثقيفية تهدف لرفع الوعي المالي لدى طلاب الجامعات وتعليمهم أساسيات الادخار وإدارة المصروفات الشخصية والتعامل مع الخدمات المصرفية.'
   },
@@ -117,7 +117,7 @@ export const allEvents = [
     location: 'معهد التدريب المهني - جرش',
     pathway: 'تعلّم',
     points: 150,
-    ageRange: '24 - 30',
+    ageRange: '26 - 30',
     image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974',
     description: 'دورة مهنية متخصصة تؤهل الشباب لدخول سوق العمل في مجال صيانة وتشخيص أعطال السيارات الهجينة والكهربائية المتزايد طلبها.'
   },
@@ -129,7 +129,7 @@ export const allEvents = [
     location: 'معهد فن الفسيفساء',
     pathway: 'قُد',
     points: 110,
-    ageRange: '18 - 23',
+    ageRange: '18 - 25',
     image: 'https://ar.visitjordan.com/uploads/attractions/29b0d9eb-5a78-43f5-9919-af205af829b5.png',
     description: 'يهدف البرنامج لتأهيل أدلاء سياحيين شباب قادرين على إبراز الوجه المشرق للمواقع الأثرية الأردنية ونقل الرواية التاريخية بطرق تفاعلية مبتكرة.'
   },

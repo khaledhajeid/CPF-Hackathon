@@ -39,8 +39,8 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
   const navLinks = [
     { id: 'home', label: 'الرئيسية' },
     { id: 'programs', label: 'البرامج والفرص' },
-    { id: 'news', label: 'أخبارنا' },
     { id: 'success', label: 'قصص شبابنا' },
+    { id: 'news', label: 'أخبارنا' },
     { id: 'partnerships', label: 'الشركاء' },
     { id: 'about', label: 'عن المؤسسة' },
   ];

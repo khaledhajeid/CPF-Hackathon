@@ -16,6 +16,7 @@ import AboutPage from './pages/AboutPage';
 import AdminDashboard from './pages/AdminDashboard';
 import PartnershipsPage from './pages/PartnershipsPage'; 
 import NewsPage from './pages/NewsPage';
+import NewsArticlePage from './pages/NewsArticlePage'; // 🟢 1. استيراد صفحة تفاصيل الخبر
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home'); 
@@ -30,6 +31,19 @@ function App() {
 
   const [activeProgramName, setActiveProgramName] = useState('جامعة الحسين التقنية');
   const [activeStoryId, setActiveStoryId] = useState(null);
+  
+  // 🟢 2. State جديد لحفظ تفاصيل الخبر المختار
+  const [activeNewsItem, setActiveNewsItem] = useState(null);
+
+  // 🟢 3. دالة توجيه ذكية تدعم استلام البيانات (Payload) مع اسم الصفحة
+  const handleNavigate = (pageId, data = null) => {
+    setCurrentPage(pageId);
+    
+    // إذا كان هناك بيانات مرسلة (مثل خبر معين)، نقوم بحفظه
+    if (data && data.newsItem) {
+      setActiveNewsItem(data.newsItem);
+    }
+  };
 
   const handleRegisterClick = (event) => {
     setSavedScrollPos(window.scrollY); 
@@ -47,9 +61,9 @@ function App() {
     }
     
     if (userRole === 'admin') {
-      setCurrentPage('admin');
+      handleNavigate('admin');
     } else {
-      setCurrentPage('dashboard');
+      handleNavigate('dashboard');
     }
     
     // سكرول فوري لما يعمل تسجيل دخول عشان يروح للداشبورد من فوق
@@ -67,26 +81,36 @@ function App() {
     transition: { duration: 0.3, ease: "easeInOut" }
   };
 
+  // 🟢 4. استبدلنا كل setCurrentPage بـ handleNavigate 
   const renderPage = () => {
     if (currentPage === 'dashboard') {
-      return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={setCurrentPage} userPoints={userPoints} myTickets={myTickets} /></motion.div>;
+      return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={handleNavigate} userPoints={userPoints} myTickets={myTickets} /></motion.div>;
     }
     switch (currentPage) {
       case 'admin':
-        return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={setCurrentPage} /></motion.div>;
+        return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={handleNavigate} /></motion.div>;
       case 'programs': 
-        return <motion.div key="programs" {...pageVariants}><Programs onNavigate={setCurrentPage} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
+        return <motion.div key="programs" {...pageVariants}><Programs onNavigate={handleNavigate} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
       case 'news': 
-        return <motion.div key="news" {...pageVariants}><NewsPage onNavigate={setCurrentPage} /></motion.div>;
+        return <motion.div key="news" {...pageVariants}><NewsPage onNavigate={handleNavigate} /></motion.div>;
+      
+      // 🟢 5. إضافة مسار صفحة تفاصيل الخبر وتمرير بيانات الخبر
+      case 'news-article': 
+        return (
+          <motion.div key="news-article" {...pageVariants}>
+            <NewsArticlePage onNavigate={handleNavigate} newsItem={activeNewsItem} />
+          </motion.div>
+        );
+
       case 'program_details': 
         return (
           <motion.div key="program_details" {...pageVariants}>
             <ProgramDetails 
-              onNavigate={setCurrentPage} 
+              onNavigate={handleNavigate} 
               programName={activeProgramName} 
               onStorySelect={(id) => {
                 setActiveStoryId(id);
-                setCurrentPage('success');
+                handleNavigate('success');
               }} 
             />
           </motion.div>
@@ -95,7 +119,7 @@ function App() {
         return (
           <motion.div key="success" {...pageVariants}>
             <SuccessStories 
-              onNavigate={setCurrentPage} 
+              onNavigate={handleNavigate} 
               setActiveProgramName={setActiveProgramName} 
               initialStoryId={activeStoryId} 
             />
@@ -103,9 +127,9 @@ function App() {
         );
         
       case 'contact': 
-        return <motion.div key="contact" {...pageVariants}><Contact /></motion.div>;
+        return <motion.div key="contact" {...pageVariants}><Contact onNavigate={handleNavigate} /></motion.div>;
       case 'about':
-        return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={setCurrentPage} /></motion.div>;  
+        return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={handleNavigate} /></motion.div>;  
       case 'partnerships': 
         return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
       case 'home':
@@ -116,7 +140,7 @@ function App() {
               activeFilters={activeFilters} 
               setActiveFilters={setActiveFilters} 
               handleRegisterClick={handleRegisterClick} 
-              onNavigate={setCurrentPage} 
+              onNavigate={handleNavigate} 
               setActiveProgramName={setActiveProgramName}
             />
           </motion.div>
@@ -127,14 +151,12 @@ function App() {
   const isAdminPage = currentPage === 'admin';
 
   return (
-    // 🟢 التعديل الأول: شلنا مسافة הـ pb-20 (Padding Bottom) إذا كنا بصفحة الأدمن عشان ما يترك فراغ أبيض من تحت
     <div dir="rtl" className={`min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden ${isAdminPage ? '' : 'pb-20 md:pb-0'}`}>
       
-      {/* 🟢 التعديل الثاني: إخفاء التاب بار العلوي (النافبار) إذا كنا بصفحة الأدمن */}
       {!isAdminPage && (
         <Navbar 
           currentPage={currentPage} 
-          onNavigate={setCurrentPage} 
+          onNavigate={handleNavigate} 
           onLoginClick={() => setIsLoginOpen(true)} 
           onSearchClick={() => setIsSearchOpen(true)} 
         />
@@ -172,9 +194,9 @@ function App() {
         <>
           <MobileNavBar 
             currentPage={currentPage} 
-            onNavigate={setCurrentPage} 
+            onNavigate={handleNavigate} 
             onLoginClick={() => setIsLoginOpen(true)} 
-            onSearchClick={() => setIsSearchOpen(true)} /* 🟢 ضفنا هاي */
+            onSearchClick={() => setIsSearchOpen(true)} 
           />
           <ChatWidget />
         </>

@@ -47,10 +47,7 @@ export default function EcosystemPrograms({ onNavigate, setActiveProgramName }) 
         {/* 🟢 الهيدر محمي بـ px-4 للموبايل */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 xl:mb-16 gap-6 px-4 md:px-0">
           <div>
-            <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-              <img src="/arrow-yellow.svg" className="w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8 shrink-0" alt="" />
-              <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">أبرز <span className="text-[#C08F2D]">برامجنا</span></h2>
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight mb-3 md:mb-4">أبرز <span className="text-[#C08F2D]">برامجنا</span></h2>
             <p className="text-[#4c4c4c] font-medium max-w-2xl text-sm lg:text-base xl:text-xl 2xl:text-2xl leading-relaxed">منظومة متكاملة من البرامج صُممت خصيصاً لتمكينك، تطوير مهاراتك، وإطلاق العنان لطموحك.</p>
           </div>
            <button onClick={() => onNavigate && onNavigate('programs')} className="group hidden md:flex items-center gap-3 bg-white hover:bg-[#F8FAFC] border-2 border-gray-200 hover:border-[#8a1538] px-6 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-3 xl:py-4 2xl:py-5 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer shrink-0">

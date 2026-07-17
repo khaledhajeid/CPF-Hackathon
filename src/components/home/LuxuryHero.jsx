@@ -66,16 +66,12 @@ export default function LuxuryHero({ onExploreClick }) {
         className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center mt-2 lg:mt-4 xl:mt-6 2xl:mt-10"
       >
         
-        <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-4 lg:mb-5 xl:mb-6 tracking-tight leading-[1.2]">
+        <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-8 lg:mb-8 xl:mb-10 2xl:mb-12 tracking-tight leading-[1.2]">
           شباب قادر..<br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6]">
+          <span className="text-[#C08F2D]">
             لأردن طموح
           </span>
         </motion.h1>
-
-        <motion.p variants={itemVariants} className="text-sm sm:text-base lg:text-base xl:text-lg 2xl:text-xl text-white/90 font-medium max-w-2xl xl:max-w-3xl mx-auto mb-8 lg:mb-8 xl:mb-10 2xl:mb-12 leading-relaxed px-2">
-          نؤمن بأن الشباب هم المحرك الأساسي للتنمية. اكتشف منظومة متكاملة من البرامج والفرص المصممة لتمكينك، تطوير مهاراتك، وإطلاق العنان لطموحك نحو الابتكار والقيادة.
-        </motion.p>
 
         <motion.div variants={itemVariants}>
           <button 

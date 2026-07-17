@@ -51,13 +51,10 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         
         <div className="mb-6 lg:mb-10 xl:mb-12 2xl:mb-14 text-right">
-          <div className="flex items-center gap-2 md:gap-3">
-            <img src="/arrow-yellow.svg" className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 2xl:w-8 shrink-0" alt="" />
-            {/* 🟢 العنوان: تصغير للـ xl ليكون متناسقاً وأنيقاً */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-              {isPersonalized ? "فرص مصممة خصيصاً لك" : "اكتشف أحدث الفرص المتاحة"}
-            </h2>
-          </div>
+          {/* 🟢 العنوان: تصغير للـ xl ليكون متناسقاً وأنيقاً */}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
+            {isPersonalized ? "فرص مصممة خصيصاً لك" : <>اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span></>}
+          </h2>
         </div>
 
         {/* 🟢 شريط الفلتر: تقليل الـ gap للـ xl واستخدام justify-between ليوزع المساحة صح */}

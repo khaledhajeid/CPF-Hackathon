@@ -84,45 +84,45 @@ export default function HomePage({
           className="bg-white rounded-2xl md:rounded-3xl xl:rounded-[2rem] shadow-xl p-6 sm:p-8 lg:p-6 xl:p-8 2xl:p-12 border border-gray-100 mx-auto w-full lg:w-11/12 2xl:w-10/12"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 relative">
-            
+
             {/* العنصر 1 */}
             <div className="flex flex-col items-center justify-center text-center border-l border-b border-gray-100 lg:border-b-0 pb-6 lg:pb-0">
               {/* 🟢 حجم الخط: text-4xl للـ xl (أنيق)، و text-6xl للشاشات العملاقة */}
               <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
-                <AnimatedNumber value={2.2} decimals={1} suffix="M" />
+                <AnimatedNumber value={2.2} decimals={1} />
               </h3>
               <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
-                مستفيد
+                مليون مشارك
               </p>
             </div>
 
             {/* العنصر 2 */}
             <div className="flex flex-col items-center justify-center text-center border-b border-gray-100 lg:border-b-0 lg:border-l pb-6 lg:pb-0">
               <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
-                <AnimatedNumber value={14} prefix="+" />
+                <AnimatedNumber value={12} />
               </h3>
               <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
-                برنامج ومبادرة
+                محافظة داخل المملكة
               </p>
             </div>
 
             {/* العنصر 3 */}
             <div className="flex flex-col items-center justify-center text-center border-l border-gray-100 pt-6 lg:pt-0">
               <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
-                <AnimatedNumber value={26} prefix="+" />
+                <AnimatedNumber value={26} />
               </h3>
               <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
-                موقع استراتيجي
+                مساحة ومرفق
               </p>
             </div>
 
             {/* العنصر 4 */}
             <div className="flex flex-col items-center justify-center text-center pt-6 lg:pt-0">
               <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
-                <AnimatedNumber value={12} />
+                <AnimatedNumber value={14} />
               </h3>
               <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
-                محافظة نغطيها
+                برنامج
               </p>
             </div>
 
@@ -156,20 +156,12 @@ export default function HomePage({
           />
 
           <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-20 text-center flex flex-col items-center">
-            <div className="flex items-center justify-center gap-2 md:gap-3 xl:gap-4 mb-3 md:mb-5 xl:mb-6">
-              <img
-                src="/arrow-yellow.svg"
-                className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 shrink-0"
-                alt=""
-              />
-              <h2 className="text-xl sm:text-3xl lg:text-3xl xl:text-5xl font-black text-white leading-tight drop-shadow-sm">
-                محتار من وين تبدأ <span className="text-[#C08F2D]">مسارك؟</span>
-              </h2>
-            </div>
+            <h2 className="text-xl sm:text-3xl lg:text-3xl xl:text-5xl font-black text-white leading-tight drop-shadow-sm mb-3 md:mb-5 xl:mb-6">
+              محتار من وين تبدأ <span className="text-[#C08F2D]">مسارك؟</span>
+            </h2>
 
             <p className="text-white/90 max-w-sm md:max-w-xl xl:max-w-2xl mx-auto mb-6 md:mb-8 xl:mb-10 leading-[1.6rem] sm:leading-[1.8rem] xl:leading-[2.2rem] text-[13px] sm:text-sm lg:text-[14px] xl:text-lg font-medium">
-              هل تبحث عن برنامج طويل الأمد أم فعالية سريعة؟ أجب على 5 أسئلة، ودع
-              الذكاء الاصطناعي يحلل شغفك ليرشح لك الخيار الأمثل لك بالضبط.
+              أجب على مجموعة من الأسئلة ودع الموجّه المدعوم بالذكاء الاصطناعي يحلل اهتماماتك ليرشح لك الخيارات
             </p>
 
             <button

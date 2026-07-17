@@ -52,15 +52,9 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     <div id="strategic-pathways" className="py-16 lg:py-20 xl:py-24 2xl:py-32 bg-white relative overflow-hidden w-full font-sans scroll-mt-20" dir="rtl">
       
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 lg:mb-12 xl:mb-16 relative z-10">
-        <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-          <img src="/arrow-yellow.svg" className="w-5 h-5 md:w-8 md:h-8 shrink-0" alt="" />
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-            طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
-          </h2>
-        </div>
-        <p className="mt-2 md:mt-4 text-gray-500 font-medium max-w-2xl text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed">
-          لا تبحث عن المسميات، ابحث عن شغفك. اختر الهدف الذي تسعى إليه وسنقوم بتوجيهك للبرامج المناسبة.
-        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
+          طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
+        </h2>
       </div>
 
       {/* 🟢 التدرج السحري للارتفاع: 480px للـ 13 إنش، 550px للـ 15 إنش، و 650px للشاشات العملاقة */}

@@ -12,8 +12,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
 
   const pathways = [
     {
-      id: 'تعلّم', goal: 'أسعى إلى تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم', number: 'الأول',
-      desc: 'منظومة متكاملة تهدف لإعداد الشباب لوظائف المستقبل، وتزويدهم بأحدث مهارات الابتكار والبرمجة والتصنيع الرقمي.',
+      id: 'تعلّم', goal: 'أسعى إلى تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم',
       brands: [
       'جامعة الحسين التقنية',
       'مركز التميز للريادة والابتكار',
@@ -29,16 +28,14 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/10 to-transparent'
     },
     {
-      id: 'قُد', goal: 'اسعى الى ان أكون قائدا وصانع للتغيير', name: 'قُد', shortName: 'قُد', number: 'الثاني',
-      desc: 'برامج مصممة لبناء وتطوير القدرات القيادية والمهارات الحياتية للشباب، لترك أثر إيجابي دائم في مجتمعاتهم.',
+      id: 'قُد', goal: 'اسعى الى ان أكون قائدا وصانع للتغيير', name: 'قُد', shortName: 'قُد',
       brands: ['برنامج خطى الحسين', 'برنامج القيادة للمدارس', 'مركز الشباب العربي-الاردن', 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', 'منتدى تواصل'],
       icon: Target,
       bgImage: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000',
       closedOverlay: 'bg-[#2b307e]/85', openGradient: 'from-[#121433] via-[#2b307e]/10 to-transparent'
     },
     {
-      id: 'اصنع الأثر', goal: 'اسعى الى التطوع و خدمة المجتمع', name: 'اصنع الأثر', shortName: 'اصنع الأثر', number: 'الثالث',
-      desc: 'انضم لآلاف المتطوعين عبر منصة "نحن" وشارك في الحملات الإنسانية التي تساهم في التنمية المستدامة.',
+      id: 'اصنع الأثر', goal: 'اسعى الى التطوع و خدمة المجتمع', name: 'اصنع الأثر', shortName: 'اصنع الأثر',
       brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
@@ -80,9 +77,6 @@ export default function LuxuryPathways({ onPathwaySelect }) {
               <div className={`absolute inset-0 bg-gradient-to-t ${path.openGradient} transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}></div>
 
               <div className={`absolute inset-0 p-6 lg:p-6 xl:p-8 2xl:p-10 flex flex-col transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                <div className="hidden lg:block absolute top-6 xl:top-8 right-6 xl:right-8 px-4 py-1.5 bg-[#8a1538] rounded-lg text-white text-[11px] xl:text-[13px] font-black border border-white/20 shadow-md">
-                   {`المسار ${path.number}`}
-                </div>
                 <div className="flex flex-col items-center justify-center my-auto lg:mt-auto gap-3 xl:gap-4">
                   {/* 🟢 أيقونة الكرت المغلق تتدرج بالحجم */}
                   <div className="w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full bg-black/15 backdrop-blur-sm flex items-center justify-center border border-white/40 shrink-0">
@@ -107,9 +101,8 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                   </div>
 
                   {/* 🟢 تدرج أحجام النصوص للكرت المفتوح */}
-                  <h3 className="font-black text-white text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl leading-tight mb-2 lg:mb-3 xl:mb-4 drop-shadow-lg">{path.goal}</h3>
-                  <p className="text-white/90 font-medium text-xs lg:text-sm xl:text-base 2xl:text-lg leading-relaxed mb-4 lg:mb-6 xl:mb-8 drop-shadow-md line-clamp-3 md:line-clamp-none">{path.desc}</p>
-                  
+                  <h3 className="font-black text-white text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl leading-tight mb-4 lg:mb-5 xl:mb-6 drop-shadow-lg">{path.goal}</h3>
+
                   <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-6 xl:mb-8 w-full">
                     {path.brands.map(brand => (
                       <span key={brand} className="text-[9px] lg:text-[10px] xl:text-[12px] 2xl:text-[14px] font-black text-white bg-[#C08F2D]/20 px-2 lg:px-2.5 xl:px-3 py-1 lg:py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>

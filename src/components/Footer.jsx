@@ -24,13 +24,11 @@ export default function Footer({ onNavigate }) {
     { name: 'قصص النجاح', id: 'success' },
   ];
 
-  // 🟢 لا توجد روابط تواصل اجتماعي فعلية بعد؛ نعطّل الانتقال بدل استخدام "#" الذي يقفز للأعلى
   const socialLinks = [
-    { icon: FacebookIcon, href: '#', name: 'Facebook' },
-    { icon: XIcon, href: '#', name: 'X' },
-    { icon: InstagramIcon, href: '#', name: 'Instagram' },
-    { icon: LinkedinIcon, href: '#', name: 'LinkedIn' },
-    { icon: YoutubeIcon, href: '#', name: 'YouTube' },
+    { icon: FacebookIcon, href: 'https://www.facebook.com/CPFJO', name: 'Facebook' },
+    { icon: XIcon, href: 'https://x.com/cpfjo', name: 'X' },
+    { icon: InstagramIcon, href: 'https://www.instagram.com/cpfjo/', name: 'Instagram' },
+    { icon: LinkedinIcon, href: 'https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all', name: 'LinkedIn' },
   ];
 
   const handleComingSoon = (e) => e.preventDefault();
@@ -105,7 +103,7 @@ export default function Footer({ onNavigate }) {
 
           <div className="space-y-5 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="flex flex-col items-center lg:items-start gap-1">
-              <img src="/logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
+              <img src="/full_logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
             <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-8 px-2 lg:px-0 text-center lg:text-right max-w-md">
               مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
@@ -115,12 +113,10 @@ export default function Footer({ onNavigate }) {
                 const Icon = social.icon;
                 return (
                   <a
-                    key={idx} href={social.href} aria-label={`${social.name} (قريباً)`} title="قريباً" aria-disabled="true"
-                    onClick={handleComingSoon}
+                    key={idx} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}
                     className={`relative w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#C08F2D] hover:bg-[#C08F2D]/30 transition-all duration-300 ${FOCUS_RING}`}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="sr-only">(قريباً)</span>
                   </a>
                 );
               })}

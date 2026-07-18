@@ -1,5 +1,5 @@
 // src/pages/Login.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, User, Lock, Eye, EyeOff, Mail, Building2, ShieldCheck } from 'lucide-react';
 
@@ -115,7 +115,7 @@ export default function Login({ onLogin, onNavigateBack }) {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                  <User className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+                  <User className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
                 </div>
                 <input
                   id="identifierInput"
@@ -150,7 +150,7 @@ export default function Login({ onLogin, onNavigateBack }) {
               </div>
               <div className="relative">
                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                  <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+                  <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
@@ -164,7 +164,7 @@ export default function Login({ onLogin, onNavigateBack }) {
                 <button 
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 hover:text-[#8a1538] focus:outline-none transition-colors cursor-pointer"
+                  className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500 hover:text-[#8a1538] focus:outline-none transition-colors cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="h-4 w-4 sm:h-5 sm:w-5" /> : <Eye className="h-4 w-4 sm:h-5 sm:w-5" />}
                 </button>
@@ -175,7 +175,7 @@ export default function Login({ onLogin, onNavigateBack }) {
               <button
                 type="submit"
                 disabled={!isFormValid || isLoading}
-                className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white rounded-xl font-black text-[14px] sm:text-[15px] py-4 flex items-center justify-center gap-3 transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
+                className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed text-white rounded-xl font-black text-[14px] sm:text-[15px] py-4 flex items-center justify-center gap-3 transition-all duration-300 shadow-md hover:shadow-xl cursor-pointer"
               >
                 {isLoading ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full" />
@@ -194,7 +194,7 @@ export default function Login({ onLogin, onNavigateBack }) {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 sm:mt-10">
               <div className="relative flex items-center py-4">
                 <div className="flex-grow border-t border-gray-100"></div>
-                <span className="flex-shrink-0 mx-4 text-gray-400 text-[10px] sm:text-[11px] font-bold">أو الدخول لغير الأردنيين</span>
+                <span className="flex-shrink-0 mx-4 text-gray-500 text-[10px] sm:text-[11px] font-bold">أو الدخول لغير الأردنيين</span>
                 <div className="flex-grow border-t border-gray-100"></div>
               </div>
 

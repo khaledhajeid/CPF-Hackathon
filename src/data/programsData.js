@@ -1,4 +1,4 @@
-import { Target, Users, Code2, HeartHandshake, Lightbulb, GraduationCap, Award, BookOpen, Briefcase } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 
 export const allStories = [
   {

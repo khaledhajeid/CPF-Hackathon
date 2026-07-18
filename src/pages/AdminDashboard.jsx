@@ -1,10 +1,10 @@
 // src/pages/AdminDashboard.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Home, CalendarDays, Users, Plus, 
-  CheckCircle2, Clock, LogOut, FileSpreadsheet,
-  X, ChevronLeft, ChevronRight, Eye, MoreHorizontal, Building2, Crown, Calendar, BarChart3, TrendingUp
+import {
+  Home, CalendarDays, Users, Plus,
+  Clock, LogOut, FileSpreadsheet,
+  X, ChevronLeft, ChevronRight, Crown, Calendar, BarChart3, TrendingUp
 } from 'lucide-react';
 
 // ==========================================
@@ -82,7 +82,7 @@ export default function AdminDashboard({ onNavigate }) {
           <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-[#fcfcfc]">
             <div>
               <h2 className="text-2xl font-black text-[#721F31] tracking-tight">إضافة فعالية جديدة</h2>
-              <p className="text-gray-400 text-sm mt-1 font-bold">الخطوة {step} من 2: {step === 1 ? 'المعلومات الأساسية' : 'الزمان والمكان'}</p>
+              <p className="text-gray-500 text-sm mt-1 font-bold">الخطوة {step} من 2: {step === 1 ? 'المعلومات الأساسية' : 'الزمان والمكان'}</p>
             </div>
             <button onClick={() => setIsAddEventOpen(false)} className="w-10 h-10 flex items-center justify-center bg-gray-50 hover:bg-gray-100 rounded-full transition-colors cursor-pointer">
               <X className="w-5 h-5 text-gray-500" strokeWidth={2} />
@@ -121,7 +121,7 @@ export default function AdminDashboard({ onNavigate }) {
               </div>
             )}
             <div className="flex justify-between items-center mt-12">
-              {step === 2 ? <button onClick={() => setStep(1)} className="text-gray-400 hover:text-gray-900 font-bold flex items-center gap-2 cursor-pointer"><ChevronRight className="w-4 h-4" /> رجوع</button> : <div></div>}
+              {step === 2 ? <button onClick={() => setStep(1)} className="text-gray-500 hover:text-gray-900 font-bold flex items-center gap-2 cursor-pointer"><ChevronRight className="w-4 h-4" /> رجوع</button> : <div></div>}
               {step === 1 ? <button onClick={() => setStep(2)} className="bg-[#721F31] hover:bg-[#5a1826] text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 shadow-md cursor-pointer">متابعة <ChevronLeft className="w-4 h-4" /></button> : <button onClick={handleSave} className="bg-[#C08F2D] hover:bg-[#a87d25] text-[#1a0409] px-8 py-3.5 rounded-xl font-black transition-all flex items-center gap-2 shadow-md cursor-pointer">حفظ ونشر الفعالية</button>}
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function AdminDashboard({ onNavigate }) {
           <div className="overflow-y-auto p-8 flex-1 bg-white">
             {users.length > 0 ? (
               <table className="w-full text-right border-collapse">
-                <thead><tr className="border-b-2 border-[#721F31]/10"><th className="pb-4 text-[13px] font-bold text-gray-400 uppercase">اسم المسجل</th><th className="pb-4 text-[13px] font-bold text-gray-400 uppercase">الرقم الوطني</th><th className="pb-4 text-[13px] font-bold text-gray-400 uppercase">رقم الهاتف</th><th className="pb-4 text-[13px] font-bold text-gray-400 uppercase">حالة الطلب</th></tr></thead>
+                <thead><tr className="border-b-2 border-[#721F31]/10"><th className="pb-4 text-[13px] font-bold text-gray-500 uppercase">اسم المسجل</th><th className="pb-4 text-[13px] font-bold text-gray-500 uppercase">الرقم الوطني</th><th className="pb-4 text-[13px] font-bold text-gray-500 uppercase">رقم الهاتف</th><th className="pb-4 text-[13px] font-bold text-gray-500 uppercase">حالة الطلب</th></tr></thead>
                 <tbody>
                   {users.map(user => (
                     <tr key={user.id} className="border-b border-gray-50 hover:bg-[#721F31]/5 transition-colors">
@@ -156,7 +156,7 @@ export default function AdminDashboard({ onNavigate }) {
                   ))}
                 </tbody>
               </table>
-            ) : <div className="flex flex-col items-center justify-center py-20 text-gray-300"><Users className="w-16 h-16 mb-4 stroke-[1]" /><p className="text-lg font-bold">لا يوجد مسجلين</p></div>}
+            ) : <div className="flex flex-col items-center justify-center py-20 text-gray-300"><Users className="w-16 h-16 mb-4 stroke-[1]" /><p className="text-lg font-bold text-gray-500">لا يوجد مسجلين</p></div>}
           </div>
         </motion.div>
       </div>
@@ -249,7 +249,7 @@ export default function AdminDashboard({ onNavigate }) {
                     <div key={i} className="group">
                       <div className="flex justify-between text-[13px] font-black mb-3"><span className="text-gray-700">{track.name}</span><span className="text-gray-500">{track.percent}%</span></div>
                       <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden relative"><motion.div initial={{ width: 0 }} animate={{ width: `${track.percent}%` }} transition={{ duration: 1.5, delay: 0.5 + (i * 0.2), ease: "easeOut" }} className={`h-full rounded-full ${track.color}`}/></div>
-                      <p className="text-[11px] font-bold text-gray-400 mt-2 text-left">{track.count} مستفيد</p>
+                      <p className="text-[11px] font-bold text-gray-500 mt-2 text-left">{track.count} مستفيد</p>
                     </div>
                   ))}
                 </div>
@@ -267,7 +267,7 @@ export default function AdminDashboard({ onNavigate }) {
                           <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[11px] font-bold px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">{stat.value}</span>
                         </motion.div>
                       </div>
-                      <span className="text-[12px] font-bold text-gray-400">{stat.month}</span>
+                      <span className="text-[12px] font-bold text-gray-500">{stat.month}</span>
                     </div>
                   ))}
                 </div>
@@ -293,7 +293,7 @@ export default function AdminDashboard({ onNavigate }) {
               {/* وسعنا مساحة الجدول لتستوعب النصوص بالكامل */}
               <div className="grid grid-cols-7 gap-3 min-w-[900px]">
                 {['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'].map(day => (
-                  <div key={day} className="text-center font-black text-gray-400 text-[15px] pb-4">{day}</div>
+                  <div key={day} className="text-center font-black text-gray-500 text-[15px] pb-4">{day}</div>
                 ))}
                 
                 {[28, 29, 30].map(day => (
@@ -304,7 +304,7 @@ export default function AdminDashboard({ onNavigate }) {
                   const dayEvents = events.filter(e => e.date === `2026-07-${day < 10 ? '0'+day : day}`);
                   return (
                     <div key={day} className={`min-h-[140px] border p-4 rounded-2xl flex flex-col gap-3 transition-colors ${dayEvents.length > 0 ? 'border-[#C08F2D]/40 bg-[#C08F2D]/5 shadow-inner' : 'border-gray-100 hover:bg-gray-50'}`}>
-                      <span className={`font-black text-2xl mb-1 ${dayEvents.length > 0 ? 'text-[#721F31]' : 'text-gray-400'}`}>{day}</span>
+                      <span className={`font-black text-2xl mb-1 ${dayEvents.length > 0 ? 'text-[#721F31]' : 'text-gray-500'}`}>{day}</span>
                       
                       {dayEvents.map(e => (
                        <div

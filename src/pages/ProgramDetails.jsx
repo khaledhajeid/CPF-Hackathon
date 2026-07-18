@@ -1,5 +1,5 @@
 // src/pages/ProgramDetails.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Building2, LayoutGrid, LayoutTemplate, Clock, X, Target, Quote, MapPin, Newspaper, CalendarDays, ArrowUpLeft } from 'lucide-react';
 
@@ -8,7 +8,7 @@ import RelatedProgramStories from '../components/programs/RelatedProgramStories'
 import { newsList } from '../data/newsData';
 import NewsDetailModal from '../components/news/NewsDetailModal';
 
-const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
+const StoryModal = ({ story, onClose }) => {
   if (!story) return null;
 
   return (
@@ -63,9 +63,9 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
 
             <h2 className="text-xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-5 md:mb-8 leading-tight">{story.name}</h2>
             
-            <div className="flex gap-3 md:gap-4 mb-6 md:mb-8 bg-gray-50 p-4 md:p-6 border-r-4 border-[#C08F2D] rounded-l-xl">
+            <div className="flex gap-3 md:gap-4 mb-6 md:mb-8 bg-gray-50 p-4 md:p-6 border border-gray-200/70 rounded-xl">
               <div className="mb-2 md:mb-4 shrink-0">
-                <Quote className="w-6 h-6 md:w-8 md:h-8 text-[#C08F2D]/40 rotate-180" />
+                <Quote className="w-6 h-6 md:w-8 md:h-8 text-[#C08F2D]/40" />
               </div>
               <p className="text-gray-700 text-[13px] md:text-[1.05rem] font-medium leading-relaxed md:leading-[2.1rem] text-justify relative z-10">
                 "{story.quote}"
@@ -127,7 +127,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
               {currentProgram.title}
             </h1>
             {currentProgram.titleEn && (
-              <h2 className="text-[1.1rem] md:text-[1.5rem] lg:text-[1.25rem] 2xl:text-[1.5rem] font-bold text-gray-400 font-sans tracking-wide mb-4 md:mb-6" dir="ltr" style={{ textAlign: 'left', width: '100%' }}>
+              <h2 className="text-[1.1rem] md:text-[1.5rem] lg:text-[1.25rem] 2xl:text-[1.5rem] font-bold text-gray-500 font-sans tracking-wide mb-4 md:mb-6" dir="ltr" style={{ textAlign: 'left', width: '100%' }}>
                 {currentProgram.titleEn}
               </h2>
             )}
@@ -188,9 +188,8 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
           
           {currentProgram.overview && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 flex items-center gap-3 text-[#8a1538]">
-                <img src="/arrow-yellow.svg" className="w-6 h-6 lg:w-5 lg:h-5 shrink-0" alt="" />
-                <span>تعرّف على البرنامج ونظرته الاستراتيجية</span>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                تعرّف على البرنامج ونظرته الاستراتيجية
               </h2>
               <div className="bg-white p-6 md:p-8 lg:p-6 2xl:p-8 rounded-3xl border border-gray-100 shadow-sm">
                 <p className="font-medium text-[14px] md:text-[1.1rem] lg:text-[1rem] 2xl:text-[1.1rem] leading-relaxed md:leading-[2.2rem] lg:leading-[2rem] 2xl:leading-[2.2rem] text-gray-700 text-justify">
@@ -202,9 +201,8 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
 
           {currentProgram.facilities && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 flex items-center gap-3 text-[#8a1538]">
-                <img src="/arrow-yellow.svg" className="w-6 h-6 lg:w-5 lg:h-5 shrink-0" alt="" />
-                <span>{currentProgram.facilitiesTitle || 'المزايا والمرافق الرئيسية'}</span>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.facilitiesTitle || 'المزايا والمرافق الرئيسية'}
               </h2>
               <div className="bg-white p-6 md:p-8 lg:p-6 2xl:p-8 rounded-3xl border border-gray-100 shadow-sm">
                 <ul className="space-y-4 lg:space-y-3 2xl:space-y-4 text-gray-700 font-medium text-[14px] md:text-[1.1rem] lg:text-[1rem] 2xl:text-[1.1rem] leading-relaxed md:leading-[2rem] lg:leading-[1.8rem] 2xl:leading-[2rem]">
@@ -261,9 +259,8 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
 
           {currentProgram.faqs && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 flex items-center gap-3 text-[#8a1538]">
-                <img src="/arrow-yellow.svg" className="w-6 h-6 lg:w-5 lg:h-5 shrink-0" alt="" />
-                <span>الأسئلة الأكثر تكراراً</span>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                الأسئلة الأكثر تكراراً
               </h2>
               <div className="space-y-3">
                 {currentProgram.faqs.map((faq, idx) => {
@@ -302,7 +299,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   <Building2 className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
                 </div>
                 <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-400 mb-0.5">آلية البرنامج</p>
+                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">آلية البرنامج</p>
                   <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.mechanism}</p>
                 </div>
               </div>
@@ -311,7 +308,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   <LayoutGrid className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
                 </div>
                 <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-400 mb-0.5">نوع البرنامج</p>
+                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">نوع البرنامج</p>
                   <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.type}</p>
                 </div>
               </div>
@@ -320,7 +317,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   <LayoutTemplate className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
                 </div>
                 <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-400 mb-0.5">مسار البرنامج</p>
+                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">مسار البرنامج</p>
                   <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.pathway}</p>
                 </div>
               </div>
@@ -329,7 +326,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   <Clock className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
                 </div>
                 <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-400 mb-0.5">لغة التدريب</p>
+                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">لغة التدريب</p>
                   <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.languages}</p>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 // src/pages/AboutPage.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView, useScroll } from 'framer-motion';
 import { Target, Eye, Heart, Users, ChevronDown, Milestone, BookOpen, X, Volume2, VolumeX, Briefcase } from 'lucide-react';
 import Footer from '../components/Footer';
@@ -38,9 +38,7 @@ const LeaderModal = ({ leader, onClose }) => {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       setIsMuted(true);
-      videoRef.current.play().catch(error => {
-        console.log("المتصفح منع التشغيل التلقائي:", error);
-      });
+      videoRef.current.play().catch(() => {});
     }
   }, [leader]);
 
@@ -366,7 +364,7 @@ export default function AboutPage({ onNavigate }) {
 
           <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
             <AnimatePresence mode="popLayout">
-              {leaders[activeLeaderTab].map((member, idx) => (
+              {leaders[activeLeaderTab].map((member) => (
                 <motion.div 
                   key={member.name}
                   onClick={() => setSelectedLeader(member)}

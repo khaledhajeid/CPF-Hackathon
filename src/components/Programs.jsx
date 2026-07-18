@@ -1,5 +1,5 @@
 // src/components/Programs.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { LayoutGrid, Target } from 'lucide-react';
 import Footer from '../components/Footer';

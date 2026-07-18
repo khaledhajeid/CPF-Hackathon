@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'; 
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
@@ -22,7 +22,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home'); 
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [userPoints, setUserPoints] = useState(300); 
+  const [userPoints] = useState(300);
   const [myTickets, setMyTickets] = useState([]); 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   

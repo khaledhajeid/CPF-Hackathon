@@ -1,5 +1,5 @@
 // src/components/Contact.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
 import {
@@ -252,7 +252,7 @@ export default function Contact({ onNavigate }) {
                               <option value="2">الدعم الفني والتقني</option>
                               <option value="4">المقترحات والشكاوى</option>
                             </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                            <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-500">
                               <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                             </div>
                           </div>
@@ -371,7 +371,7 @@ export default function Contact({ onNavigate }) {
                                 <option value="31-35">31 - 35</option>
                                 <option value="35+">35+</option>
                               </select>
-                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-500">
                                 <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                               </div>
                             </div>
@@ -388,7 +388,7 @@ export default function Contact({ onNavigate }) {
                                   <option key={gov} value={gov}>{gov}</option>
                                 ))}
                               </select>
-                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-500">
                                 <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                               </div>
                             </div>
@@ -413,7 +413,7 @@ export default function Contact({ onNavigate }) {
                                 <option key={area.value} value={area.value}>{area.label}</option>
                               ))}
                             </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                            <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-500">
                               <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                             </div>
                           </div>
@@ -424,7 +424,7 @@ export default function Contact({ onNavigate }) {
                         </button>
                       </form>
 
-                      <p className="text-center text-gray-400 font-medium text-[clamp(0.65rem,0.85vw,0.8rem)] mt-[clamp(1rem,2vw,1.5rem)]">
+                      <p className="text-center text-gray-500 font-medium text-[clamp(0.65rem,0.85vw,0.8rem)] mt-[clamp(1rem,2vw,1.5rem)]">
                         هل تمثل مؤسسة أو شركة وتبحث عن شراكة؟{' '}
                         <button
                           type="button"
@@ -501,7 +501,7 @@ export default function Contact({ onNavigate }) {
                           <label className="block text-[clamp(0.7rem,0.9vw,0.8rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">السيرة الذاتية (CV) <span className="text-[#721F31]">*</span></label>
                           <label className="flex flex-col items-center justify-center w-full h-[clamp(5rem,8vw,7rem)] border-2 border-dashed border-gray-300 rounded-xl hover:border-[#C08F2D] hover:bg-gray-50 transition-all cursor-pointer group bg-white">
                             <div className="flex flex-col items-center justify-center">
-                              <UploadCloud className="w-[clamp(1.5rem,2vw,2rem)] h-[clamp(1.5rem,2vw,2rem)] text-gray-400 mb-2 group-hover:text-[#C08F2D] transition-colors" />
+                              <UploadCloud className="w-[clamp(1.5rem,2vw,2rem)] h-[clamp(1.5rem,2vw,2rem)] text-gray-500 mb-2 group-hover:text-[#C08F2D] transition-colors" />
                               <p className="text-[clamp(0.65rem,0.9vw,0.85rem)] text-gray-500 font-bold group-hover:text-[#C08F2D] transition-colors">اضغط لإرفاق ملف (PDF)</p>
                             </div>
                             <input required type="file" className="hidden" accept=".pdf" />

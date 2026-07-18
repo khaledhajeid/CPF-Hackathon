@@ -1,5 +1,5 @@
 // src/pages/HomePage.jsx
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import HomeEvents from "../components/home/HomeEvents";
 import PathwayWizard from "../components/home/PathwayWizard";

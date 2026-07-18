@@ -1,5 +1,5 @@
 // src/pages/NewsPage.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Share2, ChevronRight, ChevronLeft, CalendarDays, ArrowLeft } from 'lucide-react';
 import EditorialNewsGrid from '../components/news/EditorialNewsGrid';
@@ -104,7 +104,7 @@ export default function NewsPage({ onNavigate }) {
                   
                   {/* 🟢 أزرار الإجراءات (مشاركة + قراءة التفاصيل) */}
                   <div className="mt-[clamp(1.5rem,3vw,2.5rem)] pt-[clamp(1rem,2vw,1.5rem)] border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <button className="flex items-center gap-2 text-gray-400 hover:text-[#8a1538] transition-colors font-bold text-[clamp(0.75rem,1vw,0.9rem)] cursor-pointer order-2 sm:order-1 w-full sm:w-auto justify-center">
+                    <button className="flex items-center gap-2 text-gray-500 hover:text-[#8a1538] transition-colors font-bold text-[clamp(0.75rem,1vw,0.9rem)] cursor-pointer order-2 sm:order-1 w-full sm:w-auto justify-center">
                       مشاركة الخبر <Share2 className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                     </button>
                     

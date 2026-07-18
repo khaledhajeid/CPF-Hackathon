@@ -1,5 +1,5 @@
 // src/components/success/ShareStoryModal.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowLeft, ArrowRight, Upload, Sparkles, Image as ImageIcon, Link as LinkIcon, CheckCircle2 } from 'lucide-react';
 
@@ -143,10 +143,10 @@ export default function ShareStoryModal({ isOpen, onClose }) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="border-2 border-dashed border-gray-200 hover:border-[#8a1538] bg-gray-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors group">
                         <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:bg-[#8a1538]/10 transition-colors">
-                          <ImageIcon className="w-5 h-5 text-gray-400 group-hover:text-[#8a1538]" />
+                          <ImageIcon className="w-5 h-5 text-gray-500 group-hover:text-[#8a1538]" />
                         </div>
                         <span className="font-bold text-gray-700 text-sm mb-1">رفع صورة شخصية</span>
-                        <span className="text-[11px] text-gray-400">JPG, PNG (Max 5MB)</span>
+                        <span className="text-[11px] text-gray-500">JPG, PNG (Max 5MB)</span>
                       </div>
                       
                       <div className="border border-gray-200 bg-white rounded-2xl p-6 flex flex-col justify-center gap-3">

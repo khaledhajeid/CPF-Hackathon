@@ -1,5 +1,4 @@
 // src/components/TopUtilityBar.jsx
-import React from 'react';
 import { Phone, Globe, Sun } from 'lucide-react';
 
 export default function TopUtilityBar() {

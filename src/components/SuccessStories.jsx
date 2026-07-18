@@ -1,5 +1,5 @@
 // src/components/SuccessStories.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
 import { Quote, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX } from 'lucide-react';
@@ -17,9 +17,7 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       setIsMuted(true);
-      videoRef.current.play().catch(error => {
-        console.log("المتصفح منع التشغيل التلقائي:", error);
-      });
+      videoRef.current.play().catch(() => {});
     }
   }, [story]);
 
@@ -173,14 +171,9 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
           <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '150px' }} />
 
           <div className="relative z-10 flex flex-col text-center md:text-right w-full md:w-auto">
-            <div className="flex items-center justify-center md:justify-start gap-[clamp(0.5rem,1vw,1rem)] mb-[clamp(0.2rem,0.8vw,0.5rem)]">
-              <div className="w-[clamp(1.2rem,1.5vw,1.75rem)] h-[clamp(1.2rem,1.5vw,1.75rem)] hidden md:flex shrink-0 items-center justify-center">
-                <img src="/arrow-yellow.svg" className="w-full h-full object-contain" alt="" />
-              </div>
-              <h3 className="text-[clamp(1.1rem,2.2vw,1.75rem)] font-black text-gray-900 tracking-tight leading-[1.2]">
-                كل واحد إله <span className="text-[#8a1538]">قصة...</span> شو قصتك؟
-              </h3>
-            </div>
+            <h3 className="text-[clamp(1.1rem,2.2vw,1.75rem)] font-black text-gray-900 tracking-tight leading-[1.2] mb-[clamp(0.2rem,0.8vw,0.5rem)] text-center md:text-right">
+              كل واحد إله <span className="text-[#8a1538]">قصة...</span> شو قصتك؟
+            </h3>
             
             <p className="text-gray-500 font-medium text-[clamp(0.75rem,1.1vw,0.95rem)] max-w-lg leading-relaxed px-2 md:px-0 md:pr-[clamp(1.7rem,2.5vw,2.75rem)]">
               أنت لست مجرد رقم. شاركنا تجربتك، وكيف تغلبت على التحديات، قصتك تستحق أن تُروى.

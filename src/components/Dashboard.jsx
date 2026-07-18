@@ -1,9 +1,9 @@
 // src/components/Dashboard.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, QrCode, Ticket, ChevronRight, MapPin, Calendar, X, 
-  Settings, User, Bell, Lock, LogOut, CreditCard, Gift, Clock, 
+import {
+  ShieldCheck, QrCode, Ticket, MapPin, Calendar, X,
+  Settings, User, Bell, Lock, LogOut, CreditCard, Gift, Clock,
   CheckCircle2, CircleDashed, ArrowUpLeft, BarChart3, ChevronLeft, Map
 } from 'lucide-react';
 
@@ -12,7 +12,6 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
   const [selectedTicketForQR, setSelectedTicketForQR] = useState(null);
   
   const [smsNotifications, setSmsNotifications] = useState(true);
-  const [emailNotifications, setEmailNotifications] = useState(false);
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -102,7 +101,7 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                 <Gift className="w-8 h-8 md:w-10 md:h-10 text-[#C08F2D]" />
               </div>
               <div>
-                <p className="text-[11px] md:text-[13px] font-black text-gray-400 mb-0.5 md:mb-1">الرصيد التراكمي للإنجاز</p>
+                <p className="text-[11px] md:text-[13px] font-black text-gray-500 mb-0.5 md:mb-1">الرصيد التراكمي للإنجاز</p>
                 <div className="flex items-baseline gap-1 md:gap-2">
                   <span className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">{userPoints}</span>
                   <span className="text-[#C08F2D] text-sm md:text-lg font-black">نقطة</span>
@@ -173,7 +172,7 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                   {myTickets.length > 0 && (
                     <div className="bg-white rounded-2xl md:rounded-[2rem] p-5 md:p-6 border border-gray-100 shadow-sm flex items-center justify-between">
                       <div className="pr-1">
-                        <p className="text-[11px] md:text-xs font-black text-gray-400 mb-0.5 md:mb-1">محطتك القادمة</p>
+                        <p className="text-[11px] md:text-xs font-black text-gray-500 mb-0.5 md:mb-1">محطتك القادمة</p>
                         <h4 className="text-[15px] md:text-lg font-black text-gray-900 line-clamp-1">{myTickets[0].title}</h4>
                       </div>
                       <button onClick={() => setActiveTab('wallet')} className="w-10 h-10 md:w-12 md:h-12 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center transition-colors cursor-pointer shrink-0 mr-3">
@@ -188,7 +187,7 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                   <div className="flex items-center justify-between mb-6 md:mb-8">
                     <h3 className="font-black text-lg md:text-xl text-gray-900">المسار الزمني لرحلتك</h3>
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-50 flex items-center justify-center">
-                      <Map className="w-4 h-4 md:w-5 md:h-5 text-gray-400" />
+                      <Map className="w-4 h-4 md:w-5 md:h-5 text-gray-500" />
                     </div>
                   </div>
 
@@ -226,8 +225,8 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                           <CircleDashed className="w-4 h-4 text-gray-300" />
                         </div>
                         <div className="pr-5 md:pr-6 rtl:pr-0 rtl:pl-5 md:rtl:pl-6 text-right">
-                          <h4 className="text-[14px] md:text-[15px] font-black text-gray-400 leading-tight mb-1">رحلتك تبدأ من هنا</h4>
-                          <p className="text-[11px] md:text-xs font-bold text-gray-400">استكشف الفرص المتاحة وسجل فيها.</p>
+                          <h4 className="text-[14px] md:text-[15px] font-black text-gray-500 leading-tight mb-1">رحلتك تبدأ من هنا</h4>
+                          <p className="text-[11px] md:text-xs font-bold text-gray-500">استكشف الفرص المتاحة وسجل فيها.</p>
                         </div>
                       </div>
                     )}
@@ -253,11 +252,11 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                         </h3>
                         <div className="grid grid-cols-2 gap-3 md:gap-4 bg-gray-50/50 p-3 md:p-0 md:bg-transparent rounded-xl md:rounded-none">
                           <div>
-                            <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">التاريخ</p>
+                            <p className="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">التاريخ</p>
                             <p className="text-[12px] md:text-sm font-black text-gray-800 flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#C08F2D]" /> {ticket.date}</p>
                           </div>
                           <div>
-                            <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">الموقع</p>
+                            <p className="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">الموقع</p>
                             <p className="text-[12px] md:text-sm font-black text-gray-800 flex items-center gap-1.5 truncate"><MapPin className="w-3.5 h-3.5 text-[#C08F2D]" /> {ticket.city}</p>
                           </div>
                         </div>
@@ -357,11 +356,11 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div>
-                        <label className="block text-[11px] md:text-xs font-black text-gray-400 mb-1.5 md:mb-2">الاسم الكامل (لا يمكن تعديله)</label>
+                        <label className="block text-[11px] md:text-xs font-black text-gray-500 mb-1.5 md:mb-2">الاسم الكامل (لا يمكن تعديله)</label>
                         <input type="text" readOnly value="خالد محمد سليم الحاج عيد" className="w-full bg-gray-50 border border-gray-100 text-gray-700 font-bold text-[13px] md:text-[15px] py-3 md:py-3.5 px-4 rounded-xl cursor-not-allowed outline-none" />
                       </div>
                       <div>
-                        <label className="block text-[11px] md:text-xs font-black text-gray-400 mb-1.5 md:mb-2">الرقم الوطني</label>
+                        <label className="block text-[11px] md:text-xs font-black text-gray-500 mb-1.5 md:mb-2">الرقم الوطني</label>
                         <input type="text" readOnly value="905xxxxxxx" className="w-full bg-gray-50 border border-gray-100 text-gray-700 font-bold text-[13px] md:text-[15px] py-3 md:py-3.5 px-4 rounded-xl cursor-not-allowed outline-none tracking-widest text-left" dir="ltr" />
                       </div>
                     </div>
@@ -418,7 +417,7 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[999999] w-[92%] max-w-sm bg-white rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 shadow-2xl flex flex-col items-center text-center overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-2 md:h-3 bg-[#8a1538]" />
-              <button onClick={() => setSelectedTicketForQR(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 p-1.5 md:p-2 rounded-full transition-colors cursor-pointer">
+              <button onClick={() => setSelectedTicketForQR(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-500 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 p-1.5 md:p-2 rounded-full transition-colors cursor-pointer">
                 <X className="w-4 h-4 md:w-5 md:h-5" />
               </button>
               

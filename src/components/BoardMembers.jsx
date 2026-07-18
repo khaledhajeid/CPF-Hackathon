@@ -1,5 +1,5 @@
 // src/components/BoardMembers.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Volume2, VolumeX, Briefcase } from 'lucide-react';
 
@@ -12,9 +12,7 @@ const LeaderModal = ({ leader, onClose }) => {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       setIsMuted(true);
-      videoRef.current.play().catch(error => {
-        console.log("المتصفح منع التشغيل التلقائي:", error);
-      });
+      videoRef.current.play().catch(() => {});
     }
   }, [leader]);
 
@@ -140,7 +138,7 @@ export default function BoardMembers() {
         {/* 🟢 الشبكة: 5 أعمدة في شاشات اللابتوب الصغيرة (lg:grid-cols-5) لكي تُضغط الكروت وتصغر حجمها */}
         <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-4 2xl:gap-8 pb-4 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
           <AnimatePresence mode="popLayout">
-            {leaders[activeLeaderTab].map((member, idx) => (
+            {leaders[activeLeaderTab].map((member) => (
               <motion.div 
                 key={member.name}
                 onClick={() => setSelectedLeader(member)}

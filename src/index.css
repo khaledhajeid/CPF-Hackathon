@@ -1,18 +1,37 @@
 @import "tailwindcss";
 
-/* 🟢 1. تعريف الخط الرسمي - الوزن العادي (للأوصاف والنصوص) */
+/* 🟢 1. تعريف الخط الرسمي - الوزن العادي (للأوصاف والنصوص العربية فقط) */
 @font-face {
   font-family: 'CPF-Font';
   src: url('/fonts/alfont_com_AlFont_com_helveticaneueltarabicroman1.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
 
-/* 🟢 2. تعريف الخط الرسمي - الوزن العريض (للعناوين البارزة) */
+/* 🟢 2. تعريف الخط الرسمي - الوزن العريض (للعناوين البارزة - عربي فقط) */
 @font-face {
   font-family: 'CPF-Font';
   src: url('/fonts/HelveticaNeueLT Arabic 75 Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* 🟢 2.5 خط Nexa لكل ما هو غير عربي (لاتيني، أرقام، رموز) — يشتغل تلقائياً جنب العربي بفضل unicode-range أعلاه، بدون أي تعديل على أي component */
+@font-face {
+  font-family: 'CPF-Font';
+  src: url('/fonts/Nexa%20Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CPF-Font';
+  src: url('/fonts/NexaBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

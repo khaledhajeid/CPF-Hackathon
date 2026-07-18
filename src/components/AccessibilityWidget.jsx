@@ -1,5 +1,5 @@
 // src/components/AccessibilityWidget.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accessibility, Check, Sun } from 'lucide-react';
 
@@ -25,7 +25,7 @@ export default function AccessibilityWidget() {
           >
             <div className="border-b border-gray-100 pb-3 mb-4">
               <h4 className="font-black text-gray-900 text-[13px] md:text-sm">أدوات الوصول الرقمي</h4>
-              <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-0.5">تخصيص تجربة القراءة بما يناسبك</p>
+              <p className="text-[9px] md:text-[10px] font-bold text-gray-500 uppercase tracking-wider mt-0.5">تخصيص تجربة القراءة بما يناسبك</p>
             </div>
 
             {/* 1. خيارات حجم الخط */}

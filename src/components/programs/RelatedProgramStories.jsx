@@ -1,13 +1,12 @@
 // src/components/programs/RelatedProgramStories.jsx
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote, ArrowLeft, ArrowUpLeft, Sparkles } from 'lucide-react';
 import { allStories } from '../../data/programsData';
 
 const getPathwayStyle = (pathway) => {
   switch(pathway) {
-    case 'تعلّم': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20'; 
-    case 'قُد': return 'bg-[#8a1538]/10 text-[#8a1538] border-[#8a1538]/20'; 
+    case 'تعلّم': return 'bg-[#a00023]/10 text-[#a00023] border-[#a00023]/20';
+    case 'قُد': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20';
     case 'اصنع الأثر': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
     default: return 'bg-gray-100 text-gray-700 border-gray-200';
   }
@@ -24,12 +23,9 @@ export default function RelatedProgramStories({ programName, onNavigate, onStory
         
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 md:mb-16 gap-4 md:gap-6 text-right">
           <div>
-            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-              <img src="/arrow-yellow.svg" className="w-5 h-5 md:w-8 md:h-8 shrink-0 object-contain" alt="هوية المؤسسة" />
-              <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
-                شباب صنعوا الفارق في <span className="text-[#721F31]">{programName}</span>
-              </h2>
-            </div>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight mb-2 md:mb-3">
+              شباب صنعوا الفارق في <span className="text-[#721F31]">{programName}</span>
+            </h2>
             <p className="text-gray-500 font-medium text-[13px] md:text-lg max-w-2xl">
               تعرف على تجارب حقيقية لشباب أردنيين استثمروا هذه الفرصة لتحقيق انطلاقة نوعية في مسيرتهم.
             </p>
@@ -97,7 +93,7 @@ export default function RelatedProgramStories({ programName, onNavigate, onStory
             className="bg-gradient-to-br from-gray-50 to-white rounded-[2rem] p-8 md:p-16 text-center border border-dashed border-gray-200 flex flex-col items-center justify-center max-w-3xl mx-auto"
           >
             <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
-              <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-gray-400" />
+              <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-gray-500" />
             </div>
             <h3 className="text-xl md:text-2xl font-black text-gray-800 mb-2 md:mb-3">كن أنت القصة الأولى!</h3>
             <p className="text-gray-500 font-medium text-[13px] md:text-base mb-6 md:mb-8 max-w-md leading-relaxed">

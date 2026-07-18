@@ -1,5 +1,5 @@
 // src/pages/NewsArticlePage.jsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CalendarDays, ArrowRight, Share2, Printer } from 'lucide-react';
 import Footer from '../components/Footer';

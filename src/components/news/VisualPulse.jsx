@@ -1,5 +1,5 @@
 // src/components/news/VisualPulse.jsx
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { Maximize2 } from 'lucide-react';
 
 // 🟢 الصور التجريبية لتوضيح تأثير التمرير اللانهائي
@@ -32,12 +32,11 @@ export default function VisualPulse({ onImageClick }) {
   const infiniteRow2 = [...row2, ...row2, ...row2];
 
   // 🟢 معالج التمرير اللانهائي (Infinite Loop Logic)
-  const handleScroll = (ref, rowLength) => {
+  const handleScroll = (ref) => {
     if (!ref.current) return;
-    
+
     const scrollLeft = ref.current.scrollLeft;
     const scrollWidth = ref.current.scrollWidth;
-    const clientWidth = ref.current.clientWidth;
     const oneRowWidth = scrollWidth / 3; // لأننا كررنا 3 مرات
 
     // إذا وصلنا للنهاية، نعود للبداية بسلاسة
@@ -65,7 +64,7 @@ export default function VisualPulse({ onImageClick }) {
       e.preventDefault();
       const scrollAmount = e.deltaY > 0 ? 80 : -80;
       e.currentTarget.scrollLeft += scrollAmount;
-      handleScroll(e.currentTarget, row1.length);
+      handleScroll(e.currentTarget);
     };
 
     // معالج mouse down - بداية الجر
@@ -99,7 +98,7 @@ export default function VisualPulse({ onImageClick }) {
 
     // معالج scroll للـ infinite loop
     const handleScrollEvent = (e) => {
-      handleScroll(e.currentTarget, row1.length);
+      handleScroll(e.currentTarget);
     };
 
     // معالج touch events للهواتف والتابلت (Swipe Support)
@@ -188,15 +187,6 @@ export default function VisualPulse({ onImageClick }) {
           {item.title}
         </h4>
       </div>
-    </div>
-  );
-
-  // مكون فرعي لإنشاء محتوى الشريط
-  const RowContent = ({ items }) => (
-    <div className="flex gap-[clamp(1rem,1.5vw,1.5rem)] pl-[clamp(1rem,1.5vw,1.5rem)] shrink-0">
-      {items.map((img, idx) => (
-        <ImageCard key={`${img.id}-${idx}`} item={img} />
-      ))}
     </div>
   );
 

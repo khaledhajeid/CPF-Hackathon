@@ -1,5 +1,4 @@
 // src/components/news/NewsDetailModal.jsx
-import React from 'react';
 import { motion } from 'framer-motion';
 import { X, CalendarDays, Tag } from 'lucide-react';
 

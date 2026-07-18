@@ -1,6 +1,6 @@
 // src/components/ChatWidget.jsx
-import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Sparkles, ChevronLeft } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { X, Send, ChevronLeft } from 'lucide-react';
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -155,7 +155,7 @@ export default function ChatWidget() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="تحدث مع عون..." 
-              className="flex-1 bg-[#F8FAFC] border border-gray-200 rounded-xl px-4 py-3 text-[13px] outline-none focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/10 transition-all font-bold placeholder:font-medium placeholder:text-gray-400"
+              className="flex-1 bg-[#F8FAFC] border border-gray-200 rounded-xl px-4 py-3 text-[13px] outline-none focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/10 transition-all font-bold placeholder:font-medium placeholder:text-gray-500"
             />
             <button 
               type="submit"

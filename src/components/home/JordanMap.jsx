@@ -1,5 +1,4 @@
 // src/components/home/JordanMap.jsx
-import React from 'react';
 
 export default function JordanMap({ activeLocation, onLocationSelect }) {
   const regions = [

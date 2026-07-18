@@ -1,5 +1,5 @@
 // src/components/events/EventDetailsDrawer.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, MapPin, Award, Clock, ShieldCheck, Users, Info, Lock, Unlock, UserCheck, ChevronDown, ChevronUp } from 'lucide-react';
@@ -34,7 +34,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
 
   const getPathwayColor = (pathway) => {
     switch(pathway) {
-      case 'تعلّم': return 'bg-[#8a1538]';
+      case 'تعلّم': return 'bg-[#a00023]';
       case 'قُد': return 'bg-[#2b307e]';
       case 'اصنع الأثر': return 'bg-[#1f5412]';
       default: return 'bg-gray-800';
@@ -123,21 +123,21 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                    <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
                      <Calendar className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">التاريخ</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-500 font-bold mb-0.5">التاريخ</p>
                        <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800">{currentEvent.date}</p>
                      </div>
                    </div>
                    <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
                      <Clock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">الوقت</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-500 font-bold mb-0.5">الوقت</p>
                        <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800">04:00 - 06:00 م</p>
                      </div>
                    </div>
                    <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
                      <MapPin className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#8a1538] mt-0.5 shrink-0" />
                      <div>
-                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-400 font-bold mb-0.5">الموقع</p>
+                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-gray-500 font-bold mb-0.5">الموقع</p>
                        <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800 leading-snug">{currentEvent.city} - {currentEvent.location || 'المركز الشبابي'}</p>
                      </div>
                    </div>
@@ -214,7 +214,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                     <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
                       {requiredPoints === 0 ? (
                         <>
-                           <Unlock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 text-gray-400" />
+                           <Unlock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 text-gray-500" />
                            <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">مستوى النقاط:</span>
                            <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-gray-200 text-gray-600 px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">متاح للجميع</span>
                         </>
@@ -251,7 +251,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                 ) : (
                   <button 
                     disabled
-                    className="w-full bg-gray-100 text-gray-400 rounded-xl lg:rounded-xl xl:rounded-2xl font-black text-[13px] lg:text-[13px] xl:text-sm 2xl:text-2xl py-3.5 lg:py-3.5 xl:py-4 2xl:py-6 flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
+                    className="w-full bg-gray-100 text-gray-500 rounded-xl lg:rounded-xl xl:rounded-2xl font-black text-[13px] lg:text-[13px] xl:text-sm 2xl:text-2xl py-3.5 lg:py-3.5 xl:py-4 2xl:py-6 flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
                   >
                     <Lock className="w-4 h-4 2xl:w-6 2xl:h-6 shrink-0" />
                     <span className="truncate">{lockReason}</span>

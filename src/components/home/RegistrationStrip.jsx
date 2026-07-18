@@ -1,5 +1,5 @@
 // src/components/home/RegistrationStrip.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { ArrowUpLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -184,7 +184,7 @@ export default function RegistrationStrip({ onNavigate }) {
     }
   };
 
-  const endDrag = (e) => {
+  const endDrag = () => {
     const state = dragStateRef.current;
     if (state.moved && trackRef.current && state.pointerId != null) {
       try { trackRef.current.releasePointerCapture(state.pointerId); } catch { /* noop */ }

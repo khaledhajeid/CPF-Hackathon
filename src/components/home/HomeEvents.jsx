@@ -1,7 +1,7 @@
 // src/components/home/HomeEvents.jsx
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Award, ArrowUpLeft, Target, Users, LayoutGrid, Timer, Filter, Search, ChevronDown, BookOpen, SearchX, ArrowLeft } from 'lucide-react';
+import { Calendar, MapPin, Award, ArrowUpLeft, Target, Users, LayoutGrid, Timer, Filter, Search, ChevronDown, BookOpen, SearchX } from 'lucide-react';
 import EventDetailsDrawer from '../events/EventDetailsDrawer';
 import JordanMap from './JordanMap';
 import { allEvents } from '../../data';
@@ -39,7 +39,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
 
   const getTagStyle = (pathway) => {
     switch(pathway) {
-      case 'تعلّم': return { bg: 'bg-[#8a1538]', text: 'text-white' };
+      case 'تعلّم': return { bg: 'bg-[#a00023]', text: 'text-white' };
       case 'قُد': return { bg: 'bg-[#2b307e]', text: 'text-white' };
       case 'اصنع الأثر': return { bg: 'bg-[#1f5412]', text: 'text-white' };
       default: return { bg: 'bg-gray-800', text: 'text-white' };
@@ -73,7 +73,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                     isActive ? 'bg-[#8a1538] border-[#8a1538] text-white shadow-md' : 'bg-gray-50 border-transparent text-gray-500 hover:bg-gray-100'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4 ${isActive ? 'text-[#C08F2D]' : 'text-gray-400'}`} />
+                  <Icon className={`w-4 h-4 xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4 ${isActive ? 'text-[#C08F2D]' : 'text-gray-500'}`} />
                   <span className="truncate">{path.id}</span>
                 </button>
               );
@@ -84,7 +84,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
           <div className="hidden xl:block w-px h-6 2xl:h-8 bg-gray-200 shrink-0"></div>
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-2 2xl:gap-3 w-full xl:w-auto">
-             <span className="text-[12px] lg:text-[13px] xl:text-[12px] 2xl:text-sm font-bold text-gray-400 flex items-center gap-1.5 shrink-0 mb-1 md:mb-0">
+             <span className="text-[12px] lg:text-[13px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 flex items-center gap-1.5 shrink-0 mb-1 md:mb-0">
                <Filter className="w-4 h-4 xl:w-3.5 xl:h-3.5 2xl:w-4 2xl:h-4" /> العمر:
              </span>
              <div className="md:hidden relative w-full group">
@@ -94,7 +94,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                >
                  {ageRanges.map(age => <option key={age} value={age}>{age}</option>)}
                </select>
-               <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400"><ChevronDown className="w-4 h-4" /></div>
+               <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-500"><ChevronDown className="w-4 h-4" /></div>
              </div>
              <div className="hidden md:flex gap-1.5 lg:gap-2 shrink-0">
                {ageRanges.map(age => (
@@ -116,7 +116,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
           {/* 🟢 الحل السحري: xl:flex-1 عشان يمتص المساحة المتبقية ومستحيل يطلع برا البوردر! */}
           <div className="w-full xl:flex-1 2xl:w-80 2xl:flex-none relative mt-2 xl:mt-0">
             <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 md:h-5 md:w-5 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5 text-gray-400" />
+              <Search className="h-4 w-4 md:h-5 md:w-5 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5 text-gray-500" />
             </div>
             <input
               type="text" placeholder="ابحث عن فعالية أو مكان..."
@@ -161,7 +161,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                 {activeFilters.location !== 'الكل' && <><span className="text-gray-300">•</span><span className="text-[#8a1538]">{activeFilters.location}</span></>}
                 {ageFilter !== 'الكل' && <><span className="text-gray-300">•</span><span className="text-[#8a1538]">عمر {ageFilter}</span></>}
                 {searchQuery !== '' && <><span className="text-gray-300">•</span><span className="text-[#8a1538] truncate max-w-[80px]">"{searchQuery}"</span></>}
-                <span className="text-gray-400 font-medium mr-auto">({filteredEvents.length} نتيجة)</span>
+                <span className="text-gray-500 font-medium mr-auto">({filteredEvents.length} نتيجة)</span>
               </div>
             )}
 
@@ -202,17 +202,17 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                               </h3>
                               <div className="space-y-1.5 xl:space-y-2">
                                 <div className="flex items-center gap-2 text-gray-500 text-[11px] lg:text-[11px] xl:text-xs 2xl:text-sm font-bold">
-                                  <Calendar className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-4 2xl:h-4 text-gray-400" /> {event.date}
+                                  <Calendar className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-4 2xl:h-4 text-gray-500" /> {event.date}
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-500 text-[11px] lg:text-[11px] xl:text-xs 2xl:text-sm font-bold">
-                                  <MapPin className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-4 2xl:h-4 text-gray-400" /> <span className="truncate">{event.city} - {event.location}</span>
+                                  <MapPin className="w-3.5 h-3.5 xl:w-4 xl:h-4 2xl:w-4 2xl:h-4 text-gray-500" /> <span className="truncate">{event.city} - {event.location}</span>
                                 </div>
                               </div>
                             </div>
 
                             <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                               <div className="flex flex-col">
-                                <span className="text-[9px] xl:text-[10px] 2xl:text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-0.5">المكافأة</span>
+                                <span className="text-[9px] xl:text-[10px] 2xl:text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
                                 <div className="flex items-center gap-1">
                                   <Award className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5 text-[#C08F2D]" />
                                   <span className="text-[#C08F2D] font-black text-[11px] xl:text-[11px] 2xl:text-sm">+{event.points} نقطة</span>

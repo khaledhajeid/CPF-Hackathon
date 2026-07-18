@@ -1,7 +1,7 @@
 // src/components/home/PathwayWizard.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Compass, Target, HeartHandshake, Briefcase, MapPin, Laptop, ShieldCheck, Users, Code2, Megaphone, Clock, Calendar, GraduationCap, User, ArrowLeft, BookOpen } from 'lucide-react';
+import { X, Target, HeartHandshake, Briefcase, MapPin, Laptop, ShieldCheck, Users, Megaphone, Clock, Calendar, GraduationCap, User, ArrowLeft, BookOpen } from 'lucide-react';
 
 export default function PathwayWizard({ onClose, onComplete }) {
   const [step, setStep] = useState(1);
@@ -56,7 +56,7 @@ export default function PathwayWizard({ onClose, onComplete }) {
     const { q1_passion, q3_commitment, q4_stage, location } = answers;
 
     if (q3_commitment === 'طويل') {
-      let programName = 'جامعة الحسين التقنية';
+      let programName;
       
       if (q1_passion === 'تعلّم') {
         if (q4_stage === 'مدرسة') programName = 'مبرمجو الأردن';
@@ -114,7 +114,7 @@ export default function PathwayWizard({ onClose, onComplete }) {
           <motion.div className="h-full bg-gradient-to-r from-[#8a1538] to-[#C08F2D]" initial={{ width: '0%' }} animate={{ width: `${(step / totalSteps) * 100}%` }} transition={{ duration: 0.4, ease: "easeInOut" }} />
         </div>
 
-        <button onClick={onClose} className="absolute top-8 right-6 md:top-6 md:left-6 md:right-auto z-20 text-gray-400 hover:text-[#8a1538] bg-gray-50 hover:bg-[#8a1538]/10 p-2 rounded-full md:rounded-lg transition-colors cursor-pointer">
+        <button onClick={onClose} className="absolute top-8 right-6 md:top-6 md:left-6 md:right-auto z-20 text-gray-500 hover:text-[#8a1538] bg-gray-50 hover:bg-[#8a1538]/10 p-2 rounded-full md:rounded-lg transition-colors cursor-pointer">
           <X className="w-5 h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" />
         </button>
 
@@ -189,7 +189,7 @@ export default function PathwayWizard({ onClose, onComplete }) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 xl:gap-4 2xl:gap-6 mt-4 xl:mt-6">
                   {question4Options.map(opt => (
                     <button key={opt.id} onClick={() => { setAnswers({...answers, q4_stage: opt.id}); setStep(5); }} className="text-center p-4 lg:p-4 xl:p-6 2xl:p-8 rounded-xl border-2 border-gray-100 hover:border-[#C08F2D]/50 hover:bg-gray-50 transition-all flex flex-col items-center gap-2 xl:gap-3 cursor-pointer">
-                      <opt.icon className="w-6 h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 2xl:w-12 2xl:h-12 text-gray-400" />
+                      <opt.icon className="w-6 h-6 lg:w-6 lg:h-6 xl:w-8 xl:h-8 2xl:w-12 2xl:h-12 text-gray-500" />
                       <span className="font-black text-sm lg:text-sm xl:text-base 2xl:text-xl">{opt.title}</span>
                     </button>
                   ))}
@@ -250,7 +250,7 @@ export default function PathwayWizard({ onClose, onComplete }) {
                   </button>
                 </div>
 
-                <button onClick={() => { onClose(); onComplete({ type: 'event', location: 'الكل', pathway: 'الكل' }); }} className="text-gray-400 hover:text-gray-700 text-[13px] xl:text-sm 2xl:text-lg font-bold underline transition-colors cursor-pointer">
+                <button onClick={() => { onClose(); onComplete({ type: 'event', location: 'الكل', pathway: 'الكل' }); }} className="text-gray-500 hover:text-gray-700 text-[13px] xl:text-sm 2xl:text-lg font-bold underline transition-colors cursor-pointer">
                   تخطي واستكشاف جميع الفرص
                 </button>
               </motion.div>

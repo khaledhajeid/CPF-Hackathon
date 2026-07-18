@@ -1,5 +1,4 @@
 // src/components/Hero.jsx
-import React from 'react';
 import { Search, SlidersHorizontal } from 'lucide-react';
 import { filters } from '../data';
 
@@ -56,7 +55,7 @@ export default function Hero({ activeFilter, setActiveFilter }) {
             <input 
               type="text" 
               placeholder="ابحث عن ورشة، مسار تدريبي، أو فعالية..." 
-              className="flex-1 bg-transparent border-none outline-none text-gray-900 text-lg font-bold placeholder:text-gray-400 placeholder:font-medium w-full"
+              className="flex-1 bg-transparent border-none outline-none text-gray-900 text-lg font-bold placeholder:text-gray-500 placeholder:font-medium w-full"
             />
           </div>
 

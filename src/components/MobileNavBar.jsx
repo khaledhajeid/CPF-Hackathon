@@ -1,5 +1,4 @@
 // src/components/MobileNavBar.jsx
-import React from 'react';
 import { Home, Compass, Sparkles, User, Search } from 'lucide-react';
 
 export default function MobileNavBar({ currentPage, onNavigate, onLoginClick, onSearchClick }) {
@@ -39,7 +38,7 @@ export default function MobileNavBar({ currentPage, onNavigate, onLoginClick, on
               <div className={`relative flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 ${
                 isActive && !item.isSearch && !item.isLogin
                   ? 'bg-[#8a1538]/10 text-[#8a1538] transform -translate-y-1' 
-                  : 'bg-transparent text-gray-400 group-hover:text-gray-600'
+                  : 'bg-transparent text-gray-500 group-hover:text-gray-600'
               }`}>
                 <Icon 
                   className={`transition-all duration-300 ${isActive && !item.isSearch && !item.isLogin ? 'w-5 h-5 fill-[#8a1538]/20' : 'w-5 h-5'}`} 
@@ -54,7 +53,7 @@ export default function MobileNavBar({ currentPage, onNavigate, onLoginClick, on
               
               {/* النص */}
               <span className={`text-[10px] font-black transition-all duration-300 tracking-wide ${
-                isActive && !item.isSearch && !item.isLogin ? 'text-[#8a1538] opacity-100 transform -translate-y-0.5' : 'text-gray-400 opacity-90'
+                isActive && !item.isSearch && !item.isLogin ? 'text-[#8a1538] opacity-100 transform -translate-y-0.5' : 'text-gray-500 opacity-90'
               }`}>
                 {item.label}
               </span>

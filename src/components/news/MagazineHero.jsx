@@ -1,5 +1,5 @@
 // src/components/news/MagazineHero.jsx
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ArrowUpLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { heroSliderNews } from "../../data/newsData";

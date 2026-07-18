@@ -1,5 +1,5 @@
 // src/components/programs/EventsExplorer.jsx
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpLeft, Search, Calendar, MapPin, Award, Timer, ChevronDown, Check } from 'lucide-react';
 import JordanMap from '../home/JordanMap';
@@ -27,7 +27,7 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
         className="w-full flex items-center justify-between bg-white border border-gray-200 text-gray-700 font-bold text-[clamp(0.75rem,1vw,0.875rem)] py-[clamp(0.6rem,0.8vw,0.875rem)] px-[clamp(0.75rem,1vw,1rem)] rounded-xl hover:border-gray-300 focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all cursor-pointer"
       >
         <span className="truncate ml-2">{value === 'الكل' ? placeholder : value}</span>
-        <ChevronDown className={`w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 text-gray-400 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 text-gray-500 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       
       <AnimatePresence>
@@ -81,8 +81,8 @@ export default function EventsExplorer({ handleRegisterClick }) {
 
   const getPathwayStyle = (pathway) => {
     switch(pathway) {
-      case 'تعلّم': return 'bg-[#2b307e]/100 text-[#fff] border-[#2b307e]/100'; 
-      case 'قُد': return 'bg-[#8a1538]/100 text-[#fff] border-[#8a1538]/100'; 
+      case 'تعلّم': return 'bg-[#a00023]/100 text-[#fff] border-[#a00023]/100';
+      case 'قُد': return 'bg-[#2b307e]/100 text-[#fff] border-[#2b307e]/100';
       case 'اصنع الأثر': return 'bg-[#1f5412]/100 text-[#fff] border-[#1f5412]/100'; 
       default: return 'bg-gray-100 text-gray-700 border-gray-200';
     }
@@ -95,12 +95,9 @@ export default function EventsExplorer({ handleRegisterClick }) {
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} dir="rtl">
       
       <div className="mb-[clamp(1.5rem,2vw,2rem)] text-right">
-        <div className="flex items-center gap-[clamp(0.5rem,1vw,0.75rem)]">
-          <img src="/arrow-yellow.svg" className="w-[clamp(1.25rem,2.5vw,2rem)] h-[clamp(1.25rem,2.5vw,2rem)] shrink-0" alt="" />
-          <h2 className="text-[clamp(1.35rem,3.5vw,3rem)] font-black text-[#8a1538] tracking-tight">
-            اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span>
-          </h2>
-        </div>
+        <h2 className="text-[clamp(1.35rem,3.5vw,3rem)] font-black text-[#8a1538] tracking-tight">
+          اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span>
+        </h2>
       </div>
 
       <div className="bg-white p-[clamp(0.75rem,1vw,1rem)] rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 mb-[clamp(1.5rem,3vw,2rem)] flex flex-col xl:flex-row items-start xl:items-center gap-[clamp(0.75rem,1vw,1rem)] w-full">
@@ -108,7 +105,7 @@ export default function EventsExplorer({ handleRegisterClick }) {
         {/* 🟢 xl:flex-1 عشان يمتص الحقل المساحة الزايدة وما تطلع الفلاتر برا السطر */}
         <div className="w-full xl:w-auto xl:flex-1 relative z-0">
           <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-            <Search className="h-[clamp(1rem,1.2vw,1.25rem)] w-[clamp(1rem,1.2vw,1.25rem)] text-gray-400" />
+            <Search className="h-[clamp(1rem,1.2vw,1.25rem)] w-[clamp(1rem,1.2vw,1.25rem)] text-gray-500" />
           </div>
           <input
             type="text" placeholder="ابحث عن فعالية، مدينة، أو مجال..." value={eventSearch} onChange={(e) => setEventSearch(e.target.value)}
@@ -185,7 +182,7 @@ export default function EventsExplorer({ handleRegisterClick }) {
                         <div className="mt-auto pt-[clamp(0.6rem,1vw,1rem)] border-t border-gray-100 flex items-center justify-between">
                           <div className="flex flex-col">
                             {/* 🟢 تصغير نصوص المكافأة */}
-                            <span className="text-[clamp(0.45rem,0.7vw,0.5625rem)] font-bold text-gray-400 uppercase tracking-wider mb-0.5">المكافأة</span>
+                            <span className="text-[clamp(0.45rem,0.7vw,0.5625rem)] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
                             <div className="flex items-center gap-1"><Award className="w-3.5 h-3.5 text-[#C08F2D]" /><span className="text-[#C08F2D] font-black text-[clamp(0.6rem,0.9vw,0.75rem)]">+{event.points} نقطة</span></div>
                           </div>
                           {/* 🟢 تصغير زر التفاصيل */}

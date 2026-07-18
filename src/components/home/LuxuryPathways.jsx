@@ -1,5 +1,5 @@
 // src/components/home/LuxuryPathways.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowUpLeft, Target, Users, BookOpen } from 'lucide-react';
 
 export default function LuxuryPathways({ onPathwaySelect }) {
@@ -25,7 +25,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       ],
       icon: BookOpen,
       bgImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000',
-      closedOverlay: 'bg-[#8a1538]/85', openGradient: 'from-[#3b1019] via-[#8a1538]/10 to-transparent'
+      closedOverlay: 'bg-[#a00023]/85', openGradient: 'from-[#2b0009] via-[#a00023]/10 to-transparent'
     },
     {
       id: 'قُد', goal: 'اسعى الى ان أكون قائدا وصانع للتغيير', name: 'قُد', shortName: 'قُد',

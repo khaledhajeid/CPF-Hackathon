@@ -1,5 +1,5 @@
 // src/components/news/EditorialNewsGrid.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Calendar, ArrowLeft, Search, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { newsList } from '../../data/newsData';
@@ -56,7 +56,7 @@ export default function EditorialNewsGrid({ onNewsClick }) {
             
             {/* حقل البحث */}
             <div className="relative w-full sm:w-[250px] xl:w-[300px] flex items-center bg-gray-50/50 hover:bg-gray-50 rounded-xl px-4 py-[clamp(0.6rem,1vw,0.75rem)] transition-colors border border-transparent focus-within:border-[#C08F2D]/30 focus-within:bg-white">
-              <Search className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] text-gray-400 ml-3 shrink-0" />
+              <Search className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] text-gray-500 ml-3 shrink-0" />
               <input 
                 type="text" 
                 placeholder="ابحث في الأخبار..." 
@@ -81,7 +81,7 @@ export default function EditorialNewsGrid({ onNewsClick }) {
                     {selectedYear === 'الكل' ? 'كل السنوات' : selectedYear}
                   </span>
                 </div>
-                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isYearOpen ? 'rotate-180 text-[#C08F2D]' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${isYearOpen ? 'rotate-180 text-[#C08F2D]' : ''}`} />
               </button>
 
               <AnimatePresence>

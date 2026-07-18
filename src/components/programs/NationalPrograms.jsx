@@ -1,5 +1,5 @@
 // src/components/programs/NationalPrograms.jsx
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpLeft, Briefcase, Target, Users, Code2, HeartHandshake, Lightbulb, GraduationCap, RefreshCcw } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 // src/pages/PartnershipsPage.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Handshake, Globe, TrendingUp, Building2, User, ArrowLeft, Send, UploadCloud } from 'lucide-react';
 import Footer from '../components/Footer';
@@ -232,7 +232,7 @@ export default function PartnershipsPage({ onNavigate }) {
                 <div className="pt-2">
                   <label className="flex flex-col items-center justify-center w-full h-20 lg:h-24 border-2 border-dashed border-gray-300 rounded-lg lg:rounded-xl hover:border-[#C08F2D] hover:bg-gray-50 transition-all cursor-pointer group">
                     <div className="flex flex-col items-center justify-center">
-                      <UploadCloud className="w-5 h-5 lg:w-6 lg:h-6 text-gray-400 mb-1 lg:mb-2 group-hover:text-[#C08F2D] transition-colors" />
+                      <UploadCloud className="w-5 h-5 lg:w-6 lg:h-6 text-gray-500 mb-1 lg:mb-2 group-hover:text-[#C08F2D] transition-colors" />
                       <p className="text-[11px] lg:text-[12px] 2xl:text-[13px] text-gray-500 font-medium group-hover:text-[#C08F2D] transition-colors">إرفاق العرض التقديمي (Pitch Deck) أو السيرة الذاتية (اختياري)</p>
                     </div>
                     <input type="file" className="hidden" accept=".pdf,.doc,.docx,.ppt,.pptx" />
@@ -243,7 +243,7 @@ export default function PartnershipsPage({ onNavigate }) {
                   <span>إرسال الاهتمام (EOI)</span>
                   <Send className="w-4 h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5 rtl:-scale-x-100 transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
-                <p className="text-center text-[11px] lg:text-[12px] 2xl:text-xs text-gray-400 mt-3 lg:mt-4 font-medium">
+                <p className="text-center text-[11px] lg:text-[12px] 2xl:text-xs text-gray-500 mt-3 lg:mt-4 font-medium">
                   * سيتم التعامل مع كافة معلوماتكم بسرية تامة. سيتواصل معكم فريقنا خلال 48 ساعة عمل.
                 </p>
               </form>

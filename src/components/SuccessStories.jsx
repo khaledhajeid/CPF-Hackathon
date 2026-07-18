@@ -58,8 +58,8 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
         <div className="w-full md:w-1/2 lg:w-[55%] p-5 pt-12 md:p-[clamp(1.5rem,4vw,3rem)] overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-[clamp(1.5rem,4vw,3rem)] relative z-10 bg-white order-last md:order-first mt-[-20px] md:mt-0 rounded-t-3xl md:rounded-none">
           <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-black text-gray-900 mb-[clamp(1rem,2vw,2rem)] pr-8 md:pr-0 leading-tight">{story.name}</h2>
           
-          <div className="flex gap-[clamp(0.5rem,1.5vw,1rem)] mb-[clamp(1rem,3vw,2rem)] bg-gray-50 p-[clamp(1rem,2vw,1.5rem)] rounded-xl md:rounded-2xl border-r-4 border-[#C08F2D]">
-            <Quote className="w-[clamp(1.25rem,2vw,2rem)] h-[clamp(1.25rem,2vw,2rem)] text-[#C08F2D]/50 rotate-180 shrink-0 mt-1" />
+          <div className="flex gap-[clamp(0.5rem,1.5vw,1rem)] mb-[clamp(1rem,3vw,2rem)] bg-gray-50 p-[clamp(1rem,2vw,1.5rem)] rounded-xl md:rounded-2xl border border-gray-200/70">
+            <Quote className="w-[clamp(1.25rem,2vw,2rem)] h-[clamp(1.25rem,2vw,2rem)] text-[#C08F2D]/50 shrink-0 mt-1" />
             <h3 className="text-[clamp(0.85rem,1.5vw,1.35rem)] font-black text-[#8a1538] leading-[1.6em]">
               {story.quote}
             </h3>
@@ -227,7 +227,7 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
 
                   <div className="p-[clamp(1.25rem,3vw,2rem)] pb-[clamp(1.5rem,4vw,2.5rem)] relative bg-white flex-grow flex flex-col justify-center">
                     <div className="mb-[clamp(0.5rem,1vw,1rem)]">
-                      <Quote className="w-[clamp(1.25rem,2vw,2rem)] h-[clamp(1.25rem,2vw,2rem)] text-[#C08F2D]/40 rotate-180" />
+                      <Quote className="w-[clamp(1.25rem,2vw,2rem)] h-[clamp(1.25rem,2vw,2rem)] text-[#C08F2D]/40" />
                     </div>
                     <p className="text-gray-700 text-[clamp(0.8rem,1.1vw,1.05rem)] font-medium leading-[clamp(1.7rem,2.1vw,2.1rem)] text-justify relative z-10 line-clamp-4 md:line-clamp-none">
                       "{story.quote}"

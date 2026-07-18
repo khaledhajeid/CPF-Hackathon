@@ -43,19 +43,29 @@ export default function PartnershipsPage({ onNavigate }) {
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-16 2xl:px-6 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             {/* 🟢 تم تقليل المسافات السفلية (mb) بين العناصر لضغط الهيدر أكثر */}
-            <h1 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-black text-white mb-2 lg:mb-3 2xl:mb-6 leading-[1.15] tracking-tight">
-              معاً، نصنع أثراً <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6]">يمتد لأجيال</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-5 lg:mb-6 2xl:mb-8 leading-[1.2] tracking-tight">
+              معاً، نصنع أثراً <span className="text-[#C08F2D]">يمتد لأجيال</span>
             </h1>
-            <p className="text-[13px] sm:text-[14px] lg:text-[14px] xl:text-[15px] 2xl:text-xl text-white/80 font-medium max-w-3xl mx-auto mb-5 lg:mb-6 2xl:mb-10 leading-relaxed">
+            <p className="text-[14px] sm:text-[15px] lg:text-[15px] xl:text-base 2xl:text-xl text-white/80 font-medium max-w-3xl mx-auto mb-6 lg:mb-8 2xl:mb-10 leading-relaxed">
               نؤمن في مؤسسة ولي العهد أن الشراكات الحقيقية هي المحرك الأساسي للتنمية. انضم إلى شبكتنا من الشركاء والخبراء لنساهم معاً في تمكين الشباب الأردني.
             </p>
-            <button 
-              onClick={() => document.getElementById('partnership-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-6 py-3 lg:px-7 lg:py-3.5 2xl:px-10 2xl:py-5 rounded-full font-black text-[12px] lg:text-[13px] 2xl:text-lg transition-all shadow-[0_0_20px_rgba(192,143,45,0.4)] hover:shadow-[0_0_30px_rgba(192,143,45,0.6)] flex items-center gap-2 lg:gap-3 mx-auto"
-            >
-              <span>ابدأ رحلة الشراكة</span>
-              <ArrowLeft className="w-4 h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5 rtl:-scale-x-100" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 lg:gap-4">
+              <button
+                onClick={() => document.getElementById('partnership-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#C08F2D] hover:bg-[#a67b25] text-white px-6 py-3 lg:px-7 lg:py-3.5 2xl:px-10 2xl:py-5 rounded-full font-black text-[12px] lg:text-[13px] 2xl:text-lg transition-all shadow-[0_0_20px_rgba(192,143,45,0.4)] hover:shadow-[0_0_30px_rgba(192,143,45,0.6)] flex items-center gap-2 lg:gap-3"
+              >
+                <span>ابدأ الشراكة</span>
+                <ArrowLeft className="w-4 h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5" />
+              </button>
+              <a
+                href="https://giving.htu.edu.jo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-transparent border-2 border-white/40 hover:border-[#C08F2D] text-white hover:text-[#C08F2D] px-6 py-3 lg:px-7 lg:py-3.5 2xl:px-10 2xl:py-5 rounded-full font-black text-[12px] lg:text-[13px] 2xl:text-lg transition-all flex items-center gap-2 lg:gap-3"
+              >
+                <span>تبرع الآن</span>
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -63,10 +73,9 @@ export default function PartnershipsPage({ onNavigate }) {
       {/* ================= 2. شريط الشركاء المتحرك ================= */}
       <div className="py-12 lg:py-16 2xl:py-24 bg-white border-b border-gray-100 overflow-hidden">
         <div className="text-center mb-8 lg:mb-10 2xl:mb-14 px-6">
-          <div className="flex items-center justify-center gap-2.5 lg:gap-3 mb-2 lg:mb-3 2xl:mb-4">
-            <img src="/arrow-yellow.svg" className="w-5 h-5 lg:w-6 lg:h-6 2xl:w-8 2xl:h-8 shrink-0" alt="" />
-            <h2 className="text-2xl lg:text-3xl 2xl:text-4xl font-black text-[#721F31]">شركاء الأثر</h2>
-          </div>
+          <h2 className="text-2xl lg:text-3xl 2xl:text-4xl font-black text-[#721F31] tracking-tight mb-2 lg:mb-3 2xl:mb-4">
+            شركاء <span className="text-[#C08F2D]">الأثر</span>
+          </h2>
           <p className="text-gray-500 font-medium text-[14px] lg:text-base 2xl:text-lg">مؤسسات رائدة آمنت برؤيتنا وشاركتنا المسير</p>
         </div>
         
@@ -83,10 +92,12 @@ export default function PartnershipsPage({ onNavigate }) {
                 rel="noopener noreferrer"
                 className="relative block flex-shrink-0 cursor-pointer group p-3 lg:p-4"
               >
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className="h-10 md:h-12 lg:h-14 2xl:h-18 w-auto object-contain grayscale-[30%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(192,143,45,0.6)] transition-all duration-300 ease-out" 
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-10 md:h-12 lg:h-14 2xl:h-18 w-auto object-contain grayscale-[30%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(192,143,45,0.6)] transition-all duration-300 ease-out"
                 />
               </a>
             ))}
@@ -112,7 +123,7 @@ export default function PartnershipsPage({ onNavigate }) {
                   <feature.icon className="w-5 h-5 lg:w-6 lg:h-6 2xl:w-8 2xl:h-8 text-[#721F31] group-hover:text-[#C08F2D] transition-colors" />
                 </div>
                 <h3 className="text-base lg:text-lg 2xl:text-2xl font-black text-[#721F31] mb-2 lg:mb-2">{feature.title}</h3>
-                <p className="text-gray-500 font-medium text-[12px] lg:text-[13px] 2xl:text-base leading-relaxed">{feature.desc}</p>
+                <p className="text-gray-500 font-medium text-[13px] lg:text-[14px] 2xl:text-base leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -129,22 +140,24 @@ export default function PartnershipsPage({ onNavigate }) {
             <div className="p-6 sm:p-8 lg:p-8 2xl:p-12">
               <div className="text-center mb-8 lg:mb-10">
                 <h2 className="text-xl lg:text-2xl 2xl:text-3xl font-black text-[#721F31] mb-2 lg:mb-3">نموذج التعبير عن الاهتمام (EOI)</h2>
-                <p className="text-gray-500 font-medium text-[12px] lg:text-[13px] 2xl:text-base">الرجاء تعبئة البيانات المبدئية، وسيقوم فريق الشراكات بالتواصل معكم لتحديد موعد اجتماع.</p>
+                <p className="text-gray-500 font-medium text-[13px] lg:text-[14px] 2xl:text-base">الرجاء تعبئة البيانات المبدئية، وسيقوم فريق الشراكات بالتواصل معكم لتحديد موعد اجتماع.</p>
               </div>
 
               {/* أزرار التبديل */}
-              <div className="flex p-1 bg-gray-100 rounded-xl lg:rounded-2xl mb-8 lg:mb-10">
-                <button 
+              <div className="flex p-1 bg-gray-100 rounded-xl lg:rounded-2xl mb-8 lg:mb-10" role="group" aria-label="نوع المتقدم للشراكة">
+                <button
                   onClick={() => setPartnerType('organization')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 lg:py-3 2xl:py-3.5 rounded-lg lg:rounded-xl font-bold text-[11px] lg:text-[12px] 2xl:text-sm transition-all ${partnerType === 'organization' ? 'bg-white text-[#721F31] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                  aria-pressed={partnerType === 'organization'}
+                  className={`flex-1 flex items-center justify-center gap-2 min-h-11 py-2.5 lg:py-3 2xl:py-3.5 rounded-lg lg:rounded-xl font-bold text-[11px] lg:text-[12px] 2xl:text-sm transition-all ${partnerType === 'organization' ? 'bg-white text-[#721F31] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                 >
                   <Building2 className="w-4 h-4 lg:w-5 lg:h-5" />
                   <span className="hidden sm:inline">مؤسسات / شركات</span>
                   <span className="sm:hidden">مؤسسات</span>
                 </button>
-                <button 
+                <button
                   onClick={() => setPartnerType('individual')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 lg:py-3 2xl:py-3.5 rounded-lg lg:rounded-xl font-bold text-[11px] lg:text-[12px] 2xl:text-sm transition-all ${partnerType === 'individual' ? 'bg-white text-[#721F31] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                  aria-pressed={partnerType === 'individual'}
+                  className={`flex-1 flex items-center justify-center gap-2 min-h-11 py-2.5 lg:py-3 2xl:py-3.5 rounded-lg lg:rounded-xl font-bold text-[11px] lg:text-[12px] 2xl:text-sm transition-all ${partnerType === 'individual' ? 'bg-white text-[#721F31] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                 >
                   <User className="w-4 h-4 lg:w-5 lg:h-5" />
                   <span className="hidden sm:inline">أفراد / خبراء</span>
@@ -157,52 +170,52 @@ export default function PartnershipsPage({ onNavigate }) {
                 {/* الحقول الديناميكية */}
                 {partnerType === 'organization' ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 2xl:gap-6">
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">اسم الجهة / المؤسسة <span className="text-[#721F31]">*</span></label>
-                      <input type="text" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: شركة زين للاتصالات" />
+                    <div>
+                      <label htmlFor="org-name" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">اسم الجهة / المؤسسة <span className="text-[#721F31]">*</span></label>
+                      <input id="org-name" type="text" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: شركة زين للاتصالات" />
                     </div>
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">الموقع الإلكتروني</label>
-                      <input type="url" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="https://www.example.com" dir="ltr" />
+                    <div>
+                      <label htmlFor="org-website" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">الموقع الإلكتروني</label>
+                      <input id="org-website" type="url" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="https://www.example.com" dir="ltr" />
                     </div>
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">اسم ضابط الارتباط (الشخص المعني) <span className="text-[#721F31]">*</span></label>
-                      <input type="text" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="الاسم الكامل" />
+                    <div>
+                      <label htmlFor="org-contact-name" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">اسم ضابط الارتباط (الشخص المعني) <span className="text-[#721F31]">*</span></label>
+                      <input id="org-contact-name" type="text" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="الاسم الكامل" />
                     </div>
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">المسمى الوظيفي <span className="text-[#721F31]">*</span></label>
-                      <input type="text" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: مدير العلاقات العامة" />
+                    <div>
+                      <label htmlFor="org-job-title" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">المسمى الوظيفي <span className="text-[#721F31]">*</span></label>
+                      <input id="org-job-title" type="text" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: مدير العلاقات العامة" />
                     </div>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 2xl:gap-6">
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">الاسم الرباعي <span className="text-[#721F31]">*</span></label>
-                      <input type="text" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="الاسم الكامل" />
+                    <div>
+                      <label htmlFor="individual-name" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">الاسم الرباعي <span className="text-[#721F31]">*</span></label>
+                      <input id="individual-name" type="text" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="الاسم الكامل" />
                     </div>
-                    <div className="space-y-1.5 lg:space-y-2">
-                      <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">مجال الخبرة <span className="text-[#721F31]">*</span></label>
-                      <input type="text" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: تدريب تقني، ريادة أعمال" />
+                    <div>
+                      <label htmlFor="individual-expertise" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">مجال الخبرة <span className="text-[#721F31]">*</span></label>
+                      <input id="individual-expertise" type="text" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="مثال: تدريب تقني، ريادة أعمال" />
                     </div>
                   </div>
                 )}
 
                 {/* الحقول المشتركة */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 2xl:gap-6">
-                  <div className="space-y-1.5 lg:space-y-2">
-                    <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">البريد الإلكتروني <span className="text-[#721F31]">*</span></label>
-                    <input type="email" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="email@example.com" dir="ltr" />
+                  <div>
+                    <label htmlFor="partner-email" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">البريد الإلكتروني <span className="text-[#721F31]">*</span></label>
+                    <input id="partner-email" type="email" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="email@example.com" dir="ltr" />
                   </div>
-                  <div className="space-y-1.5 lg:space-y-2">
-                    <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">رقم الهاتف المباشر <span className="text-[#721F31]">*</span></label>
-                    <input type="tel" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="+962 7X XXX XXXX" dir="ltr" />
+                  <div>
+                    <label htmlFor="partner-phone" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">رقم الهاتف المباشر <span className="text-[#721F31]">*</span></label>
+                    <input id="partner-phone" type="tel" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-left text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="+962 7X XXX XXXX" dir="ltr" />
                   </div>
                 </div>
 
-                <div className="space-y-1.5 lg:space-y-2">
-                  <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">مجال الشراكة المقترح <span className="text-[#721F31]">*</span></label>
-                  <select className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-gray-700 text-[12px] lg:text-[13px] 2xl:text-[14px]">
-                    <option value="">اختر مجال الاهتمام...</option>
+                <div>
+                  <label htmlFor="partnership-area" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">مجال الشراكة المقترح <span className="text-[#721F31]">*</span></label>
+                  <select id="partnership-area" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white text-gray-700 text-[12px] lg:text-[13px] 2xl:text-[14px]">
+                    <option value="" disabled>اختر مجال الاهتمام...</option>
                     <option value="funding">دعم مالي ورعاية (Sponsorship)</option>
                     <option value="tech">تدريب وخبرات تقنية (Technical Expertise)</option>
                     <option value="venues">توفير مساحات ومرافق (Venues & Facilities)</option>
@@ -211,16 +224,16 @@ export default function PartnershipsPage({ onNavigate }) {
                   </select>
                 </div>
 
-                <div className="space-y-1.5 lg:space-y-2">
-                  <label className="text-[11px] lg:text-[12px] 2xl:text-[13px] font-bold text-gray-700">نبذة عن فكرة التعاون <span className="text-[#721F31]">*</span></label>
-                  <textarea rows="3" className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white resize-none text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="حدثنا باختصار عن كيف يمكننا التعاون معاً لخدمة الشباب الأردني..."></textarea>
+                <div>
+                  <label htmlFor="cooperation-idea" className="block mb-3 lg:mb-3.5 2xl:mb-4 text-[12px] lg:text-[13px] 2xl:text-[14px] font-bold text-gray-700">نبذة عن فكرة التعاون <span className="text-[#721F31]">*</span></label>
+                  <textarea id="cooperation-idea" rows="3" required className="w-full px-3 py-2.5 lg:px-4 lg:py-3 rounded-lg lg:rounded-xl border border-gray-200 focus:border-[#C08F2D] outline-none transition-all bg-gray-50 focus:bg-white resize-none text-[12px] lg:text-[13px] 2xl:text-[14px]" placeholder="حدثنا باختصار عن كيف يمكننا التعاون معاً لخدمة الشباب الأردني..."></textarea>
                 </div>
 
                 <div className="pt-2">
                   <label className="flex flex-col items-center justify-center w-full h-20 lg:h-24 border-2 border-dashed border-gray-300 rounded-lg lg:rounded-xl hover:border-[#C08F2D] hover:bg-gray-50 transition-all cursor-pointer group">
                     <div className="flex flex-col items-center justify-center">
                       <UploadCloud className="w-5 h-5 lg:w-6 lg:h-6 text-gray-400 mb-1 lg:mb-2 group-hover:text-[#C08F2D] transition-colors" />
-                      <p className="text-[10px] lg:text-[12px] 2xl:text-[13px] text-gray-500 font-medium group-hover:text-[#C08F2D] transition-colors">إرفاق العرض التقديمي (Pitch Deck) أو السيرة الذاتية (اختياري)</p>
+                      <p className="text-[11px] lg:text-[12px] 2xl:text-[13px] text-gray-500 font-medium group-hover:text-[#C08F2D] transition-colors">إرفاق العرض التقديمي (Pitch Deck) أو السيرة الذاتية (اختياري)</p>
                     </div>
                     <input type="file" className="hidden" accept=".pdf,.doc,.docx,.ppt,.pptx" />
                   </label>
@@ -230,7 +243,7 @@ export default function PartnershipsPage({ onNavigate }) {
                   <span>إرسال الاهتمام (EOI)</span>
                   <Send className="w-4 h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5 rtl:-scale-x-100 transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
-                <p className="text-center text-[9px] lg:text-[11px] 2xl:text-xs text-gray-400 mt-2 lg:mt-3 font-medium">
+                <p className="text-center text-[11px] lg:text-[12px] 2xl:text-xs text-gray-400 mt-3 lg:mt-4 font-medium">
                   * سيتم التعامل مع كافة معلوماتكم بسرية تامة. سيتواصل معكم فريقنا خلال 48 ساعة عمل.
                 </p>
               </form>

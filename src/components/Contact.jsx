@@ -2,10 +2,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
-import { 
-  MapPin, Phone, Mail, Send, Clock, Building2, CheckCircle2, ChevronDown, 
-  Briefcase, GraduationCap, UploadCloud, X
+import {
+  MapPin, Phone, Mail, Send, Clock, Building2, CheckCircle2, ChevronDown,
+  Briefcase, GraduationCap, UploadCloud, X, Users
 } from 'lucide-react';
+
+const governorates = [
+  'عمّان', 'إربد', 'الزرقاء', 'البلقاء', 'مادبا', 'جرش', 'عجلون', 'المفرق',
+  'الكرك', 'الطفيلة', 'معان', 'العقبة'
+];
+
+const interestAreas = [
+  { value: 'تعلّم', label: 'تعلّم' },
+  { value: 'قُد', label: 'قُد' },
+  { value: 'اصنع الأثر', label: 'اصنع الأثر' }
+];
 
 const officesData = [
   { id: 'amman', name: 'المقر الرئيسي - عمّان', address: 'دابوق - شارع محمد السعد البطاينة', phone: '+962 6 5806161', ext: '412', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
@@ -70,29 +81,35 @@ export default function Contact({ onNavigate }) {
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
         
         <div className="max-w-[1200px] mx-auto px-[clamp(1.5rem,4vw,2rem)] relative z-10 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-[clamp(1.875rem,5vw,3.75rem)] font-black text-white mb-[clamp(0.75rem,2vw,1.5rem)] tracking-tight leading-tight">
-            نحن هنا لنصنع <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C08F2D] to-[#fcebb6]">الأثر معاً</span>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-5 lg:mb-6 2xl:mb-8 leading-[1.2] tracking-tight">
+            نحن هنا لنصنع <span className="text-[#C08F2D]">الأثر معاً</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[clamp(0.75rem,1.2vw,1.125rem)] text-white/80 font-medium max-w-2xl mx-auto leading-relaxed">
-            سواء كنت تبحث عن إجابات لاستفساراتك، أو تطمح لتكون جزءاً من فريقنا لتمكين الشباب الأردني، أنت في المكان الصحيح.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[14px] sm:text-[15px] lg:text-[15px] xl:text-base 2xl:text-xl text-white/80 font-medium max-w-2xl mx-auto leading-relaxed">
+            سواء كنت تبحث عن إجابات لاستفساراتك، أو تطمح لتكون جزءاً من فريقنا أو شبكتنا لتمكين الشباب الأردني، أنت في المكان الصحيح.
           </motion.p>
         </div>
       </div>
 
       {/* 2. التبويبات الرئيسية */}
-      <div className="max-w-[450px] mx-auto w-full px-[clamp(1rem,4vw,1.5rem)] -mt-[clamp(1.25rem,3vw,1.75rem)] relative z-30">
+      <div className="max-w-[560px] mx-auto w-full px-[clamp(1rem,4vw,1.5rem)] -mt-[clamp(1.25rem,3vw,1.75rem)] relative z-30">
         <div className="bg-white p-[clamp(0.25rem,0.8vw,0.35rem)] rounded-full shadow-xl border border-gray-100 flex">
-          <button 
+          <button
             onClick={() => { setActiveTab('contact'); setIsSent(false); }}
-            className={`flex-1 flex items-center justify-center gap-[clamp(0.35rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.7rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'contact' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
+            className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'contact' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
           >
-            <Mail className="w-[clamp(0.85rem,1.2vw,1.25rem)] h-[clamp(0.85rem,1.2vw,1.25rem)]" /> تواصل معنا
+            <Mail className="w-[clamp(0.8rem,1.2vw,1.25rem)] h-[clamp(0.8rem,1.2vw,1.25rem)] shrink-0" /> <span>تواصل معنا</span>
           </button>
-          <button 
+          <button
             onClick={() => { setActiveTab('careers'); setIsSent(false); }}
-            className={`flex-1 flex items-center justify-center gap-[clamp(0.35rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.7rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'careers' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
+            className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'careers' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
           >
-            <Briefcase className="w-[clamp(0.85rem,1.2vw,1.25rem)] h-[clamp(0.85rem,1.2vw,1.25rem)]" /> انضم لفريقنا
+            <Briefcase className="w-[clamp(0.8rem,1.2vw,1.25rem)] h-[clamp(0.8rem,1.2vw,1.25rem)] shrink-0" /> <span>انضم لفريقنا</span>
+          </button>
+          <button
+            onClick={() => { setActiveTab('network'); setIsSent(false); }}
+            className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'network' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
+          >
+            <Users className="w-[clamp(0.8rem,1.2vw,1.25rem)] h-[clamp(0.8rem,1.2vw,1.25rem)] shrink-0" /> <span>انضم لشبكتنا</span>
           </button>
         </div>
       </div>
@@ -299,6 +316,127 @@ export default function Contact({ onNavigate }) {
                     قدم كمتدرب
                   </button>
                 </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ================= TAB 3: انضم لشبكتنا ================= */}
+          {activeTab === 'network' && (
+            <motion.div
+              key="network-tab"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+              className="max-w-[720px] mx-auto"
+            >
+              <div className="bg-white rounded-[clamp(1.5rem,3vw,2.5rem)] shadow-xl shadow-[#721F31]/5 border border-gray-100 p-[clamp(1.5rem,4vw,3.5rem)] relative overflow-hidden">
+                <div className="absolute -top-16 -left-16 w-56 h-56 bg-[#C08F2D]/10 rounded-full blur-[70px] pointer-events-none" />
+
+                <AnimatePresence mode="wait">
+                  {isSent ? (
+                    <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="text-center py-10 relative z-10">
+                      <div className="w-[clamp(4rem,6vw,6rem)] h-[clamp(4rem,6vw,6rem)] bg-green-50 rounded-full flex items-center justify-center mx-auto mb-[clamp(1.25rem,2.5vw,2rem)] shadow-inner border border-green-100">
+                        <CheckCircle2 className="w-[clamp(2rem,3vw,3rem)] h-[clamp(2rem,3vw,3rem)] text-green-500" />
+                      </div>
+                      <h2 className="text-[clamp(1.25rem,2.5vw,2rem)] font-black text-[#721F31] mb-[clamp(0.75rem,1.5vw,1rem)]">أهلاً بك في شبكتنا!</h2>
+                      <p className="text-gray-500 font-bold text-[clamp(0.75rem,1vw,0.9rem)] leading-relaxed mb-[clamp(1.5rem,3vw,2.5rem)] max-w-sm mx-auto">استلمنا بياناتك بنجاح، وسيتواصل معك فريقنا فور توفر فرصة أو مبادرة تناسب اهتمامك.</p>
+                      <button onClick={() => setIsSent(false)} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.5vw,1rem)] rounded-xl font-black text-[clamp(0.75rem,1vw,0.85rem)] transition-all cursor-pointer">
+                        تعبئة نموذج آخر
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative z-10">
+                      <div className="flex items-center gap-[clamp(0.75rem,1.5vw,1rem)] mb-[clamp(1.25rem,3vw,2rem)]">
+                        <div className="w-[clamp(2.75rem,4vw,3.5rem)] h-[clamp(2.75rem,4vw,3.5rem)] bg-[#721F31]/5 rounded-2xl flex items-center justify-center shrink-0">
+                          <Users className="w-[clamp(1.25rem,2vw,1.75rem)] h-[clamp(1.25rem,2vw,1.75rem)] text-[#721F31]" />
+                        </div>
+                        <div>
+                          <h2 className="text-[clamp(1.25rem,2.5vw,2rem)] font-black text-[#721F31] leading-tight">انضم لشبكة شباب المؤسسة</h2>
+                          <p className="text-gray-500 font-medium text-[clamp(0.75rem,1vw,0.9rem)]">خطوة واحدة تفصلك عن فرص وبرامج تناسب طموحك.</p>
+                        </div>
+                      </div>
+
+                      <form onSubmit={handleSubmit} className="space-y-[clamp(1rem,2vw,1.5rem)]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,2vw,1.5rem)]">
+                          <div>
+                            <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">الاسم الرباعي <span className="text-[#721F31]">*</span></label>
+                            <input required type="text" placeholder="الاسم الكامل" className="w-full bg-gray-50 border border-gray-200 text-gray-900 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] px-[clamp(0.875rem,1.5vw,1rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all" />
+                          </div>
+                          <div>
+                            <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">الفئة العمرية <span className="text-[#721F31]">*</span></label>
+                            <div className="relative">
+                              <select required defaultValue="" className="w-full bg-gray-50 border border-gray-200 text-gray-700 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] pl-[clamp(0.875rem,1.5vw,1rem)] pr-[clamp(2rem,3vw,2.5rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all appearance-none cursor-pointer">
+                                <option value="" disabled hidden>اختر الفئة العمرية...</option>
+                                <option value="14-17">14 - 17</option>
+                                <option value="18-25">18 - 25</option>
+                                <option value="26-30">26 - 30</option>
+                                <option value="31-35">31 - 35</option>
+                                <option value="35+">35+</option>
+                              </select>
+                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                                <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,2vw,1.5rem)]">
+                          <div>
+                            <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">المحافظة <span className="text-[#721F31]">*</span></label>
+                            <div className="relative">
+                              <select required defaultValue="" className="w-full bg-gray-50 border border-gray-200 text-gray-700 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] pl-[clamp(0.875rem,1.5vw,1rem)] pr-[clamp(2rem,3vw,2.5rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all appearance-none cursor-pointer">
+                                <option value="" disabled hidden>اختر المحافظة...</option>
+                                {governorates.map((gov) => (
+                                  <option key={gov} value={gov}>{gov}</option>
+                                ))}
+                              </select>
+                              <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                                <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">رقم الهاتف <span className="text-[#721F31]">*</span></label>
+                            <input required type="tel" dir="ltr" placeholder="+962 7X XXX XXXX" className="w-full bg-gray-50 border border-gray-200 text-gray-900 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] px-[clamp(0.875rem,1.5vw,1rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all text-left" />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">البريد الإلكتروني <span className="text-[#721F31]">*</span></label>
+                          <input required type="email" dir="ltr" placeholder="example@email.com" className="w-full bg-gray-50 border border-gray-200 text-gray-900 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] px-[clamp(0.875rem,1.5vw,1rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all text-left" />
+                        </div>
+
+                        <div>
+                          <label className="block text-[clamp(0.7rem,0.9vw,0.85rem)] font-bold text-gray-700 mb-[clamp(0.35rem,0.8vw,0.5rem)]">مجال الاهتمام <span className="text-[#721F31]">*</span></label>
+                          <div className="relative">
+                            <select required defaultValue="" className="w-full bg-gray-50 border border-gray-200 text-gray-700 font-bold text-[clamp(0.75rem,1vw,0.9rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] pl-[clamp(0.875rem,1.5vw,1rem)] pr-[clamp(2rem,3vw,2.5rem)] rounded-xl focus:bg-white focus:border-[#C08F2D] outline-none transition-all appearance-none cursor-pointer">
+                              <option value="" disabled hidden>اختر مجال اهتمامك...</option>
+                              {interestAreas.map((area) => (
+                                <option key={area.value} value={area.value}>{area.label}</option>
+                              ))}
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-[clamp(0.875rem,1.5vw,1rem)] flex items-center text-gray-400">
+                              <ChevronDown className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <button type="submit" disabled={isSubmitting} className="w-full bg-[#721F31] hover:bg-[#521623] text-white rounded-[clamp(0.6rem,1vw,0.75rem)] font-black text-[clamp(0.8rem,1.1vw,0.9rem)] py-[clamp(0.75rem,1.5vw,1rem)] flex items-center justify-center gap-[clamp(0.5rem,1vw,0.75rem)] transition-all duration-300 group shadow-md hover:shadow-xl cursor-pointer">
+                          {isSubmitting ? "جاري الإرسال..." : <><Send className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)] rtl:-scale-x-100 transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform" /> انضم الآن</>}
+                        </button>
+                      </form>
+
+                      <p className="text-center text-gray-400 font-medium text-[clamp(0.65rem,0.85vw,0.8rem)] mt-[clamp(1rem,2vw,1.5rem)]">
+                        هل تمثل مؤسسة أو شركة وتبحث عن شراكة؟{' '}
+                        <button
+                          type="button"
+                          onClick={() => onNavigate && onNavigate('partnerships')}
+                          className="text-[#721F31] font-black hover:text-[#C08F2D] transition-colors cursor-pointer underline underline-offset-2"
+                        >
+                          تفضّل بزيارة صفحة الشراكات
+                        </button>
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           )}

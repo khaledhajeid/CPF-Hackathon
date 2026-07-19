@@ -37,7 +37,11 @@ export default function MagazineHero({ onNewsClick }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             onClick={() => onNewsClick(mainNews)}
-            className="w-full relative rounded-[clamp(1rem,3vw,2rem)] overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[clamp(350px,55vh,500px)] lg:h-full"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNewsClick(mainNews); } }}
+            tabIndex={0}
+            role="button"
+            aria-label={mainNews.title}
+            className="w-full relative rounded-[clamp(1rem,3vw,2rem)] overflow-hidden shadow-md md:shadow-xl group cursor-pointer h-[clamp(350px,55vh,500px)] lg:h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -66,7 +70,11 @@ export default function MagazineHero({ onNewsClick }) {
                   />
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/50 to-transparent" />
+                {/* 🟢 تعتيم أقوى وأطول فوق الفيديو تحديداً، لأن الفيديو يحتوي نص مدمج قد يتداخل مع عنوان الـHTML */}
+                <div className={mainNews.type === "video"
+                  ? "absolute inset-0 bg-gradient-to-t from-[#1a0409] from-15% via-[#1a0409]/80 via-45% to-transparent"
+                  : "absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/50 to-transparent"}
+                />
 
                 <div className="absolute inset-0 p-[clamp(1.25rem,4vw,4rem)] flex flex-col justify-end text-right z-10 pb-[clamp(2rem,3vw,2.5rem)]">
                   <div className="w-[90%] md:w-[85%] lg:w-[75%]">

@@ -6,11 +6,16 @@ import EditorialNewsGrid from '../components/news/EditorialNewsGrid';
 import MagazineHero from '../components/news/MagazineHero';
 import VisualPulse from '../components/news/VisualPulse';
 import Footer from '../components/Footer';
-import { pulseImages } from '../data/newsData'; 
+import ErrorBoundary from '../components/ErrorBoundary';
+import useEscapeKey from '../hooks/useEscapeKey';
+import { pulseImages } from '../data/newsData';
 
 export default function NewsPage({ onNavigate }) {
   const [selectedNews, setSelectedNews] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+  useEscapeKey(() => setSelectedNews(null), !!selectedNews);
+  useEscapeKey(() => setSelectedImageIndex(null), selectedImageIndex !== null);
 
   const handleNextImage = (e) => {
     e.stopPropagation();
@@ -23,8 +28,10 @@ export default function NewsPage({ onNavigate }) {
   };
 
   return (
+    <ErrorBoundary>
     <div className="min-h-screen bg-[#fcfcfc] text-[#4c4c4c] font-sans flex flex-col selection:bg-[#C08F2D] selection:text-white" dir="rtl">
-      
+      <h1 className="sr-only">أخبار وفرص مؤسسة ولي العهد</h1>
+
       <MagazineHero onNewsClick={(news) => setSelectedNews(news)} />
       
       <div className="flex-grow">
@@ -209,5 +216,6 @@ export default function NewsPage({ onNavigate }) {
       </AnimatePresence>
 
     </div>
+    </ErrorBoundary>
   );
 }

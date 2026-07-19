@@ -4,16 +4,18 @@ import { Calendar, ArrowLeft, Search, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { newsList } from '../../data/newsData';
 
+// 🟢 السنوات مبنية من بيانات الأخبار الفعلية بدل قائمة ثابتة، لتجنّب خيارات بلا نتائج
+const years = ['الكل', ...Array.from(new Set(newsList.map((item) => item.date.trim().split(' ').pop()))).sort((a, b) => b - a)];
+
 export default function EditorialNewsGrid({ onNewsClick }) {
   const [visibleCount, setVisibleCount] = useState(5);
-  
+
   // 🟢 حالات البحث والفلترة
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState('الكل');
   const [isYearOpen, setIsYearOpen] = useState(false);
-  
+
   const dropdownRef = useRef(null);
-  const years = ['الكل', '2026', '2025', '2024', '2023', '2022', '2021', '2020'];
 
   // إغلاق قائمة السنوات عند النقر خارجها
   useEffect(() => {
@@ -130,9 +132,13 @@ export default function EditorialNewsGrid({ onNewsClick }) {
                 <div
                   key={item.id}
                   onClick={() => onNewsClick(item)}
-                  className={`group relative overflow-hidden rounded-[clamp(1rem,2vw,1.5rem)] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 shrink-0 snap-center
-                    ${isFeatured 
-                      ? 'w-[280px] sm:w-[320px] md:w-auto h-[clamp(280px,40vh,420px)] md:col-span-2' 
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNewsClick(item); } }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={item.title}
+                  className={`group relative overflow-hidden rounded-[clamp(1rem,2vw,1.5rem)] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 shrink-0 snap-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2
+                    ${isFeatured
+                      ? 'w-[280px] sm:w-[320px] md:w-auto h-[clamp(280px,40vh,420px)] md:col-span-2'
                       : 'w-[260px] sm:w-[300px] md:w-auto h-[clamp(280px,40vh,420px)]'}`}
                 >
                   <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110 " />
@@ -149,7 +155,7 @@ export default function EditorialNewsGrid({ onNewsClick }) {
                   </div>
                   
                   <div className="absolute bottom-0 left-0 right-0 p-[clamp(1rem,2vw,1.5rem)] z-10 flex flex-col justify-end">
-                    <h3 className={`font-black text-white leading-[1.3] mb-[clamp(0.35rem,0.8vw,0.5rem)] drop-shadow-md transition-all duration-500 text-[#8a1538]
+                    <h3 className={`font-black text-white leading-[1.3] mb-[clamp(0.35rem,0.8vw,0.5rem)] drop-shadow-md transition-all duration-500
                       ${isFeatured ? 'text-[clamp(1.1rem,2vw,1.75rem)]' : 'text-[clamp(0.9rem,1.5vw,1.25rem)]'}`}>
                       {item.title}
                     </h3>

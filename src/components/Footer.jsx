@@ -145,11 +145,9 @@ export default function Footer({ onNavigate }) {
               <div className="absolute -bottom-12 -right-8 w-32 h-32 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
               <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-right">
-                <div className="w-11 h-11 rounded-xl bg-black/40 border border-[#C08F2D]/40 flex items-center justify-center mb-4">
-                  <MessageCircle className="w-5 h-5 text-[#C08F2D]" strokeWidth={2} />
-                </div>
-
-                <h4 className="text-white font-black text-lg md:text-xl mb-2">لديك استفسار؟</h4>
+                <h4 className="inline-flex items-center gap-2 text-white font-black text-lg md:text-xl mb-2">
+                  <MessageCircle className="w-5 h-5 text-[#C08F2D] shrink-0" strokeWidth={2} /> لديك استفسار؟
+                </h4>
                 <p className="text-white/75 text-sm font-medium leading-relaxed mb-6">
                   فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
                 </p>

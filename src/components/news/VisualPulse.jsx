@@ -1,27 +1,14 @@
 // src/components/news/VisualPulse.jsx
 import { useRef, useEffect } from 'react';
 import { Maximize2 } from 'lucide-react';
-
-// 🟢 الصور التجريبية لتوضيح تأثير التمرير اللانهائي
-const demoImages = [
-  { id: 1, title: 'ورشة عمل الذكاء الاصطناعي للشباب', url: 'https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=800&auto=format&fit=crop', date: '12 مايو 2026', eventName: 'معسكر التكنولوجيا' },
-  { id: 2, title: 'هاكاثون الابتكار الأردني', url: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop', date: '08 مايو 2026', eventName: 'تحدي الابتكار' },
-  { id: 3, title: 'فعالية ريادة الأعمال', url: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=800&auto=format&fit=crop', date: '05 مايو 2026', eventName: 'أسبوع الريادة' },
-  { id: 4, title: 'لقاء حواري مع صناع القرار', url: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=800&auto=format&fit=crop', date: '01 مايو 2026', eventName: 'منتدى تواصل' },
-  { id: 5, title: 'تدريب المهارات القيادية', url: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop', date: '28 أبريل 2026', eventName: 'برنامج القيادة' },
-  { id: 6, title: 'إطلاق مبادرة مسار', url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop', date: '25 أبريل 2026', eventName: 'مبادرة مسار' },
-  { id: 7, title: 'معرض المشاريع الناشئة', url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop', date: '20 أبريل 2026', eventName: 'معرض الشركات' },
-  { id: 8, title: 'تكريم المتطوعين المتميزين', url: 'https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=800&auto=format&fit=crop', date: '15 أبريل 2026', eventName: 'يوم التطوع' },
-  { id: 9, title: 'جلسة التوجيه المهني', url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop', date: '10 أبريل 2026', eventName: 'برنامج خطوتك' },
-  { id: 10, title: 'مؤتمر الشباب التقني', url: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop', date: '05 أبريل 2026', eventName: 'مؤتمر TechYouth' },
-];
+import { pulseImages } from '../../data/newsData';
 
 export default function VisualPulse({ onImageClick }) {
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
 
-  // حفظ الـ Index الأصلي لتفتح الصورة الصحيحة في النافذة المنبثقة
-  const imagesWithIndex = demoImages.map((img, idx) => ({ ...img, originalIndex: idx }));
+  // حفظ الـ Index الأصلي لتفتح الصورة الصحيحة في النافذة المنبثقة (نفس مصدر البيانات المستخدم في المعرض المنبثق بصفحة الأخبار)
+  const imagesWithIndex = pulseImages.map((img, idx) => ({ ...img, originalIndex: idx }));
   
   // تقسيم الصور إلى شريطين
   const row1 = imagesWithIndex.filter((_, i) => i % 2 === 0);
@@ -163,7 +150,11 @@ export default function VisualPulse({ onImageClick }) {
   const ImageCard = ({ item }) => (
     <div
       onClick={() => onImageClick(item.originalIndex)}
-      className="relative rounded-[clamp(1rem,1.5vw,1.25rem)] overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-100 shrink-0 border border-gray-200/50 
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onImageClick(item.originalIndex); } }}
+      tabIndex={0}
+      role="button"
+      aria-label={item.title}
+      className="relative rounded-[clamp(1rem,1.5vw,1.25rem)] overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-100 shrink-0 border border-gray-200/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2
         w-[220px] h-[150px] sm:w-[260px] sm:h-[170px] md:w-[300px] md:h-[200px] lg:w-[320px] lg:h-[220px]"
     >
       <img 
@@ -180,12 +171,14 @@ export default function VisualPulse({ onImageClick }) {
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10 text-right flex flex-col gap-1">
-        <span className="text-[#C08F2D] font-bold text-[10px] sm:text-xs">
-          {item.eventName}
-        </span>
-        <h4 className="text-white font-black text-sm sm:text-base leading-tight line-clamp-2 drop-shadow-md">
+        {item.eventName && (
+          <span className="text-[#C08F2D] font-bold text-[10px] sm:text-xs">
+            {item.eventName}
+          </span>
+        )}
+        <p className="text-white font-black text-sm sm:text-base leading-tight line-clamp-2 drop-shadow-md">
           {item.title}
-        </h4>
+        </p>
       </div>
     </div>
   );

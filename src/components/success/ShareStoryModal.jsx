@@ -2,11 +2,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowLeft, ArrowRight, Upload, Sparkles, Image as ImageIcon, Link as LinkIcon, CheckCircle2 } from 'lucide-react';
+import useEscapeKey from '../../hooks/useEscapeKey';
 
 export default function ShareStoryModal({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [fullName, setFullName] = useState('');
+
+  useEscapeKey(onClose, isOpen);
 
   // إعدادات حركة التنقل بين الخطوات
   const variants = {
@@ -98,8 +102,8 @@ export default function ShareStoryModal({ isOpen, onClose }) {
                       <p className="text-gray-500 font-medium text-sm">أخبرنا عنك، وأي من برامجنا كانت نقطة الانطلاق.</p>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-gray-900 mb-2">الاسم الكامل</label>
-                      <input type="text" placeholder="مثال: عبدالله مفلح" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 focus:bg-white focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all font-bold text-gray-800" />
+                      <label className="block text-sm font-bold text-gray-900 mb-2">الاسم الكامل <span className="text-[#8a1538]">*</span></label>
+                      <input type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="مثال: عبدالله مفلح" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 focus:bg-white focus:border-[#8a1538] focus:ring-2 focus:ring-[#8a1538]/20 outline-none transition-all font-bold text-gray-800" />
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-gray-900 mb-2">البرنامج أو المبادرة</label>
@@ -176,11 +180,11 @@ export default function ShareStoryModal({ isOpen, onClose }) {
             )}
             
             {step < 3 ? (
-              <button onClick={nextStep} className="flex items-center gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-md active:scale-95">
+              <button onClick={nextStep} disabled={step === 1 && !fullName.trim()} className="flex items-center gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-md active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#8a1538]">
                 التالي <ArrowLeft className="w-4 h-4" />
               </button>
             ) : (
-              <button onClick={handleSubmit} disabled={isSubmitting} className="flex items-center gap-2 bg-[#C08F2D] hover:bg-[#a67b25] text-white px-8 py-3.5 rounded-xl font-black transition-all shadow-md active:scale-95 disabled:opacity-70 disabled:scale-100">
+              <button onClick={handleSubmit} disabled={isSubmitting} className="flex items-center gap-2 bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409] px-8 py-3.5 rounded-xl font-black transition-all shadow-md active:scale-95 disabled:opacity-70 disabled:scale-100">
                 {isSubmitting ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full" />
                 ) : (

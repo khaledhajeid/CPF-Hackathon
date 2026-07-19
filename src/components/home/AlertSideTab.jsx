@@ -110,7 +110,7 @@ export default function AlertSideTab() {
           </button>
 
           <div className="flex items-center gap-3">
-            <h3 className="text-lg sm:text-xl font-black text-white tracking-wide">الإعلانات الهامة</h3>
+            <p className="text-lg sm:text-xl font-black text-white tracking-wide">الإعلانات الهامة</p>
             <span className="text-[11px] sm:text-xs font-bold text-[#C08F2D] bg-white/10 px-2.5 py-1 rounded-full border border-[#C08F2D]/30 whitespace-nowrap">
               3 تحديثات
             </span>

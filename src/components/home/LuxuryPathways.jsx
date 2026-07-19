@@ -49,7 +49,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 lg:mb-12 xl:mb-16 relative z-10">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-          طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
+          طموحك يحدد <span className="text-[#721F31]">مسارك</span>
         </h2>
       </div>
 
@@ -63,8 +63,13 @@ export default function LuxuryPathways({ onPathwaySelect }) {
             <div
               key={path.id}
               onMouseEnter={() => { if (!isTouchDevice) setActiveCard(index); }}
+              onFocus={() => { if (!isTouchDevice) setActiveCard(index); }}
               onClick={() => onPathwaySelect(path.id)}
-              className={`relative rounded-[2rem] overflow-hidden cursor-pointer group transition-[flex,shadow] duration-500 ease-in-out border border-gray-100 will-change-[flex] snap-center shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPathwaySelect(path.id); } }}
+              tabIndex={0}
+              role="button"
+              aria-label={path.name}
+              className={`relative rounded-[2rem] overflow-hidden cursor-pointer group transition-[flex,shadow] duration-500 ease-in-out border border-gray-100 will-change-[flex] snap-center shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2
                 ${isTouchDevice ? 'shadow-lg' : (isActive ? 'flex-[4] shadow-2xl z-10' : 'flex-[1] shadow-md hover:shadow-xl')}
               `}
             >
@@ -92,7 +97,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
                   <div className="w-12 h-12 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-2xl bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shrink-0">
                     <Icon className="w-6 h-6 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]" />
                   </div>
-                  <div className="px-4 py-1.5 xl:px-5 xl:py-2 2xl:px-6 2xl:py-3 bg-[#C08F2D] rounded-lg text-[12px] xl:text-[13px] 2xl:text-[15px] font-black text-white border border-white/20 shadow-md">{path.name}</div>
+                  <div className="px-4 py-1.5 xl:px-5 xl:py-2 2xl:px-6 2xl:py-3 bg-[#C08F2D] rounded-lg text-[12px] xl:text-[13px] 2xl:text-[15px] font-black text-[#1a0409] border border-white/20 shadow-md">{path.name}</div>
                 </div>
 
                 <div className="w-full relative z-10 mt-auto lg:pt-4 text-right">

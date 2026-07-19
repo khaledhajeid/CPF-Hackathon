@@ -41,6 +41,15 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
     }
   };
 
+  const getPathwayStyle = (pathway) => {
+    switch (pathway) {
+      case 'تعلّم': return '#a00023';
+      case 'قُد': return '#2b307e';
+      case 'اصنع الأثر': return '#1f5412';
+      default: return '#C08F2D';
+    }
+  };
+
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} dir="rtl">
       
@@ -69,23 +78,28 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
             const PathwayIcon = program.icon;
             const isFlipped = flippedCardId === program.id;
             
+            const pathwayColor = getPathwayStyle(program.pathway);
             return (
-              <motion.div 
+              <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: -20 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                key={program.id} 
+                key={program.id}
                 onClick={() => handleCardInteraction(program)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardInteraction(program); } }}
+                tabIndex={0}
+                role="button"
+                aria-label={program.title}
                 // 🟢 تصغير ارتفاع الكرت على الموبايل من 320px إلى 280px
-                className="group [perspective:1500px] h-[clamp(280px,40vh,420px)] w-full cursor-pointer"
+                className="group [perspective:1500px] h-[clamp(280px,40vh,420px)] w-full cursor-pointer rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2"
               >
-                <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-lg hover:shadow-2xl`}>
-                  
+                <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(-180deg)] lg:group-focus-within:[transform:rotateY(-180deg)] ${isFlipped ? '[transform:rotateY(-180deg)]' : ''} rounded-3xl shadow-lg hover:shadow-2xl`}>
+
                   {/* الوجه الأمامي */}
                   <div className="absolute inset-0 [backface-visibility:hidden] rounded-[clamp(1.25rem,2vw,1.5rem)] overflow-hidden border border-gray-200 bg-gray-50">
-                    <img 
-                      src={program.image} alt={program.title} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 lg:group-hover:scale-110" 
+                    <img
+                      src={program.image} alt={program.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 lg:group-hover:scale-110 lg:group-focus-within:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/95 via-[#1a070b]/40 to-transparent"></div>
                     
@@ -99,7 +113,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
                       <div className="w-[clamp(3rem,4.5vw,4rem)] h-[clamp(3rem,4.5vw,4rem)] bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center p-[clamp(0.5rem,1vw,0.75rem)] mb-[clamp(0.75rem,2vw,1.5rem)] border border-white/20 shadow-xl">
                         <PathwayIcon className="w-[clamp(1.25rem,2.5vw,2rem)] h-[clamp(1.25rem,2.5vw,2rem)] text-white drop-shadow-md" />
                       </div>
-                      <span className="text-[#C08F2D] font-black text-[clamp(0.65rem,1vw,0.875rem)] mb-[clamp(0.2rem,0.5vw,0.5rem)] drop-shadow-md">
+                      <span style={{ color: pathwayColor }} className="font-black text-[clamp(0.65rem,1vw,0.875rem)] mb-[clamp(0.2rem,0.5vw,0.5rem)] drop-shadow-md">
                         {program.pathway}
                       </span>
                       {/* 🟢 تصغير خط العنوان الرئيسي */}
@@ -116,7 +130,7 @@ export default function NationalPrograms({ onNavigate, setActiveProgramName }) {
                       <div className="w-[clamp(2.25rem,3.5vw,3.5rem)] h-[clamp(2.25rem,3.5vw,3.5rem)] bg-white/5 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-sm">
                          <PathwayIcon className="w-[clamp(1rem,1.5vw,1.5rem)] h-[clamp(1rem,1.5vw,1.5rem)] text-white opacity-80" />
                       </div>
-                      <span className="px-[clamp(0.6rem,1.2vw,1rem)] py-[clamp(0.2rem,0.5vw,0.375rem)] bg-white/10 text-white border border-white/20 rounded-full text-[clamp(0.55rem,0.8vw,0.75rem)] font-bold backdrop-blur-sm">
+                      <span style={{ backgroundColor: pathwayColor, borderColor: pathwayColor }} className="px-[clamp(0.6rem,1.2vw,1rem)] py-[clamp(0.2rem,0.5vw,0.375rem)] text-white border rounded-full text-[clamp(0.55rem,0.8vw,0.75rem)] font-bold backdrop-blur-sm">
                         {program.pathway}
                       </span>
                     </div>

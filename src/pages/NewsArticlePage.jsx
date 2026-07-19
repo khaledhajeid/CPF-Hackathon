@@ -10,6 +10,18 @@ export default function NewsArticlePage({ newsItem, onNavigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  const handleShare = async () => {
+    const shareData = { title: newsItem?.title, text: newsItem?.desc, url: window.location.href };
+    if (navigator.share) {
+      try { await navigator.share(shareData); } catch { /* تم إلغاء المشاركة من المستخدم */ }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('تم نسخ رابط المقال');
+      } catch { /* الحافظة غير متاحة */ }
+    }
+  };
+
   // إذا تم الدخول للصفحة بدون خبر (عن طريق الخطأ)، نرجعه لصفحة الأخبار
   if (!newsItem) {
     return (
@@ -105,45 +117,8 @@ export default function NewsArticlePage({ newsItem, onNavigate }) {
 
           {/* 🟢 نص المقال */}
           <div className="prose prose-lg max-w-none text-gray-700 font-medium text-[clamp(0.9rem,1.2vw,1.125rem)] leading-relaxed md:leading-[2.2] text-justify">
-            
-            {/* عرض الوصف المختصر كنقطة انطلاق (Intro) بخط مميز */}
-            <p className="text-[clamp(1.1rem,1.5vw,1.35rem)] font-black text-[#1a1c1d] mb-8 border-r-4 border-[#C08F2D] pr-5 py-1 bg-gradient-to-l from-[#C08F2D]/5 to-transparent">
+            <p className="text-[clamp(1.1rem,1.5vw,1.35rem)] font-black text-[#1a1c1d] rounded-xl px-5 py-4 bg-[#C08F2D]/5">
               {newsItem.desc}
-            </p>
-            
-            <p className="mb-6">
-              في إطار الرؤية الملكية السامية لتمكين الشباب الأردني، أطلقت مؤسسة ولي العهد سلسلة من المبادرات والبرامج المصممة خصيصاً لتطوير المهارات القيادية والعملية. تأتي هذه الخطوة استجابة للتطورات المتسارعة في سوق العمل العالمي والمحلي.
-            </p>
-            <p className="mb-6">
-              وأكدت المؤسسة في بيانها الأخير أن الاستثمار في طاقات الشباب هو الركيزة الأساسية لبناء مستقبل مستدام. حيث تم توفير منصات تفاعلية تتيح للمشاركين تبادل الخبرات، العمل على مشاريع حقيقية، وبناء شبكة علاقات مهنية قوية مع الخبراء في مختلف القطاعات.
-            </p>
-            
-            <h3 className="text-[clamp(1.25rem,2vw,1.75rem)] font-black text-[#8a1538] mt-12 mb-6 flex items-center gap-2">
-              <span className="w-8 h-1 bg-[#C08F2D] rounded-full inline-block"></span>
-              أهداف المبادرة والخطوات القادمة
-            </h3>
-            
-            <p className="mb-4">
-              تسعى هذه الخطوة لتحقيق مجموعة من الأهداف الاستراتيجية، أبرزها:
-            </p>
-            
-            <ul className="list-none mb-8 space-y-4 text-gray-700">
-              <li className="flex items-start gap-3">
-                <span className="text-[#C08F2D] text-xl leading-none">•</span>
-                <span>تعزيز ثقافة الابتكار وريادة الأعمال بين طلبة الجامعات وحديثي التخرج.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#C08F2D] text-xl leading-none">•</span>
-                <span>توفير تدريب عملي مكثف يقلص الفجوة بين المخرجات الأكاديمية ومتطلبات سوق العمل.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-[#C08F2D] text-xl leading-none">•</span>
-                <span>بناء شراكات استراتيجية مع القطاع الخاص لتوفير فرص عمل نوعية.</span>
-              </li>
-            </ul>
-
-            <p className="bg-gray-50 p-6 rounded-2xl border border-gray-100 text-gray-800 font-bold">
-              وتدعو مؤسسة ولي العهد كافة الشباب المهتمين إلى متابعة منصاتها الرسمية للاستفادة من الفرص القادمة، والمشاركة بفاعلية في صنع التغيير الإيجابي في مجتمعاتهم.
             </p>
           </div>
 
@@ -151,12 +126,12 @@ export default function NewsArticlePage({ newsItem, onNavigate }) {
           <div className="mt-[clamp(2.5rem,5vw,4rem)] pt-[clamp(1.5rem,3vw,2rem)] border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="text-gray-500 font-bold text-[clamp(0.75rem,1vw,0.875rem)]">مشاركة المقال:</span>
-              <button className="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#8a1538] hover:text-white text-gray-600 flex items-center justify-center transition-all cursor-pointer shadow-sm">
+              <button onClick={handleShare} className="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#8a1538] hover:text-white text-gray-600 flex items-center justify-center transition-all cursor-pointer shadow-sm">
                 <Share2 className="w-4 h-4" />
               </button>
             </div>
-            
-            <button className="flex items-center gap-2 text-gray-500 hover:text-[#C08F2D] transition-colors font-bold text-[clamp(0.75rem,1vw,0.875rem)] cursor-pointer bg-gray-50 hover:bg-gray-100 px-5 py-2.5 rounded-xl border border-gray-100">
+
+            <button onClick={() => window.print()} className="flex items-center gap-2 text-gray-500 hover:text-[#721F31] transition-colors font-bold text-[clamp(0.75rem,1vw,0.875rem)] cursor-pointer bg-gray-50 hover:bg-gray-100 px-5 py-2.5 rounded-xl border border-gray-100">
               <Printer className="w-4 h-4" />
               طباعة الخبر
             </button>

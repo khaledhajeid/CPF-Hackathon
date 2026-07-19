@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
+import useEscapeKey from '../hooks/useEscapeKey';
 import {
   MapPin, Phone, Mail, Send, Clock, Building2, CheckCircle2, ChevronDown,
   Briefcase, GraduationCap, UploadCloud, X, Users
@@ -44,7 +45,7 @@ export default function Contact({ onNavigate }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
-  const [modalType, setModalType] = useState(null); 
+  const [modalType, setModalType] = useState(null);
 
   // 🟢 إغلاق القائمة المنسدلة عند النقر خارجها
   useEffect(() => {
@@ -56,6 +57,9 @@ export default function Contact({ onNavigate }) {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  useEscapeKey(() => setIsDropdownOpen(false), isDropdownOpen);
+  useEscapeKey(() => { setModalType(null); setIsSent(false); }, !!modalType);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,20 +96,26 @@ export default function Contact({ onNavigate }) {
 
       {/* 2. التبويبات الرئيسية */}
       <div className="max-w-[560px] mx-auto w-full px-[clamp(1rem,4vw,1.5rem)] -mt-[clamp(1.25rem,3vw,1.75rem)] relative z-30">
-        <div className="bg-white p-[clamp(0.25rem,0.8vw,0.35rem)] rounded-full shadow-xl border border-gray-100 flex">
+        <div role="tablist" aria-label="أقسام التواصل" className="bg-white p-[clamp(0.25rem,0.8vw,0.35rem)] rounded-full shadow-xl border border-gray-100 flex">
           <button
+            role="tab"
+            aria-selected={activeTab === 'contact'}
             onClick={() => { setActiveTab('contact'); setIsSent(false); }}
             className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'contact' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
           >
             <Mail className="w-[clamp(0.8rem,1.2vw,1.25rem)] h-[clamp(0.8rem,1.2vw,1.25rem)] shrink-0" /> <span>تواصل معنا</span>
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === 'careers'}
             onClick={() => { setActiveTab('careers'); setIsSent(false); }}
             className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'careers' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
           >
             <Briefcase className="w-[clamp(0.8rem,1.2vw,1.25rem)] h-[clamp(0.8rem,1.2vw,1.25rem)] shrink-0" /> <span>انضم لفريقنا</span>
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === 'network'}
             onClick={() => { setActiveTab('network'); setIsSent(false); }}
             className={`flex-1 flex items-center justify-center gap-[clamp(0.3rem,1vw,0.5rem)] py-[clamp(0.5rem,1.5vw,0.875rem)] rounded-full font-black text-[clamp(0.62rem,1vw,0.9rem)] transition-all duration-300 ${activeTab === 'network' ? 'bg-[#721F31] text-white shadow-md' : 'text-gray-500 hover:bg-gray-50'}`}
           >
@@ -508,7 +518,7 @@ export default function Contact({ onNavigate }) {
                           </label>
                         </div>
 
-                        <button type="submit" disabled={isSubmitting} className={`w-full text-white rounded-xl font-black text-[clamp(0.8rem,1.1vw,0.95rem)] py-[clamp(0.75rem,1.5vw,1rem)] mt-[clamp(0.5rem,1.5vw,1rem)] flex items-center justify-center transition-all duration-300 cursor-pointer ${modalType === 'job' ? 'bg-[#721F31] hover:bg-[#521623]' : 'bg-[#C08F2D] hover:bg-[#a67b25]'}`}>
+                        <button type="submit" disabled={isSubmitting} className={`w-full rounded-xl font-black text-[clamp(0.8rem,1.1vw,0.95rem)] py-[clamp(0.75rem,1.5vw,1rem)] mt-[clamp(0.5rem,1.5vw,1rem)] flex items-center justify-center transition-all duration-300 cursor-pointer ${modalType === 'job' ? 'bg-[#721F31] hover:bg-[#521623] text-white' : 'bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409]'}`}>
                           {isSubmitting ? "جاري الإرسال..." : "إرسال السيرة الذاتية"}
                         </button>
                       </form>

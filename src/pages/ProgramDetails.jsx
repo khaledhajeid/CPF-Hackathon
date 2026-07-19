@@ -7,8 +7,13 @@ import { programsFullData, allStories } from '../data/programsData';
 import RelatedProgramStories from '../components/programs/RelatedProgramStories';
 import { newsList } from '../data/newsData';
 import NewsDetailModal from '../components/news/NewsDetailModal';
+import Footer from '../components/Footer';
+import useEscapeKey from '../hooks/useEscapeKey';
+import { getPathwayColor, getPathwayBadgeClass } from '../utils/pathwayColors';
 
 const StoryModal = ({ story, onClose }) => {
+  useEscapeKey(onClose, !!story);
+
   if (!story) return null;
 
   return (
@@ -56,7 +61,7 @@ const StoryModal = ({ story, onClose }) => {
               <X className="w-5 h-5" />
             </button>
             
-            <div className="inline-flex items-center gap-2 bg-[#721F31]/10 text-[#721F31] px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4 mt-2 md:mt-0">
+            <div className={`inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-[11px] md:text-xs w-fit mb-4 mt-2 md:mt-0 border ${getPathwayBadgeClass(story.pathway)}`}>
               <Target className="w-3.5 h-3.5 md:w-4 md:h-4" />
               {story.pathway}
             </div>
@@ -171,7 +176,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </div>
             <div className="py-3 sm:py-0 px-5 flex flex-row sm:flex-col justify-between sm:justify-center items-center">
               <p className="text-white/70 text-[12px] md:text-[13px] lg:text-[11px] 2xl:text-[13px] font-bold mb-0 sm:mb-1 md:mb-2 lg:mb-1">مسار البرنامج</p>
-              <p className="text-[#C08F2D] text-[13.5px] sm:text-base md:text-xl lg:text-lg 2xl:text-xl font-black">{currentProgram.pathway}</p>
+              <p className="text-white text-[13.5px] sm:text-base md:text-xl lg:text-lg 2xl:text-xl font-black">{currentProgram.pathway}</p>
             </div>
             <div className="py-3 sm:py-0 px-5 flex flex-row sm:flex-col justify-between sm:justify-center items-center">
               <p className="text-white/70 text-[12px] md:text-[13px] lg:text-[11px] 2xl:text-[13px] font-bold mb-0 sm:mb-1 md:mb-2 lg:mb-1">آلية التدريب</p>
@@ -231,10 +236,14 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
               
               <div className="flex flex-row md:grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-5 2xl:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 scrollbar-hide">
                 {programNews.map((news) => (
-                  <div 
-                    key={news.id} 
-                    onClick={() => setSelectedNews(news)} 
-                    className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all cursor-pointer shrink-0 w-[80vw] md:w-full snap-center flex flex-col"
+                  <div
+                    key={news.id}
+                    onClick={() => setSelectedNews(news)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedNews(news); } }}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={news.title}
+                    className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all cursor-pointer shrink-0 w-[80vw] md:w-full snap-center flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2"
                   >
                     <div className="h-40 lg:h-36 2xl:h-40 overflow-hidden relative shrink-0">
                       <img src={news.image} alt={news.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -247,7 +256,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                       <h3 className="font-black text-[14px] md:text-base lg:text-[13px] 2xl:text-base text-gray-900 line-clamp-2 leading-relaxed group-hover:text-[#8a1538] transition-colors mb-2">
                         {news.title}
                       </h3>
-                      <div className="mt-auto pt-2 flex items-center gap-2 text-[#C08F2D] font-bold text-xs lg:text-[11px] 2xl:text-xs">
+                      <div className="mt-auto pt-2 flex items-center gap-2 text-[#721F31] font-bold text-xs lg:text-[11px] 2xl:text-xs">
                         اقرأ التفاصيل <ArrowUpLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </div>
                     </div>
@@ -318,7 +327,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                 </div>
                 <div>
                   <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">مسار البرنامج</p>
-                  <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.pathway}</p>
+                  <p style={{ color: getPathwayColor(currentProgram.pathway) }} className="text-[13px] md:text-[15px] lg:text-[13px] font-black">{currentProgram.pathway}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -341,15 +350,17 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
       </div>
 
       <div className="mt-8 md:mt-12 bg-white pt-12 md:pt-16 pb-16 md:pb-24 border-t border-gray-100">
-        <RelatedProgramStories 
-          programName={programName} 
-          onNavigate={onNavigate} 
+        <RelatedProgramStories
+          programName={programName}
+          onNavigate={onNavigate}
           onStoryClick={(storyId) => {
             const targetStory = allStories.find(s => s.id === storyId);
             if (targetStory) setSelectedStory(targetStory);
-          }} 
+          }}
         />
       </div>
+
+      <Footer onNavigate={onNavigate} />
 
       <AnimatePresence>
         {selectedLocalStory && (

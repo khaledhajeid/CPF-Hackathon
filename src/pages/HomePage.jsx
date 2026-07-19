@@ -83,6 +83,7 @@ export default function HomePage({
           transition={{ duration: 0.8, delay: 0.1 }}
           className="bg-white rounded-2xl md:rounded-3xl xl:rounded-[2rem] shadow-xl p-6 sm:p-8 lg:p-6 xl:p-8 2xl:p-12 border border-gray-100 mx-auto w-full lg:w-11/12 2xl:w-10/12"
         >
+          <h2 className="sr-only">الأثر الوطني بالأرقام</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 relative">
 
             {/* العنصر 1 */}

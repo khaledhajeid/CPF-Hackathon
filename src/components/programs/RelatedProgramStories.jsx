@@ -2,15 +2,7 @@
 import { motion } from 'framer-motion';
 import { Quote, ArrowLeft, ArrowUpLeft, Sparkles } from 'lucide-react';
 import { allStories } from '../../data/programsData';
-
-const getPathwayStyle = (pathway) => {
-  switch(pathway) {
-    case 'تعلّم': return 'bg-[#a00023]/10 text-[#a00023] border-[#a00023]/20';
-    case 'قُد': return 'bg-[#2b307e]/10 text-[#2b307e] border-[#2b307e]/20';
-    case 'اصنع الأثر': return 'bg-[#1f5412]/10 text-[#1f5412] border-[#1f5412]/20'; 
-    default: return 'bg-gray-100 text-gray-700 border-gray-200';
-  }
-};
+import { getPathwayBadgeClass as getPathwayStyle } from '../../utils/pathwayColors';
 
 export default function RelatedProgramStories({ programName, onNavigate, onStoryClick }) {
   const programStories = allStories
@@ -51,7 +43,11 @@ export default function RelatedProgramStories({ programName, onNavigate, onStory
                   key={story.id}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }}
                   onClick={() => onStoryClick(story.id)}
-                  className="w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center break-inside-avoid group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col h-full"
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onStoryClick(story.id); } }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={story.name}
+                  className="w-[280px] sm:w-[320px] md:w-full shrink-0 snap-center break-inside-avoid group bg-white rounded-2xl md:rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer relative flex flex-col h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2"
                 >
                   {/* 🟢 رجعنا الارتفاع الأنيق للصورة */}
                   <div className="relative h-48 md:h-64 overflow-hidden bg-gray-100 shrink-0">
@@ -101,7 +97,7 @@ export default function RelatedProgramStories({ programName, onNavigate, onStory
             </p>
             <button 
               onClick={() => onNavigate('success')}
-              className="bg-[#C08F2D] hover:bg-[#a87d25] text-white px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-black text-[13px] md:text-base transition-all shadow-md flex items-center gap-2 cursor-pointer"
+              className="bg-[#C08F2D] hover:bg-[#a87d25] text-[#1a0409] px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-black text-[13px] md:text-base transition-all shadow-md flex items-center gap-2 cursor-pointer"
             >
               شارك قصتك الآن <ArrowLeft className="w-4 h-4" />
             </button>

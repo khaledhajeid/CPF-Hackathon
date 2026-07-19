@@ -63,6 +63,8 @@ export default function EventsExplorer({ handleRegisterClick }) {
   const [eventLocation, setEventLocation] = useState('الكل');
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  const isPersonalized = eventTypeFilter !== 'الكل' || eventPathwayFilter !== 'الكل' || eventAgeFilter !== 'الكل' || eventLocation !== 'الكل' || eventSearch !== '';
+
   const categories = ['الكل', 'تعلّم', 'قُد', 'اصنع الأثر'];
   const eventTypes = ['الكل', 'ورشة عمل', 'فرصة تدريب', 'مسابقة وهاكاثون', 'فرصة تطوع', 'مؤتمر'];
   const ageRanges = ['الكل', '14 - 17', '18 - 25', '26 - 30', '31 - 35', '35+'];
@@ -96,7 +98,7 @@ export default function EventsExplorer({ handleRegisterClick }) {
       
       <div className="mb-[clamp(1.5rem,2vw,2rem)] text-right">
         <h2 className="text-[clamp(1.35rem,3.5vw,3rem)] font-black text-[#8a1538] tracking-tight">
-          اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span>
+          اكتشف أحدث <span className="text-[#721F31]">الفرص المتاحة</span>
         </h2>
       </div>
 
@@ -137,7 +139,7 @@ export default function EventsExplorer({ handleRegisterClick }) {
                   <p className="text-[clamp(0.6rem,0.8vw,0.75rem)] font-bold text-gray-500 mt-1">اختر المحافظة لتصفية الفعاليات</p>
                 </div>
                 {eventLocation !== 'الكل' && (
-                  <button onClick={() => setEventLocation('الكل')} className="text-[10px] font-bold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors shrink-0 cursor-pointer mt-1">إلغاء</button>
+                  <button onClick={() => setEventLocation('الكل')} className="text-[0.6875rem] font-bold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-full hover:bg-gray-200 transition-colors shrink-0 cursor-pointer mt-1">إلغاء</button>
                 )}
               </div>
               <div className="flex-grow w-full flex items-center justify-center pt-2 pb-4">
@@ -148,6 +150,17 @@ export default function EventsExplorer({ handleRegisterClick }) {
         </div>
 
         <div className="w-full lg:w-[65%] xl:w-[68%] z-10">
+          {isPersonalized && (
+            <div className="mb-6 flex flex-wrap items-center gap-2 text-[11px] sm:text-[13px] xl:text-[13px] font-bold text-gray-500 bg-white px-4 py-3 rounded-xl border border-gray-100 shadow-sm w-full">
+              <span>نعرض الفرص لـ:</span>
+              {eventPathwayFilter !== 'الكل' && <span className="text-[#8a1538] truncate">{eventPathwayFilter}</span>}
+              {eventTypeFilter !== 'الكل' && <><span className="text-gray-300">•</span><span className="text-[#8a1538] truncate">{eventTypeFilter}</span></>}
+              {eventLocation !== 'الكل' && <><span className="text-gray-300">•</span><span className="text-[#8a1538]">{eventLocation}</span></>}
+              {eventAgeFilter !== 'الكل' && <><span className="text-gray-300">•</span><span className="text-[#8a1538]">عمر {eventAgeFilter}</span></>}
+              {eventSearch !== '' && <><span className="text-gray-300">•</span><span className="text-[#8a1538] truncate max-w-[80px]">"{eventSearch}"</span></>}
+              <span className="text-gray-500 font-medium mr-auto">({filteredEvents.length} نتيجة)</span>
+            </div>
+          )}
           <AnimatePresence mode="wait">
             {filteredEvents.length > 0 ? (
               <motion.div key="events-grid" variants={staggerContainer} initial="hidden" animate="visible" exit="hidden" className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1rem,1.5vw,1.5rem)]">
@@ -164,9 +177,9 @@ export default function EventsExplorer({ handleRegisterClick }) {
                       <div className="relative h-[clamp(140px,20vh,192px)] overflow-hidden bg-gray-100 shrink-0">
                         <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                         {isUrgent && (
-                          <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-2.5 py-1.5 rounded-md text-[clamp(0.5rem,0.7vw,0.625rem)] font-black flex items-center gap-1.5 shadow-lg"><Timer className="w-3 h-3" /> متاح الآن</div>
+                          <div className="absolute top-3 left-3 bg-red-600/90 backdrop-blur-sm text-white px-2.5 py-1.5 rounded-md text-[0.6875rem] font-black flex items-center gap-1.5 shadow-lg"><Timer className="w-3 h-3" /> متاح الآن</div>
                         )}
-                        <div className={`absolute top-3 right-3 px-2.5 py-1.5 text-[clamp(0.55rem,0.8vw,0.625rem)] font-black rounded-md shadow-sm border ${tagStyle}`}>{event.pathway}</div>
+                        <div className={`absolute top-3 right-3 px-2.5 py-1.5 text-[0.6875rem] font-black rounded-md shadow-sm border ${tagStyle}`}>{event.pathway}</div>
                       </div>
                       
                       {/* 🟢 تصغير الـ Padding الداخلي على الموبايل */}
@@ -182,8 +195,8 @@ export default function EventsExplorer({ handleRegisterClick }) {
                         <div className="mt-auto pt-[clamp(0.6rem,1vw,1rem)] border-t border-gray-100 flex items-center justify-between">
                           <div className="flex flex-col">
                             {/* 🟢 تصغير نصوص المكافأة */}
-                            <span className="text-[clamp(0.45rem,0.7vw,0.5625rem)] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
-                            <div className="flex items-center gap-1"><Award className="w-3.5 h-3.5 text-[#C08F2D]" /><span className="text-[#C08F2D] font-black text-[clamp(0.6rem,0.9vw,0.75rem)]">+{event.points} نقطة</span></div>
+                            <span className="text-[0.6875rem] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
+                            <div className="flex items-center gap-1"><Award className="w-3.5 h-3.5 text-[#C08F2D]" /><span className="text-[#721F31] font-black text-[clamp(0.6rem,0.9vw,0.75rem)]">+{event.points} نقطة</span></div>
                           </div>
                           {/* 🟢 تصغير زر التفاصيل */}
                           <button 

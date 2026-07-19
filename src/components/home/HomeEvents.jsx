@@ -53,7 +53,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
         <div className="mb-6 lg:mb-10 xl:mb-12 2xl:mb-14 text-right">
           {/* 🟢 العنوان: تصغير للـ xl ليكون متناسقاً وأنيقاً */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-            {isPersonalized ? "فرص مصممة خصيصاً لك" : <>اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span></>}
+            {isPersonalized ? "فرص مصممة خصيصاً لك" : <>اكتشف أحدث <span className="text-[#721F31]">الفرص المتاحة</span></>}
           </h2>
         </div>
 
@@ -215,7 +215,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                                 <span className="text-[9px] xl:text-[10px] 2xl:text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
                                 <div className="flex items-center gap-1">
                                   <Award className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5 text-[#C08F2D]" />
-                                  <span className="text-[#C08F2D] font-black text-[11px] xl:text-[11px] 2xl:text-sm">+{event.points} نقطة</span>
+                                  <span className="text-[#721F31] font-black text-[11px] xl:text-[11px] 2xl:text-sm">+{event.points} نقطة</span>
                                 </div>
                               </div>
                               <button

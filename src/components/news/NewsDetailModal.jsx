@@ -1,8 +1,11 @@
 // src/components/news/NewsDetailModal.jsx
 import { motion } from 'framer-motion';
 import { X, CalendarDays, Tag } from 'lucide-react';
+import useEscapeKey from '../../hooks/useEscapeKey';
 
 export default function NewsDetailModal({ news, onClose }) {
+  useEscapeKey(onClose, !!news);
+
   if (!news) return null;
 
   return (

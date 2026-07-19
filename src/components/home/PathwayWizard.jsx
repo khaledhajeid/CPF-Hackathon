@@ -15,10 +15,12 @@ export default function PathwayWizard({ onClose, onComplete }) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const question1Options = [
-    { id: 'تعلّم', title: 'التكنولوجيا، البرمجة، والابتكار', desc: 'أحب بناء المشاريع والتعامل مع التقنيات الحديثة.', icon: BookOpen },
-    { id: 'قُد', title: 'القيادة، التأثير، وصناعة القرار', desc: 'أطمح لتطوير شخصيتي القيادية وتوجيه فرق العمل.', icon: Target },
-    { id: 'اصنع الأثر', title: 'التطوع، وخدمة المجتمع', desc: 'أشعر بالرضا عندما أساعد الآخرين في الميدان.', icon: HeartHandshake }
+    { id: 'تعلّم', title: 'التكنولوجيا، البرمجة، والابتكار', desc: 'أحب بناء المشاريع والتعامل مع التقنيات الحديثة.', icon: BookOpen, color: '#a00023' },
+    { id: 'قُد', title: 'القيادة، التأثير، وصناعة القرار', desc: 'أطمح لتطوير شخصيتي القيادية وتوجيه فرق العمل.', icon: Target, color: '#2b307e' },
+    { id: 'اصنع الأثر', title: 'التطوع، وخدمة المجتمع', desc: 'أشعر بالرضا عندما أساعد الآخرين في الميدان.', icon: HeartHandshake, color: '#1f5412' }
   ];
+
+  const pathwayColors = { 'تعلّم': '#a00023', 'قُد': '#2b307e', 'اصنع الأثر': '#1f5412' };
 
   const question2Options = [
     { id: 'عملي', title: 'التطبيق العملي والمختبرات', desc: 'أتعلم بشكل أفضل عندما أطبق بيدي (ورش عمل، مصانع، حواسيب).', icon: Laptop },
@@ -132,16 +134,24 @@ export default function PathwayWizard({ onClose, onComplete }) {
                 <span className="text-[#C08F2D] font-bold text-xs 2xl:text-sm tracking-widest uppercase mb-1 xl:mb-2">السؤال 1 من 5</span>
                 <h2 className="text-2xl lg:text-2xl xl:text-3xl 2xl:text-5xl font-black text-gray-900 mb-2 xl:mb-3">أين تجد شغفك واهتمامك؟</h2>
                 <div className="space-y-3 xl:space-y-4 2xl:space-y-6 mt-4 xl:mt-6">
-                  {question1Options.map(opt => (
-                    // 🟢 تدرج الـ padding للأزرار (p-4 للـ lg و xl، و p-6 للشاشات العملاقة)
-                    <button key={opt.id} onClick={() => { setAnswers({...answers, q1_passion: opt.id}); setStep(2); }} className={`w-full text-right p-4 lg:p-4 xl:p-5 2xl:p-6 rounded-xl border-2 transition-all flex items-center gap-3 xl:gap-4 cursor-pointer ${answers.q1_passion === opt.id ? 'border-[#8a1538] bg-[#8a1538]/5' : 'border-gray-100 hover:border-[#C08F2D]/50 hover:bg-gray-50'}`}>
-                      <div className="p-2.5 xl:p-3 2xl:p-4 bg-gray-100 text-gray-500 rounded-lg"><opt.icon className="w-5 h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" /></div>
-                      <div>
-                        <h3 className="text-base lg:text-base xl:text-lg 2xl:text-2xl font-black mb-0.5 xl:mb-1">{opt.title}</h3>
-                        <p className="text-gray-500 text-[13px] lg:text-[13px] xl:text-sm 2xl:text-lg">{opt.desc}</p>
-                      </div>
-                    </button>
-                  ))}
+                  {question1Options.map(opt => {
+                    const isSelected = answers.q1_passion === opt.id;
+                    return (
+                      // 🟢 تدرج الـ padding للأزرار (p-4 للـ lg و xl، و p-6 للشاشات العملاقة)
+                      <button
+                        key={opt.id}
+                        onClick={() => { setAnswers({...answers, q1_passion: opt.id}); setStep(2); }}
+                        style={isSelected ? { borderColor: opt.color, backgroundColor: `${opt.color}0d` } : undefined}
+                        className={`w-full text-right p-4 lg:p-4 xl:p-5 2xl:p-6 rounded-xl border-2 transition-all flex items-center gap-3 xl:gap-4 cursor-pointer ${isSelected ? '' : 'border-gray-100 hover:border-[#C08F2D]/50 hover:bg-gray-50'}`}
+                      >
+                        <div style={{ backgroundColor: `${opt.color}1a`, color: opt.color }} className="p-2.5 xl:p-3 2xl:p-4 rounded-lg shrink-0"><opt.icon className="w-5 h-5 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" /></div>
+                        <div>
+                          <h3 className="text-base lg:text-base xl:text-lg 2xl:text-2xl font-black mb-0.5 xl:mb-1">{opt.title}</h3>
+                          <p className="text-gray-500 text-[13px] lg:text-[13px] xl:text-sm 2xl:text-lg">{opt.desc}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
@@ -215,35 +225,38 @@ export default function PathwayWizard({ onClose, onComplete }) {
               </motion.div>
             )}
 
-            {step === 6 && result && (
+            {step === 6 && result && (() => {
+              const resultColor = pathwayColors[answers.q1_passion] || '#8a1538';
+              return (
               <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex-1 flex flex-col justify-center items-center py-2 xl:py-4 relative z-10 text-center">
-                
-                <div className="w-16 h-16 lg:w-16 lg:h-16 xl:w-20 xl:h-20 2xl:w-28 2xl:h-28 bg-[#C08F2D]/10 border-2 border-[#C08F2D] rounded-full flex items-center justify-center mb-4 xl:mb-6">
-                  <ShieldCheck className="w-8 h-8 lg:w-8 lg:h-8 xl:w-10 xl:h-10 2xl:w-14 2xl:h-14 text-[#C08F2D]" />
+
+                <div style={{ backgroundColor: `${resultColor}1a`, borderColor: resultColor }} className="w-16 h-16 lg:w-16 lg:h-16 xl:w-20 xl:h-20 2xl:w-28 2xl:h-28 border-2 rounded-full flex items-center justify-center mb-4 xl:mb-6">
+                  <ShieldCheck style={{ color: resultColor }} className="w-8 h-8 lg:w-8 lg:h-8 xl:w-10 xl:h-10 2xl:w-14 2xl:h-14" />
                 </div>
-                
-                <span className="text-[#8a1538] font-bold text-xs 2xl:text-sm tracking-widest uppercase mb-1 xl:mb-2">اكتمل التوجيه بنجاح</span>
+
+                <span style={{ color: resultColor }} className="font-bold text-xs 2xl:text-sm tracking-widest uppercase mb-1 xl:mb-2">اكتمل التوجيه بنجاح</span>
                 <h2 className="text-2xl lg:text-2xl xl:text-3xl 2xl:text-5xl font-black text-gray-900 mb-6 xl:mb-8">إليك الخيار الأمثل لمسارك</h2>
-                
-                <div className="bg-white border-2 border-[#8a1538] rounded-2xl p-6 lg:p-6 xl:p-8 w-full max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl relative shadow-lg mb-6 xl:mb-8">
-                  <div className="absolute -top-3 xl:-top-4 right-1/2 transform translate-x-1/2 bg-[#8a1538] text-white text-[10px] xl:text-xs 2xl:text-base font-black px-3 py-1 xl:px-4 xl:py-1.5 rounded-full shadow-md whitespace-nowrap">
+
+                <div style={{ borderColor: resultColor }} className="bg-white border-2 rounded-2xl p-6 lg:p-6 xl:p-8 w-full max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl relative shadow-lg mb-6 xl:mb-8">
+                  <div style={{ backgroundColor: resultColor }} className="absolute -top-3 xl:-top-4 right-1/2 transform translate-x-1/2 text-white text-[10px] xl:text-xs 2xl:text-base font-black px-3 py-1 xl:px-4 xl:py-1.5 rounded-full shadow-md whitespace-nowrap">
                     {result.type === 'program' ? 'التزام استراتيجي (برنامج)' : 'تطوير سريع (فعاليات)'}
                   </div>
-                  
+
                   <h4 className="font-black text-gray-900 text-xl lg:text-xl xl:text-2xl 2xl:text-4xl mb-3 xl:mb-4 mt-2 text-center">{result.title}</h4>
                   <p className="text-gray-500 text-[13px] lg:text-[13px] xl:text-base 2xl:text-xl mb-6 xl:mb-8 leading-relaxed text-center">
                     {result.desc}
                   </p>
-                  
-                  <button 
+
+                  <button
                     onClick={() => {
                       if (result.type === 'program') {
                         onComplete({ type: 'program', programName: result.title });
                       } else {
                         onComplete({ type: 'event', pathway: result.pathway, location: result.location });
                       }
-                    }} 
-                    className="w-full bg-[#8a1538] text-white py-3 xl:py-4 2xl:py-6 rounded-xl text-[13px] lg:text-[13px] xl:text-sm 2xl:text-xl font-black hover:bg-[#680f2a] transition-all shadow-md group flex items-center justify-center gap-2"
+                    }}
+                    style={{ backgroundColor: resultColor }}
+                    className="w-full text-white py-3 xl:py-4 2xl:py-6 rounded-xl text-[13px] lg:text-[13px] xl:text-sm 2xl:text-xl font-black hover:brightness-90 transition-all shadow-md group flex items-center justify-center gap-2"
                   >
                     <span>{result.type === 'program' ? 'استكشف تفاصيل البرنامج' : 'تصفح الفعاليات المتاحة الآن'}</span>
                     <ArrowLeft className="w-4 h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 transform group-hover:-translate-x-1 transition-transform" />
@@ -254,7 +267,8 @@ export default function PathwayWizard({ onClose, onComplete }) {
                   تخطي واستكشاف جميع الفرص
                 </button>
               </motion.div>
-            )}
+              );
+            })()}
 
           </AnimatePresence>
         </div>

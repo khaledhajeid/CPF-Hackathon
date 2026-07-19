@@ -39,13 +39,19 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
           >
             <LayoutGrid className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5" /> البرامج والمبادرات
           </button>
-          <button 
-            onClick={() => setActiveTab('events')} 
+          <button
+            onClick={() => setActiveTab('events')}
             className={`flex items-center justify-center gap-2 px-6 lg:px-6 xl:px-8 py-3 lg:py-3 xl:py-3.5 rounded-full font-black text-[13px] lg:text-[13px] xl:text-sm transition-all duration-300 whitespace-nowrap cursor-pointer ${activeTab === 'events' ? 'bg-[#C08F2D] text-white shadow-md' : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
           >
             <Target className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5" /> الفرص والفعاليات
           </button>
         </div>
+
+        <p className="text-center text-gray-500 font-medium text-[13px] lg:text-sm -mt-6 lg:-mt-7 mb-8 lg:mb-10">
+          {activeTab === 'programs'
+            ? 'برامج ومبادرات تتطلب التزاماً طويل الأمد يبني مسيرتك من الصفر'
+            : 'فرص وفعاليات قصيرة لتطوير مهاراتك بسرعة'}
+        </p>
 
         <AnimatePresence mode="wait">
           {activeTab === 'programs' ? (

@@ -14,7 +14,7 @@ const nationalProgramsData = [
   { id: 11, title: 'برنامج خطى الحسين', pathway: 'قُد', description: 'برنامج قيادي متقدم لبناء القدرات القيادية والوطنية للشباب ليصبحوا صناع التغيير في مجتمعاتهم.', image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049', icon: Target },
   { id: 14, title: 'مركز الشباب العربي-الاردن', pathway: 'قُد', description: 'مركز إقليمي يمكّن الشباب الأردني من التواصل مع نظرائهم العرب لبناء قيادات مشتركة وتبادل الخبرات إقليمياً.', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2070', icon: Users },
   { id: 12, title: 'نَحْنُ', pathway: 'اصنع الأثر', description: 'المنصة الوطنية لتطوع ومشاركة الشباب، تهدف لتوحيد جهود العمل التطوعي وتوثيقها بشكل رسمي.', image: 'https://nahno-new.s3.eu-west-3.amazonaws.com/page/cover-20201115-134457.png', icon: Users },
-  { id: 13, title: 'الاستجابات الإنسانية', pathway: 'اصنع الأثر', description: 'تنظيم وتوجيه طاقات الشباب لدعم الحملات الإنسانية والتدخلات العاجلة محلياً وإقليمياً.', image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070', icon: HeartHandshake },
+  { id: 13, title: 'الحملات المجتمعية والاستجابات الإنسانية', pathway: 'اصنع الأثر', description: 'تنظيم وتوجيه طاقات الشباب لدعم الحملات المجتمعية والاستجابات الإنسانية محلياً وإقليمياً.', image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070', icon: HeartHandshake },
 ];
 
 export default function NationalPrograms({ onNavigate, setActiveProgramName }) {

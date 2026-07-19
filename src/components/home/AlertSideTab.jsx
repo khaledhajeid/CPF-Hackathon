@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Megaphone, X, ArrowLeft } from 'lucide-react';
 
 const alerts = [
-  { id: 1, badge: 'متاح الآن', text: 'التسجيل في HFP مفتوح للشباب' },
+  { id: 1, badge: 'مغلق حالياً', text: 'التسجيل في HFP مغلق حالياً' },
   { id: 2, badge: 'قريباً', text: 'برنامج تواصل يفتح أبوابه' },
   { id: 3, badge: 'يوشك على الانتهاء', text: 'انضم لـ Makers Collective' },
 ];

@@ -36,7 +36,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
     },
     {
       id: 'اصنع الأثر', goal: 'اسعى الى التطوع و خدمة المجتمع', name: 'اصنع الأثر', shortName: 'اصنع الأثر',
-      brands: ['نَحْنُ', 'الحملات والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
+      brands: ['نَحْنُ', 'الحملات المجتمعية والاستجابات الإنسانية', 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي'],
       icon: Users,
       bgImage: 'https://cpf.jo/wp-content/uploads/2024/01/Nahno-%E2%94%98a%E2%95%AA%C2%A1%E2%94%98a.jpg',
       closedOverlay: 'bg-[#1f5412]/85', openGradient: 'from-[#0e2608] via-[#1f5412]/10 to-transparent'

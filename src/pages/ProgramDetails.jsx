@@ -1,7 +1,7 @@
 // src/pages/ProgramDetails.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Building2, LayoutGrid, LayoutTemplate, Clock, X, Target, Quote, MapPin, Newspaper, CalendarDays, ArrowUpLeft } from 'lucide-react';
+import { ArrowLeft, Building2, LayoutGrid, LayoutTemplate, Clock, X, Target, Quote, MapPin, Newspaper, CalendarDays, ArrowUpLeft, ExternalLink, Award, Users, Languages, Circle } from 'lucide-react';
 
 import { programsFullData, allStories } from '../data/programsData';
 import RelatedProgramStories from '../components/programs/RelatedProgramStories';
@@ -10,6 +10,19 @@ import NewsDetailModal from '../components/news/NewsDetailModal';
 import Footer from '../components/Footer';
 import useEscapeKey from '../hooks/useEscapeKey';
 import { getPathwayColor, getPathwayBadgeClass } from '../utils/pathwayColors';
+
+// 🟢 خريطة أيقونات لحقول بطاقة البرنامج الديناميكية (metaDetails)
+const metaIconMap = {
+  'نوع البرنامج': LayoutGrid,
+  'اللغة': Languages,
+  'آلية التعلّم': Building2,
+  'آلية البرنامج': Building2,
+  'الشهادات': Award,
+  'الفئة المناسبة': Users,
+  'الفئة العمرية': Users,
+  'المدة': CalendarDays,
+};
+const getMetaIcon = (label) => metaIconMap[label] || LayoutGrid;
 
 const StoryModal = ({ story, onClose }) => {
   useEscapeKey(onClose, !!story);
@@ -222,6 +235,128 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </motion.section>
           )}
 
+          {currentProgram.subInitiatives && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.subInitiativesTitle || 'مبادرات ومراكز مرتبطة'}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+                {currentProgram.subInitiatives.map((item, idx) => {
+                  const Icon = item.icon;
+                  const isMailto = item.ctaUrl?.startsWith('mailto:');
+                  return (
+                    <div key={idx} className="bg-white p-6 md:p-7 rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+                      <div className="flex items-center gap-3 mb-4">
+                        {item.logo ? (
+                          <div className="w-11 h-11 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 p-2">
+                            <img src={item.logo} alt={item.name} className="w-full h-full object-contain" />
+                          </div>
+                        ) : Icon ? (
+                          <div className="w-11 h-11 rounded-xl bg-[#8a1538]/8 flex items-center justify-center shrink-0">
+                            <Icon className="w-5 h-5 text-[#8a1538]" />
+                          </div>
+                        ) : null}
+                        <div>
+                          <h3 className="font-black text-gray-900 text-[15px] md:text-base leading-tight">{item.name}</h3>
+                          {item.subtitle && <p className="text-gray-500 font-bold text-[12px] md:text-[13px]">{item.subtitle}</p>}
+                        </div>
+                      </div>
+                      <p className="text-gray-600 font-medium text-[13px] md:text-[14px] leading-relaxed text-justify mb-5 flex-grow">
+                        {item.description}
+                      </p>
+                      {item.ctaUrl && (
+                        <a
+                          href={item.ctaUrl}
+                          target={isMailto ? undefined : '_blank'}
+                          rel={isMailto ? undefined : 'noopener noreferrer'}
+                          className="inline-flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-[#8a1538] hover:text-[#8a1538] text-gray-700 px-5 py-2.5 rounded-xl font-bold text-[13px] transition-colors w-fit shadow-sm"
+                        >
+                          {item.ctaLabel}
+                          <ArrowUpLeft className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.spotlightSection && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <div className="relative overflow-hidden rounded-3xl bg-[#721F31] px-6 py-10 md:px-10 md:py-12 text-center shadow-xl">
+                <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '220px' }} />
+                <div className="relative z-10 max-w-xl mx-auto">
+                  <h2 className="text-xl md:text-2xl font-black text-white mb-3">{currentProgram.spotlightSection.title}</h2>
+                  <p className="text-white/85 font-medium text-[14px] md:text-[15px] leading-relaxed mb-7">
+                    {currentProgram.spotlightSection.text}
+                  </p>
+                  <button
+                    onClick={() => {
+                      const targetEl = document.querySelector(currentProgram.spotlightSection.ctaAnchor);
+                      targetEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white/40 hover:border-white text-white px-6 py-3 rounded-xl font-black text-[13px] md:text-sm transition-colors cursor-pointer"
+                  >
+                    {currentProgram.spotlightSection.ctaLabel}
+                    <ArrowLeft className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.workAreas && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.workAreasTitle || 'مجالات العمل'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 bg-white p-6 md:p-8 lg:p-6 2xl:p-8 rounded-3xl border border-gray-100 shadow-sm">
+                {currentProgram.workAreas.map((area, idx) => (
+                  <div key={idx}>
+                    <h3 className="font-black text-gray-900 text-[15px] md:text-[1.05rem] mb-2 pb-2 border-b-2 border-gray-200 inline-block">
+                      {area.title}
+                    </h3>
+                    <p className="text-gray-600 font-medium text-[13px] md:text-[14px] leading-relaxed text-justify mt-2">
+                      {area.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.iconCards && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.iconCardsTitle || 'مبادراتنا الموسمية'}
+              </h2>
+              <div className="bg-white rounded-3xl border border-gray-100 shadow-sm grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-gray-100">
+                {currentProgram.iconCards.map((card, idx) => {
+                  const Icon = card.icon;
+                  const tint = idx % 3 === 0
+                    ? { bg: 'bg-[#C08F2D]/10', text: 'text-[#C08F2D]' }
+                    : idx % 3 === 1
+                    ? { bg: 'bg-[#8a1538]/8', text: 'text-[#8a1538]' }
+                    : { bg: 'bg-gray-100', text: 'text-gray-500' };
+                  return (
+                    <div key={idx} className="p-5 md:p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className={`w-9 h-9 rounded-lg ${tint.bg} flex items-center justify-center shrink-0`}>
+                          <Icon className={`w-4 h-4 ${tint.text}`} />
+                        </div>
+                        <h3 className="font-black text-gray-900 text-[14px] md:text-[15px]">{card.title}</h3>
+                      </div>
+                      <p className="text-gray-600 font-medium text-[12.5px] md:text-[13px] leading-relaxed text-justify">
+                        {card.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.section>
+          )}
+
           {programNews.length > 0 && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
               <div className="flex items-center justify-between mb-4 md:mb-6 lg:mb-4">
@@ -266,6 +401,36 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </motion.section>
           )}
 
+          {currentProgram.donationBanner && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <div className="relative bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-[3px] w-full bg-gradient-to-l from-transparent via-[#C08F2D] to-transparent" />
+                <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center gap-5 md:gap-6 text-center sm:text-right">
+                  {currentProgram.donationBanner.icon && (
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#C08F2D]/10 flex items-center justify-center shrink-0">
+                      <currentProgram.donationBanner.icon className="w-6 h-6 md:w-7 md:h-7 text-[#C08F2D]" />
+                    </div>
+                  )}
+                  <p className="text-gray-700 font-medium text-[13px] md:text-[15px] leading-relaxed flex-grow">
+                    {currentProgram.donationBanner.text}
+                  </p>
+                  <a
+                    href={currentProgram.donationBanner.ctaUrl}
+                    target={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    className={`shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-black text-[13px] md:text-sm transition-colors w-full sm:w-auto ${
+                      currentProgram.donationBanner.accent === 'gold'
+                        ? 'bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409]'
+                        : 'bg-[#8a1538] hover:bg-[#680f2a] text-white'
+                    }`}
+                  >
+                    {currentProgram.donationBanner.ctaLabel}
+                  </a>
+                </div>
+              </div>
+            </motion.section>
+          )}
+
           {currentProgram.faqs && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
               <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
@@ -276,7 +441,7 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   const isOpen = activeFaq === idx;
                   return (
                     <div key={idx} className={`rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? 'bg-white border border-[#8a1538]/20 shadow-md' : 'bg-white border border-gray-100 hover:border-gray-200 shadow-sm'}`}>
-                      <button onClick={() => setActiveFaq(isOpen ? null : idx)} className="w-full flex items-center justify-between p-5 lg:p-4 2xl:p-5 text-right focus:outline-none cursor-pointer">
+                      <button onClick={() => setActiveFaq(isOpen ? null : idx)} className="w-full flex items-center justify-between p-5 lg:p-4 2xl:p-5 text-right cursor-pointer rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-2">
                         <span className={`font-bold text-[14px] md:text-[1.05rem] lg:text-[15px] 2xl:text-[1.05rem] pl-4 transition-colors ${isOpen ? 'text-[#8a1538]' : 'text-gray-800'}`}>{faq.q}</span>
                         <div className={`w-8 h-8 lg:w-7 lg:h-7 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'bg-[#8a1538] text-white' : 'bg-gray-50 text-[#C08F2D]'}`}>
                            <span className="text-xl font-black mt-[-2px]">{isOpen ? '−' : '+'}</span>
@@ -303,24 +468,36 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
           <div className="lg:sticky lg:top-32 bg-white border border-gray-100 rounded-3xl p-6 md:p-8 lg:p-6 2xl:p-8 text-right shadow-xl shadow-gray-100">
             <h3 className="font-black text-xl text-gray-900 mb-6 lg:mb-4 2xl:mb-6 border-b border-gray-100 pb-4">بطاقة البرنامج</h3>
             <div className="space-y-5 lg:space-y-4 2xl:space-y-5 mb-8 lg:mb-6 2xl:mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
-                  <Building2 className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
-                </div>
-                <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">آلية البرنامج</p>
-                  <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.mechanism}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
-                  <LayoutGrid className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
-                </div>
-                <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">نوع البرنامج</p>
-                  <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.type}</p>
-                </div>
-              </div>
+              {(currentProgram.metaDetails || [
+                { label: 'آلية البرنامج', value: currentProgram.mechanism },
+                { label: 'نوع البرنامج', value: currentProgram.type },
+                { label: 'اللغة', value: currentProgram.languages },
+              ]).map((item, idx) => {
+                if (item.label === 'حالة التسجيل') {
+                  const isClosed = item.value === 'مغلق';
+                  return (
+                    <div key={idx} className={`flex items-center justify-between gap-3 px-4 py-3 rounded-xl border ${isClosed ? 'bg-gray-50 border-gray-200' : 'bg-green-50 border-green-200'}`}>
+                      <span className="text-[12px] md:text-[13px] font-bold text-gray-500">{item.label}</span>
+                      <span className={`inline-flex items-center gap-1.5 font-black text-[13px] md:text-[14px] ${isClosed ? 'text-gray-600' : 'text-green-700'}`}>
+                        <Circle className={`w-2 h-2 fill-current ${isClosed ? 'text-gray-400' : 'text-green-500'}`} />
+                        {item.value}
+                      </span>
+                    </div>
+                  );
+                }
+                const Icon = getMetaIcon(item.label);
+                return (
+                  <div key={idx} className="flex items-center gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">{item.label}</p>
+                      <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{item.value}</p>
+                    </div>
+                  </div>
+                );
+              })}
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
                   <LayoutTemplate className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
@@ -330,26 +507,43 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                   <p style={{ color: getPathwayColor(currentProgram.pathway) }} className="text-[13px] md:text-[15px] lg:text-[13px] font-black">{currentProgram.pathway}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
-                  <Clock className="w-5 h-5 lg:w-4 lg:h-4 text-[#C08F2D]" />
-                </div>
-                <div>
-                  <p className="text-[11px] md:text-[12px] lg:text-[11px] font-bold text-gray-500 mb-0.5">لغة التدريب</p>
-                  <p className="text-[13px] md:text-[15px] lg:text-[13px] font-black text-gray-800">{currentProgram.languages}</p>
-                </div>
-              </div>
             </div>
-            <button className="w-full bg-[#8a1538] hover:bg-[#680f2a] text-white px-6 py-4 lg:py-3 2xl:py-4 rounded-2xl lg:rounded-xl 2xl:rounded-2xl font-black text-[14px] md:text-[15px] lg:text-[14px] transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer group">
-              <ArrowLeft className="w-5 h-5 lg:w-4 lg:h-4 transform group-hover:-translate-x-1.5 transition-transform" strokeWidth={2.5} />
-              <span>تقديم طلب واستكشاف الفرص</span>
-            </button>
+            {currentProgram.ctaUrl ? (
+              <>
+                <a
+                  href={currentProgram.ctaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={
+                    currentProgram.registrationStatus === 'مغلق'
+                      ? "w-full bg-white hover:bg-gray-50 border border-gray-200 hover:border-gray-300 text-gray-700 px-6 py-4 lg:py-3 2xl:py-4 rounded-2xl lg:rounded-xl 2xl:rounded-2xl font-black text-[14px] md:text-[15px] lg:text-[14px] transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer group"
+                      : "w-full bg-[#8a1538] hover:bg-[#680f2a] text-white px-6 py-4 lg:py-3 2xl:py-4 rounded-2xl lg:rounded-xl 2xl:rounded-2xl font-black text-[14px] md:text-[15px] lg:text-[14px] transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer group"
+                  }
+                >
+                  <ExternalLink className="w-5 h-5 lg:w-4 lg:h-4 transform group-hover:-translate-y-0.5 transition-transform" strokeWidth={2.5} />
+                  <span>{currentProgram.ctaLabel || 'زيارة الموقع الرسمي'}</span>
+                </a>
+                {currentProgram.registrationStatus === 'مغلق' && (
+                  <p className="text-center text-gray-500 font-medium text-[11px] md:text-[12px] mt-3">
+                    التسجيل مغلق حالياً؛ زر الموقع الرسمي لمتابعة موعد فتح الدفعة القادمة.
+                  </p>
+                )}
+              </>
+            ) : (
+              <button
+                onClick={() => onNavigate('contact')}
+                className="w-full bg-[#8a1538] hover:bg-[#680f2a] text-white px-6 py-4 lg:py-3 2xl:py-4 rounded-2xl lg:rounded-xl 2xl:rounded-2xl font-black text-[14px] md:text-[15px] lg:text-[14px] transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer group"
+              >
+                <ArrowLeft className="w-5 h-5 lg:w-4 lg:h-4 transform group-hover:-translate-x-1.5 transition-transform" strokeWidth={2.5} />
+                <span>تواصل معنا للاستفسار</span>
+              </button>
+            )}
           </div>
         </div>
 
       </div>
 
-      <div className="mt-8 md:mt-12 bg-white pt-12 md:pt-16 pb-16 md:pb-24 border-t border-gray-100">
+      <div id="related-stories" className="mt-8 md:mt-12 bg-white pt-12 md:pt-16 pb-16 md:pb-24 border-t border-gray-100">
         <RelatedProgramStories
           programName={programName}
           onNavigate={onNavigate}

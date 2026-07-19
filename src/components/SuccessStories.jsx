@@ -2,10 +2,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
-import { Quote, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX, Target } from 'lucide-react';
+import { Quote, X, ArrowUpLeft, ArrowLeft, MapPin, Volume2, VolumeX } from 'lucide-react';
 import ShareStoryModal from './success/ShareStoryModal';
 import useEscapeKey from '../hooks/useEscapeKey';
-import { getPathwayColor, getPathwayBadgeClass } from '../utils/pathwayColors';
 
 // استيراد البيانات من الملف الموحد
 import { allStories } from '../data/programsData';
@@ -58,12 +57,6 @@ const StoryModal = ({ story, onClose, onNavigate, setActiveProgramName }) => {
         </div>
 
         <div className="w-full md:w-1/2 lg:w-[55%] p-5 pt-12 md:p-[clamp(1.5rem,4vw,3rem)] overflow-y-auto flex flex-col scrollbar-hide pb-20 md:pb-[clamp(1.5rem,4vw,3rem)] relative z-10 bg-white order-last md:order-first mt-[-20px] md:mt-0 rounded-t-3xl md:rounded-none">
-          {story.pathway && (
-            <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg font-bold text-[11px] w-fit mb-3 border ${getPathwayBadgeClass(story.pathway)}`}>
-              <Target className="w-3.5 h-3.5" />
-              {story.pathway}
-            </div>
-          )}
           <h2 className="text-[clamp(1.25rem,3vw,2.25rem)] font-black text-gray-900 mb-[clamp(1rem,2vw,2rem)] pr-8 md:pr-0 leading-tight">{story.name}</h2>
 
           <div className="flex gap-[clamp(0.5rem,1.5vw,1rem)] mb-[clamp(1rem,3vw,2rem)] bg-gray-50 p-[clamp(1rem,2vw,1.5rem)] rounded-xl md:rounded-2xl border border-gray-200/70">
@@ -220,12 +213,6 @@ export default function SuccessStories({ onNavigate, setActiveProgramName, initi
                   <div className="relative aspect-[4/3] md:aspect-[3/2] overflow-hidden bg-gray-100 shrink-0">
                     <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-
-                    {story.pathway && (
-                      <div style={{ backgroundColor: getPathwayColor(story.pathway) }} className="absolute top-3 right-3 md:top-4 md:right-4 z-10 px-2.5 py-1 rounded-md text-white text-[10px] md:text-[11px] font-black shadow-sm">
-                        {story.pathway}
-                      </div>
-                    )}
 
                     <div className="absolute bottom-[clamp(0.75rem,1.5vw,1.25rem)] left-[clamp(0.75rem,1.5vw,1.25rem)] right-[clamp(0.75rem,1.5vw,1.25rem)] z-10 flex justify-between items-end">
                        <div>

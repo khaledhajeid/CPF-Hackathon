@@ -55,7 +55,7 @@ export default function PartnershipsPage({ onNavigate }) {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             {/* 🟢 تم تقليل المسافات السفلية (mb) بين العناصر لضغط الهيدر أكثر */}
             <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white mb-5 lg:mb-6 2xl:mb-8 leading-[1.2] tracking-tight">
-              معاً، نصنع أثراً <span className="text-[#721F31]">يمتد لأجيال</span>
+              معاً، نصنع أثراً <span className="text-[#C08F2D]">يمتد لأجيال</span>
             </h1>
             <p className="text-[14px] sm:text-[15px] lg:text-[15px] xl:text-base 2xl:text-xl text-white/80 font-medium max-w-3xl mx-auto mb-6 lg:mb-8 2xl:mb-10 leading-relaxed">
               نؤمن في مؤسسة ولي العهد أن الشراكات الحقيقية هي المحرك الأساسي للتنمية. انضم إلى شبكتنا من الشركاء والخبراء لنساهم معاً في تمكين الشباب الأردني.

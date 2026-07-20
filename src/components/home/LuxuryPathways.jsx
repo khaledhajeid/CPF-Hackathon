@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowUpLeft, Target, Users, BookOpen } from 'lucide-react';
 
-export default function LuxuryPathways({ onPathwaySelect }) {
+export default function LuxuryPathways({ onPathwaySelect, onNavigate, setActiveProgramName }) {
   const [activeCard, setActiveCard] = useState(0); 
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
@@ -15,12 +15,10 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       id: 'تعلّم', goal: 'أسعى إلى تطوير مهاراتي التقنية والعملية', name: 'تعلّم', shortName: 'تعلّم',
       brands: [
       'جامعة الحسين التقنية',
-      'مركز التميز للريادة والابتكار',
       '42 عمّان و42 إربد',
-      'كلية التدريب المهني المتقدم',
+      'كلية التدريب المهني المتقدم في الأردن',
       'مساحة الصنّاع',
       'مبرمجو الأردن',
-      'HTUx',
       'ملتقى الصناع'
       ],
       icon: BookOpen,
@@ -49,7 +47,7 @@ export default function LuxuryPathways({ onPathwaySelect }) {
       
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-12 text-right mb-8 lg:mb-12 xl:mb-16 relative z-10">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-          طموحك يحدد <span className="text-[#721F31]">مسارك</span>
+          طموحك يحدد <span className="text-[#C08F2D]">مسارك</span>
         </h2>
       </div>
 
@@ -110,7 +108,19 @@ export default function LuxuryPathways({ onPathwaySelect }) {
 
                   <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 lg:mb-6 xl:mb-8 w-full">
                     {path.brands.map(brand => (
-                      <span key={brand} className="text-[9px] lg:text-[10px] xl:text-[12px] 2xl:text-[14px] font-black text-white bg-[#C08F2D]/20 px-2 lg:px-2.5 xl:px-3 py-1 lg:py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate">{brand}</span>
+                      <button
+                        key={brand}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveProgramName?.(brand);
+                          onNavigate?.('program_details');
+                        }}
+                        onKeyDown={(e) => e.stopPropagation()}
+                        className="text-[9px] lg:text-[10px] xl:text-[12px] 2xl:text-[14px] font-black text-white bg-[#C08F2D]/20 hover:bg-[#C08F2D]/40 px-2 lg:px-2.5 xl:px-3 py-1 lg:py-1.5 rounded-md border border-[#C08F2D]/40 backdrop-blur-sm truncate transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C08F2D] focus-visible:ring-offset-1"
+                      >
+                        {brand}
+                      </button>
                     ))}
                   </div>
                   

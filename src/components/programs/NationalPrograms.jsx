@@ -1,20 +1,23 @@
 // src/components/programs/NationalPrograms.jsx
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpLeft, Briefcase, Target, Users, Code2, HeartHandshake, Lightbulb, GraduationCap, RefreshCcw } from 'lucide-react';
+import { ArrowUpLeft, Briefcase, Target, Users, Code2, HeartHandshake, Hammer, MessagesSquare, Smartphone, Trophy, GraduationCap, RefreshCcw } from 'lucide-react';
 
 const nationalProgramsData = [
   { id: 1, title: 'جامعة الحسين التقنية', pathway: 'تعلّم', description: 'جامعة تقنية رائدة تهدف إلى تقديم تعليم عالي الجودة لتمكين الشباب الأردني في مجالات الهندسة وعلم الحاسوب.', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070', icon: GraduationCap },
-  { id: 2, title: 'مركز التميز للريادة والابتكار', pathway: 'تعلّم', description: 'حاضنة للابتكار تهدف إلى دعم الأفكار الريادية للشباب وتحويلها إلى مشاريع ناجحة ومستدامة.', image: 'https://cpf.jo/wp-content/uploads/2024/01/The-Core-%E2%94%98a%E2%95%AA%E2%96%92%E2%94%98a%E2%95%AA%E2%96%93-%E2%95%AAo%E2%94%98a%E2%95%AA%C2%AC%E2%94%98a%E2%94%98e%E2%95%AA%E2%96%93-%E2%94%98a%E2%94%98a%E2%95%AA%E2%96%92%E2%94%98e%E2%95%AAo%E2%95%AA%E2%95%AA%E2%8C%90-%E2%94%98e%E2%95%AAo%E2%94%98a%E2%95%AAo%E2%95%AA%C2%BF%E2%95%AA%C2%AC%E2%94%98a%E2%95%AAo%E2%95%AA%E2%96%92_2.jpg', icon: Lightbulb },
   { id: 3, title: '42 عمّان و42 إربد', pathway: 'تعلّم', description: 'برنامج تدريبي مبتكر ومجاني لتعليم البرمجة يعتمد على التعلم النظير وبناء المشاريع السحابية بدون معلمين.', image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071', icon: Code2 },
   { id: 4, title: 'كلية التدريب المهني المتقدم في الأردن', pathway: 'تعلّم', description: 'مؤسسة تعليمية توفر تدريباً مهنياً متقدماً يحاكي متطلبات سوق العمل الحديث والمهارات التقنية.', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070', icon: Briefcase },
   { id: 5, title: 'مساحة الصنّاع', pathway: 'تعلّم', description: 'مختبرات تصنيع رقمي تتيح للشباب الوصول إلى أحدث التقنيات لتحويل أفكارهم إلى نماذج أولية ومنتجات فعلية.', image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=2136', icon: Target },
   { id: 6, title: 'مبرمجو الأردن', pathway: 'تعلّم', description: 'مبادرة تسعى إلى محو الأمية الرقمية وبناء قدرات الشباب الأردني في مختلف لغات البرمجة الحديثة.', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070', icon: Code2 },
+  { id: 7, title: 'ملتقى الصناع', pathway: 'تعلّم', description: 'ملتقى دوري يجمع الشباب أصحاب الحرف والمشاريع الصغيرة من مختلف المحافظات لصقل مهاراتهم الريادية والحرفية.', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070', icon: Hammer },
   { id: 10, title: 'برنامج القيادة للمدارس', pathway: 'قُد', description: 'برنامج مخصص لطلبة المدارس يهدف إلى غرس مفاهيم القيادة والتفكير النقدي منذ سن مبكرة.', image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132', icon: Target },
   { id: 11, title: 'برنامج خطى الحسين', pathway: 'قُد', description: 'برنامج قيادي متقدم لبناء القدرات القيادية والوطنية للشباب ليصبحوا صناع التغيير في مجتمعاتهم.', image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2049', icon: Target },
   { id: 14, title: 'مركز الشباب العربي-الاردن', pathway: 'قُد', description: 'مركز إقليمي يمكّن الشباب الأردني من التواصل مع نظرائهم العرب لبناء قيادات مشتركة وتبادل الخبرات إقليمياً.', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2070', icon: Users },
+  { id: 15, title: 'منتدى تواصل', pathway: 'قُد', description: 'منتدى وطني سنوي يجمع الشباب الأردني بصناع القرار والخبراء لمناقشة قضايا التمكين الشبابي.', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070', icon: MessagesSquare },
+  { id: 16, title: 'جائزة ولي العهد لأفضل تطبيق خدمات حكومية', pathway: 'قُد', description: 'جائزة وطنية تحتفي بأفضل الحلول والتطبيقات الرقمية التي تسهّل وصول المواطنين للخدمات الحكومية.', image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2070', icon: Smartphone },
   { id: 12, title: 'نَحْنُ', pathway: 'اصنع الأثر', description: 'المنصة الوطنية لتطوع ومشاركة الشباب، تهدف لتوحيد جهود العمل التطوعي وتوثيقها بشكل رسمي.', image: 'https://nahno-new.s3.eu-west-3.amazonaws.com/page/cover-20201115-134457.png', icon: Users },
   { id: 13, title: 'الحملات المجتمعية والاستجابات الإنسانية', pathway: 'اصنع الأثر', description: 'تنظيم وتوجيه طاقات الشباب لدعم الحملات المجتمعية والاستجابات الإنسانية محلياً وإقليمياً.', image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070', icon: HeartHandshake },
+  { id: 17, title: 'جائزة الحسين بن عبد الله الثاني للعمل التطوعي', pathway: 'اصنع الأثر', description: 'جائزة وطنية تكرّم المتطوعين والمبادرات التطوعية المتميزة تقديراً لأثرهم في خدمة مجتمعاتهم المحلية.', image: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=2070', icon: Trophy },
 ];
 
 export default function NationalPrograms({ onNavigate, setActiveProgramName }) {

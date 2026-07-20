@@ -210,7 +210,7 @@ export default function RegistrationStrip({ onNavigate }) {
     <section className="relative bg-[#721F31]/[0.05] py-14 lg:py-20 xl:py-24 overflow-hidden font-sans" dir="rtl">
       <div className="relative z-10 max-w-[1500px] mx-auto px-4 md:px-6 xl:px-10 text-center mb-10 lg:mb-12 xl:mb-16">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-[#8a1538] tracking-tight mb-3 md:mb-4">
-          فرصتك تنتظرك <span className="text-[#721F31]">على مدار السنة</span>
+          فرصتك تنتظرك <span className="text-[#C08F2D]">على مدار السنة</span>
         </h2>
         <p className="text-[#4c4c4c] max-w-2xl mx-auto text-sm lg:text-base xl:text-lg font-medium">
           برامج ومنصات مفتوحة باستمرار، لا داعي لانتظار موسم لتبدأ خطوتك القادمة.

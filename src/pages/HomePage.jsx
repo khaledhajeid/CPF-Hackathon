@@ -140,6 +140,8 @@ export default function HomePage({
                 .getElementById("events-section")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
+            onNavigate={onNavigate}
+            setActiveProgramName={setActiveProgramName}
           />
         </RevealOnScroll>
       </div>

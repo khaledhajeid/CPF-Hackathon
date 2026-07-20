@@ -53,7 +53,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
         <div className="mb-6 lg:mb-10 xl:mb-12 2xl:mb-14 text-right">
           {/* 🟢 العنوان: تصغير للـ xl ليكون متناسقاً وأنيقاً */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] tracking-tight">
-            {isPersonalized ? "فرص مصممة خصيصاً لك" : <>اكتشف أحدث <span className="text-[#721F31]">الفرص المتاحة</span></>}
+            {isPersonalized ? <>فرص مصممة <span className="text-[#C08F2D]">خصيصاً لك</span></> : <>اكتشف أحدث <span className="text-[#C08F2D]">الفرص المتاحة</span></>}
           </h2>
         </div>
 

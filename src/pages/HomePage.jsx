@@ -178,7 +178,7 @@ export default function HomePage({
       </RevealOnScroll>
 
       <RevealOnScroll>
-        <RegistrationStrip onNavigate={onNavigate} />
+        <RegistrationStrip onNavigate={onNavigate} setActiveProgramName={setActiveProgramName} />
       </RevealOnScroll>
 
       <RevealOnScroll>

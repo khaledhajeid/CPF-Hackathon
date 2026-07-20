@@ -48,20 +48,31 @@ const OPPORTUNITIES = [
     title: 'توجّه إلى مساحة الصنّاع',
     description: 'حوّل أفكارك إلى نماذج حقيقية بأحدث أدوات التصنيع الرقمي، المتاحة لك على مدار العام.',
     cta: 'ابدأ الصنع',
-    href: '#',
+    programName: 'مساحة الصنّاع',
     image: 'https://cpf.jo/wp-content/uploads/2024/01/The-Makerspace-%E2%94%98a%E2%95%AA%E2%94%82%E2%95%AAo%E2%95%AA%C2%A1%E2%95%AA%E2%8C%90-%E2%95%AAo%E2%94%98a%E2%95%AA%E2%95%A1%E2%94%98a%E2%95%AAo%E2%95%AA%E2%95%A3_1.jpg',
     logo: '/The-Makerspace.png',
   },
 ];
 
-function OpportunityCard({ item }) {
+function OpportunityCard({ item, onNavigate, setActiveProgramName }) {
   const isExternal = item.href && item.href !== '#';
   const isCta = item.variant === 'cta';
+
+  const handleClick = (e) => {
+    if (item.onClick) {
+      e.preventDefault();
+      item.onClick();
+    } else if (item.programName) {
+      e.preventDefault();
+      setActiveProgramName?.(item.programName);
+      onNavigate?.('program_details');
+    }
+  };
 
   return (
     <a
       href={item.href || '#'}
-      onClick={item.onClick ? (e) => { e.preventDefault(); item.onClick(); } : undefined}
+      onClick={handleClick}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       draggable={false}
@@ -120,7 +131,7 @@ function OpportunityCard({ item }) {
 
 const DRAG_THRESHOLD = 6; // px of pointer movement before a mousedown counts as a drag, not a click
 
-export default function RegistrationStrip({ onNavigate }) {
+export default function RegistrationStrip({ onNavigate, setActiveProgramName }) {
   const trackRef = useRef(null);
   const draggingRef = useRef(false);
   const dragStateRef = useRef({ active: false, moved: false, x: 0, scrollLeft: 0, pointerId: null });
@@ -256,7 +267,7 @@ export default function RegistrationStrip({ onNavigate }) {
         >
           <div className="flex gap-5 xl:gap-7 px-4 md:px-6 xl:px-10 py-2 w-max">
             {items.map((item) => (
-              <OpportunityCard key={item.id} item={item} />
+              <OpportunityCard key={item.id} item={item} onNavigate={onNavigate} setActiveProgramName={setActiveProgramName} />
             ))}
           </div>
         </div>

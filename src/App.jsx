@@ -151,7 +151,7 @@ function App() {
   const isAdminPage = currentPage === 'admin';
 
   return (
-    <div dir="rtl" className={`min-h-screen bg-[#F4F7FA] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden ${isAdminPage ? '' : 'pb-20 md:pb-0'}`}>
+    <div dir="rtl" className={`min-h-screen bg-[#3b1019] font-sans selection:bg-[#C08F2D] selection:text-white relative overflow-x-hidden ${isAdminPage ? '' : 'pb-20 md:pb-0'}`}>
       
       {!isAdminPage && (
         <Navbar 

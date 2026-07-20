@@ -177,24 +177,16 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
         </div>
       </div>
 
-      {/* 🟢 شريط معلومات أساسية (مُحسن جداً للموبايل) */}
+      {/* 🟢 شريط توقيع البرنامج (جملة تحريرية بدلاً من تكرار بيانات بطاقة البرنامج) */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mb-12 md:mb-20 lg:mb-16 2xl:mb-20">
-        <div className="w-full bg-[#8a1538] rounded-2xl md:rounded-[2rem] py-4 sm:py-8 md:py-10 lg:py-6 2xl:py-10 relative overflow-hidden shadow-xl shadow-[#8a1538]/10">
+        <div className="w-full bg-[#721F31] rounded-2xl md:rounded-[2rem] py-8 sm:py-10 md:py-14 lg:py-10 2xl:py-14 relative overflow-hidden shadow-xl shadow-[#721F31]/10">
           <div className="absolute inset-0 z-0 opacity-[0.1] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '200px' }} />
-          {/* 🟢 على الموبايل: flex-col (عمودي)، وبداخله flex-row (أفقي) لكل عنصر. على التابلت والديسكتوب: grid-cols-3 المعتاد */}
-          <div className="relative z-10 flex flex-col sm:grid sm:grid-cols-3 gap-0 sm:gap-6 md:gap-8 lg:gap-6 2xl:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-white/10">
-            <div className="py-3 sm:py-0 px-5 flex flex-row sm:flex-col justify-between sm:justify-center items-center">
-              <p className="text-white/70 text-[12px] md:text-[13px] lg:text-[11px] 2xl:text-[13px] font-bold mb-0 sm:mb-1 md:mb-2 lg:mb-1">نوع البرنامج</p>
-              <p className="text-white text-[13.5px] sm:text-base md:text-xl lg:text-lg 2xl:text-xl font-black">{currentProgram.type}</p>
-            </div>
-            <div className="py-3 sm:py-0 px-5 flex flex-row sm:flex-col justify-between sm:justify-center items-center">
-              <p className="text-white/70 text-[12px] md:text-[13px] lg:text-[11px] 2xl:text-[13px] font-bold mb-0 sm:mb-1 md:mb-2 lg:mb-1">مسار البرنامج</p>
-              <p className="text-white text-[13.5px] sm:text-base md:text-xl lg:text-lg 2xl:text-xl font-black">{currentProgram.pathway}</p>
-            </div>
-            <div className="py-3 sm:py-0 px-5 flex flex-row sm:flex-col justify-between sm:justify-center items-center">
-              <p className="text-white/70 text-[12px] md:text-[13px] lg:text-[11px] 2xl:text-[13px] font-bold mb-0 sm:mb-1 md:mb-2 lg:mb-1">آلية التدريب</p>
-              <p className="text-white text-[13.5px] sm:text-base md:text-xl lg:text-lg 2xl:text-xl font-black">{currentProgram.mechanism}</p>
-            </div>
+          <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-l from-transparent via-[#C08F2D] to-transparent" />
+          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <Quote className="w-7 h-7 md:w-8 md:h-8 text-[#C08F2D]/60 mx-auto mb-4" />
+            <p className="text-white text-[1.15rem] sm:text-2xl md:text-3xl lg:text-[1.75rem] 2xl:text-3xl font-black leading-snug">
+              {currentProgram.tagline || 'جزء من منظومة مؤسسة ولي العهد لتمكين الشباب الأردني'}
+            </p>
           </div>
         </div>
       </div>
@@ -231,6 +223,57 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                     </li>
                   ))}
                 </ul>
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.workAreas && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.workAreasTitle || 'مجالات العمل'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 bg-white p-6 md:p-8 lg:p-6 2xl:p-8 rounded-3xl border border-gray-100 shadow-sm">
+                {currentProgram.workAreas.map((area, idx) => (
+                  <div key={idx}>
+                    <h3 className="font-black text-gray-900 text-[15px] md:text-[1.05rem] mb-2 pb-2 border-b-2 border-gray-200 inline-block">
+                      {area.title}
+                    </h3>
+                    <p className="text-gray-600 font-medium text-[13px] md:text-[14px] leading-relaxed text-justify mt-2">
+                      {area.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.iconCards && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
+                {currentProgram.iconCardsTitle || 'مبادراتنا الموسمية'}
+              </h2>
+              <div className="bg-white rounded-3xl border border-gray-100 shadow-sm grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-gray-100">
+                {currentProgram.iconCards.map((card, idx) => {
+                  const Icon = card.icon;
+                  const tint = idx % 3 === 0
+                    ? { bg: 'bg-[#C08F2D]/10', text: 'text-[#C08F2D]' }
+                    : idx % 3 === 1
+                    ? { bg: 'bg-[#8a1538]/8', text: 'text-[#8a1538]' }
+                    : { bg: 'bg-gray-100', text: 'text-gray-500' };
+                  return (
+                    <div key={idx} className="p-5 md:p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className={`w-9 h-9 rounded-lg ${tint.bg} flex items-center justify-center shrink-0`}>
+                          <Icon className={`w-4 h-4 ${tint.text}`} />
+                        </div>
+                        <h3 className="font-black text-gray-900 text-[14px] md:text-[15px]">{card.title}</h3>
+                      </div>
+                      <p className="text-gray-600 font-medium text-[12.5px] md:text-[13px] leading-relaxed text-justify">
+                        {card.description}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </motion.section>
           )}
@@ -306,57 +349,6 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </motion.section>
           )}
 
-          {currentProgram.workAreas && (
-            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
-                {currentProgram.workAreasTitle || 'مجالات العمل'}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 bg-white p-6 md:p-8 lg:p-6 2xl:p-8 rounded-3xl border border-gray-100 shadow-sm">
-                {currentProgram.workAreas.map((area, idx) => (
-                  <div key={idx}>
-                    <h3 className="font-black text-gray-900 text-[15px] md:text-[1.05rem] mb-2 pb-2 border-b-2 border-gray-200 inline-block">
-                      {area.title}
-                    </h3>
-                    <p className="text-gray-600 font-medium text-[13px] md:text-[14px] leading-relaxed text-justify mt-2">
-                      {area.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.section>
-          )}
-
-          {currentProgram.iconCards && (
-            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
-                {currentProgram.iconCardsTitle || 'مبادراتنا الموسمية'}
-              </h2>
-              <div className="bg-white rounded-3xl border border-gray-100 shadow-sm grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x sm:divide-x-reverse divide-gray-100">
-                {currentProgram.iconCards.map((card, idx) => {
-                  const Icon = card.icon;
-                  const tint = idx % 3 === 0
-                    ? { bg: 'bg-[#C08F2D]/10', text: 'text-[#C08F2D]' }
-                    : idx % 3 === 1
-                    ? { bg: 'bg-[#8a1538]/8', text: 'text-[#8a1538]' }
-                    : { bg: 'bg-gray-100', text: 'text-gray-500' };
-                  return (
-                    <div key={idx} className="p-5 md:p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className={`w-9 h-9 rounded-lg ${tint.bg} flex items-center justify-center shrink-0`}>
-                          <Icon className={`w-4 h-4 ${tint.text}`} />
-                        </div>
-                        <h3 className="font-black text-gray-900 text-[14px] md:text-[15px]">{card.title}</h3>
-                      </div>
-                      <p className="text-gray-600 font-medium text-[12.5px] md:text-[13px] leading-relaxed text-justify">
-                        {card.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.section>
-          )}
-
           {programNews.length > 0 && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
               <div className="flex items-center justify-between mb-4 md:mb-6 lg:mb-4">
@@ -401,36 +393,6 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
             </motion.section>
           )}
 
-          {currentProgram.donationBanner && (
-            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
-              <div className="relative bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-                <div className="h-[3px] w-full bg-gradient-to-l from-transparent via-[#C08F2D] to-transparent" />
-                <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center gap-5 md:gap-6 text-center sm:text-right">
-                  {currentProgram.donationBanner.icon && (
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#C08F2D]/10 flex items-center justify-center shrink-0">
-                      <currentProgram.donationBanner.icon className="w-6 h-6 md:w-7 md:h-7 text-[#C08F2D]" />
-                    </div>
-                  )}
-                  <p className="text-gray-700 font-medium text-[13px] md:text-[15px] leading-relaxed flex-grow">
-                    {currentProgram.donationBanner.text}
-                  </p>
-                  <a
-                    href={currentProgram.donationBanner.ctaUrl}
-                    target={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : '_blank'}
-                    rel={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                    className={`shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-black text-[13px] md:text-sm transition-colors w-full sm:w-auto ${
-                      currentProgram.donationBanner.accent === 'gold'
-                        ? 'bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409]'
-                        : 'bg-[#8a1538] hover:bg-[#680f2a] text-white'
-                    }`}
-                  >
-                    {currentProgram.donationBanner.ctaLabel}
-                  </a>
-                </div>
-              </div>
-            </motion.section>
-          )}
-
           {currentProgram.faqs && (
             <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
               <h2 className="text-2xl md:text-[1.75rem] lg:text-[1.5rem] 2xl:text-[1.75rem] font-black mb-4 md:mb-6 lg:mb-4 text-[#8a1538]">
@@ -459,6 +421,36 @@ export default function ProgramDetails({ onNavigate, programName = 'جامعة �
                     </div>
                   );
                 })}
+              </div>
+            </motion.section>
+          )}
+
+          {currentProgram.donationBanner && (
+            <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp}>
+              <div className="relative bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="h-[3px] w-full bg-gradient-to-l from-transparent via-[#C08F2D] to-transparent" />
+                <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center gap-5 md:gap-6 text-center sm:text-right">
+                  {currentProgram.donationBanner.icon && (
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#C08F2D]/10 flex items-center justify-center shrink-0">
+                      <currentProgram.donationBanner.icon className="w-6 h-6 md:w-7 md:h-7 text-[#C08F2D]" />
+                    </div>
+                  )}
+                  <p className="text-gray-700 font-medium text-[13px] md:text-[15px] leading-relaxed flex-grow">
+                    {currentProgram.donationBanner.text}
+                  </p>
+                  <a
+                    href={currentProgram.donationBanner.ctaUrl}
+                    target={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={currentProgram.donationBanner.ctaUrl?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    className={`shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-black text-[13px] md:text-sm transition-colors w-full sm:w-auto ${
+                      currentProgram.donationBanner.accent === 'gold'
+                        ? 'bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409]'
+                        : 'bg-[#8a1538] hover:bg-[#680f2a] text-white'
+                    }`}
+                  >
+                    {currentProgram.donationBanner.ctaLabel}
+                  </a>
+                </div>
               </div>
             </motion.section>
           )}

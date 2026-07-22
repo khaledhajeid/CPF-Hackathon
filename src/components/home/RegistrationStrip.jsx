@@ -52,6 +52,17 @@ const OPPORTUNITIES = [
     image: 'https://cpf.jo/wp-content/uploads/2024/01/The-Makerspace-%E2%94%98a%E2%95%AA%E2%94%82%E2%95%AAo%E2%95%AA%C2%A1%E2%95%AA%E2%8C%90-%E2%95%AAo%E2%94%98a%E2%95%AA%E2%95%A1%E2%94%98a%E2%95%AAo%E2%95%AA%E2%95%A3_1.jpg',
     logo: '/The-Makerspace.png',
   },
+  {
+    id: 'the-core',
+    active: true,
+    tag: 'ريادة وابتكار',
+    title: 'مركز التميّز للريادة والابتكار',
+    description: 'احتضن فكرتك وحوّلها إلى مشروع ناشئ قابل للنمو، عبر برامج إرشاد ومساحات عمل مشتركة في جامعة الحسين التقنية.',
+    cta: 'ابدا مشروعك الخاص',
+    programName: 'جامعة الحسين التقنية',
+    image: 'https://cpf.jo/wp-content/uploads/2024/01/The-Core-%E2%94%98a%E2%95%AA%E2%96%92%E2%94%98a%E2%95%AA%E2%96%93-%E2%95%AAo%E2%94%98a%E2%95%AA%C2%AC%E2%94%98a%E2%94%98e%E2%95%AA%E2%96%93-%E2%94%98a%E2%94%98a%E2%95%AA%E2%96%92%E2%94%98e%E2%95%AAo%E2%95%AA%E2%95%AA%E2%8C%90-%E2%94%98e%E2%95%AAo%E2%94%98a%E2%95%AAo%E2%95%AA%C2%BF%E2%95%AA%C2%AC%E2%94%98a%E2%95%AAo%E2%95%AA%E2%96%92_2.jpg',
+    logo: 'https://cpf.jo/wp-content/uploads/2024/03/Program-Logos_The-Core.png',
+  },
 ];
 
 function OpportunityCard({ item, onNavigate, setActiveProgramName }) {

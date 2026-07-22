@@ -105,9 +105,6 @@ export default function Footer({ onNavigate }) {
             <div className="flex flex-col items-center lg:items-start gap-1">
               <img src="/full_logo_white.png" alt="مؤسسة ولي العهد" className="h-16 md:h-20 max-w-[280px] object-contain drop-shadow-lg" />
             </div>
-            <p className="text-sm md:text-base leading-relaxed text-gray-200 font-medium lg:pe-8 px-2 lg:px-0 text-center lg:text-right max-w-md">
-              مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
-            </p>
             <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
               {socialLinks.map((social, idx) => {
                 const Icon = social.icon;

@@ -99,12 +99,9 @@ export default function PublicationsPage({ onNavigate }) {
 
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 2xl:px-6 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-5 lg:mb-6 leading-[1.2] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.2] tracking-tight">
               التقارير <span className="text-[#C08F2D]">والدراسات</span>
             </h1>
-            <p className="text-[14px] sm:text-[15px] lg:text-base xl:text-lg text-white/80 font-medium max-w-2xl mx-auto leading-relaxed">
-              أرشيف موثّق لأثر مؤسسة ولي العهد وبرامجها، يوثّق مسيرة التمكين عبر تقارير سنوية ودراسات تحليلية معمّقة.
-            </p>
           </motion.div>
         </div>
       </div>

@@ -5,6 +5,8 @@ import { X, Share2, ChevronRight, ChevronLeft, CalendarDays, ArrowLeft } from 'l
 import EditorialNewsGrid from '../components/news/EditorialNewsGrid';
 import MagazineHero from '../components/news/MagazineHero';
 import VisualPulse from '../components/news/VisualPulse';
+// 🟢 استيراد المكون الجديد
+import YouthContributions from '../components/news/YouthContributions';
 import Footer from '../components/Footer';
 import ErrorBoundary from '../components/ErrorBoundary';
 import useEscapeKey from '../hooks/useEscapeKey';
@@ -36,6 +38,10 @@ export default function NewsPage({ onNavigate }) {
       
       <div className="flex-grow">
         <EditorialNewsGrid onNewsClick={(news) => setSelectedNews(news)} />
+        
+        {/* 🟢 قسم مشاركات شبابنا (تم إضافته هنا فوق عدسة الميدان) */}
+        <YouthContributions />
+
         <VisualPulse onImageClick={(idx) => setSelectedImageIndex(idx)} />
       </div>
 
@@ -63,7 +69,7 @@ export default function NewsPage({ onNavigate }) {
               className="relative bg-white shadow-2xl w-full flex flex-col md:flex-row mt-auto h-[90vh] rounded-t-[2rem] md:h-auto md:max-h-[90vh] max-w-[1100px] md:rounded-[clamp(1.5rem,3vw,2.5rem)] md:mt-0 z-10 overflow-hidden"
             >
               
-              {/* 🟢 زر الإغلاق العائم للموبايل */}
+              {/* زر الإغلاق العائم للموبايل */}
               <button 
                 onClick={() => setSelectedNews(null)} 
                 className="md:hidden absolute top-4 right-4 w-9 h-9 bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white z-50 transition-colors cursor-pointer"
@@ -73,13 +79,13 @@ export default function NewsPage({ onNavigate }) {
 
               <div className="flex-1 overflow-y-auto flex flex-col md:flex-row scrollbar-hide">
                 
-                {/* 🟢 الصورة */}
+                {/* الصورة */}
                 <div className="w-full h-[35vh] md:h-auto md:w-2/5 relative shrink-0 bg-gray-100 order-1 md:order-2">
                   <img src={selectedNews.image} alt={selectedNews.title} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 md:bg-gradient-to-r md:from-black/20" />
                 </div>
 
-                {/* 🟢 المحتوى النصي */}
+                {/* المحتوى النصي */}
                 <div className="w-full md:w-3/5 p-[clamp(1.5rem,4vw,3.5rem)] flex flex-col order-2 md:order-1 bg-[#fcfcfc]">
                   
                   {/* زر الإغلاق للديسكتوب */}
@@ -89,7 +95,7 @@ export default function NewsPage({ onNavigate }) {
                     </button>
                   </div>
 
-                  {/* التاريخ (بدون التاج) */}
+                  {/* التاريخ */}
                   <div className="flex items-center gap-[clamp(0.35rem,1vw,0.5rem)] mb-[clamp(1rem,2vw,1.5rem)] mt-2 md:mt-0">
                     <div className="inline-flex items-center gap-[clamp(0.25rem,0.5vw,0.35rem)] bg-white shadow-sm border border-gray-100 text-gray-600 px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.35rem,0.8vw,0.5rem)] rounded-lg font-bold text-[clamp(0.7rem,1vw,0.85rem)]">
                       <CalendarDays className="w-[clamp(0.85rem,1.2vw,1rem)] h-[clamp(0.85rem,1.2vw,1rem)] text-[#C08F2D]" />
@@ -102,24 +108,23 @@ export default function NewsPage({ onNavigate }) {
                     {selectedNews.title}
                   </h2>
 
-                  {/* الوصف (مختصر للعرض السريع) */}
+                  {/* الوصف */}
                   <div className="flex-grow">
                     <p className="text-gray-600 font-medium text-[clamp(0.875rem,1.2vw,1.1rem)] leading-relaxed md:leading-[2.2] text-justify line-clamp-4 md:line-clamp-5">
                       {selectedNews.desc}
                     </p>
                   </div>
                   
-                  {/* 🟢 أزرار الإجراءات (مشاركة + قراءة التفاصيل) */}
+                  {/* أزرار الإجراءات */}
                   <div className="mt-[clamp(1.5rem,3vw,2.5rem)] pt-[clamp(1rem,2vw,1.5rem)] border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <button className="flex items-center gap-2 text-gray-500 hover:text-[#8a1538] transition-colors font-bold text-[clamp(0.75rem,1vw,0.9rem)] cursor-pointer order-2 sm:order-1 w-full sm:w-auto justify-center">
                       مشاركة الخبر <Share2 className="w-[clamp(1rem,1.2vw,1.25rem)] h-[clamp(1rem,1.2vw,1.25rem)]" />
                     </button>
                     
-                    {/* 🟢 زر التوجيه للصفحة الجديدة (اقرأ التفاصيل الكاملة) مع السهم المعكوس لليسار */}
                     <button 
                       onClick={() => {
-                        setSelectedNews(null); // إغلاق المودال
-                        onNavigate('news-article', { newsItem: selectedNews }); // الانتقال لصفحة الخبر
+                        setSelectedNews(null);
+                        onNavigate('news-article', { newsItem: selectedNews });
                       }} 
                       className="flex items-center justify-center gap-[clamp(0.35rem,0.8vw,0.5rem)] bg-[#8a1538] text-white px-[clamp(1.25rem,3vw,2rem)] py-[clamp(0.6rem,1.2vw,0.875rem)] rounded-xl font-black text-[clamp(0.75rem,1.1vw,1rem)] hover:bg-[#6a0f28] transition-all shadow-md hover:shadow-lg cursor-pointer group order-1 sm:order-2 w-full sm:w-auto"
                     >
@@ -167,7 +172,7 @@ export default function NewsPage({ onNavigate }) {
               <ChevronLeft className="w-[clamp(1.5rem,2.5vw,2rem)] h-[clamp(1.5rem,2.5vw,2rem)]" />
             </button>
 
-<motion.div 
+            <motion.div 
               key={selectedImageIndex} 
               initial={{ opacity: 0, scale: 0.95, y: 20 }} 
               animate={{ opacity: 1, scale: 1, y: 0 }} 
@@ -182,29 +187,25 @@ export default function NewsPage({ onNavigate }) {
                 className="max-w-full max-h-[65vh] md:max-h-[75vh] object-contain rounded-xl shadow-2xl pointer-events-auto select-none" 
               />
               
-              {/* 🟢 تفاصيل الصورة (تصميم نظيف وبسيط جداً بدون صناديق) */}
+              {/* تفاصيل الصورة */}
               <div className="mt-[clamp(1rem,2vw,1.5rem)] text-center pointer-events-auto w-full max-w-2xl px-4">
                 
-                {/* العنوان الرئيسي */}
                 <h3 className="text-white font-black text-[clamp(1.1rem,2vw,1.5rem)] drop-shadow-lg mb-2">
                   {pulseImages[selectedImageIndex].title}
                 </h3>
                 
-                {/* اسم الفعالية والتاريخ (في سطر واحد بسيط) */}
                 <div className="flex items-center justify-center gap-3 text-white/80 font-bold text-[clamp(0.75rem,1vw,0.9rem)] mb-3">
                   <span className="text-[#C08F2D]">{pulseImages[selectedImageIndex].eventName || 'فعالية ميدانية'}</span>
-                  <span className="w-1 h-1 rounded-full bg-white/40"></span> {/* نقطة فاصلة */}
+                  <span className="w-1 h-1 rounded-full bg-white/40"></span>
                   <span>{pulseImages[selectedImageIndex].date || '2026'}</span>
                 </div>
 
-                {/* الوصف (سلس وغير مزعج) */}
                 {pulseImages[selectedImageIndex].desc && (
                   <p className="text-white/60 font-medium text-[clamp(0.85rem,1vw,0.95rem)] leading-relaxed mx-auto max-w-xl">
                     {pulseImages[selectedImageIndex].desc}
                   </p>
                 )}
 
-                {/* العداد (صغير وبسيط في الأسفل) */}
                 <div className="mt-4 text-white/30 text-xs font-bold tracking-widest">
                   {selectedImageIndex + 1} / {pulseImages.length}
                 </div>

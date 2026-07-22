@@ -161,94 +161,62 @@ export default function AboutPage({ onNavigate }) {
     <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white overflow-x-hidden" dir="rtl">
       
       {/* 1. Hero Section (Mobile Friendly & Premium Desktop) */}
-      <div className="relative pt-24 pb-12 md:pt-40 md:pb-24 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden min-h-[auto] md:min-h-[85vh] flex items-center">
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
-        
-        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
-          {/* 🟢 في الموبايل: flex-col لسهولة الترتيب، في الكمبيوتر: grid */}
-          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            
-            {/* القسم الرئيسي: الاقتباس الملكي */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-7 text-right order-2 lg:order-1 w-full"
-            >
+<div className="relative bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden pt-24 pb-10 lg:pt-32 lg:pb-12">
+  <div
+    className="absolute inset-0 opacity-5 pointer-events-none"
+    style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}
+  />
 
-              {/* بطاقة الاقتباس الملكي: تصغير الهوامش وتعديل الخطوط للموبايل */}
-              <div className="bg-black/25 backdrop-blur-md border-r-4 md:border-r-8 border-[#C08F2D] border-t border-b border-l border-white/10 p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-2xl mt-4 lg:mt-0">
-                <p className="text-white text-lg sm:text-xl md:text-3xl font-bold leading-[1.9] md:leading-[2.2] mb-6 md:mb-8 text-justify">
-                  ”مؤسـســة ولي العهــد… مســارٌ للفــرص، ومنـبــر الشــباب للتطــور، تحمــل طموحاتهم نحو تحقيق الإنجاز والتميّز. المؤسســة تعمل على صقل وتطـوير مهاراتهم لبناء مســتقبل يتســم بالإنجاز لأردننا.“
-                </p>
-                <div>
-                  <span className="text-[#C08F2D] font-black text-base sm:text-lg md:text-2xl block mb-1">
-                    صاحب السمو الملكي الأمير الحسين بن عبداللّه الثاني
-                  </span>
-                  <span className="text-white/80 font-bold text-sm sm:text-base md:text-lg block">
-                    ولي العهد المعظم
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+  <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 lg:items-center lg:min-h-[450px]">
 
-            {/* القسم الجانبي: الصورة */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }} 
-              animate={{ opacity: 1, scale: 1 }} 
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5 relative order-1 lg:order-2 w-full mt-4 md:mt-0"
-            >
-              {/* تصغير حجم الصورة قليلاً على الموبايل لتبدو أرتب وتوسيطها */}
-              <div className="relative mx-auto w-full max-w-[300px] sm:max-w-sm lg:max-w-none">
-                
-                {/* تظهر الشارة هنا فقط في شاشات الموبايل (لتوازن التصميم) */}
+      {/* الصورة */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.03 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.9 }}
+        className="relative h-[220px] sm:h-[300px] lg:h-[380px] lg:col-span-5 order-1 w-full rounded-2xl overflow-hidden"
+      >
+        <img
+          src="https://cpf.jo/wp-content/uploads/2024/04/1D1A5517-min-1-e1709019652743.jpg"
+          alt="صاحب السمو الملكي الأمير الحسين بن عبدالله الثاني"
+          className="w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b] via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-[#1a070b]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a070b]/60 via-transparent to-transparent lg:hidden" />
+      </motion.div>
 
-                {/* إطار جمالي خلف الصورة (مخفف قليلاً للموبايل) */}
-                <div className="absolute -inset-2 md:-inset-3 bg-gradient-to-tr from-[#C08F2D] to-transparent rounded-[2rem] md:rounded-[2.8rem] opacity-30 md:opacity-40 blur-lg md:blur-xl"></div>
-                
-                {/* حاوية الصورة الأساسية */}
-                <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-[1.8rem] md:rounded-[2.8rem] overflow-hidden shadow-2xl aspect-[4/5] w-full flex items-center justify-center group">
-                  
-                  <img 
-                    src="https://cpf.jo/wp-content/uploads/2024/04/1D1A5517-min-1-e1709019652743.jpg" 
-                    alt="صاحب السمو الملكي الأمير الحسين بن عبدالله الثاني" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 object-top"
-                  />
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
-                  
-                  {/* تصغير خطوط وأبعاد النصوص داخل الصورة للموبايل */}
-                  <div className="absolute bottom-5 right-5 left-5 md:bottom-8 md:right-8 md:left-8 z-10 text-right">
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
+      {/* النص */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="order-2 lg:col-span-7 flex items-center px-0 py-8 sm:py-10 lg:pr-10 lg:py-8"
+      >
+        <div className="text-right border-r-2 border-[#C08F2D] pr-5 md:pr-6">
+          <p className="text-white text-base md:text-lg font-bold leading-relaxed mb-4 md:mb-5 text-justify">
+            ”مؤسـســة ولي العهــد… مســارٌ للفــرص، ومنـبــر الشــباب للتطــور، تحمــل طموحاتهم نحو تحقيق الإنجاز والتميّز. المؤسســة تعمل على صقل وتطـوير مهاراتهم لبناء مســتقبل يتســم بالإنجاز لأردننا.“
+          </p>
+          <div>
+            <span className="text-[#C08F2D] font-black text-sm md:text-base block mb-1">
+              صاحب السمو الملكي الأمير الحسين بن عبداللّه الثاني
+            </span>
+            <span className="text-white/70 font-bold text-xs md:text-sm block">
+              ولي العهد المعظم
+            </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
+    </div>
+  </div>
+</div>
       {/* 2. الرؤية والرسالة */}
       <div id="core-section" className="py-12 md:py-20 bg-[#f8fafc] relative border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative bg-gradient-to-br from-[#8a1538] via-[#6d1129] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-center overflow-hidden shadow-2xl mb-10 md:mb-16">
-            <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <span className="inline-flex items-center gap-2 text-white/70 font-bold text-sm md:text-base mb-4 md:mb-6">
-                <Eye className="w-4 h-4 md:w-5 md:h-5" /> رؤيتنا
-              </span>
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4 md:mb-6">
-                "شباب قادر <span className="text-[#C08F2D]">لأردن طموح</span>"
-              </h2>
-              <p className="text-white/80 text-[15px] md:text-lg leading-relaxed font-medium max-w-2xl mx-auto">تتمحور جهود المؤسسة حول هذه الرؤية بهدف الربط بين الشباب والمؤسسات الوطنية، لتوجيه طاقاتهم وقدرتهم على الإبداع والابتكار نحو التطوير والنمو الدائم.</p>
-            </div>
-          </motion.div>
-
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }} className="max-w-3xl mx-auto text-center px-2 md:px-4">
             <h3 className="inline-flex items-center gap-2 text-[#8a1538] font-black text-xl md:text-2xl mb-3 md:mb-4">
-              <Target className="w-5 h-5 md:w-6 md:h-6 text-[#C08F2D]" /> رسالتنا
+            دور المؤسسة
             </h3>
             <p className="text-[15px] md:text-lg text-gray-600 leading-relaxed font-medium">دعم الشباب وتمكينهم وتزويدهم بالمعرفة والخبرات اللازمة. نحن نؤمن أننا بمساعدتهم على التقدم والتطور نضمن مستقبلاً مشرقاً لهم ولعائلاتهم ومجتمعاتهم، وللأردن.</p>
           </motion.div>
@@ -257,34 +225,60 @@ export default function AboutPage({ onNavigate }) {
       </div>
 
       {/* 3. إحصائيات الأثر */}
-      <div className="py-12 md:py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-[2rem] md:rounded-[3rem] border border-gray-200 shadow-xl p-6 md:p-16">
-            <div className="text-center mb-8 md:mb-14">
-              <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-2 md:mb-3">نموذج وطني قوي</h2>
-              <p className="text-gray-500 font-medium text-sm md:text-xl">أرقام تعكس حجم الأثر في كافة المحافظات</p>
+      <div className="relative z-30 -mt-10 sm:-mt-12 lg:-mt-10 xl:-mt-12 2xl:-mt-16 mx-4 sm:mx-8 xl:mx-auto max-w-[1400px]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="bg-white rounded-2xl md:rounded-3xl xl:rounded-[2rem] shadow-xl p-6 sm:p-8 lg:p-6 xl:p-8 2xl:p-12 border border-gray-100 mx-auto w-full lg:w-11/12 2xl:w-10/12"
+        >
+          <h2 className="sr-only">الأثر الوطني بالأرقام</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 relative">
+
+            {/* العنصر 1 */}
+            <div className="flex flex-col items-center justify-center text-center border-l border-b border-gray-100 lg:border-b-0 pb-6 lg:pb-0">
+              {/* 🟢 حجم الخط: text-4xl للـ xl (أنيق)، و text-6xl للشاشات العملاقة */}
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+                <AnimatedNumber value={2.2} decimals={1} />
+              </h3>
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+                مليون مشارك
+              </p>
             </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-10 md:divide-x md:divide-x-reverse divide-gray-200">
-              <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={2.2} decimals={1} suffix="M" /></h3>
-                <p className="text-[11px] md:text-base font-bold text-gray-600">شاب وشابة مستفيد</p>
-              </div>
-              <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={14} prefix="+" /></h3>
-                <p className="text-[11px] md:text-base font-bold text-gray-600">برنامج ومبادرة</p>
-              </div>
-              <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={26} prefix="+" /></h3>
-                <p className="text-[11px] md:text-base font-bold text-gray-600">موقع استراتيجي</p>
-              </div>
-              <div className="text-center md:px-4">
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#8a1538] mb-2 md:mb-4"><AnimatedNumber value={12} /></h3>
-                <p className="text-[11px] md:text-base font-bold text-gray-600">محافظة نغطيها</p>
-              </div>
+
+            {/* العنصر 2 */}
+            <div className="flex flex-col items-center justify-center text-center border-b border-gray-100 lg:border-b-0 lg:border-l pb-6 lg:pb-0">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+                <AnimatedNumber value={12} />
+              </h3>
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+                محافظة داخل المملكة
+              </p>
             </div>
+
+            {/* العنصر 3 */}
+            <div className="flex flex-col items-center justify-center text-center border-l border-gray-100 pt-6 lg:pt-0">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+                <AnimatedNumber value={26} />
+              </h3>
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+                مساحة ومرفق
+              </p>
+            </div>
+
+            {/* العنصر 4 */}
+            <div className="flex flex-col items-center justify-center text-center pt-6 lg:pt-0">
+              <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
+                <AnimatedNumber value={14} />
+              </h3>
+              <p className="text-[10px] sm:text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-gray-500 uppercase tracking-wide">
+                برنامج
+              </p>
+            </div>
+
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* 4. مسيرة الأثر */}
@@ -343,35 +337,6 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 5. المسارات التنموية */}
-      <div className="py-12 md:py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3">مساراتنا الاستراتيجية</h2>
-            <p className="text-[15px] md:text-lg text-gray-500 font-medium max-w-3xl mx-auto px-2">
-              بهدف بناء قدرات الشباب وتوفير الأدوات والمنصات اللازمة، ركزنا عملنا الميداني والمؤسسي ضمن ثلاثة مسارات أساسية.
-            </p>
-          </div>
-          
-          <div className="flex flex-col md:flex-row overflow-x-auto snap-x snap-mandatory md:overflow-visible gap-6 md:gap-0 pb-6 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 bg-white rounded-[2rem] border border-gray-100 shadow-sm md:divide-x md:divide-x-reverse md:divide-gray-100">
-            {tracks.map((track, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="flex-1 p-6 md:p-8 w-[260px] md:w-auto md:min-w-0 snap-center shrink-0 flex flex-col"
-              >
-                <div className="flex items-center gap-3 mb-3 md:mb-4">
-                  <track.icon className="w-6 h-6 md:w-7 md:h-7 shrink-0" style={{ color: track.color }} />
-                  <h3 className="text-lg md:text-xl font-black" style={{ color: track.color }}>{track.title}</h3>
-                </div>
-                <p className="text-gray-500 font-medium leading-relaxed text-[14px] md:text-base">{track.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* 6. قيادات المؤسسة */}
       <div className="py-12 md:py-20 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-10">
@@ -423,26 +388,19 @@ export default function AboutPage({ onNavigate }) {
       </div>
 
       {/* 7. Call to Action */}
-      <div className="py-12 md:py-20 bg-white relative px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#8a1538] via-[#5a1826] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
+      <div className="py-16 md:py-24 bg-white px-4 md:px-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center space-y-8">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium">
+              أصبحت المؤسسة منصة حيوية توحد جهود الشباب. لا تكتفِ بالقراءة، كن جزءاً من الأثر وابدأ رحلتك الآن.
+            </p>
             
-            <div className="relative z-10">
-              <Heart className="w-8 h-8 md:w-10 md:h-10 text-[#C08F2D] mx-auto mb-4" />
-              <h2 className="text-2xl md:text-4xl font-black text-white mb-4 leading-tight">
-                القصة لم تكتمل بعد،<br className="hidden md:block"/>أنت من سيكتب الفصل القادم
-              </h2>
-              <p className="text-white/80 text-[14px] md:text-lg font-medium mb-8 max-w-xl mx-auto px-2">
-                أصبحت المؤسسة منصة حيوية توحد جهود الشباب. لا تكتفِ بالقراءة، كن جزءاً من الأثر وابدأ رحلتك الآن.
-              </p>
-              <button 
-                onClick={() => onNavigate('programs')}
-                className="bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409] px-6 py-3 md:px-8 md:py-3.5 rounded-full font-black text-sm md:text-base transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 mx-auto block cursor-pointer"
-              >
-                استكشف برامجنا وفرصنا
-              </button>
-            </div>
+            <button 
+              onClick={() => onNavigate('programs')}
+              className="bg-[#C08F2D] hover:bg-[#a67b25] text-white font-bold py-3 px-8 md:px-10 rounded-lg text-sm md:text-base transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+            >
+              استكشف برامجنا وفرصنا
+            </button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 // src/pages/AboutPage.jsx
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView, useScroll } from 'framer-motion';
-import { Target, Eye, Heart, Users, ChevronDown, Milestone, BookOpen, X, Volume2, VolumeX, Briefcase } from 'lucide-react';
+import { Target, Eye, Heart, Users, Milestone, BookOpen, X, Volume2, VolumeX, Briefcase } from 'lucide-react';
 import Footer from '../components/Footer';
 import useEscapeKey from '../hooks/useEscapeKey';
 
@@ -160,50 +160,92 @@ export default function AboutPage({ onNavigate }) {
   return (
     <div className="w-full bg-[#fcfcfc] font-sans selection:bg-[#C08F2D] selection:text-white overflow-x-hidden" dir="rtl">
       
-      {/* 1. Hero Section */}
-      <div className="relative pt-28 pb-16 md:pt-48 md:pb-32 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden min-h-[60vh] md:min-h-[80vh] flex items-center">
+      {/* 1. Hero Section (Mobile Friendly & Premium Desktop) */}
+      <div className="relative pt-24 pb-12 md:pt-40 md:pb-24 bg-gradient-to-br from-[#8a1538] via-[#521623] to-[#1a070b] overflow-hidden min-h-[auto] md:min-h-[85vh] flex items-center">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
-        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center mt-6 md:mt-8">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-5 md:mb-8 leading-[1.15] tracking-tight">
-              رؤية ملكية..<br className="md:hidden" />
-              <span className="text-[#C08F2D] drop-shadow-sm px-2 md:px-0">بطموح شبابي</span>
-            </h1>
-            <p className="text-[15px] md:text-xl text-white/90 font-medium max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
-              تنفيذاً لرؤية صاحب السموّ الأمير الحسين بن عبدالله الثاني، ولي العهد المعظم. بدأنا عملنا انطلاقاً من الإيمان العميق بأن الشباب هم الأساس في تشكيل مستقبل المملكة، ليكون لهم دور فعّال، ومؤهلين لنهضة أنفسهم ومجتمعاتهم.
-            </p>
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
+          {/* 🟢 في الموبايل: flex-col لسهولة الترتيب، في الكمبيوتر: grid */}
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            
+            {/* القسم الرئيسي: الاقتباس الملكي */}
             <motion.div 
-              animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}
-              className="flex justify-center mt-6 md:mt-8 cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-              onClick={() => document.getElementById('core-section').scrollIntoView({ behavior: 'smooth' })}
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 text-right order-2 lg:order-1 w-full"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/30 flex items-center justify-center bg-white/10 backdrop-blur-sm shadow-md">
-                <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-white" />
+
+              {/* بطاقة الاقتباس الملكي: تصغير الهوامش وتعديل الخطوط للموبايل */}
+              <div className="bg-black/25 backdrop-blur-md border-r-4 md:border-r-8 border-[#C08F2D] border-t border-b border-l border-white/10 p-6 sm:p-8 md:p-12 rounded-2xl md:rounded-3xl shadow-2xl mt-4 lg:mt-0">
+                <p className="text-white text-lg sm:text-xl md:text-3xl font-bold leading-[1.9] md:leading-[2.2] mb-6 md:mb-8 text-justify">
+                  ”مؤسـســة ولي العهــد… مســارٌ للفــرص، ومنـبــر الشــباب للتطــور، تحمــل طموحاتهم نحو تحقيق الإنجاز والتميّز. المؤسســة تعمل على صقل وتطـوير مهاراتهم لبناء مســتقبل يتســم بالإنجاز لأردننا.“
+                </p>
+                <div>
+                  <span className="text-[#C08F2D] font-black text-base sm:text-lg md:text-2xl block mb-1">
+                    صاحب السمو الملكي الأمير الحسين بن عبداللّه الثاني
+                  </span>
+                  <span className="text-white/80 font-bold text-sm sm:text-base md:text-lg block">
+                    ولي العهد المعظم
+                  </span>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
+
+            {/* القسم الجانبي: الصورة */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }} 
+              animate={{ opacity: 1, scale: 1 }} 
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-5 relative order-1 lg:order-2 w-full mt-4 md:mt-0"
+            >
+              {/* تصغير حجم الصورة قليلاً على الموبايل لتبدو أرتب وتوسيطها */}
+              <div className="relative mx-auto w-full max-w-[300px] sm:max-w-sm lg:max-w-none">
+                
+                {/* تظهر الشارة هنا فقط في شاشات الموبايل (لتوازن التصميم) */}
+
+                {/* إطار جمالي خلف الصورة (مخفف قليلاً للموبايل) */}
+                <div className="absolute -inset-2 md:-inset-3 bg-gradient-to-tr from-[#C08F2D] to-transparent rounded-[2rem] md:rounded-[2.8rem] opacity-30 md:opacity-40 blur-lg md:blur-xl"></div>
+                
+                {/* حاوية الصورة الأساسية */}
+                <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-[1.8rem] md:rounded-[2.8rem] overflow-hidden shadow-2xl aspect-[4/5] w-full flex items-center justify-center group">
+                  
+                  <img 
+                    src="https://cpf.jo/wp-content/uploads/2024/04/1D1A5517-min-1-e1709019652743.jpg" 
+                    alt="صاحب السمو الملكي الأمير الحسين بن عبدالله الثاني" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 object-top"
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+                  
+                  {/* تصغير خطوط وأبعاد النصوص داخل الصورة للموبايل */}
+                  <div className="absolute bottom-5 right-5 left-5 md:bottom-8 md:right-8 md:left-8 z-10 text-right">
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </div>
 
       {/* 2. الرؤية والرسالة */}
-      <div id="core-section" className="py-12 md:py-24 bg-[#f8fafc] relative scroll-mt-16 md:scroll-mt-20 border-b border-gray-100">
+      <div id="core-section" className="py-12 md:py-20 bg-[#f8fafc] relative border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
 
-          {/* 🟢 الرؤية: اقتباس بارز بدل بطاقة أيقونة، لأنها الشعار الأساسي للمؤسسة */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative bg-gradient-to-br from-[#8a1538] via-[#6d1129] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-20 text-center overflow-hidden shadow-2xl mb-10 md:mb-16">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative bg-gradient-to-br from-[#8a1538] via-[#6d1129] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-center overflow-hidden shadow-2xl mb-10 md:mb-16">
             <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
             <div className="relative z-10 max-w-3xl mx-auto">
               <span className="inline-flex items-center gap-2 text-white/70 font-bold text-sm md:text-base mb-4 md:mb-6">
                 <Eye className="w-4 h-4 md:w-5 md:h-5" /> رؤيتنا
               </span>
-              <h2 className="text-2xl md:text-5xl font-black text-white leading-tight mb-4 md:mb-6">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4 md:mb-6">
                 "شباب قادر <span className="text-[#C08F2D]">لأردن طموح</span>"
               </h2>
               <p className="text-white/80 text-[15px] md:text-lg leading-relaxed font-medium max-w-2xl mx-auto">تتمحور جهود المؤسسة حول هذه الرؤية بهدف الربط بين الشباب والمؤسسات الوطنية، لتوجيه طاقاتهم وقدرتهم على الإبداع والابتكار نحو التطوير والنمو الدائم.</p>
             </div>
           </motion.div>
 
-          {/* 🟢 الرسالة: نص بسيط بلا بطاقة أو أيقونة مربعة، ليختلف بصرياً عن الرؤية والمسارات */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }} className="max-w-3xl mx-auto text-center px-2 md:px-4">
             <h3 className="inline-flex items-center gap-2 text-[#8a1538] font-black text-xl md:text-2xl mb-3 md:mb-4">
               <Target className="w-5 h-5 md:w-6 md:h-6 text-[#C08F2D]" /> رسالتنا
@@ -245,17 +287,16 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 4. مسيرة الأثر 🟢 (تم إصلاح الـ Timeline للموبايل ليكون على جهة واحدة وواضح) */}
-      <div className="py-16 md:py-32 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
+      {/* 4. مسيرة الأثر */}
+      <div className="py-16 md:py-24 bg-[#f8fafc] overflow-hidden border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12 md:mb-28 relative z-10">
+          <div className="text-center mb-12 md:mb-20 relative z-10">
             <Milestone className="w-10 h-10 md:w-14 md:h-14 text-[#C08F2D] mx-auto mb-3 md:mb-6" />
-            <h2 className="text-3xl md:text-5xl font-black text-[#8a1538] mb-2 md:mb-4">مسيرة الأثر</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-[#8a1538] mb-2 md:mb-4">مسيرة الأثر</h2>
             <p className="text-sm md:text-xl text-gray-500 font-medium">محطات صنعناها معاً، ومستمرون في العطاء</p>
           </div>
 
           <div className="relative max-w-6xl mx-auto" ref={timelineRef}>
-            {/* خط المنتصف للكمبيوتر، وخط أقصى اليمين للموبايل */}
             <div className="absolute right-4 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gray-200 rounded-full z-0"></div>
             <motion.div 
               className="absolute right-4 md:right-1/2 transform md:translate-x-1/2 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C08F2D] to-[#8a1538] rounded-full z-0 origin-top"
@@ -265,8 +306,7 @@ export default function AboutPage({ onNavigate }) {
             {milestones.map((stone, idx) => {
               const isEven = idx % 2 === 0;
               return (
-                <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-12 md:mb-28 group pr-12 md:pr-0">
-                  {/* النقطة الدائرية */}
+                <div key={idx} className="relative flex flex-col md:flex-row items-center justify-between w-full mb-12 md:mb-24 group pr-12 md:pr-0">
                   <div className="absolute right-[0.4rem] md:right-1/2 transform md:translate-x-1/2 w-5 h-5 md:w-8 md:h-8 rounded-full bg-white border-4 border-gray-300 z-20 flex items-center justify-center top-6 md:top-auto">
                     <motion.div 
                       initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: false, margin: "-50px" }} transition={{ type: "spring", stiffness: 200, damping: 10 }}
@@ -274,7 +314,6 @@ export default function AboutPage({ onNavigate }) {
                     />
                   </div>
 
-                  {/* 🟢 البطاقة النصية: على الموبايل تحتوي صورة مصغرة، على الكمبيوتر تتبادل الجهة حسب isEven */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6 }}
                     className={`w-full md:w-[45%] bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden hover:-translate-y-2 transition-transform duration-500 ${isEven ? 'md:order-1' : 'md:order-2'}`}
@@ -283,20 +322,19 @@ export default function AboutPage({ onNavigate }) {
                        <img src={stone.image} alt={stone.title} className="w-full h-full object-cover" />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <div className="p-6 md:p-12">
-                      <span className="text-[#721F31] font-black text-2xl md:text-4xl mb-2 md:mb-3 block drop-shadow-sm">{stone.year}</span>
-                      <h3 className="text-xl md:text-3xl font-black text-[#8a1538] mb-2 md:mb-4">{stone.title}</h3>
-                      <p className="text-gray-500 font-medium text-[14px] md:text-lg leading-relaxed">{stone.desc}</p>
+                    <div className="p-6 md:p-10">
+                      <span className="text-[#721F31] font-black text-2xl md:text-3xl mb-2 block drop-shadow-sm">{stone.year}</span>
+                      <h3 className="text-xl md:text-2xl font-black text-[#8a1538] mb-2 md:mb-3">{stone.title}</h3>
+                      <p className="text-gray-500 font-medium text-[14px] md:text-base leading-relaxed">{stone.desc}</p>
                     </div>
                   </motion.div>
 
-                  {/* 🟢 الصورة الجانبية: كمبيوتر فقط، تتبادل الجهة عكس البطاقة */}
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? 50 : -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-                    className={`hidden md:block w-full md:w-[45%] relative rounded-3xl overflow-hidden shadow-2xl h-80 group ${isEven ? 'md:order-2' : 'md:order-1'}`}
+                    className={`hidden md:block w-full md:w-[45%] relative rounded-3xl overflow-hidden shadow-lg h-72 group ${isEven ? 'md:order-2' : 'md:order-1'}`}
                   >
                     <img src={stone.image} alt={stone.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a070b]/40 to-transparent"></div>
                   </motion.div>
                 </div>
               );
@@ -305,11 +343,11 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* 5. المسارات التنموية 🟢 (تم إصلاح العرض ليكون بنفس الطول بدون تقطيع) */}
-      <div className="py-12 md:py-24 bg-white overflow-hidden">
+      {/* 5. المسارات التنموية */}
+      <div className="py-12 md:py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3 md:mb-4">مساراتنا الاستراتيجية</h2>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3">مساراتنا الاستراتيجية</h2>
             <p className="text-[15px] md:text-lg text-gray-500 font-medium max-w-3xl mx-auto px-2">
               بهدف بناء قدرات الشباب وتوفير الأدوات والمنصات اللازمة، ركزنا عملنا الميداني والمؤسسي ضمن ثلاثة مسارات أساسية.
             </p>
@@ -320,43 +358,43 @@ export default function AboutPage({ onNavigate }) {
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="flex-1 p-6 md:p-10 w-[260px] md:w-auto md:min-w-0 snap-center shrink-0 flex flex-col"
+                className="flex-1 p-6 md:p-8 w-[260px] md:w-auto md:min-w-0 snap-center shrink-0 flex flex-col"
               >
-                <div className="flex items-center gap-3 mb-3 md:mb-5">
+                <div className="flex items-center gap-3 mb-3 md:mb-4">
                   <track.icon className="w-6 h-6 md:w-7 md:h-7 shrink-0" style={{ color: track.color }} />
-                  <h3 className="text-lg md:text-2xl font-black" style={{ color: track.color }}>{track.title}</h3>
+                  <h3 className="text-lg md:text-xl font-black" style={{ color: track.color }}>{track.title}</h3>
                 </div>
-                <p className="text-gray-500 font-medium leading-relaxed text-[14px] md:text-lg">{track.desc}</p>
+                <p className="text-gray-500 font-medium leading-relaxed text-[14px] md:text-base">{track.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* 6. قيادات المؤسسة 🟢 (تم إزالة الفراغات البيضاء/المؤثرات التي كانت تسبب التداخل) */}
-      <div className="py-12 md:py-24 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
+      {/* 6. قيادات المؤسسة */}
+      <div className="py-12 md:py-20 bg-[#f8fafc] border-t border-gray-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3 md:mb-4">قيادات المؤسسة</h2>
-            <p className="text-[15px] md:text-lg text-gray-500 font-medium mb-6 md:mb-10">كفاءات وطنية توجه البوصلة نحو تحقيق الرؤية الملكية</p>
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-4xl font-black text-[#8a1538] mb-3">قيادات المؤسسة</h2>
+            <p className="text-[15px] md:text-lg text-gray-500 font-medium mb-6 md:mb-8">كفاءات وطنية توجه البوصلة نحو تحقيق الرؤية الملكية</p>
             
-            <div className="w-full max-w-sm mx-auto bg-gray-200/60 p-1 rounded-full mb-8 md:mb-12 flex">
+            <div className="w-full max-w-sm mx-auto bg-gray-200/60 p-1 rounded-full mb-8 flex">
               <button 
                 onClick={() => setActiveLeaderTab('board')}
-                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 cursor-pointer ${activeLeaderTab === 'board' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`flex-1 py-2.5 rounded-full font-bold text-[13px] md:text-sm transition-all duration-300 cursor-pointer ${activeLeaderTab === 'board' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 مجلس الأمناء
               </button>
               <button 
                 onClick={() => setActiveLeaderTab('executive')}
-                className={`flex-1 py-2.5 md:py-3 rounded-full font-bold text-[13px] md:text-base transition-all duration-300 cursor-pointer ${activeLeaderTab === 'executive' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`flex-1 py-2.5 rounded-full font-bold text-[13px] md:text-sm transition-all duration-300 cursor-pointer ${activeLeaderTab === 'executive' ? 'bg-white text-[#8a1538] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 الفريق الإداري
               </button>
             </div>
           </div>
 
-          <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8 pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+          <motion.div layout className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 pb-6 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
             <AnimatePresence mode="popLayout">
               {leaders[activeLeaderTab].map((member) => (
                 <motion.div
@@ -367,16 +405,16 @@ export default function AboutPage({ onNavigate }) {
                   role="button"
                   aria-label={`عرض تفاصيل ${member.name}`}
                   layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
-                  className={`bg-white p-3 md:p-4 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 group text-center w-[150px] sm:w-[180px] md:w-auto md:min-w-0 snap-center shrink-0 cursor-pointer flex flex-col ${CARD_FOCUS_RING}`}
+                  className={`bg-white p-3 md:p-3 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300 group text-center w-[150px] sm:w-[160px] md:w-auto md:min-w-0 snap-center shrink-0 cursor-pointer flex flex-col ${CARD_FOCUS_RING}`}
                 >
-                  <div className="relative overflow-hidden rounded-xl md:rounded-2xl mb-3 md:mb-5 aspect-[4/5] bg-gray-50">
+                  <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-gray-50">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"/>
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white text-xs font-bold border border-white/50 px-3 py-1 rounded-full">عرض التفاصيل</span>
+                      <span className="text-white text-[10px] font-bold border border-white/50 px-2 py-1 rounded-full">عرض التفاصيل</span>
                     </div>
                   </div>
-                  <h3 className="text-[13px] md:text-lg font-black text-[#8a1538] mb-1 leading-tight">{member.name}</h3>
-                  <p className="text-[#721F31] font-bold text-[10px] md:text-sm leading-tight mb-1 mt-auto">{member.role}</p>
+                  <h3 className="text-[12px] md:text-sm font-black text-[#8a1538] mb-1 leading-tight">{member.name}</h3>
+                  <p className="text-[#721F31] font-bold text-[10px] md:text-[11px] leading-tight mb-1 mt-auto">{member.role}</p>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -385,22 +423,22 @@ export default function AboutPage({ onNavigate }) {
       </div>
 
       {/* 7. Call to Action */}
-      <div className="py-12 md:py-24 bg-white relative px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-[#8a1538] via-[#5a1826] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden shadow-2xl">
+      <div className="py-12 md:py-20 bg-white relative px-4 md:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-[#8a1538] via-[#5a1826] to-[#3b1019] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
             <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url(/the-theme.svg)', backgroundSize: '300px' }}></div>
             
             <div className="relative z-10">
-              <Heart className="w-10 h-10 md:w-12 md:h-12 text-[#C08F2D] mx-auto mb-4 md:mb-6" />
-              <h2 className="text-2xl md:text-5xl font-black text-white mb-4 md:mb-6 leading-tight">
+              <Heart className="w-8 h-8 md:w-10 md:h-10 text-[#C08F2D] mx-auto mb-4" />
+              <h2 className="text-2xl md:text-4xl font-black text-white mb-4 leading-tight">
                 القصة لم تكتمل بعد،<br className="hidden md:block"/>أنت من سيكتب الفصل القادم
               </h2>
-              <p className="text-white/80 text-[15px] md:text-xl font-medium mb-8 md:mb-10 max-w-2xl mx-auto px-2">
+              <p className="text-white/80 text-[14px] md:text-lg font-medium mb-8 max-w-xl mx-auto px-2">
                 أصبحت المؤسسة منصة حيوية توحد جهود الشباب. لا تكتفِ بالقراءة، كن جزءاً من الأثر وابدأ رحلتك الآن.
               </p>
               <button 
                 onClick={() => onNavigate('programs')}
-                className="bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409] px-8 py-3.5 md:px-10 md:py-4 rounded-full font-black text-sm md:text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 mx-auto block cursor-pointer"
+                className="bg-[#C08F2D] hover:bg-[#a67b25] text-[#1a0409] px-6 py-3 md:px-8 md:py-3.5 rounded-full font-black text-sm md:text-base transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 mx-auto block cursor-pointer"
               >
                 استكشف برامجنا وفرصنا
               </button>

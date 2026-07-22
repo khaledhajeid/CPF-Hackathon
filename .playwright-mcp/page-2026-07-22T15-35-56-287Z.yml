@@ -1,0 +1,104 @@
+- generic [ref=f47e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f47e543] [cursor=pointer]
+  - generic [ref=f47e3]:
+    - navigation [ref=f47e4]:
+      - generic [ref=f47e5]:
+        - img "مؤسسة ولي العهد" [ref=f47e7] [cursor=pointer]
+        - generic [ref=f47e8]:
+          - button "الرئيسية" [ref=f47e9]
+          - button "البرامج والفرص" [ref=f47e11]
+          - button "قصص شبابنا" [ref=f47e12]
+          - button "أخبارنا" [ref=f47e13]
+          - button "الشركاء" [ref=f47e14]
+          - button "عن المؤسسة" [ref=f47e15]
+          - button "التقارير والدراسات" [ref=f47e16]
+        - generic [ref=f47e17]:
+          - button [ref=f47e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f47e22] [cursor=pointer]
+    - generic [ref=f47e548]:
+      - generic [ref=f47e551]:
+        - heading "البرامج والفرص" [level=1] [ref=f47e552]
+        - paragraph [ref=f47e553]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f47e554]:
+        - generic [ref=f47e555]:
+          - button "البرامج والمبادرات" [ref=f47e556] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f47e562] [cursor=pointer]
+          - button "شبكات وموارد" [active] [ref=f47e567] [cursor=pointer]
+        - paragraph [ref=f47e573]: جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية
+        - generic [ref=f47e1066]:
+          - button [ref=f47e1067] [cursor=pointer]:
+            - heading "دليل الجهات" [level=3] [ref=f47e1073]
+            - paragraph [ref=f47e1074]: دليل شامل بالجهات والمنظمات الشريكة التي يمكن للشباب التواصل معها للاستفادة من برامجها وخدماتها.
+            - generic [ref=f47e1075]: استكشف
+          - button [ref=f47e1079] [cursor=pointer]:
+            - heading "الشبكات الشبابية" [level=3] [ref=f47e1085]
+            - paragraph [ref=f47e1086]: شبكات شبابية تابعة للمؤسسة تفتح مجالاً للتواصل المستمر والأثر بعد انتهاء البرامج الرسمية.
+            - generic [ref=f47e1087]: استكشف
+          - button [ref=f47e1091] [cursor=pointer]:
+            - heading "خريطة الصنّاع" [level=3] [ref=f47e1097]
+            - paragraph [ref=f47e1098]: دليل جغرافي تفاعلي يربط الصنّاع بمساحات التصنيع والحاضنات في مختلف محافظات المملكة.
+            - generic [ref=f47e1099]: استكشف
+      - contentinfo [ref=f47e982]:
+        - generic [ref=f47e983]:
+          - generic [ref=f47e984]:
+            - generic [ref=f47e985]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f47e986]
+              - paragraph [ref=f47e987]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f47e989]:
+              - textbox "البريد الإلكتروني..." [ref=f47e990]
+              - button "اشترك الآن" [ref=f47e991] [cursor=pointer]
+          - generic [ref=f47e992]:
+            - generic [ref=f47e993]:
+              - img "مؤسسة ولي العهد" [ref=f47e995]
+              - generic [ref=f47e996]:
+                - link "Facebook" [ref=f47e997] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f47e1000] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f47e1003] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f47e1007] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f47e1012]:
+              - heading "روابط سريعة" [level=4] [ref=f47e1013]
+              - list [ref=f47e1014]:
+                - listitem [ref=f47e1015]:
+                  - button "الرئيسية" [ref=f47e1016] [cursor=pointer]
+                - listitem [ref=f47e1017]:
+                  - button "عن المؤسسة" [ref=f47e1018] [cursor=pointer]
+                - listitem [ref=f47e1019]:
+                  - button "البرامج والمبادرات" [ref=f47e1020] [cursor=pointer]
+                - listitem [ref=f47e1021]:
+                  - button "أحدث الأخبار" [ref=f47e1022] [cursor=pointer]
+                - listitem [ref=f47e1023]:
+                  - button "التقارير والدراسات" [ref=f47e1024] [cursor=pointer]
+                - listitem [ref=f47e1025]:
+                  - button "قصص النجاح" [ref=f47e1026] [cursor=pointer]
+            - generic [ref=f47e1029]:
+              - heading "لديك استفسار؟" [level=4] [ref=f47e1030]
+              - paragraph [ref=f47e1033]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f47e1034]:
+                - listitem [ref=f47e1035]:
+                  - generic [ref=f47e1039]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f47e1040]:
+                  - link "+962 6 555 5555" [ref=f47e1043] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f47e1044]:
+                  - link "info@cpf.jo" [ref=f47e1048] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f47e1049] [cursor=pointer]
+          - generic [ref=f47e1053]:
+            - button "أعلى الصفحة" [ref=f47e1054] [cursor=pointer]
+            - generic [ref=f47e1059]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f47e1060] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f47e1061]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f47e1062] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f47e1063]: (قريباً)
+            - generic [ref=f47e1064]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f47e540] [cursor=pointer]:
+      - img "عون AI" [ref=f47e541]

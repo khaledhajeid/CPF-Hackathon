@@ -1,0 +1,147 @@
+- generic [active] [ref=f10e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f10e543] [cursor=pointer]
+  - generic [ref=f10e3]:
+    - navigation [ref=f10e4]:
+      - generic [ref=f10e5]:
+        - img "مؤسسة ولي العهد" [ref=f10e7] [cursor=pointer]
+        - generic [ref=f10e8]:
+          - button "الرئيسية" [ref=f10e9]
+          - button "البرامج والفرص" [ref=f10e11]
+          - button "قصص شبابنا" [ref=f10e12]
+          - button "أخبارنا" [ref=f10e13]
+          - button "الشركاء" [ref=f10e14]
+          - button "عن المؤسسة" [ref=f10e15]
+          - button "التقارير والدراسات" [ref=f10e16]
+        - generic [ref=f10e17]:
+          - button [ref=f10e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f10e22] [cursor=pointer]
+    - generic [ref=f10e548]:
+      - generic [ref=f10e551]:
+        - heading "البرامج والفرص" [level=1] [ref=f10e552]
+        - paragraph [ref=f10e553]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f10e554]:
+        - generic [ref=f10e555]:
+          - button "البرامج والمبادرات" [ref=f10e556] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f10e562] [cursor=pointer]
+          - button "شبكات وموارد" [ref=f10e567] [cursor=pointer]
+        - paragraph [ref=f10e573]: جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية
+        - generic [ref=f10e1103]:
+          - button "رجوع إلى شبكات وموارد" [ref=f10e1104] [cursor=pointer]
+          - heading "خريطة الصنّاع" [level=2] [ref=f10e1107]
+          - generic [ref=f10e1108]:
+            - paragraph [ref=f10e1109]: دليل تفاعلي يربط الصنّاع والمبتكرين بمساحات التصنيع، مراكز التدريب، والحاضنات المنتشرة في مختلف محافظات المملكة.
+            - generic [ref=f10e1110]:
+              - button "كل الفئات" [pressed] [ref=f10e1111] [cursor=pointer]
+              - button "مساحات التصنيع الرقمي" [ref=f10e1112] [cursor=pointer]
+              - button "مراكز التدريب التقني" [ref=f10e1116] [cursor=pointer]
+              - button "حاضنات ومسرّعات الأعمال" [ref=f10e1120] [cursor=pointer]
+              - button "خدمات الطباعة ثلاثية الأبعاد" [ref=f10e1126] [cursor=pointer]
+              - button "خدمات القص بالليزر وCNC" [ref=f10e1130] [cursor=pointer]
+              - button "موردو الخامات (خشب / معادن)" [ref=f10e1137] [cursor=pointer]
+            - generic [ref=f10e1142]:
+              - generic [ref=f10e1144]:
+                - generic [ref=f10e1145]:
+                  - generic [ref=f10e1146]:
+                    - heading "اختر المحافظة" [level=3] [ref=f10e1147]
+                    - paragraph [ref=f10e1148]: اضغط على الخريطة للفلترة
+                  - button "إلغاء التحديد" [ref=f10e1416] [cursor=pointer]
+                - img [ref=f10e1151]:
+                  - generic [ref=f10e1152]:
+                    - generic [ref=f10e1153] [cursor=pointer]: إربد
+                    - generic [ref=f10e1155] [cursor=pointer]: العقبة
+                    - generic [ref=f10e1157] [cursor=pointer]: مأدبا
+                    - generic [ref=f10e1159] [cursor=pointer]: الكرك
+                    - generic [ref=f10e1161] [cursor=pointer]: الطفيلة
+                    - generic [ref=f10e1163] [cursor=pointer]: عمان
+                    - generic [ref=f10e1165] [cursor=pointer]: الزرقاء
+                    - generic [ref=f10e1167] [cursor=pointer]: عجلون
+                    - generic [ref=f10e1169] [cursor=pointer]: جرش
+                    - generic [ref=f10e1171] [cursor=pointer]: معان
+                    - generic [ref=f10e1173] [cursor=pointer]: البلقاء
+                    - generic [ref=f10e1175] [cursor=pointer]: المفرق
+              - generic [ref=f10e1177]:
+                - generic [ref=f10e1417]:
+                  - generic [ref=f10e1418]: "عرض نتائج:"
+                  - generic [ref=f10e1419]: إربد
+                  - generic [ref=f10e1420]: (2 نتيجة)
+                - generic [ref=f10e1421]:
+                  - generic [ref=f10e1422]:
+                    - generic [ref=f10e1423]: مساحات التصنيع الرقمي
+                    - heading "مختبر إربد للتصنيع الرقمي" [level=3] [ref=f10e1429]
+                    - paragraph [ref=f10e1430]: مختبر جامعي مفتوح للمجتمع يتيح الوصول إلى أدوات النمذجة الأولية والتصميم الرقمي.
+                    - generic [ref=f10e1431]:
+                      - generic [ref=f10e1432]: إربد، حرم جامعة العلوم والتكنولوجيا
+                      - link "الموقع" [ref=f10e1437] [cursor=pointer]:
+                        - /url: https://www.irbid-digitallab.jo
+                  - generic [ref=f10e1441]:
+                    - generic [ref=f10e1442]: موردو الخامات (خشب / معادن)
+                    - heading "مورّد الخشب والمعادن - إربد" [level=3] [ref=f10e1449]
+                    - paragraph [ref=f10e1450]: مورد خامات متخصص بتوفير الخشب والمعادن والأكريليك للصنّاع والورش الحرفية بأسعار الجملة.
+                    - generic [ref=f10e1451]:
+                      - generic [ref=f10e1452]: إربد، المنطقة الصناعية الأولى
+                      - link "الموقع" [ref=f10e1457] [cursor=pointer]:
+                        - /url: https://www.irbid-materials.jo
+      - contentinfo [ref=f10e982]:
+        - generic [ref=f10e983]:
+          - generic [ref=f10e984]:
+            - generic [ref=f10e985]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f10e986]
+              - paragraph [ref=f10e987]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f10e989]:
+              - textbox "البريد الإلكتروني..." [ref=f10e990]
+              - button "اشترك الآن" [ref=f10e991] [cursor=pointer]
+          - generic [ref=f10e992]:
+            - generic [ref=f10e993]:
+              - img "مؤسسة ولي العهد" [ref=f10e995]
+              - generic [ref=f10e996]:
+                - link "Facebook" [ref=f10e997] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f10e1000] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f10e1003] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f10e1007] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f10e1012]:
+              - heading "روابط سريعة" [level=4] [ref=f10e1013]
+              - list [ref=f10e1014]:
+                - listitem [ref=f10e1015]:
+                  - button "الرئيسية" [ref=f10e1016] [cursor=pointer]
+                - listitem [ref=f10e1017]:
+                  - button "عن المؤسسة" [ref=f10e1018] [cursor=pointer]
+                - listitem [ref=f10e1019]:
+                  - button "البرامج والمبادرات" [ref=f10e1020] [cursor=pointer]
+                - listitem [ref=f10e1021]:
+                  - button "أحدث الأخبار" [ref=f10e1022] [cursor=pointer]
+                - listitem [ref=f10e1023]:
+                  - button "التقارير والدراسات" [ref=f10e1024] [cursor=pointer]
+                - listitem [ref=f10e1025]:
+                  - button "قصص النجاح" [ref=f10e1026] [cursor=pointer]
+            - generic [ref=f10e1029]:
+              - heading "لديك استفسار؟" [level=4] [ref=f10e1030]
+              - paragraph [ref=f10e1033]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f10e1034]:
+                - listitem [ref=f10e1035]:
+                  - generic [ref=f10e1039]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f10e1040]:
+                  - link "+962 6 555 5555" [ref=f10e1043] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f10e1044]:
+                  - link "info@cpf.jo" [ref=f10e1048] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f10e1049] [cursor=pointer]
+          - generic [ref=f10e1053]:
+            - button "أعلى الصفحة" [ref=f10e1054] [cursor=pointer]
+            - generic [ref=f10e1059]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f10e1060] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f10e1061]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f10e1062] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f10e1063]: (قريباً)
+            - generic [ref=f10e1064]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f10e540] [cursor=pointer]:
+      - img "عون AI" [ref=f10e541]

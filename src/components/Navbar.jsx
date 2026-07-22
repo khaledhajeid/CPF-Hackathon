@@ -44,7 +44,6 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     { id: 'partnerships', label: 'الشركاء' },
     { id: 'about', label: 'عن المؤسسة' },
     { id: 'publications', label: 'التقارير والدراسات' },
-
   ];
 
   return (

@@ -1,0 +1,115 @@
+- generic [active] [ref=f21e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f21e543] [cursor=pointer]
+  - generic [ref=f21e3]:
+    - navigation [ref=f21e4]:
+      - generic [ref=f21e5]:
+        - img "مؤسسة ولي العهد" [ref=f21e7] [cursor=pointer]
+        - generic [ref=f21e8]:
+          - button "الرئيسية" [ref=f21e9]
+          - button "البرامج والفرص" [ref=f21e11]
+          - button "قصص شبابنا" [ref=f21e12]
+          - button "أخبارنا" [ref=f21e13]
+          - button "الشركاء" [ref=f21e14]
+          - button "عن المؤسسة" [ref=f21e15]
+          - button "التقارير والدراسات" [ref=f21e16]
+        - generic [ref=f21e17]:
+          - button [ref=f21e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f21e22] [cursor=pointer]
+    - generic [ref=f21e548]:
+      - generic [ref=f21e551]:
+        - heading "البرامج والفرص" [level=1] [ref=f21e552]
+        - paragraph [ref=f21e553]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f21e554]:
+        - generic [ref=f21e555]:
+          - button "البرامج والمبادرات" [ref=f21e556] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f21e562] [cursor=pointer]
+          - button "شبكات وموارد" [ref=f21e567] [cursor=pointer]
+        - paragraph [ref=f21e573]: جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية
+        - generic [ref=f21e1103]:
+          - button "رجوع إلى شبكات وموارد" [ref=f21e1104] [cursor=pointer]
+          - heading "الشبكات الشبابية" [level=2] [ref=f21e1107]
+          - generic [ref=f21e1108]:
+            - paragraph [ref=f21e1109]: ثلاث مبادرات شبابية قائمة بذاتها، كل واحدة منها تفتح للشباب مجالاً مستقلاً للتواصل والتأثير المستمر بعد انتهاء البرامج الرسمية.
+            - generic [ref=f21e1110]:
+              - generic [ref=f21e1111]:
+                - img "شبكة قادة الغد" [ref=f21e1114]
+                - generic [ref=f21e1116]:
+                  - heading "شبكة قادة الغد" [level=2] [ref=f21e1117]
+                  - paragraph [ref=f21e1118]: شبكة تجمع الشباب الطموح لصقل مهاراتهم القيادية عبر لقاءات دورية وورش تدريبية مع صناع القرار.
+                  - button "انضم للشبكة" [ref=f21e1119] [cursor=pointer]
+              - generic [ref=f21e1124]:
+                - img "شبكة الابتكار الرقمي" [ref=f21e1127]
+                - generic [ref=f21e1129]:
+                  - heading "شبكة الابتكار الرقمي" [level=2] [ref=f21e1130]
+                  - paragraph [ref=f21e1131]: مجتمع تقني يربط المبرمجين والمبتكرين الشباب لتبادل الخبرات والعمل على مشاريع تقنية مشتركة.
+                  - button "انضم للشبكة" [ref=f21e1132] [cursor=pointer]
+              - generic [ref=f21e1137]:
+                - img "شبكة صنّاع الأثر التطوعي" [ref=f21e1140]
+                - generic [ref=f21e1142]:
+                  - heading "شبكة صنّاع الأثر التطوعي" [level=2] [ref=f21e1143]
+                  - paragraph [ref=f21e1144]: شبكة ميدانية تنسّق جهود المتطوعين الشباب في الحملات المجتمعية وتوثّق أثرها في مختلف المحافظات.
+                  - button "انضم للشبكة" [ref=f21e1145] [cursor=pointer]
+      - contentinfo [ref=f21e982]:
+        - generic [ref=f21e983]:
+          - generic [ref=f21e984]:
+            - generic [ref=f21e985]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f21e986]
+              - paragraph [ref=f21e987]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f21e989]:
+              - textbox "البريد الإلكتروني..." [ref=f21e990]
+              - button "اشترك الآن" [ref=f21e991] [cursor=pointer]
+          - generic [ref=f21e992]:
+            - generic [ref=f21e993]:
+              - img "مؤسسة ولي العهد" [ref=f21e995]
+              - generic [ref=f21e996]:
+                - link "Facebook" [ref=f21e997] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f21e1000] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f21e1003] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f21e1007] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f21e1012]:
+              - heading "روابط سريعة" [level=4] [ref=f21e1013]
+              - list [ref=f21e1014]:
+                - listitem [ref=f21e1015]:
+                  - button "الرئيسية" [ref=f21e1016] [cursor=pointer]
+                - listitem [ref=f21e1017]:
+                  - button "عن المؤسسة" [ref=f21e1018] [cursor=pointer]
+                - listitem [ref=f21e1019]:
+                  - button "البرامج والمبادرات" [ref=f21e1020] [cursor=pointer]
+                - listitem [ref=f21e1021]:
+                  - button "أحدث الأخبار" [ref=f21e1022] [cursor=pointer]
+                - listitem [ref=f21e1023]:
+                  - button "التقارير والدراسات" [ref=f21e1024] [cursor=pointer]
+                - listitem [ref=f21e1025]:
+                  - button "قصص النجاح" [ref=f21e1026] [cursor=pointer]
+            - generic [ref=f21e1029]:
+              - heading "لديك استفسار؟" [level=4] [ref=f21e1030]
+              - paragraph [ref=f21e1033]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f21e1034]:
+                - listitem [ref=f21e1035]:
+                  - generic [ref=f21e1039]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f21e1040]:
+                  - link "+962 6 555 5555" [ref=f21e1043] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f21e1044]:
+                  - link "info@cpf.jo" [ref=f21e1048] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f21e1049] [cursor=pointer]
+          - generic [ref=f21e1053]:
+            - button "أعلى الصفحة" [ref=f21e1054] [cursor=pointer]
+            - generic [ref=f21e1059]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f21e1060] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f21e1061]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f21e1062] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f21e1063]: (قريباً)
+            - generic [ref=f21e1064]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f21e540] [cursor=pointer]:
+      - img "عون AI" [ref=f21e541]

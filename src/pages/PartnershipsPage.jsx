@@ -1,13 +1,23 @@
 // src/pages/PartnershipsPage.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Handshake, Globe, TrendingUp, Building2, User, ArrowLeft, Send, UploadCloud, CheckCircle2 } from 'lucide-react';
 import Footer from '../components/Footer';
 
-export default function PartnershipsPage({ onNavigate }) {
-  const [partnerType, setPartnerType] = useState('organization');
+export default function PartnershipsPage({ onNavigate, initialPartnerType }) {
+  const [partnerType, setPartnerType] = useState(initialPartnerType === 'individual' ? 'individual' : 'organization');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  useEffect(() => {
+    if (initialPartnerType) {
+      setPartnerType(initialPartnerType);
+      const timer = setTimeout(() => {
+        document.getElementById('partnership-form')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [initialPartnerType]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

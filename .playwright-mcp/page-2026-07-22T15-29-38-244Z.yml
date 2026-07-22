@@ -1,0 +1,280 @@
+- generic [ref=f40e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f40e543] [cursor=pointer]
+  - generic [ref=f40e3]:
+    - navigation [ref=f40e4]:
+      - generic [ref=f40e5]:
+        - img "مؤسسة ولي العهد" [ref=f40e7] [cursor=pointer]
+        - generic [ref=f40e8]:
+          - button "الرئيسية" [ref=f40e9]
+          - button "البرامج والفرص" [active] [ref=f40e11]
+          - button "قصص شبابنا" [ref=f40e12]
+          - button "أخبارنا" [ref=f40e13]
+          - button "الشركاء" [ref=f40e14]
+          - button "عن المؤسسة" [ref=f40e15]
+          - button "التقارير والدراسات" [ref=f40e16]
+        - generic [ref=f40e17]:
+          - button [ref=f40e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f40e22] [cursor=pointer]
+    - generic [ref=f40e548]:
+      - generic [ref=f40e551]:
+        - heading "البرامج والفرص" [level=1] [ref=f40e552]
+        - paragraph [ref=f40e553]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f40e554]:
+        - generic [ref=f40e555]:
+          - button "البرامج والمبادرات" [ref=f40e556] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f40e562] [cursor=pointer]
+          - button "شبكات وموارد" [ref=f40e567] [cursor=pointer]
+        - paragraph [ref=f40e573]: برامج ومبادرات تتطلب التزاماً طويل الأمد يبني مسيرتك من الصفر
+        - generic [ref=f40e574]:
+          - generic [ref=f40e575]:
+            - button "الكل" [ref=f40e576] [cursor=pointer]
+            - button "تعلّم" [ref=f40e577] [cursor=pointer]
+            - button "قُد" [ref=f40e578] [cursor=pointer]
+            - button "اصنع الأثر" [ref=f40e579] [cursor=pointer]
+          - generic [ref=f40e580]:
+            - button "جامعة الحسين التقنية" [ref=f40e581] [cursor=pointer]:
+              - generic [ref=f40e582]:
+                - generic [ref=f40e583]:
+                  - img "جامعة الحسين التقنية" [ref=f40e584]
+                  - generic [ref=f40e586]:
+                    - generic [ref=f40e591]: تعلّم
+                    - heading "جامعة الحسين التقنية" [level=3] [ref=f40e592]
+                - generic [ref=f40e593]:
+                  - generic [ref=f40e594]: تعلّم
+                  - generic [ref=f40e600]:
+                    - heading "جامعة الحسين التقنية" [level=3] [ref=f40e601]
+                    - paragraph [ref=f40e602]: جامعة تقنية رائدة تهدف إلى تقديم تعليم عالي الجودة لتمكين الشباب الأردني في مجالات الهندسة وعلم الحاسوب.
+                  - button "التفاصيل والتقديم" [ref=f40e603]
+            - button "42 عمّان و42 إربد" [ref=f40e608] [cursor=pointer]:
+              - generic [ref=f40e609]:
+                - generic [ref=f40e610]:
+                  - img "42 عمّان و42 إربد" [ref=f40e611]
+                  - generic [ref=f40e613]:
+                    - generic [ref=f40e619]: تعلّم
+                    - heading "42 عمّان و42 إربد" [level=3] [ref=f40e620]
+                - generic [ref=f40e621]:
+                  - generic [ref=f40e622]: تعلّم
+                  - generic [ref=f40e629]:
+                    - heading "42 عمّان و42 إربد" [level=3] [ref=f40e630]
+                    - paragraph [ref=f40e631]: برنامج تدريبي مبتكر ومجاني لتعليم البرمجة يعتمد على التعلم النظير وبناء المشاريع السحابية بدون معلمين.
+                  - button "التفاصيل والتقديم" [ref=f40e632]
+            - button "كلية التدريب المهني المتقدم في الأردن" [ref=f40e637] [cursor=pointer]:
+              - generic [ref=f40e638]:
+                - generic [ref=f40e639]:
+                  - img "كلية التدريب المهني المتقدم في الأردن" [ref=f40e640]
+                  - generic [ref=f40e642]:
+                    - generic [ref=f40e647]: تعلّم
+                    - heading "كلية التدريب المهني المتقدم في الأردن" [level=3] [ref=f40e648]
+                - generic [ref=f40e649]:
+                  - generic [ref=f40e650]: تعلّم
+                  - generic [ref=f40e656]:
+                    - heading "كلية التدريب المهني المتقدم في الأردن" [level=3] [ref=f40e657]
+                    - paragraph [ref=f40e658]: مؤسسة تعليمية توفر تدريباً مهنياً متقدماً يحاكي متطلبات سوق العمل الحديث والمهارات التقنية.
+                  - button "التفاصيل والتقديم" [ref=f40e659]
+            - button "مساحة الصنّاع" [ref=f40e664] [cursor=pointer]:
+              - generic [ref=f40e665]:
+                - generic [ref=f40e666]:
+                  - img "مساحة الصنّاع" [ref=f40e667]
+                  - generic [ref=f40e669]:
+                    - generic [ref=f40e675]: تعلّم
+                    - heading "مساحة الصنّاع" [level=3] [ref=f40e676]
+                - generic [ref=f40e677]:
+                  - generic [ref=f40e678]: تعلّم
+                  - generic [ref=f40e685]:
+                    - heading "مساحة الصنّاع" [level=3] [ref=f40e686]
+                    - paragraph [ref=f40e687]: مختبرات تصنيع رقمي تتيح للشباب الوصول إلى أحدث التقنيات لتحويل أفكارهم إلى نماذج أولية ومنتجات فعلية.
+                  - button "التفاصيل والتقديم" [ref=f40e688]
+            - button "مبرمجو الأردن" [ref=f40e693] [cursor=pointer]:
+              - generic [ref=f40e694]:
+                - generic [ref=f40e695]:
+                  - img "مبرمجو الأردن" [ref=f40e696]
+                  - generic [ref=f40e698]:
+                    - generic [ref=f40e704]: تعلّم
+                    - heading "مبرمجو الأردن" [level=3] [ref=f40e705]
+                - generic [ref=f40e706]:
+                  - generic [ref=f40e707]: تعلّم
+                  - generic [ref=f40e714]:
+                    - heading "مبرمجو الأردن" [level=3] [ref=f40e715]
+                    - paragraph [ref=f40e716]: مبادرة تسعى إلى محو الأمية الرقمية وبناء قدرات الشباب الأردني في مختلف لغات البرمجة الحديثة.
+                  - button "التفاصيل والتقديم" [ref=f40e717]
+            - button "ملتقى الصناع" [ref=f40e722] [cursor=pointer]:
+              - generic [ref=f40e723]:
+                - generic [ref=f40e724]:
+                  - img "ملتقى الصناع" [ref=f40e725]
+                  - generic [ref=f40e727]:
+                    - generic [ref=f40e733]: تعلّم
+                    - heading "ملتقى الصناع" [level=3] [ref=f40e734]
+                - generic [ref=f40e735]:
+                  - generic [ref=f40e736]: تعلّم
+                  - generic [ref=f40e743]:
+                    - heading "ملتقى الصناع" [level=3] [ref=f40e744]
+                    - paragraph [ref=f40e745]: ملتقى دوري يجمع الشباب أصحاب الحرف والمشاريع الصغيرة من مختلف المحافظات لصقل مهاراتهم الريادية والحرفية.
+                  - button "التفاصيل والتقديم" [ref=f40e746]
+            - button "برنامج القيادة للمدارس" [ref=f40e751] [cursor=pointer]:
+              - generic [ref=f40e752]:
+                - generic [ref=f40e753]:
+                  - img "برنامج القيادة للمدارس" [ref=f40e754]
+                  - generic [ref=f40e756]:
+                    - generic [ref=f40e762]: قُد
+                    - heading "برنامج القيادة للمدارس" [level=3] [ref=f40e763]
+                - generic [ref=f40e764]:
+                  - generic [ref=f40e765]: قُد
+                  - generic [ref=f40e772]:
+                    - heading "برنامج القيادة للمدارس" [level=3] [ref=f40e773]
+                    - paragraph [ref=f40e774]: برنامج مخصص لطلبة المدارس يهدف إلى غرس مفاهيم القيادة والتفكير النقدي منذ سن مبكرة.
+                  - button "التفاصيل والتقديم" [ref=f40e775]
+            - button "برنامج خطى الحسين" [ref=f40e780] [cursor=pointer]:
+              - generic [ref=f40e781]:
+                - generic [ref=f40e782]:
+                  - img "برنامج خطى الحسين" [ref=f40e783]
+                  - generic [ref=f40e785]:
+                    - generic [ref=f40e791]: قُد
+                    - heading "برنامج خطى الحسين" [level=3] [ref=f40e792]
+                - generic [ref=f40e793]:
+                  - generic [ref=f40e794]: قُد
+                  - generic [ref=f40e801]:
+                    - heading "برنامج خطى الحسين" [level=3] [ref=f40e802]
+                    - paragraph [ref=f40e803]: برنامج قيادي متقدم لبناء القدرات القيادية والوطنية للشباب ليصبحوا صناع التغيير في مجتمعاتهم.
+                  - button "التفاصيل والتقديم" [ref=f40e804]
+            - button "مركز الشباب العربي-الاردن" [ref=f40e809] [cursor=pointer]:
+              - generic [ref=f40e810]:
+                - generic [ref=f40e811]:
+                  - img "مركز الشباب العربي-الاردن" [ref=f40e812]
+                  - generic [ref=f40e814]:
+                    - generic [ref=f40e821]: قُد
+                    - heading "مركز الشباب العربي-الاردن" [level=3] [ref=f40e822]
+                - generic [ref=f40e823]:
+                  - generic [ref=f40e824]: قُد
+                  - generic [ref=f40e832]:
+                    - heading "مركز الشباب العربي-الاردن" [level=3] [ref=f40e833]
+                    - paragraph [ref=f40e834]: مركز إقليمي يمكّن الشباب الأردني من التواصل مع نظرائهم العرب لبناء قيادات مشتركة وتبادل الخبرات إقليمياً.
+                  - button "التفاصيل والتقديم" [ref=f40e835]
+            - button "منتدى تواصل" [ref=f40e840] [cursor=pointer]:
+              - generic [ref=f40e841]:
+                - generic [ref=f40e842]:
+                  - img "منتدى تواصل" [ref=f40e843]
+                  - generic [ref=f40e845]:
+                    - generic [ref=f40e850]: قُد
+                    - heading "منتدى تواصل" [level=3] [ref=f40e851]
+                - generic [ref=f40e852]:
+                  - generic [ref=f40e853]: قُد
+                  - generic [ref=f40e859]:
+                    - heading "منتدى تواصل" [level=3] [ref=f40e860]
+                    - paragraph [ref=f40e861]: منتدى وطني سنوي يجمع الشباب الأردني بصناع القرار والخبراء لمناقشة قضايا التمكين الشبابي.
+                  - button "التفاصيل والتقديم" [ref=f40e862]
+            - button "جائزة ولي العهد لأفضل تطبيق خدمات حكومية" [ref=f40e867] [cursor=pointer]:
+              - generic [ref=f40e868]:
+                - generic [ref=f40e869]:
+                  - img "جائزة ولي العهد لأفضل تطبيق خدمات حكومية" [ref=f40e870]
+                  - generic [ref=f40e872]:
+                    - generic [ref=f40e876]: قُد
+                    - heading "جائزة ولي العهد لأفضل تطبيق خدمات حكومية" [level=3] [ref=f40e877]
+                - generic [ref=f40e878]:
+                  - generic [ref=f40e879]: قُد
+                  - generic [ref=f40e884]:
+                    - heading "جائزة ولي العهد لأفضل تطبيق خدمات حكومية" [level=3] [ref=f40e885]
+                    - paragraph [ref=f40e886]: جائزة وطنية تحتفي بأفضل الحلول والتطبيقات الرقمية التي تسهّل وصول المواطنين للخدمات الحكومية.
+                  - button "التفاصيل والتقديم" [ref=f40e887]
+            - button "نَحْنُ" [ref=f40e892] [cursor=pointer]:
+              - generic [ref=f40e893]:
+                - generic [ref=f40e894]:
+                  - img "نَحْنُ" [ref=f40e895]
+                  - generic [ref=f40e897]:
+                    - generic [ref=f40e904]: اصنع الأثر
+                    - heading "نَحْنُ" [level=3] [ref=f40e905]
+                - generic [ref=f40e906]:
+                  - generic [ref=f40e907]: اصنع الأثر
+                  - generic [ref=f40e915]:
+                    - heading "نَحْنُ" [level=3] [ref=f40e916]
+                    - paragraph [ref=f40e917]: المنصة الوطنية لتطوع ومشاركة الشباب، تهدف لتوحيد جهود العمل التطوعي وتوثيقها بشكل رسمي.
+                  - button "التفاصيل والتقديم" [ref=f40e918]
+            - button "الحملات المجتمعية والاستجابات الإنسانية" [ref=f40e923] [cursor=pointer]:
+              - generic [ref=f40e924]:
+                - generic [ref=f40e925]:
+                  - img "الحملات المجتمعية والاستجابات الإنسانية" [ref=f40e926]
+                  - generic [ref=f40e928]:
+                    - generic [ref=f40e932]: اصنع الأثر
+                    - heading "الحملات المجتمعية والاستجابات الإنسانية" [level=3] [ref=f40e933]
+                - generic [ref=f40e934]:
+                  - generic [ref=f40e935]: اصنع الأثر
+                  - generic [ref=f40e940]:
+                    - heading "الحملات المجتمعية والاستجابات الإنسانية" [level=3] [ref=f40e941]
+                    - paragraph [ref=f40e942]: تنظيم وتوجيه طاقات الشباب لدعم الحملات المجتمعية والاستجابات الإنسانية محلياً وإقليمياً.
+                  - button "التفاصيل والتقديم" [ref=f40e943]
+            - button "جائزة الحسين بن عبد الله الثاني للعمل التطوعي" [ref=f40e948] [cursor=pointer]:
+              - generic [ref=f40e949]:
+                - generic [ref=f40e950]:
+                  - img "جائزة الحسين بن عبد الله الثاني للعمل التطوعي" [ref=f40e951]
+                  - generic [ref=f40e953]:
+                    - generic [ref=f40e961]: اصنع الأثر
+                    - heading "جائزة الحسين بن عبد الله الثاني للعمل التطوعي" [level=3] [ref=f40e962]
+                - generic [ref=f40e963]:
+                  - generic [ref=f40e964]: اصنع الأثر
+                  - generic [ref=f40e973]:
+                    - heading "جائزة الحسين بن عبد الله الثاني للعمل التطوعي" [level=3] [ref=f40e974]
+                    - paragraph [ref=f40e975]: جائزة وطنية تكرّم المتطوعين والمبادرات التطوعية المتميزة تقديراً لأثرهم في خدمة مجتمعاتهم المحلية.
+                  - button "التفاصيل والتقديم" [ref=f40e976]
+      - contentinfo [ref=f40e982]:
+        - generic [ref=f40e983]:
+          - generic [ref=f40e984]:
+            - generic [ref=f40e985]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f40e986]
+              - paragraph [ref=f40e987]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f40e989]:
+              - textbox "البريد الإلكتروني..." [ref=f40e990]
+              - button "اشترك الآن" [ref=f40e991] [cursor=pointer]
+          - generic [ref=f40e992]:
+            - generic [ref=f40e993]:
+              - img "مؤسسة ولي العهد" [ref=f40e995]
+              - generic [ref=f40e996]:
+                - link "Facebook" [ref=f40e997] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f40e1000] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f40e1003] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f40e1007] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f40e1012]:
+              - heading "روابط سريعة" [level=4] [ref=f40e1013]
+              - list [ref=f40e1014]:
+                - listitem [ref=f40e1015]:
+                  - button "الرئيسية" [ref=f40e1016] [cursor=pointer]
+                - listitem [ref=f40e1017]:
+                  - button "عن المؤسسة" [ref=f40e1018] [cursor=pointer]
+                - listitem [ref=f40e1019]:
+                  - button "البرامج والمبادرات" [ref=f40e1020] [cursor=pointer]
+                - listitem [ref=f40e1021]:
+                  - button "أحدث الأخبار" [ref=f40e1022] [cursor=pointer]
+                - listitem [ref=f40e1023]:
+                  - button "التقارير والدراسات" [ref=f40e1024] [cursor=pointer]
+                - listitem [ref=f40e1025]:
+                  - button "قصص النجاح" [ref=f40e1026] [cursor=pointer]
+            - generic [ref=f40e1029]:
+              - heading "لديك استفسار؟" [level=4] [ref=f40e1030]
+              - paragraph [ref=f40e1033]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f40e1034]:
+                - listitem [ref=f40e1035]:
+                  - generic [ref=f40e1039]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f40e1040]:
+                  - link "+962 6 555 5555" [ref=f40e1043] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f40e1044]:
+                  - link "info@cpf.jo" [ref=f40e1048] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f40e1049] [cursor=pointer]
+          - generic [ref=f40e1053]:
+            - button "أعلى الصفحة" [ref=f40e1054] [cursor=pointer]
+            - generic [ref=f40e1059]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f40e1060] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f40e1061]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f40e1062] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f40e1063]: (قريباً)
+            - generic [ref=f40e1064]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f40e540] [cursor=pointer]:
+      - img "عون AI" [ref=f40e541]

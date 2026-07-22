@@ -29,7 +29,7 @@ function PublicationCard({ item, index }) {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
-        <span className="absolute top-4 right-4 bg-[#C08F2D] text-white text-[11px] font-black px-3 py-1.5 rounded-full shadow-md">
+        <span className="absolute top-4 right-4 bg-[#C08F2D] text-[#1a0409] text-[11px] font-black px-3 py-1.5 rounded-full shadow-md">
           {item.category}
         </span>
         <span className="absolute bottom-4 right-4 text-white font-black text-sm drop-shadow-md" dir="ltr">
@@ -192,7 +192,7 @@ export default function PublicationsPage({ onNavigate }) {
             <div className="relative w-full md:w-2/5 h-56 md:h-auto shrink-0 bg-gray-100 order-1 md:order-2">
               <img src={featured.coverImage} alt={featured.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:bg-gradient-to-l md:from-black/10 md:via-transparent" />
-              <span className="absolute top-5 right-5 bg-[#C08F2D] text-white text-[11px] font-black px-3 py-1.5 rounded-full shadow-md">
+              <span className="absolute top-5 right-5 bg-[#C08F2D] text-[#1a0409] text-[11px] font-black px-3 py-1.5 rounded-full shadow-md">
                 {featured.category}
               </span>
             </div>

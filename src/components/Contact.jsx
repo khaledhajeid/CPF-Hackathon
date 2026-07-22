@@ -34,8 +34,8 @@ const officesData = [
   { id: 'aqaba', name: 'مكتب العقبة', address: 'مجمع صندوق إدخار الملكية الأردنية – الطابق الثاني', phone: '+962 6 5806161', ext: '2020', hours: 'الأحد - الخميس (08:00 ص - 04:00 م)' },
 ];
 
-export default function Contact({ onNavigate }) { 
-  const [activeTab, setActiveTab] = useState('contact');
+export default function Contact({ onNavigate, initialTab }) {
+  const [activeTab, setActiveTab] = useState(initialTab === 'network' || initialTab === 'careers' ? initialTab : 'contact');
   
   // 🟢 حالة المكتب المختار
   const [selectedOffice, setSelectedOffice] = useState(officesData[0]);

@@ -1,12 +1,13 @@
 // src/components/Programs.jsx
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { LayoutGrid, Target } from 'lucide-react';
+import { LayoutGrid, Target, Network } from 'lucide-react';
 import Footer from '../components/Footer';
 
 // استدعاء المكونات الفرعية
 import NationalPrograms from './programs/NationalPrograms';
 import EventsExplorer from './programs/EventsExplorer';
+import NetworksResources from './programs/NetworksResources';
 
 export default function Programs({ onNavigate, setActiveProgramName, handleRegisterClick }) {
   const [activeTab, setActiveTab] = useState('programs'); 
@@ -45,19 +46,29 @@ export default function Programs({ onNavigate, setActiveProgramName, handleRegis
           >
             <Target className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5" /> الفرص والفعاليات
           </button>
+          <button
+            onClick={() => setActiveTab('networks')}
+            className={`flex items-center justify-center gap-2 px-6 lg:px-6 xl:px-8 py-3 lg:py-3 xl:py-3.5 rounded-full font-black text-[13px] lg:text-[13px] xl:text-sm transition-all duration-300 whitespace-nowrap cursor-pointer ${activeTab === 'networks' ? 'bg-[#721F31] text-white shadow-md' : 'bg-transparent text-gray-500 hover:bg-gray-50 hover:text-gray-900'}`}
+          >
+            <Network className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5" /> شبكات وموارد
+          </button>
         </div>
 
         <p className="text-center text-gray-500 font-medium text-[13px] lg:text-sm -mt-6 lg:-mt-7 mb-8 lg:mb-10">
-          {activeTab === 'programs'
-            ? 'برامج ومبادرات تتطلب التزاماً طويل الأمد يبني مسيرتك من الصفر'
-            : 'فرص وفعاليات قصيرة لتطوير مهاراتك بسرعة'}
+          {activeTab === 'programs' && 'برامج ومبادرات تتطلب التزاماً طويل الأمد يبني مسيرتك من الصفر'}
+          {activeTab === 'events' && 'فرص وفعاليات قصيرة لتطوير مهاراتك بسرعة'}
+          {activeTab === 'networks' && 'جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية'}
         </p>
 
         <AnimatePresence mode="wait">
-          {activeTab === 'programs' ? (
+          {activeTab === 'programs' && (
             <NationalPrograms key="national" onNavigate={onNavigate} setActiveProgramName={setActiveProgramName} />
-          ) : (
+          )}
+          {activeTab === 'events' && (
             <EventsExplorer key="events" handleRegisterClick={handleRegisterClick} />
+          )}
+          {activeTab === 'networks' && (
+            <NetworksResources key="networks" onNavigate={onNavigate} />
           )}
         </AnimatePresence>
       </div>

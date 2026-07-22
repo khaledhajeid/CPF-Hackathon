@@ -1,0 +1,211 @@
+- generic [active] [ref=f40e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f40e543] [cursor=pointer]
+  - generic [ref=f40e3]:
+    - navigation [ref=f40e4]:
+      - generic [ref=f40e5]:
+        - img "مؤسسة ولي العهد" [ref=f40e7] [cursor=pointer]
+        - generic [ref=f40e8]:
+          - button "الرئيسية" [ref=f40e9]
+          - button "البرامج والفرص" [ref=f40e11]
+          - button "قصص شبابنا" [ref=f40e12]
+          - button "أخبارنا" [ref=f40e13]
+          - button "الشركاء" [ref=f40e14]
+          - button "عن المؤسسة" [ref=f40e15]
+          - button "التقارير والدراسات" [ref=f40e16]
+        - generic [ref=f40e17]:
+          - button [ref=f40e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f40e22] [cursor=pointer]
+    - generic [ref=f40e548]:
+      - generic [ref=f40e551]:
+        - heading "البرامج والفرص" [level=1] [ref=f40e552]
+        - paragraph [ref=f40e553]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f40e554]:
+        - generic [ref=f40e555]:
+          - button "البرامج والمبادرات" [ref=f40e556] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f40e562] [cursor=pointer]
+          - button "شبكات وموارد" [ref=f40e567] [cursor=pointer]
+        - paragraph [ref=f40e573]: جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية
+        - generic [ref=f40e1103]:
+          - button "رجوع إلى شبكات وموارد" [ref=f40e1104] [cursor=pointer]
+          - heading "خريطة الصنّاع" [level=2] [ref=f40e1107]
+          - generic [ref=f40e1108]:
+            - paragraph [ref=f40e1109]: دليل تفاعلي يربط الصنّاع والمبتكرين بمساحات التصنيع، مراكز التدريب، والحاضنات المنتشرة في مختلف محافظات المملكة. اختر مساحة من القائمة لتظهر مباشرة على الخريطة.
+            - generic [ref=f40e1110]:
+              - combobox "تصفية حسب المحافظة" [ref=f40e1112] [cursor=pointer]:
+                - option "كل المحافظات" [selected]
+                - option "إربد"
+                - option "العقبة"
+                - option "مأدبا"
+                - option "الكرك"
+                - option "الطفيلة"
+                - option "عمان"
+                - option "الزرقاء"
+                - option "عجلون"
+                - option "جرش"
+                - option "معان"
+                - option "البلقاء"
+                - option "المفرق"
+              - generic [ref=f40e1113]:
+                - button "كل الفئات" [pressed] [ref=f40e1114] [cursor=pointer]
+                - button "مساحات التصنيع الرقمي" [ref=f40e1115] [cursor=pointer]
+                - button "مراكز التدريب التقني" [ref=f40e1119] [cursor=pointer]
+                - button "حاضنات ومسرّعات الأعمال" [ref=f40e1123] [cursor=pointer]
+                - button "خدمات الطباعة ثلاثية الأبعاد" [ref=f40e1129] [cursor=pointer]
+                - button "خدمات القص بالليزر وCNC" [ref=f40e1133] [cursor=pointer]
+                - button "موردو الخامات (خشب / معادن)" [ref=f40e1140] [cursor=pointer]
+            - generic [ref=f40e1145]:
+              - generic [ref=f40e1147]:
+                - generic [ref=f40e1149]:
+                  - heading "الخريطة التفاعلية" [level=3] [ref=f40e1150]
+                  - paragraph [ref=f40e1151]: اختر مساحة من القائمة لتحديد موقعها
+                - iframe [ref=f40e1153]:
+                  
+              - generic [ref=f40e1157]:
+                - button "مساحات التصنيع الرقمي مساحة الصنّاع - عمّان المساحة الرئيسية للتصنيع الرقمي التابعة لمؤسسة ولي العهد، مزوّدة بآلات طباعة ثلاثية الأبعاد وقص بالليزر. عمان، مجمع الملك الحسين للأعمال themakerspace.jo" [ref=f40e1158] [cursor=pointer]:
+                  - generic [ref=f40e1159]: مساحات التصنيع الرقمي
+                  - heading "مساحة الصنّاع - عمّان" [level=3] [ref=f40e1165]
+                  - paragraph [ref=f40e1166]: المساحة الرئيسية للتصنيع الرقمي التابعة لمؤسسة ولي العهد، مزوّدة بآلات طباعة ثلاثية الأبعاد وقص بالليزر.
+                  - generic [ref=f40e1167]:
+                    - generic [ref=f40e1168]: عمان، مجمع الملك الحسين للأعمال
+                    - generic [ref=f40e1173]: themakerspace.jo
+                - button "مساحات التصنيع الرقمي مختبر إربد للتصنيع الرقمي مختبر جامعي مفتوح للمجتمع يتيح الوصول إلى أدوات النمذجة الأولية والتصميم الرقمي. إربد، حرم جامعة العلوم والتكنولوجيا irbid-digitallab.jo" [ref=f40e1177] [cursor=pointer]:
+                  - generic [ref=f40e1178]: مساحات التصنيع الرقمي
+                  - heading "مختبر إربد للتصنيع الرقمي" [level=3] [ref=f40e1184]
+                  - paragraph [ref=f40e1185]: مختبر جامعي مفتوح للمجتمع يتيح الوصول إلى أدوات النمذجة الأولية والتصميم الرقمي.
+                  - generic [ref=f40e1186]:
+                    - generic [ref=f40e1187]: إربد، حرم جامعة العلوم والتكنولوجيا
+                    - generic [ref=f40e1192]: irbid-digitallab.jo
+                - button "حاضنات ومسرّعات الأعمال حاضنة الزرقاء لريادة الأعمال حاضنة أعمال تدعم المشاريع الناشئة في مراحلها الأولى عبر التمويل والتوجيه وربطها بالمستثمرين. الزرقاء، شارع الملك عبدالله zarqa-incubator.jo" [ref=f40e1196] [cursor=pointer]:
+                  - generic [ref=f40e1197]: حاضنات ومسرّعات الأعمال
+                  - heading "حاضنة الزرقاء لريادة الأعمال" [level=3] [ref=f40e1205]
+                  - paragraph [ref=f40e1206]: حاضنة أعمال تدعم المشاريع الناشئة في مراحلها الأولى عبر التمويل والتوجيه وربطها بالمستثمرين.
+                  - generic [ref=f40e1207]:
+                    - generic [ref=f40e1208]: الزرقاء، شارع الملك عبدالله
+                    - generic [ref=f40e1213]: zarqa-incubator.jo
+                - button "مراكز التدريب التقني مركز العقبة للتدريب التقني مركز تدريب مهني متخصص في اللحام والتصنيع الميكانيكي والصيانة الصناعية. العقبة، المنطقة الصناعية aqaba-training.jo" [ref=f40e1217] [cursor=pointer]:
+                  - generic [ref=f40e1218]: مراكز التدريب التقني
+                  - heading "مركز العقبة للتدريب التقني" [level=3] [ref=f40e1224]
+                  - paragraph [ref=f40e1225]: مركز تدريب مهني متخصص في اللحام والتصنيع الميكانيكي والصيانة الصناعية.
+                  - generic [ref=f40e1226]:
+                    - generic [ref=f40e1227]: العقبة، المنطقة الصناعية
+                    - generic [ref=f40e1232]: aqaba-training.jo
+                - button "خدمات الطباعة ثلاثية الأبعاد استوديو الطباعة ثلاثية الأبعاد استوديو متخصص بخدمات الطباعة ثلاثية الأبعاد للنماذج الصناعية والمنتجات الفنية بجودة عالية. عمان، شارع مكة amman3dstudio.jo" [ref=f40e1236] [cursor=pointer]:
+                  - generic [ref=f40e1237]: خدمات الطباعة ثلاثية الأبعاد
+                  - heading "استوديو الطباعة ثلاثية الأبعاد" [level=3] [ref=f40e1243]
+                  - paragraph [ref=f40e1244]: استوديو متخصص بخدمات الطباعة ثلاثية الأبعاد للنماذج الصناعية والمنتجات الفنية بجودة عالية.
+                  - generic [ref=f40e1245]:
+                    - generic [ref=f40e1246]: عمان، شارع مكة
+                    - generic [ref=f40e1251]: amman3dstudio.jo
+                - button "خدمات القص بالليزر وCNC ورشة الكرك للقص بالليزر ورشة تقدّم خدمات القص والحفر بالليزر على الخشب والأكريليك للحرفيين والمشاريع الصغيرة. الكرك، وسط البلد karak-laser.jo" [ref=f40e1255] [cursor=pointer]:
+                  - generic [ref=f40e1256]: خدمات القص بالليزر وCNC
+                  - heading "ورشة الكرك للقص بالليزر" [level=3] [ref=f40e1265]
+                  - paragraph [ref=f40e1266]: ورشة تقدّم خدمات القص والحفر بالليزر على الخشب والأكريليك للحرفيين والمشاريع الصغيرة.
+                  - generic [ref=f40e1267]:
+                    - generic [ref=f40e1268]: الكرك، وسط البلد
+                    - generic [ref=f40e1273]: karak-laser.jo
+                - button "موردو الخامات (خشب / معادن) مورّد الخشب والمعادن - إربد مورد خامات متخصص بتوفير الخشب والمعادن والأكريليك للصنّاع والورش الحرفية بأسعار الجملة. إربد، المنطقة الصناعية الأولى irbid-materials.jo" [ref=f40e1277] [cursor=pointer]:
+                  - generic [ref=f40e1278]: موردو الخامات (خشب / معادن)
+                  - heading "مورّد الخشب والمعادن - إربد" [level=3] [ref=f40e1285]
+                  - paragraph [ref=f40e1286]: مورد خامات متخصص بتوفير الخشب والمعادن والأكريليك للصنّاع والورش الحرفية بأسعار الجملة.
+                  - generic [ref=f40e1287]:
+                    - generic [ref=f40e1288]: إربد، المنطقة الصناعية الأولى
+                    - generic [ref=f40e1293]: irbid-materials.jo
+                - button "حاضنات ومسرّعات الأعمال مسرّعة أعمال البلقاء برنامج تسريع أعمال يواكب المشاريع الناشئة لمدة 12 أسبوعاً وصولاً لجاهزية الاستثمار. السلط، شارع الجامعة balqa-accelerator.jo" [ref=f40e1297] [cursor=pointer]:
+                  - generic [ref=f40e1298]: حاضنات ومسرّعات الأعمال
+                  - heading "مسرّعة أعمال البلقاء" [level=3] [ref=f40e1306]
+                  - paragraph [ref=f40e1307]: برنامج تسريع أعمال يواكب المشاريع الناشئة لمدة 12 أسبوعاً وصولاً لجاهزية الاستثمار.
+                  - generic [ref=f40e1308]:
+                    - generic [ref=f40e1309]: السلط، شارع الجامعة
+                    - generic [ref=f40e1314]: balqa-accelerator.jo
+                - button "مساحات التصنيع الرقمي مختبر الابتكار - معان مختبر ابتكار مجتمعي يتيح للشباب في جنوب المملكة الوصول لأدوات التصنيع الرقمي الحديثة. معان، مركز الشباب maan-innovationlab.jo" [ref=f40e1318] [cursor=pointer]:
+                  - generic [ref=f40e1319]: مساحات التصنيع الرقمي
+                  - heading "مختبر الابتكار - معان" [level=3] [ref=f40e1325]
+                  - paragraph [ref=f40e1326]: مختبر ابتكار مجتمعي يتيح للشباب في جنوب المملكة الوصول لأدوات التصنيع الرقمي الحديثة.
+                  - generic [ref=f40e1327]:
+                    - generic [ref=f40e1328]: معان، مركز الشباب
+                    - generic [ref=f40e1333]: maan-innovationlab.jo
+                - button "مراكز التدريب التقني مركز جرش للتدريب المهني مركز تدريب مهني يقدم برامج معتمدة في النجارة والحدادة والتصنيع اليدوي. جرش، طريق عمان الرئيسي jerash-vocational.jo" [ref=f40e1337] [cursor=pointer]:
+                  - generic [ref=f40e1338]: مراكز التدريب التقني
+                  - heading "مركز جرش للتدريب المهني" [level=3] [ref=f40e1344]
+                  - paragraph [ref=f40e1345]: مركز تدريب مهني يقدم برامج معتمدة في النجارة والحدادة والتصنيع اليدوي.
+                  - generic [ref=f40e1346]:
+                    - generic [ref=f40e1347]: جرش، طريق عمان الرئيسي
+                    - generic [ref=f40e1352]: jerash-vocational.jo
+                - button "خدمات الطباعة ثلاثية الأبعاد استوديو النمذجة - مأدبا استوديو صغير متخصص بنمذجة المشاريع الطلابية والنماذج الأولية للمشاريع الريادية. مأدبا، وسط المدينة madaba-modeling.jo" [ref=f40e1356] [cursor=pointer]:
+                  - generic [ref=f40e1357]: خدمات الطباعة ثلاثية الأبعاد
+                  - heading "استوديو النمذجة - مأدبا" [level=3] [ref=f40e1363]
+                  - paragraph [ref=f40e1364]: استوديو صغير متخصص بنمذجة المشاريع الطلابية والنماذج الأولية للمشاريع الريادية.
+                  - generic [ref=f40e1365]:
+                    - generic [ref=f40e1366]: مأدبا، وسط المدينة
+                    - generic [ref=f40e1371]: madaba-modeling.jo
+                - button "موردو الخامات (خشب / معادن) ورشة عجلون الحرفية ورشة تقليدية توفر خامات الخشب المحلي وتدعم الحرفيين بمواد التصنيع اليدوي. عجلون، محمية غابات عجلون ajloun-craft.jo" [ref=f40e1375] [cursor=pointer]:
+                  - generic [ref=f40e1376]: موردو الخامات (خشب / معادن)
+                  - heading "ورشة عجلون الحرفية" [level=3] [ref=f40e1383]
+                  - paragraph [ref=f40e1384]: ورشة تقليدية توفر خامات الخشب المحلي وتدعم الحرفيين بمواد التصنيع اليدوي.
+                  - generic [ref=f40e1385]:
+                    - generic [ref=f40e1386]: عجلون، محمية غابات عجلون
+                    - generic [ref=f40e1391]: ajloun-craft.jo
+      - contentinfo [ref=f40e982]:
+        - generic [ref=f40e983]:
+          - generic [ref=f40e984]:
+            - generic [ref=f40e985]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f40e986]
+              - paragraph [ref=f40e987]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f40e989]:
+              - textbox "البريد الإلكتروني..." [ref=f40e990]
+              - button "اشترك الآن" [ref=f40e991] [cursor=pointer]
+          - generic [ref=f40e992]:
+            - generic [ref=f40e993]:
+              - img "مؤسسة ولي العهد" [ref=f40e995]
+              - generic [ref=f40e996]:
+                - link "Facebook" [ref=f40e997] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f40e1000] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f40e1003] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f40e1007] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f40e1012]:
+              - heading "روابط سريعة" [level=4] [ref=f40e1013]
+              - list [ref=f40e1014]:
+                - listitem [ref=f40e1015]:
+                  - button "الرئيسية" [ref=f40e1016] [cursor=pointer]
+                - listitem [ref=f40e1017]:
+                  - button "عن المؤسسة" [ref=f40e1018] [cursor=pointer]
+                - listitem [ref=f40e1019]:
+                  - button "البرامج والمبادرات" [ref=f40e1020] [cursor=pointer]
+                - listitem [ref=f40e1021]:
+                  - button "أحدث الأخبار" [ref=f40e1022] [cursor=pointer]
+                - listitem [ref=f40e1023]:
+                  - button "التقارير والدراسات" [ref=f40e1024] [cursor=pointer]
+                - listitem [ref=f40e1025]:
+                  - button "قصص النجاح" [ref=f40e1026] [cursor=pointer]
+            - generic [ref=f40e1029]:
+              - heading "لديك استفسار؟" [level=4] [ref=f40e1030]
+              - paragraph [ref=f40e1033]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f40e1034]:
+                - listitem [ref=f40e1035]:
+                  - generic [ref=f40e1039]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f40e1040]:
+                  - link "+962 6 555 5555" [ref=f40e1043] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f40e1044]:
+                  - link "info@cpf.jo" [ref=f40e1048] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f40e1049] [cursor=pointer]
+          - generic [ref=f40e1053]:
+            - button "أعلى الصفحة" [ref=f40e1054] [cursor=pointer]
+            - generic [ref=f40e1059]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f40e1060] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f40e1061]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f40e1062] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f40e1063]: (قريباً)
+            - generic [ref=f40e1064]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f40e540] [cursor=pointer]:
+      - img "عون AI" [ref=f40e541]

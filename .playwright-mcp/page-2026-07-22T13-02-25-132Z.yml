@@ -1,0 +1,172 @@
+- generic [active] [ref=f8e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f8e543] [cursor=pointer]
+  - generic [ref=f8e3]:
+    - navigation [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - img "مؤسسة ولي العهد" [ref=f8e7] [cursor=pointer]
+        - generic [ref=f8e8]:
+          - button "الرئيسية" [ref=f8e9]
+          - button "البرامج والفرص" [ref=f8e11]
+          - button "قصص شبابنا" [ref=f8e12]
+          - button "أخبارنا" [ref=f8e13]
+          - button "الشركاء" [ref=f8e14]
+          - button "عن المؤسسة" [ref=f8e15]
+          - button "التقارير والدراسات" [ref=f8e16]
+        - generic [ref=f8e17]:
+          - button [ref=f8e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f8e22] [cursor=pointer]
+    - generic [ref=f8e552]:
+      - generic [ref=f8e555]:
+        - heading "البرامج والفرص" [level=1] [ref=f8e556]
+        - paragraph [ref=f8e557]: استكشف المبادرات الاستراتيجية لمؤسسة ولي العهد، أو ابحث في مئات الفرص والفعاليات والورش التدريبية المتاحة للشباب في مختلف المحافظات.
+      - generic [ref=f8e558]:
+        - generic [ref=f8e559]:
+          - button "البرامج والمبادرات" [ref=f8e560] [cursor=pointer]
+          - button "الفرص والفعاليات" [ref=f8e566] [cursor=pointer]
+          - button "شبكات وموارد" [ref=f8e571] [cursor=pointer]
+        - paragraph [ref=f8e577]: جهات شريكة، شبكات شبابية، ومساحات صنع تربطك بمنظومة الابتكار الوطنية
+        - generic [ref=f8e1107]:
+          - button "رجوع إلى شبكات وموارد" [ref=f8e1108] [cursor=pointer]
+          - heading "دليل الجهات" [level=2] [ref=f8e1111]
+          - generic [ref=f8e1112]:
+            - generic [ref=f8e1113]:
+              - textbox "ابحث باسم الجهة أو مجال عملها..." [ref=f8e1118]
+              - paragraph [ref=f8e1119]: 8 جهة
+            - generic [ref=f8e1120]:
+              - article [ref=f8e1121]:
+                - generic [ref=f8e1122]: ر
+                - generic [ref=f8e1124]:
+                  - heading "رواد التغيير للتنمية المجتمعية" [level=3] [ref=f8e1125]
+                  - paragraph [ref=f8e1126]: جمعية غير ربحية تدعم رواد الأعمال الشباب في المجتمعات المحلية عبر برامج تدريب وحاضنات أعمال مصغّرة.
+                  - generic [ref=f8e1127]:
+                    - link "info@ruwwad-altagheer.jo" [ref=f8e1128] [cursor=pointer]:
+                      - /url: mailto:info@ruwwad-altagheer.jo
+                    - link "+962 6 500 1122" [ref=f8e1133] [cursor=pointer]:
+                      - /url: tel:+96265001122
+                    - link "زيارة الموقع" [ref=f8e1137] [cursor=pointer]:
+                      - /url: https://www.ruwwad-altagheer.jo
+              - article [ref=f8e1141]:
+                - generic [ref=f8e1142]: ج
+                - generic [ref=f8e1144]:
+                  - heading "جمعية بناة الغد" [level=3] [ref=f8e1145]
+                  - paragraph [ref=f8e1146]: جمعية تعنى بالتعليم غير الرسمي وبرامج الإرشاد الأكاديمي والمهني لطلبة المدارس والجامعات.
+                  - generic [ref=f8e1147]:
+                    - link "contact@bunat-alghad.jo" [ref=f8e1148] [cursor=pointer]:
+                      - /url: mailto:contact@bunat-alghad.jo
+                    - link "+962 6 500 3344" [ref=f8e1153] [cursor=pointer]:
+                      - /url: tel:+96265003344
+                    - link "زيارة الموقع" [ref=f8e1157] [cursor=pointer]:
+                      - /url: https://www.bunat-alghad.jo
+              - article [ref=f8e1161]:
+                - generic [ref=f8e1162]: م
+                - generic [ref=f8e1164]:
+                  - heading "مؤسسة الأثر الأخضر" [level=3] [ref=f8e1165]
+                  - paragraph [ref=f8e1166]: مؤسسة بيئية تنفذ مبادرات التشجير والاستدامة وتُشرك الشباب في مشاريع حماية البيئة الأردنية.
+                  - generic [ref=f8e1167]:
+                    - link "info@alatharalakhdar.jo" [ref=f8e1168] [cursor=pointer]:
+                      - /url: mailto:info@alatharalakhdar.jo
+                    - link "+962 2 620 5566" [ref=f8e1173] [cursor=pointer]:
+                      - /url: tel:+96226205566
+                    - link "زيارة الموقع" [ref=f8e1177] [cursor=pointer]:
+                      - /url: https://www.alatharalakhdar.jo
+              - article [ref=f8e1181]:
+                - generic [ref=f8e1182]: ش
+                - generic [ref=f8e1184]:
+                  - heading "شبكة المبدعين الأردنيين" [level=3] [ref=f8e1185]
+                  - paragraph [ref=f8e1186]: شبكة مستقلة تجمع الفنانين والمصممين الشباب وتنظم معارض وورش عمل في الصناعات الإبداعية.
+                  - generic [ref=f8e1187]:
+                    - link "hello@almubdieen.jo" [ref=f8e1188] [cursor=pointer]:
+                      - /url: mailto:hello@almubdieen.jo
+                    - link "+962 6 500 7788" [ref=f8e1193] [cursor=pointer]:
+                      - /url: tel:+96265007788
+                    - link "زيارة الموقع" [ref=f8e1197] [cursor=pointer]:
+                      - /url: https://www.almubdieen.jo
+              - article [ref=f8e1201]:
+                - generic [ref=f8e1202]: ج
+                - generic [ref=f8e1204]:
+                  - heading "جمعية اقتصاد المعرفة" [level=3] [ref=f8e1205]
+                  - paragraph [ref=f8e1206]: جمعية تقنية تعمل على تعزيز مهارات البرمجة والذكاء الاصطناعي لدى الشباب عبر معسكرات تدريبية مكثفة.
+                  - generic [ref=f8e1207]:
+                    - link "info@iqtisadalmarifa.jo" [ref=f8e1208] [cursor=pointer]:
+                      - /url: mailto:info@iqtisadalmarifa.jo
+                    - link "+962 6 501 9900" [ref=f8e1213] [cursor=pointer]:
+                      - /url: tel:+96265019900
+                    - link "زيارة الموقع" [ref=f8e1217] [cursor=pointer]:
+                      - /url: https://www.iqtisadalmarifa.jo
+              - article [ref=f8e1221]:
+                - generic [ref=f8e1222]: م
+                - generic [ref=f8e1224]:
+                  - heading "مؤسسة جسور التمكين" [level=3] [ref=f8e1225]
+                  - paragraph [ref=f8e1226]: مؤسسة متخصصة في دمج ذوي الإعاقة في سوق العمل عبر برامج تأهيل مهني وشراكات توظيف مباشرة.
+                  - generic [ref=f8e1227]:
+                    - link "contact@jusooraltamkeen.jo" [ref=f8e1228] [cursor=pointer]:
+                      - /url: mailto:contact@jusooraltamkeen.jo
+                    - link "+962 6 502 1133" [ref=f8e1233] [cursor=pointer]:
+                      - /url: tel:+96265021133
+                    - link "زيارة الموقع" [ref=f8e1237] [cursor=pointer]:
+                      - /url: https://www.jusooraltamkeen.jo
+            - button "عرض المزيد من الجهات" [ref=f8e1242] [cursor=pointer]
+      - contentinfo [ref=f8e986]:
+        - generic [ref=f8e987]:
+          - generic [ref=f8e988]:
+            - generic [ref=f8e989]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f8e990]
+              - paragraph [ref=f8e991]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f8e993]:
+              - textbox "البريد الإلكتروني..." [ref=f8e994]
+              - button "اشترك الآن" [ref=f8e995] [cursor=pointer]
+          - generic [ref=f8e996]:
+            - generic [ref=f8e997]:
+              - img "مؤسسة ولي العهد" [ref=f8e999]
+              - generic [ref=f8e1000]:
+                - link "Facebook" [ref=f8e1001] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f8e1004] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f8e1007] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f8e1011] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f8e1016]:
+              - heading "روابط سريعة" [level=4] [ref=f8e1017]
+              - list [ref=f8e1018]:
+                - listitem [ref=f8e1019]:
+                  - button "الرئيسية" [ref=f8e1020] [cursor=pointer]
+                - listitem [ref=f8e1021]:
+                  - button "عن المؤسسة" [ref=f8e1022] [cursor=pointer]
+                - listitem [ref=f8e1023]:
+                  - button "البرامج والمبادرات" [ref=f8e1024] [cursor=pointer]
+                - listitem [ref=f8e1025]:
+                  - button "أحدث الأخبار" [ref=f8e1026] [cursor=pointer]
+                - listitem [ref=f8e1027]:
+                  - button "التقارير والدراسات" [ref=f8e1028] [cursor=pointer]
+                - listitem [ref=f8e1029]:
+                  - button "قصص النجاح" [ref=f8e1030] [cursor=pointer]
+            - generic [ref=f8e1033]:
+              - heading "لديك استفسار؟" [level=4] [ref=f8e1034]
+              - paragraph [ref=f8e1037]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f8e1038]:
+                - listitem [ref=f8e1039]:
+                  - generic [ref=f8e1043]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f8e1044]:
+                  - link "+962 6 555 5555" [ref=f8e1047] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f8e1048]:
+                  - link "info@cpf.jo" [ref=f8e1052] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f8e1053] [cursor=pointer]
+          - generic [ref=f8e1057]:
+            - button "أعلى الصفحة" [ref=f8e1058] [cursor=pointer]
+            - generic [ref=f8e1063]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f8e1064] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f8e1065]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f8e1066] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f8e1067]: (قريباً)
+            - generic [ref=f8e1068]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f8e540] [cursor=pointer]:
+      - img "عون AI" [ref=f8e541]

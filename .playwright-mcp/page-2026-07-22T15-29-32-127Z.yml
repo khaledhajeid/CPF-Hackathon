@@ -1,0 +1,312 @@
+- generic [ref=f40e3]:
+  - navigation [ref=f40e4]:
+    - generic [ref=f40e5]:
+      - img "مؤسسة ولي العهد" [ref=f40e7] [cursor=pointer]
+      - generic [ref=f40e8]:
+        - button "الرئيسية" [ref=f40e9]
+        - button "البرامج والفرص" [ref=f40e11]
+        - button "قصص شبابنا" [ref=f40e12]
+        - button "أخبارنا" [ref=f40e13]
+        - button "الشركاء" [ref=f40e14]
+        - button "عن المؤسسة" [ref=f40e15]
+        - button "التقارير والدراسات" [ref=f40e16]
+      - generic [ref=f40e17]:
+        - button [ref=f40e18] [cursor=pointer]
+        - button "تسجيل الدخول" [ref=f40e22] [cursor=pointer]
+  - generic [ref=f40e27]:
+    - generic [ref=f40e28]:
+      - button "عرض الإعلانات الهامة" [ref=f40e29] [cursor=pointer]
+      - generic [ref=f40e34]:
+        - generic [ref=f40e35]:
+          - button "إغلاق" [ref=f40e36] [cursor=pointer]
+          - generic [ref=f40e40]:
+            - paragraph [ref=f40e41]: الإعلانات الهامة
+            - generic [ref=f40e42]: 3 تحديثات
+        - generic [ref=f40e44]:
+          - generic [ref=f40e45] [cursor=pointer]:
+            - generic [ref=f40e46]: مغلق حالياً
+            - generic [ref=f40e50]: التسجيل في HFP مغلق حالياً
+          - generic [ref=f40e52] [cursor=pointer]:
+            - generic [ref=f40e53]: قريباً
+            - generic [ref=f40e57]: برنامج تواصل يفتح أبوابه
+          - generic [ref=f40e59] [cursor=pointer]:
+            - generic [ref=f40e60]: يوشك على الانتهاء
+            - generic [ref=f40e64]: انضم لـ Makers Collective
+    - generic [ref=f40e66]:
+      - img "تمكين الشباب" [ref=f40e72]
+      - generic [ref=f40e74]:
+        - heading "شباب قادر.. لأردن طموح" [level=1] [ref=f40e75]: شباب قادر..لأردن طموح
+        - button "ابدأ رحلتك الآن" [ref=f40e77] [cursor=pointer]
+      - generic [ref=f40e82]: اكتشف
+    - generic [ref=f40e86]:
+      - heading "الأثر الوطني بالأرقام" [level=2] [ref=f40e87]
+      - generic [ref=f40e88]:
+        - generic [ref=f40e89]:
+          - heading "1.0" [level=3] [ref=f40e90]
+          - paragraph [ref=f40e92]: مليون مشارك
+        - generic [ref=f40e93]:
+          - heading "6" [level=3] [ref=f40e94]
+          - paragraph [ref=f40e96]: محافظة داخل المملكة
+        - generic [ref=f40e97]:
+          - heading "12" [level=3] [ref=f40e98]
+          - paragraph [ref=f40e100]: مساحة ومرفق
+        - generic [ref=f40e101]:
+          - heading "6" [level=3] [ref=f40e102]
+          - paragraph [ref=f40e104]: برنامج
+    - generic [ref=f40e107]:
+      - heading "طموحك يحدد مسارك" [level=2] [ref=f40e109]
+      - generic [ref=f40e110]:
+        - button "تعلّم" [ref=f40e111] [cursor=pointer]:
+          - img "تعلّم" [ref=f40e112]
+          - generic:
+            - generic:
+              - heading "تعلّم" [level=3]
+          - generic [ref=f40e115]:
+            - generic [ref=f40e116]: تعلّم
+            - generic [ref=f40e121]:
+              - heading "أسعى إلى تطوير مهاراتي التقنية والعملية" [level=3] [ref=f40e122]
+              - generic [ref=f40e123]:
+                - button "جامعة الحسين التقنية" [ref=f40e124]
+                - button "42 عمّان و42 إربد" [ref=f40e125]
+                - button "كلية التدريب المهني المتقدم في الأردن" [ref=f40e126]
+                - button "مساحة الصنّاع" [ref=f40e127]
+                - button "مبرمجو الأردن" [ref=f40e128]
+                - button "ملتقى الصناع" [ref=f40e129]
+              - button "استكشف المبادرات" [ref=f40e130]
+        - button "قُد" [ref=f40e135] [cursor=pointer]:
+          - img "قُد" [ref=f40e136]
+          - heading "قُد" [level=3] [ref=f40e146]
+          - generic:
+            - generic: قُد
+            - generic:
+              - heading "اسعى الى ان أكون قائدا وصانع للتغيير" [level=3]
+              - generic:
+                - button "برنامج خطى الحسين"
+                - button "برنامج القيادة للمدارس"
+                - button "مركز الشباب العربي-الاردن"
+                - button "جائزة ولي العهد لأفضل تطبيق خدمات حكومية"
+                - button "منتدى تواصل"
+              - button "استكشف المبادرات"
+        - button "اصنع الأثر" [ref=f40e147] [cursor=pointer]:
+          - img "اصنع الأثر" [ref=f40e148]
+          - heading "اصنع الأثر" [level=3] [ref=f40e159]
+          - generic:
+            - generic: اصنع الأثر
+            - generic:
+              - heading "اسعى الى التطوع و خدمة المجتمع" [level=3]
+              - generic:
+                - button "نَحْنُ"
+                - button "الحملات المجتمعية والاستجابات الإنسانية"
+                - button "جائزة الحسين بن عبد الله الثاني للعمل التطوعي"
+              - button "استكشف المبادرات"
+    - generic [ref=f40e162]:
+      - heading "محتار من وين تبدأ مسارك؟" [level=2] [ref=f40e163]
+      - paragraph [ref=f40e164]: أجب على مجموعة من الأسئلة ودع الموجّه المدعوم بالذكاء الاصطناعي يحلل اهتماماتك ليرشح لك الخيارات
+      - button "ابدأ التوجيه الذكي" [ref=f40e165] [cursor=pointer]
+    - generic [ref=f40e167]:
+      - generic [ref=f40e168]:
+        - heading "فرصتك تنتظرك على مدار السنة" [level=2] [ref=f40e169]
+        - paragraph [ref=f40e170]: برامج ومنصات مفتوحة باستمرار، لا داعي لانتظار موسم لتبدأ خطوتك القادمة.
+      - generic [ref=f40e171]:
+        - button "السابق" [ref=f40e172] [cursor=pointer]
+        - button "التالي" [ref=f40e175] [cursor=pointer]
+        - generic [ref=f40e179]:
+          - link "تعلّم عن بُعد كورسات HTUx محتوى تدريبي رقمي يتيح لك تطوير مهاراتك بالسرعة التي تناسبك، أينما كنت. ابدأ التعلم" [ref=f40e180] [cursor=pointer]:
+            - /url: https://htux.org/
+            - generic [ref=f40e186]:
+              - generic [ref=f40e187]: تعلّم عن بُعد
+              - heading "كورسات HTUx" [level=3] [ref=f40e188]
+              - paragraph [ref=f40e189]: محتوى تدريبي رقمي يتيح لك تطوير مهاراتك بالسرعة التي تناسبك، أينما كنت.
+              - generic [ref=f40e190]: ابدأ التعلم
+          - link "تعليم تقني انضم إلى 42 عمّان أو 42 إربد مدرسة برمجة مبتكرة بدون معلمين وبدون شهادة جامعية، تفتح أبوابها للمسجّلين على مدار العام. قدّم الآن" [ref=f40e194] [cursor=pointer]:
+            - /url: https://apply.42amman.com/ar/users/sign_in
+            - generic [ref=f40e200]:
+              - generic [ref=f40e201]: تعليم تقني
+              - heading "انضم إلى 42 عمّان أو 42 إربد" [level=3] [ref=f40e202]
+              - paragraph [ref=f40e203]: مدرسة برمجة مبتكرة بدون معلمين وبدون شهادة جامعية، تفتح أبوابها للمسجّلين على مدار العام.
+              - generic [ref=f40e204]: قدّم الآن
+          - link "تطوّع تطوّع الآن عبر نَحْنُ انضم لآلاف المتطوعين وابدأ أثرك في مجتمعك اليوم، بلا انتظار موسم معيّن. سجّل تطوعك" [ref=f40e208] [cursor=pointer]:
+            - /url: https://www.nahno.org/
+            - generic [ref=f40e214]:
+              - generic [ref=f40e215]: تطوّع
+              - heading "تطوّع الآن عبر نَحْنُ" [level=3] [ref=f40e216]
+              - paragraph [ref=f40e217]: انضم لآلاف المتطوعين وابدأ أثرك في مجتمعك اليوم، بلا انتظار موسم معيّن.
+              - generic [ref=f40e218]: سجّل تطوعك
+          - link "إبداع وابتكار توجّه إلى مساحة الصنّاع حوّل أفكارك إلى نماذج حقيقية بأحدث أدوات التصنيع الرقمي، المتاحة لك على مدار العام. ابدأ الصنع" [ref=f40e222] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=f40e228]:
+              - generic [ref=f40e229]: إبداع وابتكار
+              - heading "توجّه إلى مساحة الصنّاع" [level=3] [ref=f40e230]
+              - paragraph [ref=f40e231]: حوّل أفكارك إلى نماذج حقيقية بأحدث أدوات التصنيع الرقمي، المتاحة لك على مدار العام.
+              - generic [ref=f40e232]: ابدأ الصنع
+          - link "استكشف اكتشف جميع الفرص منظومة كاملة من البرامج والمبادرات تنتظرك، تصفح كل الفرص المتاحة الآن. تصفح الكل" [ref=f40e236] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=f40e244]:
+              - generic [ref=f40e245]: استكشف
+              - heading "اكتشف جميع الفرص" [level=3] [ref=f40e246]
+              - paragraph [ref=f40e247]: منظومة كاملة من البرامج والمبادرات تنتظرك، تصفح كل الفرص المتاحة الآن.
+              - generic [ref=f40e248]: تصفح الكل
+    - generic [ref=f40e255]:
+      - heading "اكتشف أحدث الفرص المتاحة" [level=2] [ref=f40e257]
+      - generic [ref=f40e258]:
+        - generic [ref=f40e259]:
+          - button "الكل" [ref=f40e260] [cursor=pointer]
+          - button "تعلّم" [ref=f40e267] [cursor=pointer]
+          - button "قُد" [ref=f40e271] [cursor=pointer]
+          - button "اصنع الأثر" [ref=f40e277] [cursor=pointer]
+        - generic [ref=f40e285]:
+          - generic [ref=f40e286]: "العمر:"
+          - generic [ref=f40e289]:
+            - button "الكل" [ref=f40e290] [cursor=pointer]
+            - button "14 - 17" [ref=f40e291] [cursor=pointer]
+            - button "18 - 25" [ref=f40e292] [cursor=pointer]
+            - button "26 - 30" [ref=f40e293] [cursor=pointer]
+            - button "31 - 35" [ref=f40e294] [cursor=pointer]
+            - button "35+" [ref=f40e295] [cursor=pointer]
+        - textbox "ابحث عن فعالية أو مكان..." [ref=f40e298]
+      - generic [ref=f40e299]:
+        - generic [ref=f40e302]:
+          - generic [ref=f40e304]:
+            - heading "اختر المحافظة" [level=3] [ref=f40e305]
+            - paragraph [ref=f40e306]: اضغط على الخريطة للفلترة
+          - img [ref=f40e309]:
+            - generic [ref=f40e310]:
+              - generic [ref=f40e311] [cursor=pointer]: إربد
+              - generic [ref=f40e313] [cursor=pointer]: العقبة
+              - generic [ref=f40e315] [cursor=pointer]: مأدبا
+              - generic [ref=f40e317] [cursor=pointer]: الكرك
+              - generic [ref=f40e319] [cursor=pointer]: الطفيلة
+              - generic [ref=f40e321] [cursor=pointer]: عمان
+              - generic [ref=f40e323] [cursor=pointer]: الزرقاء
+              - generic [ref=f40e325] [cursor=pointer]: عجلون
+              - generic [ref=f40e327] [cursor=pointer]: جرش
+              - generic [ref=f40e329] [cursor=pointer]: معان
+              - generic [ref=f40e331] [cursor=pointer]: البلقاء
+              - generic [ref=f40e333] [cursor=pointer]: المفرق
+        - generic [ref=f40e336]:
+          - generic [ref=f40e337]:
+            - generic [ref=f40e338] [cursor=pointer]:
+              - generic [ref=f40e339]:
+                - img "معسكر التصنيع الرقمي والطباعة ثلاثية الأبعاد" [ref=f40e340]
+                - generic [ref=f40e341]: تعلّم
+              - generic [ref=f40e342]:
+                - generic [ref=f40e343]:
+                  - heading "معسكر التصنيع الرقمي والطباعة ثلاثية الأبعاد" [level=3] [ref=f40e344]
+                  - generic [ref=f40e345]:
+                    - generic [ref=f40e346]: 25 آب 2026
+                    - generic [ref=f40e349]: عمان - مجمع الملك الحسين للأعمال - مصنع الأفكار
+                - generic [ref=f40e354]:
+                  - generic [ref=f40e355]:
+                    - generic [ref=f40e356]: المكافأة
+                    - generic [ref=f40e357]: +150 نقطة
+                  - button "سجل الآن" [ref=f40e362]
+            - generic [ref=f40e366] [cursor=pointer]:
+              - generic [ref=f40e367]:
+                - img "دورة أساسيات ريادة الأعمال وبناء المشاريع الناشئة" [ref=f40e368]
+                - generic [ref=f40e369]: ينتهي قريباً
+                - generic [ref=f40e373]: تعلّم
+              - generic [ref=f40e374]:
+                - generic [ref=f40e375]:
+                  - heading "دورة أساسيات ريادة الأعمال وبناء المشاريع الناشئة" [level=3] [ref=f40e376]
+                  - generic [ref=f40e377]:
+                    - generic [ref=f40e378]: 10 أيلول 2026
+                    - generic [ref=f40e381]: إربد - مركز شباب إربد
+                - generic [ref=f40e386]:
+                  - generic [ref=f40e387]:
+                    - generic [ref=f40e388]: المكافأة
+                    - generic [ref=f40e389]: +100 نقطة
+                  - button "سجل الآن" [ref=f40e394]
+            - generic [ref=f40e398] [cursor=pointer]:
+              - generic [ref=f40e399]:
+                - img "حملة \"بيئتنا خضراء\" لزراعة الأشجار الحرجية" [ref=f40e400]
+                - generic [ref=f40e401]: اصنع الأثر
+              - generic [ref=f40e402]:
+                - generic [ref=f40e403]:
+                  - heading "حملة \"بيئتنا خضراء\" لزراعة الأشجار الحرجية" [level=3] [ref=f40e404]
+                  - generic [ref=f40e405]:
+                    - generic [ref=f40e406]: 05 تشرين الأول 2026
+                    - generic [ref=f40e409]: عجلون - محمية غابات عجلون
+                - generic [ref=f40e414]:
+                  - generic [ref=f40e415]:
+                    - generic [ref=f40e416]: المكافأة
+                    - generic [ref=f40e417]: +50 نقطة
+                  - button "سجل الآن" [ref=f40e422]
+            - generic [ref=f40e426] [cursor=pointer]:
+              - generic [ref=f40e427]:
+                - img "برنامج إعداد القيادات الشابة وصناع القرار" [ref=f40e428]
+                - generic [ref=f40e429]: قُد
+              - generic [ref=f40e430]:
+                - generic [ref=f40e431]:
+                  - heading "برنامج إعداد القيادات الشابة وصناع القرار" [level=3] [ref=f40e432]
+                  - generic [ref=f40e433]:
+                    - generic [ref=f40e434]: 15 آب 2026
+                    - generic [ref=f40e437]: العقبة - مركز شباب العقبة النموذجي
+                - generic [ref=f40e442]:
+                  - generic [ref=f40e443]:
+                    - generic [ref=f40e444]: المكافأة
+                    - generic [ref=f40e445]: +120 نقطة
+                  - button "سجل الآن" [ref=f40e450]
+          - button "استكشف المزيد من الفرص" [ref=f40e455] [cursor=pointer]
+    - contentinfo [ref=f40e456]:
+      - generic [ref=f40e457]:
+        - generic [ref=f40e458]:
+          - generic [ref=f40e459]:
+            - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f40e460]
+            - paragraph [ref=f40e461]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+          - generic [ref=f40e463]:
+            - textbox "البريد الإلكتروني..." [ref=f40e464]
+            - button "اشترك الآن" [ref=f40e465] [cursor=pointer]
+        - generic [ref=f40e466]:
+          - generic [ref=f40e467]:
+            - img "مؤسسة ولي العهد" [ref=f40e469]
+            - generic [ref=f40e470]:
+              - link "Facebook" [ref=f40e471] [cursor=pointer]:
+                - /url: https://www.facebook.com/CPFJO
+              - link "X" [ref=f40e474] [cursor=pointer]:
+                - /url: https://x.com/cpfjo
+              - link "Instagram" [ref=f40e477] [cursor=pointer]:
+                - /url: https://www.instagram.com/cpfjo/
+              - link "LinkedIn" [ref=f40e481] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+          - generic [ref=f40e486]:
+            - heading "روابط سريعة" [level=4] [ref=f40e487]
+            - list [ref=f40e488]:
+              - listitem [ref=f40e489]:
+                - button "الرئيسية" [ref=f40e490] [cursor=pointer]
+              - listitem [ref=f40e491]:
+                - button "عن المؤسسة" [ref=f40e492] [cursor=pointer]
+              - listitem [ref=f40e493]:
+                - button "البرامج والمبادرات" [ref=f40e494] [cursor=pointer]
+              - listitem [ref=f40e495]:
+                - button "أحدث الأخبار" [ref=f40e496] [cursor=pointer]
+              - listitem [ref=f40e497]:
+                - button "التقارير والدراسات" [ref=f40e498] [cursor=pointer]
+              - listitem [ref=f40e499]:
+                - button "قصص النجاح" [ref=f40e500] [cursor=pointer]
+          - generic [ref=f40e503]:
+            - heading "لديك استفسار؟" [level=4] [ref=f40e504]
+            - paragraph [ref=f40e507]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+            - list [ref=f40e508]:
+              - listitem [ref=f40e509]:
+                - generic [ref=f40e513]: عمان، دابوق – شارع محمد السعد البطاينة
+              - listitem [ref=f40e514]:
+                - link "+962 6 555 5555" [ref=f40e517] [cursor=pointer]:
+                  - /url: tel:+96265555555
+              - listitem [ref=f40e518]:
+                - link "info@cpf.jo" [ref=f40e522] [cursor=pointer]:
+                  - /url: mailto:info@cpf.jo
+            - button "تواصل معنا" [ref=f40e523] [cursor=pointer]
+        - generic [ref=f40e527]:
+          - button "أعلى الصفحة" [ref=f40e528] [cursor=pointer]
+          - generic [ref=f40e533]:
+            - link "شروط الاستخدام (قريباً)" [disabled] [ref=f40e534] [cursor=pointer]:
+              - /url: "#"
+              - text: شروط الاستخدام
+              - generic [ref=f40e535]: (قريباً)
+            - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f40e536] [cursor=pointer]:
+              - /url: "#"
+              - text: سياسة الخصوصية
+              - generic [ref=f40e537]: (قريباً)
+          - generic [ref=f40e538]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+  - button [ref=f40e540] [cursor=pointer]:
+    - img "عون AI" [ref=f40e541]

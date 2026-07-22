@@ -1,0 +1,85 @@
+// src/data/entitiesData.js
+// بيانات وهمية لدليل الجهات ضمن تبويب "شبكات وموارد" — جاهزة لاستبدالها بربط فعلي مع نظام إدارة الجهات لاحقاً
+
+export const ENTITY_CATEGORIES = [
+  'الريادة والابتكار',
+  'التدريب وبناء المهارات',
+  'التكنولوجيا والرقمنة',
+  'الفنون والثقافة والصناعات الإبداعية',
+  'التطوع والمشاركة المجتمعية',
+];
+
+export const entities = [
+  {
+    id: 'ruwwad-altagheer',
+    name: 'رواد التغيير للتنمية المجتمعية',
+    category: 'الريادة والابتكار',
+    description: 'جمعية غير ربحية تدعم رواد الأعمال الشباب في المجتمعات المحلية عبر برامج تدريب وحاضنات أعمال مصغّرة.',
+    email: 'info@ruwwad-altagheer.jo',
+    phone: '+962 6 500 1122',
+    website: 'https://www.ruwwad-altagheer.jo',
+  },
+  {
+    id: 'bunat-alghad',
+    name: 'جمعية بناة الغد',
+    category: 'التدريب وبناء المهارات',
+    description: 'جمعية تعنى بالتعليم غير الرسمي وبرامج الإرشاد الأكاديمي والمهني لطلبة المدارس والجامعات.',
+    email: 'contact@bunat-alghad.jo',
+    phone: '+962 6 500 3344',
+    website: 'https://www.bunat-alghad.jo',
+  },
+  {
+    id: 'al-athar-alakhdar',
+    name: 'مؤسسة الأثر الأخضر',
+    category: 'التطوع والمشاركة المجتمعية',
+    description: 'مؤسسة بيئية تنفذ مبادرات التشجير والاستدامة وتُشرك الشباب في مشاريع حماية البيئة الأردنية.',
+    email: 'info@alatharalakhdar.jo',
+    phone: '+962 2 620 5566',
+    website: 'https://www.alatharalakhdar.jo',
+  },
+  {
+    id: 'shabakat-almubdieen',
+    name: 'شبكة المبدعين الأردنيين',
+    category: 'الفنون والثقافة والصناعات الإبداعية',
+    description: 'شبكة مستقلة تجمع الفنانين والمصممين الشباب وتنظم معارض وورش عمل في الصناعات الإبداعية.',
+    email: 'hello@almubdieen.jo',
+    phone: '+962 6 500 7788',
+    website: 'https://www.almubdieen.jo',
+  },
+  {
+    id: 'jamiyat-iqtisad-almarifa',
+    name: 'جمعية اقتصاد المعرفة',
+    category: 'التكنولوجيا والرقمنة',
+    description: 'جمعية تقنية تعمل على تعزيز مهارات البرمجة والذكاء الاصطناعي لدى الشباب عبر معسكرات تدريبية مكثفة.',
+    email: 'info@iqtisadalmarifa.jo',
+    phone: '+962 6 501 9900',
+    website: 'https://www.iqtisadalmarifa.jo',
+  },
+  {
+    id: 'jusoor-altamkeen',
+    name: 'مؤسسة جسور التمكين',
+    category: 'التدريب وبناء المهارات',
+    description: 'مؤسسة متخصصة في دمج ذوي الإعاقة في سوق العمل عبر برامج تأهيل مهني وشراكات توظيف مباشرة.',
+    email: 'contact@jusooraltamkeen.jo',
+    phone: '+962 6 502 1133',
+    website: 'https://www.jusooraltamkeen.jo',
+  },
+  {
+    id: 'nabd-almujtama',
+    name: 'مبادرة نبض المجتمع',
+    category: 'التطوع والمشاركة المجتمعية',
+    description: 'مبادرة تطوعية تنسّق حملات الاستجابة الإنسانية وتربط المتطوعين الشباب بالجهات المحتاجة ميدانياً.',
+    email: 'info@nabdalmujtama.jo',
+    phone: '+962 6 502 4455',
+    website: 'https://www.nabdalmujtama.jo',
+  },
+  {
+    id: 'riyada-lil-aamal',
+    name: 'جمعية ريادة للأعمال الاجتماعية',
+    category: 'الريادة والابتكار',
+    description: 'جمعية تدعم المشاريع الريادية ذات الأثر الاجتماعي عبر التمويل الأولي والتوجيه من خبراء القطاع.',
+    email: 'info@riyada-aamal.jo',
+    phone: '+962 6 502 6677',
+    website: 'https://www.riyada-aamal.jo',
+  },
+];

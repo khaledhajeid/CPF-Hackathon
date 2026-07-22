@@ -1,0 +1,138 @@
+- generic [active] [ref=f47e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f47e543] [cursor=pointer]
+  - generic [ref=f47e3]:
+    - navigation [ref=f47e4]:
+      - generic [ref=f47e5]:
+        - img "مؤسسة ولي العهد" [ref=f47e7] [cursor=pointer]
+        - generic [ref=f47e8]:
+          - button "الرئيسية" [ref=f47e9]
+          - button "البرامج والفرص" [ref=f47e11]
+          - button "قصص شبابنا" [ref=f47e12]
+          - button "أخبارنا" [ref=f47e13]
+          - button "الشركاء" [ref=f47e14]
+          - button "عن المؤسسة" [ref=f47e15]
+          - button "التقارير والدراسات" [ref=f47e16]
+        - generic [ref=f47e17]:
+          - button [ref=f47e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f47e22] [cursor=pointer]
+    - generic [ref=f47e1151]:
+      - generic [ref=f47e1154]:
+        - heading "نحن هنا لنصنع الأثر معاً" [level=1] [ref=f47e1155]
+        - paragraph [ref=f47e1156]: سواء كنت تبحث عن إجابات لاستفساراتك، أو تطمح لتكون جزءاً من فريقنا أو شبكتنا لتمكين الشباب الأردني، أنت في المكان الصحيح.
+      - tablist "أقسام التواصل" [ref=f47e1158]:
+        - tab "تواصل معنا" [ref=f47e1159]
+        - tab "انضم لفريقنا" [ref=f47e1164]
+        - tab "انضم لشبكتنا" [selected] [ref=f47e1169]
+      - generic [ref=f47e1179]:
+        - generic [ref=f47e1187]:
+          - heading "انضم لشبكة شباب المؤسسة" [level=2] [ref=f47e1188]
+          - paragraph [ref=f47e1189]: خطوة واحدة تفصلك عن فرص وبرامج تناسب طموحك.
+        - generic [ref=f47e1190]:
+          - generic [ref=f47e1191]:
+            - generic [ref=f47e1192]:
+              - generic [ref=f47e1193]: الاسم الرباعي *
+              - textbox "الاسم الكامل" [ref=f47e1194]
+            - generic [ref=f47e1195]:
+              - generic [ref=f47e1196]: الفئة العمرية *
+              - combobox [ref=f47e1198] [cursor=pointer]:
+                - option "14 - 17"
+                - option "18 - 25"
+                - option "26 - 30"
+                - option "31 - 35"
+                - option "35+"
+          - generic [ref=f47e1199]:
+            - generic [ref=f47e1200]:
+              - generic [ref=f47e1201]: المحافظة *
+              - combobox [ref=f47e1203] [cursor=pointer]:
+                - option "عمّان"
+                - option "إربد"
+                - option "الزرقاء"
+                - option "البلقاء"
+                - option "مادبا"
+                - option "جرش"
+                - option "عجلون"
+                - option "المفرق"
+                - option "الكرك"
+                - option "الطفيلة"
+                - option "معان"
+                - option "العقبة"
+            - generic [ref=f47e1204]:
+              - generic [ref=f47e1205]: رقم الهاتف *
+              - textbox "+962 7X XXX XXXX" [ref=f47e1206]
+          - generic [ref=f47e1207]:
+            - generic [ref=f47e1208]: البريد الإلكتروني *
+            - textbox "example@email.com" [ref=f47e1209]
+          - generic [ref=f47e1210]:
+            - generic [ref=f47e1211]: مجال الاهتمام *
+            - combobox [ref=f47e1213] [cursor=pointer]:
+              - option "تعلّم"
+              - option "قُد"
+              - option "اصنع الأثر"
+          - button "انضم الآن" [ref=f47e1214] [cursor=pointer]
+        - paragraph [ref=f47e1218]:
+          - text: هل تمثل مؤسسة أو شركة وتبحث عن شراكة؟
+          - button "تفضّل بزيارة صفحة الشراكات" [ref=f47e1219] [cursor=pointer]
+      - contentinfo [ref=f47e1221]:
+        - generic [ref=f47e1222]:
+          - generic [ref=f47e1223]:
+            - generic [ref=f47e1224]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f47e1225]
+              - paragraph [ref=f47e1226]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f47e1228]:
+              - textbox "البريد الإلكتروني..." [ref=f47e1229]
+              - button "اشترك الآن" [ref=f47e1230] [cursor=pointer]
+          - generic [ref=f47e1231]:
+            - generic [ref=f47e1232]:
+              - img "مؤسسة ولي العهد" [ref=f47e1234]
+              - generic [ref=f47e1235]:
+                - link "Facebook" [ref=f47e1236] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f47e1239] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f47e1242] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f47e1246] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f47e1251]:
+              - heading "روابط سريعة" [level=4] [ref=f47e1252]
+              - list [ref=f47e1253]:
+                - listitem [ref=f47e1254]:
+                  - button "الرئيسية" [ref=f47e1255] [cursor=pointer]
+                - listitem [ref=f47e1256]:
+                  - button "عن المؤسسة" [ref=f47e1257] [cursor=pointer]
+                - listitem [ref=f47e1258]:
+                  - button "البرامج والمبادرات" [ref=f47e1259] [cursor=pointer]
+                - listitem [ref=f47e1260]:
+                  - button "أحدث الأخبار" [ref=f47e1261] [cursor=pointer]
+                - listitem [ref=f47e1262]:
+                  - button "التقارير والدراسات" [ref=f47e1263] [cursor=pointer]
+                - listitem [ref=f47e1264]:
+                  - button "قصص النجاح" [ref=f47e1265] [cursor=pointer]
+            - generic [ref=f47e1268]:
+              - heading "لديك استفسار؟" [level=4] [ref=f47e1269]
+              - paragraph [ref=f47e1272]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f47e1273]:
+                - listitem [ref=f47e1274]:
+                  - generic [ref=f47e1278]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f47e1279]:
+                  - link "+962 6 555 5555" [ref=f47e1282] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f47e1283]:
+                  - link "info@cpf.jo" [ref=f47e1287] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f47e1288] [cursor=pointer]
+          - generic [ref=f47e1292]:
+            - button "أعلى الصفحة" [ref=f47e1293] [cursor=pointer]
+            - generic [ref=f47e1298]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f47e1299] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f47e1300]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f47e1301] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f47e1302]: (قريباً)
+            - generic [ref=f47e1303]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f47e540] [cursor=pointer]:
+      - img "عون AI" [ref=f47e541]

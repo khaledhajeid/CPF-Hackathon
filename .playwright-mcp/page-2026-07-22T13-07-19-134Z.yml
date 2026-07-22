@@ -1,0 +1,302 @@
+- generic [ref=f12e3]:
+  - navigation [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - img "مؤسسة ولي العهد" [ref=f12e7] [cursor=pointer]
+      - generic [ref=f12e8]:
+        - button [ref=f12e9] [cursor=pointer]
+        - button [ref=f12e13] [cursor=pointer]
+  - generic [ref=f12e16]:
+    - generic [ref=f12e17]:
+      - button "عرض الإعلانات الهامة" [ref=f12e18] [cursor=pointer]
+      - generic [ref=f12e23]:
+        - generic [ref=f12e24]:
+          - button "إغلاق" [ref=f12e25] [cursor=pointer]
+          - generic [ref=f12e29]:
+            - paragraph [ref=f12e30]: الإعلانات الهامة
+            - generic [ref=f12e31]: 3 تحديثات
+        - generic [ref=f12e33]:
+          - generic [ref=f12e34] [cursor=pointer]:
+            - generic [ref=f12e35]: مغلق حالياً
+            - generic [ref=f12e39]: التسجيل في HFP مغلق حالياً
+          - generic [ref=f12e41] [cursor=pointer]:
+            - generic [ref=f12e42]: قريباً
+            - generic [ref=f12e46]: برنامج تواصل يفتح أبوابه
+          - generic [ref=f12e48] [cursor=pointer]:
+            - generic [ref=f12e49]: يوشك على الانتهاء
+            - generic [ref=f12e53]: انضم لـ Makers Collective
+    - generic [ref=f12e55]:
+      - img "تمكين الشباب" [ref=f12e58]
+      - generic [ref=f12e60]:
+        - heading "شباب قادر.. لأردن طموح" [level=1] [ref=f12e61]: شباب قادر..لأردن طموح
+        - button "ابدأ رحلتك الآن" [ref=f12e63] [cursor=pointer]
+    - generic [ref=f12e69]:
+      - heading "الأثر الوطني بالأرقام" [level=2] [ref=f12e70]
+      - generic [ref=f12e71]:
+        - generic [ref=f12e72]:
+          - heading "0.6" [level=3] [ref=f12e73]
+          - paragraph [ref=f12e75]: مليون مشارك
+        - generic [ref=f12e76]:
+          - heading "3" [level=3] [ref=f12e77]
+          - paragraph [ref=f12e79]: محافظة داخل المملكة
+        - generic [ref=f12e80]:
+          - heading "0" [level=3] [ref=f12e81]
+          - paragraph [ref=f12e83]: مساحة ومرفق
+        - generic [ref=f12e84]:
+          - heading "0" [level=3] [ref=f12e85]
+          - paragraph [ref=f12e87]: برنامج
+    - generic [ref=f12e90]:
+      - heading "طموحك يحدد مسارك" [level=2] [ref=f12e92]
+      - generic [ref=f12e93]:
+        - button "تعلّم" [ref=f12e94] [cursor=pointer]:
+          - img "تعلّم" [ref=f12e95]
+          - generic:
+            - generic:
+              - heading "تعلّم" [level=3]
+          - generic [ref=f12e99]:
+            - heading "أسعى إلى تطوير مهاراتي التقنية والعملية" [level=3] [ref=f12e103]
+            - generic [ref=f12e104]:
+              - button "جامعة الحسين التقنية" [ref=f12e105]
+              - button "42 عمّان و42 إربد" [ref=f12e106]
+              - button "كلية التدريب المهني المتقدم في الأردن" [ref=f12e107]
+              - button "مساحة الصنّاع" [ref=f12e108]
+              - button "مبرمجو الأردن" [ref=f12e109]
+              - button "ملتقى الصناع" [ref=f12e110]
+            - button "استكشف المبادرات" [ref=f12e111]
+        - button "قُد" [ref=f12e116] [cursor=pointer]:
+          - img "قُد" [ref=f12e117]
+          - heading "قُد" [level=3] [ref=f12e127]
+          - generic:
+            - generic:
+              - heading "اسعى الى ان أكون قائدا وصانع للتغيير" [level=3]
+              - generic:
+                - button "برنامج خطى الحسين"
+                - button "برنامج القيادة للمدارس"
+                - button "مركز الشباب العربي-الاردن"
+                - button "جائزة ولي العهد لأفضل تطبيق خدمات حكومية"
+                - button "منتدى تواصل"
+              - button "استكشف المبادرات"
+        - button "اصنع الأثر" [ref=f12e128] [cursor=pointer]:
+          - img "اصنع الأثر" [ref=f12e129]
+          - heading "اصنع الأثر" [level=3] [ref=f12e140]
+          - generic:
+            - generic:
+              - heading "اسعى الى التطوع و خدمة المجتمع" [level=3]
+              - generic:
+                - button "نَحْنُ"
+                - button "الحملات المجتمعية والاستجابات الإنسانية"
+                - button "جائزة الحسين بن عبد الله الثاني للعمل التطوعي"
+              - button "استكشف المبادرات"
+    - generic [ref=f12e143]:
+      - heading "محتار من وين تبدأ مسارك؟" [level=2] [ref=f12e144]
+      - paragraph [ref=f12e145]: أجب على مجموعة من الأسئلة ودع الموجّه المدعوم بالذكاء الاصطناعي يحلل اهتماماتك ليرشح لك الخيارات
+      - button "ابدأ التوجيه الذكي" [ref=f12e146] [cursor=pointer]
+    - generic [ref=f12e148]:
+      - generic [ref=f12e149]:
+        - heading "فرصتك تنتظرك على مدار السنة" [level=2] [ref=f12e150]
+        - paragraph [ref=f12e151]: برامج ومنصات مفتوحة باستمرار، لا داعي لانتظار موسم لتبدأ خطوتك القادمة.
+      - generic [ref=f12e154]:
+        - link "تعلّم عن بُعد كورسات HTUx محتوى تدريبي رقمي يتيح لك تطوير مهاراتك بالسرعة التي تناسبك، أينما كنت. ابدأ التعلم" [ref=f12e155] [cursor=pointer]:
+          - /url: https://htux.org/
+          - generic [ref=f12e161]:
+            - generic [ref=f12e162]: تعلّم عن بُعد
+            - heading "كورسات HTUx" [level=3] [ref=f12e163]
+            - paragraph [ref=f12e164]: محتوى تدريبي رقمي يتيح لك تطوير مهاراتك بالسرعة التي تناسبك، أينما كنت.
+            - generic [ref=f12e165]: ابدأ التعلم
+        - link "تعليم تقني انضم إلى 42 عمّان أو 42 إربد مدرسة برمجة مبتكرة بدون معلمين وبدون شهادة جامعية، تفتح أبوابها للمسجّلين على مدار العام. قدّم الآن" [ref=f12e169] [cursor=pointer]:
+          - /url: https://apply.42amman.com/ar/users/sign_in
+          - generic [ref=f12e175]:
+            - generic [ref=f12e176]: تعليم تقني
+            - heading "انضم إلى 42 عمّان أو 42 إربد" [level=3] [ref=f12e177]
+            - paragraph [ref=f12e178]: مدرسة برمجة مبتكرة بدون معلمين وبدون شهادة جامعية، تفتح أبوابها للمسجّلين على مدار العام.
+            - generic [ref=f12e179]: قدّم الآن
+        - link "تطوّع تطوّع الآن عبر نَحْنُ انضم لآلاف المتطوعين وابدأ أثرك في مجتمعك اليوم، بلا انتظار موسم معيّن. سجّل تطوعك" [ref=f12e183] [cursor=pointer]:
+          - /url: https://www.nahno.org/
+          - generic [ref=f12e189]:
+            - generic [ref=f12e190]: تطوّع
+            - heading "تطوّع الآن عبر نَحْنُ" [level=3] [ref=f12e191]
+            - paragraph [ref=f12e192]: انضم لآلاف المتطوعين وابدأ أثرك في مجتمعك اليوم، بلا انتظار موسم معيّن.
+            - generic [ref=f12e193]: سجّل تطوعك
+        - link "إبداع وابتكار توجّه إلى مساحة الصنّاع حوّل أفكارك إلى نماذج حقيقية بأحدث أدوات التصنيع الرقمي، المتاحة لك على مدار العام. ابدأ الصنع" [ref=f12e197] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=f12e203]:
+            - generic [ref=f12e204]: إبداع وابتكار
+            - heading "توجّه إلى مساحة الصنّاع" [level=3] [ref=f12e205]
+            - paragraph [ref=f12e206]: حوّل أفكارك إلى نماذج حقيقية بأحدث أدوات التصنيع الرقمي، المتاحة لك على مدار العام.
+            - generic [ref=f12e207]: ابدأ الصنع
+        - link "استكشف اكتشف جميع الفرص منظومة كاملة من البرامج والمبادرات تنتظرك، تصفح كل الفرص المتاحة الآن. تصفح الكل" [ref=f12e211] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=f12e219]:
+            - generic [ref=f12e220]: استكشف
+            - heading "اكتشف جميع الفرص" [level=3] [ref=f12e221]
+            - paragraph [ref=f12e222]: منظومة كاملة من البرامج والمبادرات تنتظرك، تصفح كل الفرص المتاحة الآن.
+            - generic [ref=f12e223]: تصفح الكل
+    - generic [ref=f12e230]:
+      - heading "اكتشف أحدث الفرص المتاحة" [level=2] [ref=f12e232]
+      - generic [ref=f12e233]:
+        - generic [ref=f12e234]:
+          - button "الكل" [ref=f12e235] [cursor=pointer]
+          - button "تعلّم" [ref=f12e242] [cursor=pointer]
+          - button "قُد" [ref=f12e246] [cursor=pointer]
+          - button "اصنع الأثر" [ref=f12e252] [cursor=pointer]
+        - generic [ref=f12e259]:
+          - generic [ref=f12e260]: "العمر:"
+          - combobox [ref=f12e264]:
+            - option "الكل" [selected]
+            - option "14 - 17"
+            - option "18 - 25"
+            - option "26 - 30"
+            - option "31 - 35"
+            - option "35+"
+        - textbox "ابحث عن فعالية أو مكان..." [ref=f12e266]
+      - generic [ref=f12e267]:
+        - generic [ref=f12e270]:
+          - generic [ref=f12e272]:
+            - heading "اختر المحافظة" [level=3] [ref=f12e273]
+            - paragraph [ref=f12e274]: اضغط على الخريطة للفلترة
+          - img [ref=f12e277]:
+            - generic [ref=f12e278]:
+              - generic [ref=f12e279] [cursor=pointer]: إربد
+              - generic [ref=f12e281] [cursor=pointer]: العقبة
+              - generic [ref=f12e283] [cursor=pointer]: مأدبا
+              - generic [ref=f12e285] [cursor=pointer]: الكرك
+              - generic [ref=f12e287] [cursor=pointer]: الطفيلة
+              - generic [ref=f12e289] [cursor=pointer]: عمان
+              - generic [ref=f12e291] [cursor=pointer]: الزرقاء
+              - generic [ref=f12e293] [cursor=pointer]: عجلون
+              - generic [ref=f12e295] [cursor=pointer]: جرش
+              - generic [ref=f12e297] [cursor=pointer]: معان
+              - generic [ref=f12e299] [cursor=pointer]: البلقاء
+              - generic [ref=f12e301] [cursor=pointer]: المفرق
+        - generic [ref=f12e304]:
+          - generic [ref=f12e305]:
+            - generic [ref=f12e306] [cursor=pointer]:
+              - generic [ref=f12e307]:
+                - img "معسكر التصنيع الرقمي والطباعة ثلاثية الأبعاد" [ref=f12e308]
+                - generic [ref=f12e309]: تعلّم
+              - generic [ref=f12e310]:
+                - generic [ref=f12e311]:
+                  - heading "معسكر التصنيع الرقمي والطباعة ثلاثية الأبعاد" [level=3] [ref=f12e312]
+                  - generic [ref=f12e313]:
+                    - generic [ref=f12e314]: 25 آب 2026
+                    - generic [ref=f12e317]: عمان - مجمع الملك الحسين للأعمال - مصنع الأفكار
+                - generic [ref=f12e322]:
+                  - generic [ref=f12e323]:
+                    - generic [ref=f12e324]: المكافأة
+                    - generic [ref=f12e325]: +150 نقطة
+                  - button "سجل الآن" [ref=f12e330]
+            - generic [ref=f12e334] [cursor=pointer]:
+              - generic [ref=f12e335]:
+                - img "دورة أساسيات ريادة الأعمال وبناء المشاريع الناشئة" [ref=f12e336]
+                - generic [ref=f12e337]: ينتهي قريباً
+                - generic [ref=f12e341]: تعلّم
+              - generic [ref=f12e342]:
+                - generic [ref=f12e343]:
+                  - heading "دورة أساسيات ريادة الأعمال وبناء المشاريع الناشئة" [level=3] [ref=f12e344]
+                  - generic [ref=f12e345]:
+                    - generic [ref=f12e346]: 10 أيلول 2026
+                    - generic [ref=f12e349]: إربد - مركز شباب إربد
+                - generic [ref=f12e354]:
+                  - generic [ref=f12e355]:
+                    - generic [ref=f12e356]: المكافأة
+                    - generic [ref=f12e357]: +100 نقطة
+                  - button "سجل الآن" [ref=f12e362]
+            - generic [ref=f12e366] [cursor=pointer]:
+              - generic [ref=f12e367]:
+                - img "حملة \"بيئتنا خضراء\" لزراعة الأشجار الحرجية" [ref=f12e368]
+                - generic [ref=f12e369]: اصنع الأثر
+              - generic [ref=f12e370]:
+                - generic [ref=f12e371]:
+                  - heading "حملة \"بيئتنا خضراء\" لزراعة الأشجار الحرجية" [level=3] [ref=f12e372]
+                  - generic [ref=f12e373]:
+                    - generic [ref=f12e374]: 05 تشرين الأول 2026
+                    - generic [ref=f12e377]: عجلون - محمية غابات عجلون
+                - generic [ref=f12e382]:
+                  - generic [ref=f12e383]:
+                    - generic [ref=f12e384]: المكافأة
+                    - generic [ref=f12e385]: +50 نقطة
+                  - button "سجل الآن" [ref=f12e390]
+            - generic [ref=f12e394] [cursor=pointer]:
+              - generic [ref=f12e395]:
+                - img "برنامج إعداد القيادات الشابة وصناع القرار" [ref=f12e396]
+                - generic [ref=f12e397]: قُد
+              - generic [ref=f12e398]:
+                - generic [ref=f12e399]:
+                  - heading "برنامج إعداد القيادات الشابة وصناع القرار" [level=3] [ref=f12e400]
+                  - generic [ref=f12e401]:
+                    - generic [ref=f12e402]: 15 آب 2026
+                    - generic [ref=f12e405]: العقبة - مركز شباب العقبة النموذجي
+                - generic [ref=f12e410]:
+                  - generic [ref=f12e411]:
+                    - generic [ref=f12e412]: المكافأة
+                    - generic [ref=f12e413]: +120 نقطة
+                  - button "سجل الآن" [ref=f12e418]
+          - button "استكشف المزيد من الفرص" [ref=f12e423] [cursor=pointer]
+    - contentinfo [ref=f12e424]:
+      - generic [ref=f12e425]:
+        - generic [ref=f12e426]:
+          - generic [ref=f12e427]:
+            - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f12e428]
+            - paragraph [ref=f12e429]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+          - generic [ref=f12e431]:
+            - textbox "البريد الإلكتروني..." [ref=f12e432]
+            - button "اشترك الآن" [ref=f12e433] [cursor=pointer]
+        - generic [ref=f12e434]:
+          - generic [ref=f12e435]:
+            - img "مؤسسة ولي العهد" [ref=f12e437]
+            - generic [ref=f12e438]:
+              - link "Facebook" [ref=f12e439] [cursor=pointer]:
+                - /url: https://www.facebook.com/CPFJO
+              - link "X" [ref=f12e442] [cursor=pointer]:
+                - /url: https://x.com/cpfjo
+              - link "Instagram" [ref=f12e445] [cursor=pointer]:
+                - /url: https://www.instagram.com/cpfjo/
+              - link "LinkedIn" [ref=f12e449] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+          - generic [ref=f12e454]:
+            - heading "روابط سريعة" [level=4] [ref=f12e455]
+            - list [ref=f12e456]:
+              - listitem [ref=f12e457]:
+                - button "الرئيسية" [ref=f12e458] [cursor=pointer]
+              - listitem [ref=f12e459]:
+                - button "عن المؤسسة" [ref=f12e460] [cursor=pointer]
+              - listitem [ref=f12e461]:
+                - button "البرامج والمبادرات" [ref=f12e462] [cursor=pointer]
+              - listitem [ref=f12e463]:
+                - button "أحدث الأخبار" [ref=f12e464] [cursor=pointer]
+              - listitem [ref=f12e465]:
+                - button "التقارير والدراسات" [ref=f12e466] [cursor=pointer]
+              - listitem [ref=f12e467]:
+                - button "قصص النجاح" [ref=f12e468] [cursor=pointer]
+          - generic [ref=f12e471]:
+            - heading "لديك استفسار؟" [level=4] [ref=f12e472]
+            - paragraph [ref=f12e475]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+            - list [ref=f12e476]:
+              - listitem [ref=f12e477]:
+                - generic [ref=f12e481]: عمان، دابوق – شارع محمد السعد البطاينة
+              - listitem [ref=f12e482]:
+                - link "+962 6 555 5555" [ref=f12e485] [cursor=pointer]:
+                  - /url: tel:+96265555555
+              - listitem [ref=f12e486]:
+                - link "info@cpf.jo" [ref=f12e490] [cursor=pointer]:
+                  - /url: mailto:info@cpf.jo
+            - button "تواصل معنا" [ref=f12e491] [cursor=pointer]
+        - generic [ref=f12e495]:
+          - button "أعلى الصفحة" [ref=f12e496] [cursor=pointer]
+          - generic [ref=f12e501]:
+            - link "شروط الاستخدام (قريباً)" [disabled] [ref=f12e502] [cursor=pointer]:
+              - /url: "#"
+              - text: شروط الاستخدام
+              - generic [ref=f12e503]: (قريباً)
+            - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f12e504] [cursor=pointer]:
+              - /url: "#"
+              - text: سياسة الخصوصية
+              - generic [ref=f12e505]: (قريباً)
+          - generic [ref=f12e506]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+  - generic [ref=f12e508]:
+    - button "الرئيسية" [ref=f12e509] [cursor=pointer]
+    - button "استكشف" [ref=f12e516] [cursor=pointer]
+    - button "بحث" [ref=f12e522] [cursor=pointer]
+    - button "قصصنا" [ref=f12e528] [cursor=pointer]
+    - button "حسابي" [ref=f12e534] [cursor=pointer]
+  - button [ref=f12e541] [cursor=pointer]:
+    - img "عون AI" [ref=f12e542]

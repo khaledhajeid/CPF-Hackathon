@@ -35,15 +35,19 @@ function App() {
   
   // 🟢 2. State جديد لحفظ تفاصيل الخبر المختار
   const [activeNewsItem, setActiveNewsItem] = useState(null);
+  const [initialPartnerType, setInitialPartnerType] = useState(null);
+  const [initialContactTab, setInitialContactTab] = useState(null);
 
   // 🟢 3. دالة توجيه ذكية تدعم استلام البيانات (Payload) مع اسم الصفحة
   const handleNavigate = (pageId, data = null) => {
     setCurrentPage(pageId);
-    
+
     // إذا كان هناك بيانات مرسلة (مثل خبر معين)، نقوم بحفظه
     if (data && data.newsItem) {
       setActiveNewsItem(data.newsItem);
     }
+    setInitialPartnerType(data && data.partnerType ? data.partnerType : null);
+    setInitialContactTab(data && data.tab ? data.tab : null);
   };
 
   const handleRegisterClick = (event) => {
@@ -129,12 +133,12 @@ function App() {
           </motion.div>
         );
         
-      case 'contact': 
-        return <motion.div key="contact" {...pageVariants}><Contact onNavigate={handleNavigate} /></motion.div>;
+      case 'contact':
+        return <motion.div key="contact" {...pageVariants}><Contact onNavigate={handleNavigate} initialTab={initialContactTab} /></motion.div>;
       case 'about':
         return <motion.div key="about" {...pageVariants}><AboutPage onNavigate={handleNavigate} /></motion.div>;  
-      case 'partnerships': 
-        return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage /></motion.div>;
+      case 'partnerships':
+        return <motion.div key="partnerships" {...pageVariants}><PartnershipsPage onNavigate={handleNavigate} initialPartnerType={initialPartnerType} /></motion.div>;
       case 'home':
       default:
         return (

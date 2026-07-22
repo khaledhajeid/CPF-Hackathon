@@ -1,0 +1,220 @@
+- generic [active] [ref=f8e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f8e543] [cursor=pointer]
+  - generic [ref=f8e3]:
+    - navigation [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - img "مؤسسة ولي العهد" [ref=f8e7] [cursor=pointer]
+        - generic [ref=f8e8]:
+          - button "الرئيسية" [ref=f8e9]
+          - button "البرامج والفرص" [ref=f8e11]
+          - button "قصص شبابنا" [ref=f8e12]
+          - button "أخبارنا" [ref=f8e13]
+          - button "الشركاء" [ref=f8e14]
+          - button "عن المؤسسة" [ref=f8e15]
+          - button "التقارير والدراسات" [ref=f8e16]
+        - generic [ref=f8e17]:
+          - button [ref=f8e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f8e22] [cursor=pointer]
+    - generic [ref=f8e1367]:
+      - generic [ref=f8e1371]:
+        - heading "معاً، نصنع أثراً يمتد لأجيال" [level=1] [ref=f8e1372]
+        - paragraph [ref=f8e1373]: نؤمن في مؤسسة ولي العهد أن الشراكات الحقيقية هي المحرك الأساسي للتنمية. انضم إلى شبكتنا من الشركاء والخبراء لنساهم معاً في تمكين الشباب الأردني.
+        - generic [ref=f8e1374]:
+          - button "ابدأ الشراكة" [ref=f8e1375]
+          - link "تبرع الآن" [ref=f8e1379] [cursor=pointer]:
+            - /url: https://giving.htu.edu.jo/
+      - generic [ref=f8e1381]:
+        - generic [ref=f8e1382]:
+          - heading "شركاء الأثر" [level=2] [ref=f8e1383]
+          - paragraph [ref=f8e1384]: مؤسسات رائدة آمنت برؤيتنا وشاركتنا المسير
+        - generic [ref=f8e1386]:
+          - link [ref=f8e1387] [cursor=pointer]:
+            - /url: https://zinc.jo/ar
+            - img "Zinc" [ref=f8e1388]
+          - link [ref=f8e1389] [cursor=pointer]:
+            - /url: https://www.unicef.org/
+            - img "Unicef" [ref=f8e1390]
+          - link [ref=f8e1391] [cursor=pointer]:
+            - /url: https://www.zaha.gov.jo/zahansite/ar/default.aspx
+            - img "Zaha" [ref=f8e1392]
+          - link [ref=f8e1393] [cursor=pointer]:
+            - /url: https://abj.org.jo/ar
+            - img "ABJ" [ref=f8e1394]
+          - link [ref=f8e1395] [cursor=pointer]:
+            - /url: https://htu.edu.jo/ar
+            - img "HTU" [ref=f8e1396]
+          - link [ref=f8e1397] [cursor=pointer]:
+            - /url: https://jordan.arabyouthcenter.org/en
+            - img "AYC" [ref=f8e1398]
+          - link [ref=f8e1399] [cursor=pointer]:
+            - /url: https://zinc.jo/ar
+            - img "Zinc" [ref=f8e1400]
+          - link [ref=f8e1401] [cursor=pointer]:
+            - /url: https://www.unicef.org/
+            - img "Unicef" [ref=f8e1402]
+          - link [ref=f8e1403] [cursor=pointer]:
+            - /url: https://www.zaha.gov.jo/zahansite/ar/default.aspx
+            - img "Zaha" [ref=f8e1404]
+          - link [ref=f8e1405] [cursor=pointer]:
+            - /url: https://abj.org.jo/ar
+            - img "ABJ" [ref=f8e1406]
+          - link [ref=f8e1407] [cursor=pointer]:
+            - /url: https://htu.edu.jo/ar
+            - img "HTU" [ref=f8e1408]
+          - link [ref=f8e1409] [cursor=pointer]:
+            - /url: https://jordan.arabyouthcenter.org/en
+            - img "AYC" [ref=f8e1410]
+          - link [ref=f8e1411] [cursor=pointer]:
+            - /url: https://zinc.jo/ar
+            - img "Zinc" [ref=f8e1412]
+          - link [ref=f8e1413] [cursor=pointer]:
+            - /url: https://www.unicef.org/
+            - img "Unicef" [ref=f8e1414]
+          - link [ref=f8e1415] [cursor=pointer]:
+            - /url: https://www.zaha.gov.jo/zahansite/ar/default.aspx
+            - img "Zaha" [ref=f8e1416]
+          - link [ref=f8e1417] [cursor=pointer]:
+            - /url: https://abj.org.jo/ar
+            - img "ABJ" [ref=f8e1418]
+          - link [ref=f8e1419] [cursor=pointer]:
+            - /url: https://htu.edu.jo/ar
+            - img "HTU" [ref=f8e1420]
+          - link [ref=f8e1421] [cursor=pointer]:
+            - /url: https://jordan.arabyouthcenter.org/en
+            - img "AYC" [ref=f8e1422]
+          - link [ref=f8e1423] [cursor=pointer]:
+            - /url: https://zinc.jo/ar
+            - img "Zinc" [ref=f8e1424]
+          - link [ref=f8e1425] [cursor=pointer]:
+            - /url: https://www.unicef.org/
+            - img "Unicef" [ref=f8e1426]
+          - link [ref=f8e1427] [cursor=pointer]:
+            - /url: https://www.zaha.gov.jo/zahansite/ar/default.aspx
+            - img "Zaha" [ref=f8e1428]
+          - link [ref=f8e1429] [cursor=pointer]:
+            - /url: https://abj.org.jo/ar
+            - img "ABJ" [ref=f8e1430]
+          - link [ref=f8e1431] [cursor=pointer]:
+            - /url: https://htu.edu.jo/ar
+            - img "HTU" [ref=f8e1432]
+          - link [ref=f8e1433] [cursor=pointer]:
+            - /url: https://jordan.arabyouthcenter.org/en
+            - img "AYC" [ref=f8e1434]
+      - generic [ref=f8e1436]:
+        - heading "لماذا تعقد شراكة مع مؤسسة ولي العهد؟" [level=2] [ref=f8e1438]
+        - generic [ref=f8e1439]:
+          - generic [ref=f8e1440]:
+            - heading "وصول واسع النطاق" [level=3] [ref=f8e1445]
+            - paragraph [ref=f8e1446]: تواصل بشكل مباشر مع مئات الآلاف من الشباب الطموح في محافظات المملكة الـ 12.
+          - generic [ref=f8e1447]:
+            - heading "المسؤولية المجتمعية (CSR)" [level=3] [ref=f8e1454]
+            - paragraph [ref=f8e1455]: وجّه جهود مؤسستك نحو برامج ذات أثر تنموي مستدام ومقاس يعود بالنفع على المجتمع.
+          - generic [ref=f8e1456]:
+            - heading "بيئة ابتكارية" [level=3] [ref=f8e1461]
+            - paragraph [ref=f8e1462]: كن جزءاً من منظومة رائدة تدعم الابتكار، التكنولوجيا، والريادة بأعلى المعايير.
+      - generic [ref=f8e1468]:
+        - generic [ref=f8e1469]:
+          - heading "نموذج التعبير عن الاهتمام (EOI)" [level=2] [ref=f8e1470]
+          - paragraph [ref=f8e1471]: الرجاء تعبئة البيانات المبدئية، وسيقوم فريق الشراكات بالتواصل معكم لتحديد موعد اجتماع.
+        - group "نوع المتقدم للشراكة" [ref=f8e1472]:
+          - button "مؤسسات / شركات" [ref=f8e1473]
+          - button "أفراد / خبراء" [pressed] [ref=f8e1479]
+        - generic [ref=f8e1484]:
+          - generic [ref=f8e1485]:
+            - generic [ref=f8e1486]:
+              - generic [ref=f8e1487]: الاسم الرباعي *
+              - textbox "الاسم الرباعي *" [ref=f8e1488]:
+                - /placeholder: الاسم الكامل
+            - generic [ref=f8e1489]:
+              - generic [ref=f8e1490]: مجال الخبرة *
+              - textbox "مجال الخبرة *" [ref=f8e1491]:
+                - /placeholder: "مثال: تدريب تقني، ريادة أعمال"
+          - generic [ref=f8e1492]:
+            - generic [ref=f8e1493]:
+              - generic [ref=f8e1494]: البريد الإلكتروني *
+              - textbox "البريد الإلكتروني *" [ref=f8e1495]:
+                - /placeholder: email@example.com
+            - generic [ref=f8e1496]:
+              - generic [ref=f8e1497]: رقم الهاتف المباشر *
+              - textbox "رقم الهاتف المباشر *" [ref=f8e1498]:
+                - /placeholder: +962 7X XXX XXXX
+          - generic [ref=f8e1499]:
+            - generic [ref=f8e1500]: مجال الشراكة المقترح *
+            - combobox "مجال الشراكة المقترح *" [ref=f8e1501]:
+              - option "اختر مجال الاهتمام..." [disabled]
+              - option "دعم مالي ورعاية (Sponsorship)" [selected]
+              - option "تدريب وخبرات تقنية (Technical Expertise)"
+              - option "توفير مساحات ومرافق (Venues & Facilities)"
+              - option "فرص تطوع وتدريب للمستفيدين (Internships)"
+              - option "أخرى"
+          - generic [ref=f8e1502]:
+            - generic [ref=f8e1503]: نبذة عن فكرة التعاون *
+            - textbox "نبذة عن فكرة التعاون *" [ref=f8e1504]:
+              - /placeholder: حدثنا باختصار عن كيف يمكننا التعاون معاً لخدمة الشباب الأردني...
+          - paragraph [ref=f8e1511] [cursor=pointer]: إرفاق العرض التقديمي (Pitch Deck) أو السيرة الذاتية (اختياري)
+          - button "إرسال الاهتمام (EOI)" [ref=f8e1512] [cursor=pointer]
+          - paragraph [ref=f8e1517]: "* سيتم التعامل مع كافة معلوماتكم بسرية تامة. سيتواصل معكم فريقنا خلال 48 ساعة عمل."
+      - contentinfo [ref=f8e1518]:
+        - generic [ref=f8e1519]:
+          - generic [ref=f8e1520]:
+            - generic [ref=f8e1521]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f8e1522]
+              - paragraph [ref=f8e1523]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f8e1525]:
+              - textbox "البريد الإلكتروني..." [ref=f8e1526]
+              - button "اشترك الآن" [ref=f8e1527] [cursor=pointer]
+          - generic [ref=f8e1528]:
+            - generic [ref=f8e1529]:
+              - img "مؤسسة ولي العهد" [ref=f8e1531]
+              - generic [ref=f8e1532]:
+                - link "Facebook" [ref=f8e1533] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f8e1536] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f8e1539] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f8e1543] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f8e1548]:
+              - heading "روابط سريعة" [level=4] [ref=f8e1549]
+              - list [ref=f8e1550]:
+                - listitem [ref=f8e1551]:
+                  - button "الرئيسية" [ref=f8e1552] [cursor=pointer]
+                - listitem [ref=f8e1553]:
+                  - button "عن المؤسسة" [ref=f8e1554] [cursor=pointer]
+                - listitem [ref=f8e1555]:
+                  - button "البرامج والمبادرات" [ref=f8e1556] [cursor=pointer]
+                - listitem [ref=f8e1557]:
+                  - button "أحدث الأخبار" [ref=f8e1558] [cursor=pointer]
+                - listitem [ref=f8e1559]:
+                  - button "التقارير والدراسات" [ref=f8e1560] [cursor=pointer]
+                - listitem [ref=f8e1561]:
+                  - button "قصص النجاح" [ref=f8e1562] [cursor=pointer]
+            - generic [ref=f8e1565]:
+              - heading "لديك استفسار؟" [level=4] [ref=f8e1566]
+              - paragraph [ref=f8e1569]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f8e1570]:
+                - listitem [ref=f8e1571]:
+                  - generic [ref=f8e1575]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f8e1576]:
+                  - link "+962 6 555 5555" [ref=f8e1579] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f8e1580]:
+                  - link "info@cpf.jo" [ref=f8e1584] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f8e1585] [cursor=pointer]
+          - generic [ref=f8e1589]:
+            - button "أعلى الصفحة" [ref=f8e1590] [cursor=pointer]
+            - generic [ref=f8e1595]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f8e1596] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f8e1597]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f8e1598] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f8e1599]: (قريباً)
+            - generic [ref=f8e1600]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f8e540] [cursor=pointer]:
+      - img "عون AI" [ref=f8e541]

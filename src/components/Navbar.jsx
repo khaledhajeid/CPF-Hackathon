@@ -41,6 +41,7 @@ export default function Navbar({ currentPage, onNavigate, onLoginClick, onSearch
     { id: 'programs', label: 'البرامج والفرص' },
     { id: 'success', label: 'قصص شبابنا' },
     { id: 'news', label: 'أخبارنا' },
+    { id: 'publications', label: 'التقارير والدراسات' },
     { id: 'partnerships', label: 'الشركاء' },
     { id: 'about', label: 'عن المؤسسة' },
   ];

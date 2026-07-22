@@ -1,0 +1,136 @@
+- generic [ref=f6e1]:
+  - generic "قائمة الوصول":
+    - button "قائمة الوصول" [ref=f6e544] [cursor=pointer]
+  - generic [ref=f6e3]:
+    - navigation [ref=f6e4]:
+      - generic [ref=f6e5]:
+        - img "مؤسسة ولي العهد" [ref=f6e7] [cursor=pointer]
+        - generic [ref=f6e8]:
+          - button "الرئيسية" [ref=f6e9]
+          - button "البرامج والفرص" [ref=f6e11]
+          - button "قصص شبابنا" [ref=f6e12]
+          - button "أخبارنا" [ref=f6e13]
+          - button "التقارير والدراسات" [ref=f6e14]
+          - button "الشركاء" [ref=f6e15]
+          - button "عن المؤسسة" [ref=f6e16]
+        - generic [ref=f6e17]:
+          - button [ref=f6e18] [cursor=pointer]
+          - button "تسجيل الدخول" [ref=f6e22] [cursor=pointer]
+    - generic [ref=f6e549]:
+      - generic [ref=f6e553]:
+        - heading "التقارير والدراسات" [level=1] [ref=f6e554]
+        - paragraph [ref=f6e555]: أرشيف موثّق لأثر مؤسسة ولي العهد وبرامجها، يوثّق مسيرة التمكين عبر تقارير سنوية ودراسات تحليلية معمّقة.
+      - generic [ref=f6e557]:
+        - generic [ref=f6e558]:
+          - textbox "ابحث عن تقرير أو دراسة..." [ref=f6e563]
+          - generic [ref=f6e564]:
+            - button "الكل" [pressed] [ref=f6e565] [cursor=pointer]
+            - button "تقارير" [ref=f6e566] [cursor=pointer]
+            - button "دراسات" [ref=f6e567] [cursor=pointer]
+        - generic [ref=f6e568]:
+          - generic [ref=f6e569]: "السنة:"
+          - button "الكل" [ref=f6e570] [cursor=pointer]
+          - button "2025" [ref=f6e571] [cursor=pointer]
+          - button "2024" [active] [pressed] [ref=f6e572] [cursor=pointer]
+          - button "2023" [ref=f6e573] [cursor=pointer]
+      - generic [ref=f6e596]:
+        - article [ref=f6e616]:
+          - generic [ref=f6e617]:
+            - 'img "تقرير الأثر الوطني: الشباب والمهارات الرقمية" [ref=f6e618]'
+            - generic [ref=f6e620]: تقرير
+            - generic [ref=f6e621]: "2024"
+          - generic [ref=f6e622]:
+            - 'heading "تقرير الأثر الوطني: الشباب والمهارات الرقمية" [level=3] [ref=f6e623]'
+            - paragraph [ref=f6e624]: رصد لتحولات سوق العمل الرقمي في الأردن ودور مؤسسة ولي العهد في تأهيل الشباب لمواكبتها عبر برامج التدريب التقني.
+            - generic [ref=f6e625]:
+              - generic [ref=f6e626]: PDF · 6.7 MB
+              - link "تحميل" [ref=f6e631] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f6e635]:
+          - generic [ref=f6e636]:
+            - 'img "دراسة تحليلية: مسارات التوظيف بعد التدريب المهني" [ref=f6e637]'
+            - generic [ref=f6e639]: دراسة
+            - generic [ref=f6e640]: "2024"
+          - generic [ref=f6e641]:
+            - 'heading "دراسة تحليلية: مسارات التوظيف بعد التدريب المهني" [level=3] [ref=f6e642]'
+            - paragraph [ref=f6e643]: متابعة لمسارات خريجي برامج التدريب المهني بعد عام من التخرج، وقياس نسب الالتحاق بسوق العمل واستدامة التوظيف.
+            - generic [ref=f6e644]:
+              - generic [ref=f6e645]: PDF · 4.3 MB
+              - link "تحميل" [ref=f6e650] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f6e654]:
+          - generic [ref=f6e655]:
+            - img "التقرير السنوي 2024" [ref=f6e656]
+            - generic [ref=f6e658]: تقرير
+            - generic [ref=f6e659]: "2024"
+          - generic [ref=f6e660]:
+            - heading "التقرير السنوي 2024" [level=3] [ref=f6e661]
+            - paragraph [ref=f6e662]: توثيق شامل لمسيرة المؤسسة خلال عام 2024، وأبرز الشراكات والبرامج التي أطلقتها لخدمة الشباب الأردني.
+            - generic [ref=f6e663]:
+              - generic [ref=f6e664]: PDF · 9.2 MB
+              - link "تحميل" [ref=f6e669] [cursor=pointer]:
+                - /url: "#"
+      - contentinfo [ref=f6e692]:
+        - generic [ref=f6e693]:
+          - generic [ref=f6e694]:
+            - generic [ref=f6e695]:
+              - heading "اشترك في نشرتنا الإخبارية" [level=3] [ref=f6e696]
+              - paragraph [ref=f6e697]: كن أول من يعلم عن أحدث الفرص، البرامج، والمبادرات التي تطلقها مؤسسة ولي العهد لدعم الشباب.
+            - generic [ref=f6e699]:
+              - textbox "البريد الإلكتروني..." [ref=f6e700]
+              - button "اشترك الآن" [ref=f6e701] [cursor=pointer]
+          - generic [ref=f6e702]:
+            - generic [ref=f6e703]:
+              - img "مؤسسة ولي العهد" [ref=f6e705]
+              - paragraph [ref=f6e706]: مؤسسة وطنية تسعى لتمكين الشباب الأردني وتوجيه طاقاتهم نحو الابتكار، القيادة، والمشاركة الاقتصادية لبناء غدٍ مشرق للأردن طموح.
+              - generic [ref=f6e707]:
+                - link "Facebook" [ref=f6e708] [cursor=pointer]:
+                  - /url: https://www.facebook.com/CPFJO
+                - link "X" [ref=f6e711] [cursor=pointer]:
+                  - /url: https://x.com/cpfjo
+                - link "Instagram" [ref=f6e714] [cursor=pointer]:
+                  - /url: https://www.instagram.com/cpfjo/
+                - link "LinkedIn" [ref=f6e718] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/crown-prince-foundation/posts/?feedView=all
+            - generic [ref=f6e723]:
+              - heading "روابط سريعة" [level=4] [ref=f6e724]
+              - list [ref=f6e725]:
+                - listitem [ref=f6e726]:
+                  - button "الرئيسية" [ref=f6e727] [cursor=pointer]
+                - listitem [ref=f6e728]:
+                  - button "عن المؤسسة" [ref=f6e729] [cursor=pointer]
+                - listitem [ref=f6e730]:
+                  - button "البرامج والمبادرات" [ref=f6e731] [cursor=pointer]
+                - listitem [ref=f6e732]:
+                  - button "أحدث الأخبار" [ref=f6e733] [cursor=pointer]
+                - listitem [ref=f6e734]:
+                  - button "التقارير والدراسات" [ref=f6e735] [cursor=pointer]
+                - listitem [ref=f6e736]:
+                  - button "قصص النجاح" [ref=f6e737] [cursor=pointer]
+            - generic [ref=f6e740]:
+              - heading "لديك استفسار؟" [level=4] [ref=f6e741]
+              - paragraph [ref=f6e744]: فريقنا جاهز للإجابة على أسئلتك ومرافقتك في كل خطوة من مسارك.
+              - list [ref=f6e745]:
+                - listitem [ref=f6e746]:
+                  - generic [ref=f6e750]: عمان، دابوق – شارع محمد السعد البطاينة
+                - listitem [ref=f6e751]:
+                  - link "+962 6 555 5555" [ref=f6e754] [cursor=pointer]:
+                    - /url: tel:+96265555555
+                - listitem [ref=f6e755]:
+                  - link "info@cpf.jo" [ref=f6e759] [cursor=pointer]:
+                    - /url: mailto:info@cpf.jo
+              - button "تواصل معنا" [ref=f6e760] [cursor=pointer]
+          - generic [ref=f6e764]:
+            - button "أعلى الصفحة" [ref=f6e765] [cursor=pointer]
+            - generic [ref=f6e770]:
+              - link "شروط الاستخدام (قريباً)" [disabled] [ref=f6e771] [cursor=pointer]:
+                - /url: "#"
+                - text: شروط الاستخدام
+                - generic [ref=f6e772]: (قريباً)
+              - link "سياسة الخصوصية (قريباً)" [disabled] [ref=f6e773] [cursor=pointer]:
+                - /url: "#"
+                - text: سياسة الخصوصية
+                - generic [ref=f6e774]: (قريباً)
+            - generic [ref=f6e775]: جميع الحقوق محفوظة © ٢٠٢٦ مؤسسة ولي العهد
+    - button [ref=f6e541] [cursor=pointer]:
+      - img "عون AI" [ref=f6e542]

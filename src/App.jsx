@@ -17,6 +17,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PartnershipsPage from './pages/PartnershipsPage'; 
 import NewsPage from './pages/NewsPage';
 import NewsArticlePage from './pages/NewsArticlePage'; // 🟢 1. استيراد صفحة تفاصيل الخبر
+import PublicationsPage from './pages/PublicationsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home'); 
@@ -91,8 +92,10 @@ function App() {
         return <motion.div key="admin" {...pageVariants}><AdminDashboard onNavigate={handleNavigate} /></motion.div>;
       case 'programs': 
         return <motion.div key="programs" {...pageVariants}><Programs onNavigate={handleNavigate} setActiveProgramName={setActiveProgramName} handleRegisterClick={handleRegisterClick} /></motion.div>;
-      case 'news': 
+      case 'news':
         return <motion.div key="news" {...pageVariants}><NewsPage onNavigate={handleNavigate} /></motion.div>;
+      case 'publications':
+        return <motion.div key="publications" {...pageVariants}><PublicationsPage onNavigate={handleNavigate} /></motion.div>;
       
       // 🟢 5. إضافة مسار صفحة تفاصيل الخبر وتمرير بيانات الخبر
       case 'news-article': 

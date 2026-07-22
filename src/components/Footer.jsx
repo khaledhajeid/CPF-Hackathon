@@ -20,6 +20,7 @@ export default function Footer({ onNavigate }) {
     { name: 'عن المؤسسة', id: 'about' },
     { name: 'البرامج والمبادرات', id: 'programs' },
     { name: 'أحدث الأخبار', id: 'news' },
+    { name: 'التقارير والدراسات', id: 'publications' },
     { name: 'قصص النجاح', id: 'success' },
   ];
 

@@ -6,6 +6,8 @@ import { pulseImages } from '../../data/newsData';
 export default function VisualPulse({ onImageClick }) {
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
+  const isPaused1 = useRef(false);
+  const isPaused2 = useRef(false);
 
   // حفظ الـ Index الأصلي لتفتح الصورة الصحيحة في النافذة المنبثقة (نفس مصدر البيانات المستخدم في المعرض المنبثق بصفحة الأخبار)
   const imagesWithIndex = pulseImages.map((img, idx) => ({ ...img, originalIndex: idx }));
@@ -36,10 +38,20 @@ export default function VisualPulse({ onImageClick }) {
     }
   };
 
-  // تطبيق infinite loop عند كل scroll
+  // تطبيق infinite loop عند كل scroll + وضع البداية في منتصف الشريط المكرر
   useEffect(() => {
     const row1Element = row1Ref.current;
     const row2Element = row2Ref.current;
+
+    // 🟢 نضع نقطة البداية في منتصف الشريط (الصف الثاني من التكرار) حتى يقدر يتحرك بالاتجاهين بدون توقف
+    if (row1Element) {
+      const oneRowWidth = row1Element.scrollWidth / 3;
+      row1Element.scrollLeft = oneRowWidth;
+    }
+    if (row2Element) {
+      const oneRowWidth = row2Element.scrollWidth / 3;
+      row2Element.scrollLeft = oneRowWidth;
+    }
 
     // حالة التتبع للماوس
     let isMouseDown = false;
@@ -102,7 +114,7 @@ export default function VisualPulse({ onImageClick }) {
     };
 
     // إضافة event listeners لكل صف
-    const setupEventListeners = (element) => {
+    const setupEventListeners = (element, pausedRef) => {
       element.addEventListener('wheel', handleWheel, { passive: false });
       element.addEventListener('mousedown', handleMouseDown);
       element.addEventListener('mousemove', handleMouseMove);
@@ -111,9 +123,25 @@ export default function VisualPulse({ onImageClick }) {
       element.addEventListener('scroll', handleScrollEvent);
       element.addEventListener('touchstart', handleTouchStart, { passive: true });
       element.addEventListener('touchmove', handleTouchMove, { passive: true });
-      
+
       // تعيين cursor ابتدائي
       element.style.cursor = 'grab';
+
+      // 🟢 إيقاف التحرك التلقائي أثناء تفاعل المستخدم، واستئنافه بعد فترة قصيرة
+      const pause = () => { pausedRef.current = true; };
+      const resumeLater = () => {
+        clearTimeout(element._resumeTimer);
+        element._resumeTimer = setTimeout(() => { pausedRef.current = false; }, 1500);
+      };
+
+      element.addEventListener('mouseenter', pause);
+      element.addEventListener('mouseleave', resumeLater);
+      element.addEventListener('touchstart', pause, { passive: true });
+      element.addEventListener('touchend', resumeLater, { passive: true });
+      element.addEventListener('wheel', resumeLater, { passive: true });
+
+      element._pauseHandler = pause;
+      element._resumeHandler = resumeLater;
     };
 
     // إزالة event listeners
@@ -126,14 +154,20 @@ export default function VisualPulse({ onImageClick }) {
       element.removeEventListener('scroll', handleScrollEvent);
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchmove', handleTouchMove);
+      element.removeEventListener('mouseenter', element._pauseHandler);
+      element.removeEventListener('mouseleave', element._resumeHandler);
+      element.removeEventListener('touchstart', element._pauseHandler);
+      element.removeEventListener('touchend', element._resumeHandler);
+      element.removeEventListener('wheel', element._resumeHandler);
+      clearTimeout(element._resumeTimer);
     };
 
     if (row1Element) {
-      setupEventListeners(row1Element);
+      setupEventListeners(row1Element, isPaused1);
     }
 
     if (row2Element) {
-      setupEventListeners(row2Element);
+      setupEventListeners(row2Element, isPaused2);
     }
 
     return () => {
@@ -144,6 +178,27 @@ export default function VisualPulse({ onImageClick }) {
         removeEventListeners(row2Element);
       }
     };
+  }, []);
+
+  // 🟢 الحركة التلقائية المستمرة بالاتجاهين (الشريط الأول لليسار، الثاني لليمين)
+  useEffect(() => {
+    let frameId;
+    const SPEED = 0.6; // بكسل لكل فريم — تحكم بالسرعة من هنا
+
+    const step = () => {
+      if (row1Ref.current && !isPaused1.current) {
+        row1Ref.current.scrollLeft += SPEED;
+        handleScroll(row1Ref);
+      }
+      if (row2Ref.current && !isPaused2.current) {
+        row2Ref.current.scrollLeft -= SPEED;
+        handleScroll(row2Ref);
+      }
+      frameId = requestAnimationFrame(step);
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
   // 🟢 كرت الصورة
@@ -190,7 +245,7 @@ export default function VisualPulse({ onImageClick }) {
       <style>
         {`
           .scroll-container {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
             -webkit-overflow-scrolling: touch;
           }
           .scroll-container::-webkit-scrollbar {
@@ -208,27 +263,35 @@ export default function VisualPulse({ onImageClick }) {
         <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-black text-[#8a1538] tracking-tight mb-2">عدسة الميدان</h2>
       </div>
 
-      {/* 🟢 حاويات التمرير مع ميزة التمرير اللانهائي */}
+      {/* 🟢 حاويات التمرير مع الحركة التلقائية وتلاشي الحواف */}
       <div className="w-full flex flex-col gap-[clamp(1rem,1.5vw,1.5rem)]">
         
-        {/* الشريط الأول - قابل للتمرير يميناً ويساراً */}
-        <div 
-          ref={row1Ref}
-          className="flex w-full overflow-x-auto scroll-container gap-[clamp(1rem,1.5vw,1.5rem)] px-[clamp(1rem,1.5vw,1.5rem)]"
-        >
-          {infiniteRow1.map((img, idx) => (
-            <ImageCard key={`row1-${img.id}-${idx}`} item={img} />
-          ))}
+        {/* الشريط الأول - يتحرك تلقائياً لليسار */}
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#fcfcfc] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#fcfcfc] to-transparent z-10" />
+          <div 
+            ref={row1Ref}
+            className="flex w-full overflow-x-auto scroll-container gap-[clamp(1rem,1.5vw,1.5rem)] px-[clamp(1rem,1.5vw,1.5rem)]"
+          >
+            {infiniteRow1.map((img, idx) => (
+              <ImageCard key={`row1-${img.id}-${idx}`} item={img} />
+            ))}
+          </div>
         </div>
 
-        {/* الشريط الثاني - قابل للتمرير أيضاً */}
-        <div 
-          ref={row2Ref}
-          className="flex w-full overflow-x-auto scroll-container gap-[clamp(1rem,1.5vw,1.5rem)] px-[clamp(1rem,1.5vw,1.5rem)]"
-        >
-          {infiniteRow2.map((img, idx) => (
-            <ImageCard key={`row2-${img.id}-${idx}`} item={img} />
-          ))}
+        {/* الشريط الثاني - يتحرك تلقائياً لليمين (اتجاه معاكس) */}
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#fcfcfc] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#fcfcfc] to-transparent z-10" />
+          <div 
+            ref={row2Ref}
+            className="flex w-full overflow-x-auto scroll-container gap-[clamp(1rem,1.5vw,1.5rem)] px-[clamp(1rem,1.5vw,1.5rem)]"
+          >
+            {infiniteRow2.map((img, idx) => (
+              <ImageCard key={`row2-${img.id}-${idx}`} item={img} />
+            ))}
+          </div>
         </div>
 
       </div>

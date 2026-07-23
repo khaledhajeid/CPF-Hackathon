@@ -7,7 +7,7 @@ export const allStories = [
     "program": "منصة نحن ومكتب المؤسسة في الكرك",
     "programKey": "منصة نحن ومكتب المؤسسة في الكرك",
     "location": "الكرك",
-    "video": 'https://cpf.jo/wp-content/uploads/2024/05/%D8%A7%D8%AD%D9%85%D8%AF-%D8%A7%D9%84%D8%B9%D8%B6%D8%A7%D9%8A%D9%84%D8%A9-%D8%A7%D9%84%D8%B7%D9%81%D9%8A%D9%84%D8%A9-1-1000x540.jpg',
+    "video": 'https://res.cloudinary.com/dj1jhzfrj/video/upload/v1783420134/FSF_impact_story_V2_1_lu1k19.mp4',
     "pathway": null,
     "image": 'https://cpf.jo/wp-content/uploads/2024/05/احمد-العضايلة-الطفيلة-1-1000x540.jpg',
     "quote": "كسرت تجربة التطوع حاجز التردد لدي وأصبحت أكثر قدرة على التحدث ومشاركة أفكاري مع الآخرين",

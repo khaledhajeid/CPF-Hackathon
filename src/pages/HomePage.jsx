@@ -88,7 +88,6 @@ export default function HomePage({
 
             {/* العنصر 1 */}
             <div className="flex flex-col items-center justify-center text-center border-l border-b border-gray-100 lg:border-b-0 pb-6 lg:pb-0">
-              {/* 🟢 حجم الخط: text-4xl للـ xl (أنيق)، و text-6xl للشاشات العملاقة */}
               <h3 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-black text-[#8a1538] mb-1 lg:mb-1 xl:mb-2">
                 <AnimatedNumber value={2.2} decimals={1} />
               </h3>

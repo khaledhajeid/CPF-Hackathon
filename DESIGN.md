@@ -116,6 +116,8 @@ A Committed strategy: CPF Red is the dominant surface and headline color; Gold i
 
 **The Gold Discipline Rule.** Gold never fills a surface; it marks. If gold is covering more than a badge, a seam, an underline, or a single CTA, it has drifted from accent to wallpaper — pull it back.
 
+**The Gold Text-Contrast Rule.** Text on a Gold (`#C08F2D`) background is always Ink Black (`#1a0409`), never white — white-on-gold measures ~2.9:1 contrast, failing WCAG AA's 4.5:1 (body) and even the 3:1 large-text/graphics minimum. This has been the single most common accessibility regression in this codebase; treat white text on any gold fill as a bug on sight, not a style choice to weigh.
+
 ## 3. Typography
 
 **Display Font:** CPF-Font (a licensed HelveticaNeueLT Arabic face, regular 400 + bold 700), falling back to system sans-serif.
@@ -151,7 +153,7 @@ Soft-lifted luxury: shadows are diffuse, generously blurred, and low-opacity, ne
 ### Buttons
 - **Shape:** pill (`rounded-full`, `9999px`) for primary marketing/nav CTAs; `rounded-xl` (`0.75rem`) for form, dialog, and utility buttons.
 - **Primary:** Interactive Red background, white text, `font-black`, generous padding (`px-8 py-3.5` scale). Hover deepens to `#680f2a` with a lifted shadow (`shadow-md` → `shadow-xl`).
-- **Gold / ceremonial variant:** Gold background, white text; hover inverts to white background with Interactive Red text — used for the rarer, more significant CTA (e.g. the Footer "تواصل معنا" button).
+- **Gold / ceremonial variant:** Gold background, **Ink Black** text (never white — see The Gold Text-Contrast Rule); hover inverts to white background with Interactive Red text — used for the rarer, more significant CTA (e.g. the Footer "تواصل معنا" button). Note: the current mockup has several gold buttons still using white text (Hero, Dashboard, HomePage, Programs tab, filter-reset buttons in HomeEvents/EventsExplorer) — these are known defects to correct in the rebuild, not the intended spec.
 - **Secondary / Ghost:** white background, `border-gray-200`, gray text, hover lifts border to gray-300 with `shadow-sm` — used for lower-emphasis actions (social login, "read more").
 
 ### Chips / Badges
@@ -179,7 +181,22 @@ A docked, permanently-visible burgundy pill fused to the screen edge, pulsing a 
 ### Footer Contact CTA (signature component)
 A ceremonial card breaking from the flat footer list-column pattern: an Interactive-Red-to-Ink-Black gradient card with a low-opacity gold border, a gold icon badge, and a full-width Gold primary button that inverts to white-on-red on hover. This is the site's single, deliberately prominent "get in touch" moment — it should never be duplicated as a plain text link elsewhere.
 
-## 6. Do's and Don'ts
+### Animated Stat Counter (signature component)
+A count-up numeral used for institutional proof points (hero stats, About page impact numbers — e.g. beneficiaries, programs, governorates, partners, employees). One canonical implementation is shared across every page that shows these stats — never a separately re-tuned counter per page.
+- **Pacing:** the count-up must run slowly enough to actually be perceived incrementing, not flash to its final value — target roughly 1.5–2.5s duration with an ease-out curve, tuned per magnitude (a number in the millions may ease over a slightly longer duration than a number under 100). If a stakeholder can't tell it's animating, it's too fast.
+- **Trigger:** mount-triggered or `useInView`-gated-but-guaranteed-to-fire (see the Motion section's mount-vs-scroll rule) — never gated behind an observer that can silently never fire and leave the numeral at zero.
+- **Layout:** the Display numeral (§3 Typography) is the default treatment; an icon-topped boxed variant (numeral + label inside a bordered/panel box, one box per stat in a row) is an acceptable alternate composition for denser stat groupings (e.g. the About page's expanded stat set) — treat it as a layout variant of the same component, not a second component.
+- **Motion compliance:** respects `prefers-reduced-motion` — resolve instantly to the final value rather than skipping the count-up animation abruptly mid-tween.
+
+## 6. Iconography
+
+**Source of truth:** the icon set provided by Comms is the only icon library used across the product. Do not mix in ad-hoc icon libraries (e.g. reaching for a generic open-source icon pack) alongside it — one icon system, used consistently for the same concept everywhere it appears (a "calendar" icon means the same thing and looks the same on every card, every page).
+
+- **Weight/style:** match the stroke weight and corner treatment of the Comms set consistently; don't hand-mix filled and outlined styles for the same semantic icon across different components.
+- **Sizing:** icons scale with their text context (`w-4 h-4` inline with body text, `w-6`–`w-7` in icon badges) rather than a single fixed size reused everywhere regardless of context.
+- **Color:** icons follow the same color rules as text — an icon sitting on a Gold fill is Ink Black, not white (see The Gold Text-Contrast Rule above); an icon inside an Interactive Red badge is white.
+
+## 7. Do's and Don'ts
 
 ### Do:
 - **Do** keep CPF Red (`#721F31`) on large flat surfaces and Interactive Red (`#8a1538`) on anything touchable — The Red Duality Rule.
@@ -188,6 +205,8 @@ A ceremonial card breaking from the flat footer list-column pattern: an Interact
 - **Do** respect `prefers-reduced-motion` on every animation with a crossfade or instant fallback.
 - **Do** validate every layout in RTL directly — first DOM child renders at the visual right in a flex/grid row.
 - **Do** keep the UI lightweight enough to run smoothly on low-end mobile devices and older desktop computers; avoid heavy `backdrop-filter` blur as a default treatment.
+- **Do** use exclusively the Comms-provided icon set, applied consistently for the same concept everywhere — see Iconography.
+- **Do** pace any count-up numeral (Animated Stat Counter) slowly enough to be visibly perceived incrementing, never a near-instant flash to the final value.
 
 ### Don't:
 - **Don't** use gradient text (`background-clip: text` + gradient) for emphasis — use weight or the Interactive Red/Gold roles instead.
@@ -196,3 +215,5 @@ A ceremonial card breaking from the flat footer list-column pattern: an Interact
 - **Don't** default to identical icon-in-a-circle card grids; vary structure per section.
 - **Don't** reach for the generic hero-metric-template (big number, small label, gradient accent) — the existing AnimatedNumber stat blocks already have a distinct, non-generic treatment; match that, don't genericize it.
 - **Don't** let gold cover more surface than a badge, seam, or single CTA — if it starts reading as a background color, pull it back.
+- **Don't** ship a hover-only affordance (a label, an icon, a "discover" prompt) that doesn't lead anywhere — every hover state that implies interactivity must resolve to a real destination or action.
+- **Don't** pair white text/icons with a Gold fill — see The Gold Text-Contrast Rule.

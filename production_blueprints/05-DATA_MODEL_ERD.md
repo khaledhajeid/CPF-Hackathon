@@ -390,7 +390,7 @@ erDiagram
         datetime end_date_time "nullable — for events with a specific end time"
         string image
         string registration_url "nullable"
-        string source "seed | impact_system — Phase 2 seam, see 01-...md §7"
+        string source "seed | impact_system (Athar Sphere) — Phase 2 seam, see 01-...md §7"
         bool is_active
         datetime created_at
     }

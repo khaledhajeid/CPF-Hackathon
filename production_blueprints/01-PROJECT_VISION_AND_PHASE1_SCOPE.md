@@ -151,6 +151,9 @@ The following are **content or asset dependencies from the client**, not technic
 - Quote selection from `HRHCP's Quotes - DK 11.2 - Copy.xlsx`.
 - Map asset/embed for the About page (Ahmad Marei).
 - `CPF TIMELINE.xlsx` — timeline data (available now, ready to ingest).
+- Athar Sphere API details — version, endpoint, authentication token, and expected response shape (see §7.0).
+- Decision on target-audience-criteria enforcement (strict vs. flexible) for activities/opportunities, to be made through Athar Sphere (see §7.0).
+- QR code flow finalization with Marei's team/the relevant owning team (see §7.0) — not yet an engineering task until the flow itself is defined.
 
 Track these as a literal content-intake checklist in project management (Jira/Linear/etc.), not as engineering tickets — the corresponding UI should already be built and waiting.
 
@@ -171,9 +174,17 @@ Build Phase 1's data models and API surface with these additions in mind (e.g., 
 
 ---
 
-## 7. Strategy: "Opportunities and Events" & the external Impact System
+## 7. Strategy: "Opportunities and Events" & the external Impact System (Athar Sphere)
 
-**Critical constraint from the client:** CPF already has (or is building, separately from this engagement) an **"Impact System"** — a separate system of record for opportunities, events, registrations, and impact tracking. **This engineering team is explicitly NOT building the Impact System.** Our relationship to it is strictly as a **consumer of its external API.**
+**Critical constraint from the client:** CPF already has (or is building, separately from this engagement) an **"Impact System" — confirmed by the IT team to be Athar Sphere** — a separate system of record for opportunities, events, registrations, and impact tracking. **This engineering team is explicitly NOT building Athar Sphere.** Our relationship to it is strictly as a **consumer of its external API.**
+
+### 7.0 What's now confirmed vs. still pending (per IT team alignment notes)
+
+- **Confirmed:** Activities will be linked to Athar Sphere — this validates the integration seam already designed below (§7's Phase 1/Phase 2 split, and the `Activity.source` field in `03-...md` §4.2/`05-DATA_MODEL_ERD.md`). No architectural change needed; this is exactly the shape already planned for.
+- **Pending from the Athar Sphere team:** the API version, endpoint, authentication token, and expected response/outcome shape. Until these arrive, the Phase 1 mock shape in `03-...md` §4.2 is our best-effort anticipation, not a confirmed contract — treat it as provisional and expect the adapter/serializer layer described in §7's "Phase 2 strategy" below to absorb whatever the real shape turns out to be.
+- **Pending decision:** whether **target audience criteria** for activities/opportunities (who is eligible — age, governorate, program affiliation, etc.) are enforced as **strict requirements** or used as **flexible/advisory criteria**. This will be decided through Athar Sphere, not by this engineering team, and it materially affects whether eligibility becomes a hard filter or a soft recommendation in the UI — do not build either behavior prematurely; treat it as an open question tracked alongside the other pending items in §5.
+- **Pending finalization:** the **QR code flow** (presumably for event check-in/attendance, though the exact use case hasn't been specified yet) still needs to be finalized with Marei's team (Ahmad Marei, already referenced elsewhere in this document as the owner of the AI Pathway Wizard logic and the About-page map asset) or whichever team owns it. No QR-related model or UI should be built until this is confirmed — added to the pending-content list in §5.
+- **Confirmed requirement:** the Athar Sphere dashboard should be **synced where relevant** — read as: wherever Athar Sphere's own dashboard and the CPF website both display the same underlying activity/opportunity data, they must not drift out of sync. This reinforces the existing "Django as sole integration point, single source of truth re-exposed via our own API" design in §7's Phase 2 strategy and `03-...md` §5 — it does not require a new architectural pattern, just confirms the one already chosen is the right one.
 
 ### Phase 1 strategy
 "Opportunities and Events" content — the Activities calendar, the Programs catalog's live event data, and anything that in a mature system would be Impact-System-sourced — is **hardcoded/mocked** in Phase 1:
@@ -199,3 +210,37 @@ Phase 1 is complete when:
 3. All "pending content" items in §5 have a working, empty/placeholder-safe UI ready to receive real content the moment it arrives, without needing an engineer to re-touch the component.
 4. WCAG AA, RTL correctness, and the performance/motion constraints in `DESIGN.md` are verified on the rebuilt pages, not assumed to carry over from the mockup.
 5. The Impact System integration seam (§7) exists in the backend even though it fetches only mocked data today.
+
+---
+
+## 9. IT Team Technical Alignment Notes (addendum)
+
+The IT team reviewed this blueprint set and raised a round of technical alignment notes, separate from and later than the client's original `Notes for Website Development.pdf` (§2). This section captures that input directly, distinguishing what it **confirms** (no action needed beyond noting it), what it **changes or adds** (action taken below), and what it leaves as an **open decision** this document cannot resolve unilaterally.
+
+### 9.1 "Database-driven, not hardcoded" — confirms the existing direction, no schema change needed
+
+The core concern raised was that CPF should not depend on developers for routine content changes — programs, opportunities, activities, news, and youth stories should be added by filling in fields, not by editing pages. **This is already exactly what `03-BACKEND_ARCHITECTURE_AND_SECURITY.md` §4 and the `05`/`06`/`07` data-model documents built**, months before this note arrived: `Program`, `Activity`, `NewsArticle`, `SuccessStory`, and every About-page content block are real Django/Postgres models with translation tables, `is_active`, and `order` fields — specifically so a content editor's future CMS screen can manage them without touching code. Nothing here changes the schema; it validates a decision already made. See `07-DATA_MODEL_ERD_RATIONALE.md` §3.4 for why `is_active`/`order` exist on nearly every table — that reasoning is precisely this requirement, arrived at independently before the IT note confirmed it.
+
+### 9.2 Terminology correction: "Content Editor" role, not "Admin" / "Offices login"
+
+The IT team specifically asked that the staff-facing management role be understood as a **Content Editor** role — someone managing programs, opportunities, activities, news, and youth stories — rather than framed as a general "Admin" or "offices login." This is a meaningful distinction from what the mockup's `AdminDashboard.jsx` demonstrates (office-level *event/registration* management — who's registered for what, capacity, attendee lists), which is a **different persona** solving a different problem. Both are legitimate Phase 2 personas and neither replaces the other:
+- **Content Editor** — manages *what CPF publishes* (programs, activities, news, stories, About-page content). This is the persona the IT note is prioritizing.
+- **Office/Event Admin** — manages *who's registered for what* (the mockup's existing mocked `AdminDashboard.jsx` UX reference, per §6).
+
+`§4`'s "CMS authoring UI, Admin Dashboard, User Auth" row and `§6`'s Phase 2 preview should be read with this distinction in mind going forward: "CMS authoring UI" = Content Editor persona (now the explicitly stated priority); "Admin Dashboard" = Office/Event Admin persona (still valid, still Phase 2, not deprioritized, just not the same thing).
+
+### 9.3 Open question: does Content Editor tooling stay in Phase 2, or move into Phase 1?
+
+**This document does not resolve this — it needs an explicit decision from the client/PM before Phase 2 (or an expanded Phase 1) is planned.** The original client PDF notes (§2) framed Phase 1 as public-facing pages only, with CMS/Admin/Auth deferred entirely to Phase 2 (§4, §6). The IT note's language — "the most important direction," "the main concern" — is forceful enough that it could mean either:
+(a) Phase 2's roadmap should lead with Content Editor tooling as its top item (Phase 1 scope is unchanged; Phase 2 priority order shifts), or
+(b) a basic Content Editor capability should ship *alongside* Phase 1's public pages, not after them.
+
+**Recommendation, not a decision:** confirm explicitly with the client whether Phase 1 can launch with content changes still routed through a developer (or Django's raw, functional-but-undesigned default admin screens, which already work against the Phase 1 data model with zero extra engineering) as a stopgap, or whether a designed Content Editor UI is a Phase 1 launch blocker. Either way, **no Phase 1 engineering work already planned changes** — the data model is already CMS-ready (§9.1); what's actually at stake is only the timing of a *polished, non-technical-friendly* editing screen versus Django's default admin as an interim measure.
+
+### 9.4 Tracks (`Pathway`) confirmed as the primary categorization axis — no schema change
+
+The IT note names "tracks" as the main categorization logic across **programs, opportunities, events, prizes, and activities**, stable in structure while the content under them changes. This is precisely the `Pathway` entity already modeled in `05-DATA_MODEL_ERD.md`/`07-DATA_MODEL_ERD_RATIONALE.md` (تعلّم / قُد / اصنع الأثر), already attached to both `Program` and `Activity`. **"Prizes" need no separate categorization axis** — award-type content (e.g. "جائزة الحسين بن عبد الله الثاني للعمل التطوعي") is already modeled as a `Program` row, which already carries a `pathway_id`. This note is a confirmation of existing work, recorded here so a future team doesn't reintroduce a redundant "prize category" concept.
+
+### 9.5 Open question: CMS platform — Django Admin vs. WordPress (or similar)
+
+The IT team raised WordPress (or a similar CMS) as a possible platform for high-churn content specifically (news, youth stories), explicitly **not** as a decision made now — "the purpose is not necessarily to decide now that WordPress must be used, but to make sure there is a clear content editing approach." **This blueprint's existing recommendation (`03-BACKEND_ARCHITECTURE_AND_SECURITY.md` §1 — Django's built-in admin as the unified CMS backbone for every content type) stands unless the client explicitly chooses otherwise.** A split setup (WordPress for news/stories, Django for programs/activities/makers-map) is a real option, but it introduces genuine integration cost this document hasn't priced in: two separate content systems, either a sync job or an embed/iframe strategy to surface WordPress content on the Next.js frontend, and duplicated editor accounts/auth. If the client confirms WordPress (or another CMS) for any content type, **this blueprint set needs a follow-up revision** before that path is built — don't start a WordPress integration against this document set as it stands today.

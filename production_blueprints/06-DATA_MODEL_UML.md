@@ -377,7 +377,7 @@ classDiagram
     FieldLensImage ..> FieldLensLayout : uses
 ```
 
-`Pathway`, `Governorate`, and `Program` are reused here **by reference** (aggregation only, no attributes redrawn) — their full class definitions live in §3 (`Pathway`, `Program`) and §5 (`Governorate`). `ActivitySource` and `NewsSource` are kept as two distinct enumerations rather than merged into one generic "content source" enum: they encode genuinely different concepts (`Activity`'s source is about the pending Impact System integration seam from `01-...md` §7; `NewsArticle`'s source is about whether a row came from the one-time live-site content seed or the future CMS).
+`Pathway`, `Governorate`, and `Program` are reused here **by reference** (aggregation only, no attributes redrawn) — their full class definitions live in §3 (`Pathway`, `Program`) and §5 (`Governorate`). `ActivitySource` and `NewsSource` are kept as two distinct enumerations rather than merged into one generic "content source" enum: they encode genuinely different concepts (`Activity`'s source is about the pending Impact System (Athar Sphere) integration seam from `01-...md` §7; `NewsArticle`'s source is about whether a row came from the one-time live-site content seed or the future CMS).
 
 ---
 

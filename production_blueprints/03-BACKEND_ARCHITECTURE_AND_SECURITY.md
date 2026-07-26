@@ -11,6 +11,8 @@ Django is chosen for its batteries-included admin, ORM, and migrations — all d
 - Type-annotated, Pydantic-schema-based request/response models give us free request validation and an auto-generated OpenAPI schema — which the frontend team can codegen typed API clients from (see `02-...md` §6), keeping the Next.js and Django contracts in sync as both evolve.
 - Lighter-weight and faster to iterate on for a project that is, in Phase 1, mostly read-heavy public content endpoints — DRF's heavier serializer/viewset machinery isn't needed yet, and Ninja doesn't preclude adding DRF later for something that genuinely needs it.
 
+**Open question, not yet decided:** the IT team has raised WordPress (or a similar CMS) as a possible platform specifically for high-churn content (news, youth stories) — see `01-...md` §9.5. This document's recommendation — Django's built-in admin as the single, unified CMS backbone for every content type — stands as the default unless the client explicitly chooses otherwise. If WordPress (or another CMS) is confirmed for any content type, this document needs a follow-up revision before that integration is built; don't start it against the architecture below as-is.
+
 ---
 
 ## 2. Project folder structure
@@ -108,6 +110,10 @@ Activity
   # Deliberately NO points/reward fields — out of scope per 01-...md §4
 ```
 
+> This is a simplified early sketch — `05-DATA_MODEL_ERD.md` §5 and `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 are the authoritative, current field list for `Activity` (including `end_date_time`, `is_online`, `pathway_id`, and the `source` field this section discusses). Treat this snippet as historical context, not the source of truth.
+
+**Not yet modeled: target-audience criteria.** Per `01-...md` §7.0, whether an activity's eligibility (age, governorate, program affiliation, etc.) should be a **strict filter** or a **flexible/advisory criterion** is a decision Athar Sphere's team will make, not this engineering team. No `target_audience` field or eligibility-enforcement logic should be added to `Activity` until that decision lands — adding it now would mean guessing at a shape (and a strict-vs-flexible behavior) that isn't ours to decide, the same discipline already applied to `NewsCategory` and `SuccessStory.batch_number` in `07-...md` §8.
+
 ### 4.3 `NewsArticle` (apps/news)
 ```
 NewsArticle
@@ -170,9 +176,9 @@ Per `01-...md` §4: no `Partner`/`Partnership` model, no `Publication` model, no
 
 ---
 
-## 5. Third-party API strategy: the external Impact System
+## 5. Third-party API strategy: the external Impact System (Athar Sphere)
 
-This is the most architecturally important decision in this document — get it locked in before any team member starts writing integration code by instinct.
+This is the most architecturally important decision in this document — get it locked in before any team member starts writing integration code by instinct. The IT team has since confirmed the external system's actual name: **Athar Sphere.** See `01-...md` §7.0 for the full list of what's confirmed vs. still pending from their side (API version/endpoint/token, dashboard sync, target-audience-criteria enforcement, QR code flow) — none of it changes the architecture below, it's additional operational detail once Athar Sphere's team provides it.
 
 ### 5.1 Decision: Django backend integrates, NOT the Next.js frontend
 **The Django backend is the integration point for the external Impact System API, never the Next.js frontend directly.** Reasoning:

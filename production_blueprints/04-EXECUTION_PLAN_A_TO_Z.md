@@ -8,8 +8,9 @@
 
 - [ ] Confirm the **new repository** location and access for the dev team.
 - [ ] Obtain the **Comms icon pack** (referenced in `01-...md` §3.1) — don't start component work on any page that needs iconography without it, or you'll rework icons later.
-- [ ] Confirm receipt-status of the **pending content items** listed in `01-...md` §5 (August activities calendar, program copy, program photos, news database, quote selection, `CPF TIMELINE.xlsx`, about-page map asset). Timeline data and program-photo-folder access should already be available — pull those in during Step 3/4 rather than waiting.
-- [ ] Confirm with whoever owns the **external Impact System** what its anticipated API response shape will look like, even roughly — this materially informs the `Activity` model shape in Step 4 (`03-...md` §4.2, §5).
+- [ ] Confirm receipt-status of the **pending content items** listed in `01-...md` §5 (August activities calendar, program copy, program photos, news database, quote selection, `CPF TIMELINE.xlsx`, about-page map asset, Athar Sphere API details, target-audience-criteria decision, QR code flow). Timeline data and program-photo-folder access should already be available — pull those in during Step 3/4 rather than waiting.
+- [ ] Confirm with the **Athar Sphere team** (the confirmed name of the external Impact System, per `01-...md` §7.0) what its API version, endpoint, auth token, and expected response shape will look like, even roughly — this materially informs the `Activity` model shape in Step 4 (`03-...md` §4.2, §5). Also confirm whether Athar Sphere's dashboard needs active syncing (per `01-...md` §7.0) beyond the read-only integration already planned.
+- [ ] **Get an explicit answer on the two open decisions in `01-...md` §9** before Phase 2 planning locks in: (a) does Content Editor tooling stay in Phase 2, or move into Phase 1 (§9.3)? (b) is the CMS backbone staying Django Admin, or is WordPress (or similar) being adopted for news/youth stories (§9.5)? Both affect Phase 2's scope and, potentially, Phase 1's launch criteria — don't assume an answer.
 - [ ] Decide monorepo vs. two-repo split (`frontend` / `backend`) — either is compatible with this blueprint; pick based on team deployment preferences and document the choice.
 
 ---

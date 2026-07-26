@@ -254,6 +254,7 @@ classDiagram
         +bool isOnline
         +string ageRange
         +date startDate
+        +datetime endDateTime
         +string image
         +string registrationUrl
         +ActivitySource source
@@ -267,14 +268,6 @@ classDiagram
         +string locationLabel
     }
 
-    class NewsCategory {
-        <<Translatable, Orderable>>
-        +string code
-    }
-    class NewsCategoryTranslation {
-        <<Translation>>
-        +string name
-    }
     class NewsArticle {
         <<Translatable, Activatable>>
         +string slug
@@ -310,13 +303,13 @@ classDiagram
         +string slug
         +string videoUrl
         +string image
-        +int batchNumber
         +datetime publishedAt
         +getTranslation(languageCode) SuccessStoryTranslation
     }
     class SuccessStoryTranslation {
         <<Translation>>
         +string name
+        +string subtitle
         +string quote
         +string fullStory
     }
@@ -368,10 +361,8 @@ classDiagram
     Program "1" o-- "0..*" NewsArticle : optionallyAbout
     Program "1" o-- "0..*" SuccessStory : featuresAlumniOf
     Governorate "1" o-- "0..*" SuccessStory : originatesFrom
-    NewsCategory "1" o-- "many" NewsArticle : categorizes
 
     Activity "1" *-- "many" ActivityTranslation : translations
-    NewsCategory "1" *-- "many" NewsCategoryTranslation : translations
     NewsArticle "1" *-- "many" NewsArticleTranslation : translations
     FieldLensImage "1" *-- "many" FieldLensImageTranslation : translations
     SuccessStory "1" *-- "many" SuccessStoryTranslation : translations

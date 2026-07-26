@@ -75,8 +75,6 @@ erDiagram
     Program ||--o{ NewsArticle : "optionally about"
     Program ||--o{ SuccessStory : "features alumni of"
 
-    NewsCategory ||--o{ NewsArticle : categorizes
-
     Governorate ||--o{ Activity : "takes place in"
     Governorate ||--o{ SuccessStory : "originates from"
     Governorate ||--o{ MakerSpace : "located in"
@@ -113,20 +111,15 @@ erDiagram
         bool is_online
         string age_range
         date start_date
+        datetime end_date_time "nullable"
         string image
         string registration_url
         string source
         bool is_active
     }
-    NewsCategory {
-        int id PK
-        string code UK
-        int order
-    }
     NewsArticle {
         int id PK
         string slug UK
-        int news_category_id FK
         int program_id FK
         string media_type
         string media_url
@@ -143,7 +136,6 @@ erDiagram
         int governorate_id FK
         string video_url
         string image
-        int batch_number
         datetime published_at
         bool is_active
     }
@@ -372,8 +364,6 @@ erDiagram
     Pathway ||--o{ Activity : categorizes
     Governorate ||--o{ Activity : "takes place in (nullable)"
 
-    NewsCategory ||--o{ NewsCategoryTranslation : "has translations"
-    NewsCategory ||--o{ NewsArticle : categorizes
     NewsArticle ||--o{ NewsArticleTranslation : "has translations"
     Program ||--o{ NewsArticle : "optionally about"
 
@@ -397,6 +387,7 @@ erDiagram
         bool is_online
         string age_range "e.g. '18-25', 'الكل'"
         date start_date
+        datetime end_date_time "nullable — for events with a specific end time"
         string image
         string registration_url "nullable"
         string source "seed | impact_system — Phase 2 seam, see 01-...md §7"
@@ -412,22 +403,9 @@ erDiagram
         string location_label "e.g. 'مجمع الملك الحسين للأعمال'"
     }
 
-    NewsCategory {
-        int id PK
-        string code UK
-        int order
-    }
-    NewsCategoryTranslation {
-        int id PK
-        int news_category_id FK
-        string language_code
-        string name "أخبار المؤسسة / إنجازات الشباب / شراكاتنا / أخبار الفرص"
-    }
-
     NewsArticle {
         int id PK
         string slug UK
-        int news_category_id FK
         int program_id FK "nullable"
         string media_type "image | video"
         string media_url
@@ -468,7 +446,6 @@ erDiagram
         int governorate_id FK "nullable"
         string video_url "nullable"
         string image
-        int batch_number
         datetime published_at
         bool is_active
     }
@@ -477,6 +454,7 @@ erDiagram
         int success_story_id FK
         string language_code
         string name
+        string subtitle "nullable — e.g. 'مكتب مؤسسة ولي العهد'"
         text quote
         text full_story
     }
@@ -643,11 +621,11 @@ For anyone auditing whether this schema actually reflects the product (rather th
 | `ProgramSubInitiative` | `programsData.js` → `subInitiatives: [{name, subtitle, description, icon, ctaLabel, ctaUrl}]` (e.g. "The Core", "HTUx") |
 | `ProgramFaq` | `programsData.js` → `faqs: [{q, a}]` |
 | `ProgramCallout` | `programsData.js` → `donationBanner: {icon, accent, text, ctaLabel, ctaUrl}` and `spotlightSection: {title, text, ctaLabel, ctaAnchor}` (consolidated, see §4) |
-| `Activity` + `ActivityTranslation` | `data.js` → `allEvents[]`: `title`, `date`, `city`, `location`, `pathway`, `ageRange`, `image`, `description` (`points` deliberately dropped, see §5) (*Note: `program_id` is an architectural inference for CMS flexibility, not found in the mock data*) |
-| `NewsCategory` | `newsData.js` → `newsList[].category` / `heroSliderNews[].category` ('أخبار المؤسسة', 'إنجازات الشباب', 'شراكاتنا', 'أخبار الفرص') |
-| `NewsArticle` + `NewsArticleTranslation` | `newsData.js` → `newsList[]`: `title`, `desc`, `image`, `date`, `isFeatured`, `programKey`; `heroSliderNews[]`: `type`, `mediaUrl` |
+| `Activity` + `ActivityTranslation` | `data.js` → `allEvents[]`: `title`, `date`, `city`, `location`, `pathway`, `ageRange`, `image`, `description` (`points` deliberately dropped, see §5) (*Note: `program_id` is an architectural inference for CMS flexibility, `end_date_time` is an architectural addition for events with a specific end time; neither is found in the mock data*) |
+| ~~`NewsCategory` + `NewsCategoryTranslation`~~ | **Removed** — the mock's `category` strings existed on `newsList[]`/`heroSliderNews[]`, but the client has not requested news filtering by category; keeping a lookup table for a filter nobody asked for is scope creep (YAGNI), see §8 |
+| `NewsArticle` + `NewsArticleTranslation` | `newsData.js` → `newsList[]`: `title`, `desc`, `image`, `date`, `isFeatured`, `programKey`; `heroSliderNews[]`: `type`, `mediaUrl` (*Note: no `news_category_id` — see the `NewsCategory` row above*) |
 | `FieldLensImage` | `newsData.js` → `pulseImages[]`: `type` ('featured'/'normal'/'tall'), `title`, `url` — this is "عدسة الميدان" |
-| `SuccessStory` + `SuccessStoryTranslation` | `data.js` (`allStories[]`, imported into `programsData.js`'s file for convenience): `name`, `program`/`programKey`, `location`, `video`, `image`, `quote`, `fullStory` |
+| `SuccessStory` + `SuccessStoryTranslation` | `data.js` (`allStories[]`, imported into `programsData.js`'s file for convenience): `name`, `program`/`programKey`, `location`, `video`, `image`, `quote`, `fullStory` (*Note: `subtitle` is an architectural refinement, not a direct field copy — see §4.2/§8 for why some `program` values in the mock, e.g. "مكتب المؤسسة في عجلون", don't actually resolve to a `Program` and need their own label field; `batch_number` was removed — see §8*) |
 | `Quote`, `FoundationRoleText`, `StatCounter`, `TimelineEntry` | Not literal mock data structures (the mockup hardcodes About page copy inline) — modeled directly from `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §3.8's explicit content requirements (quote selection, the verbatim "دور المؤسسة" paragraph, new "4.5K شريك"/"120 موظف" stats, `CPF TIMELINE.xlsx`) |
 | `Governorate` | `programs/networks/MakersMap.jsx` → `GOVERNORATES` array (all 12: إربد، العقبة، مأدبا، الكرك، الطفيلة، عمان، الزرقاء، عجلون، جرش، معان، البلقاء، المفرق) |
 | `MakerCategory` | `makerSpacesData.js` → `MAKER_CATEGORIES: [{id, label}]` |
@@ -662,3 +640,7 @@ For anyone auditing whether this schema actually reflects the product (rather th
 Consistent with `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §4: no `Partner`/`Partnership` model, no `Publication` model, no `Entity`/`EntityCategory` (Directory) model, no `YouthNetwork` model, and — critically — **no points/rewards field anywhere** in this schema, even though the mock's `Activity`-equivalent data (`allEvents[].points`) has one. If a future ticket asks to "just add it back since we're touching the table anyway," that's scope creep this diagram was built specifically to make visible and preventable.
 
 **No `AboutMap` table.** An earlier revision of this schema modeled the About page's pending map (§3.8's client note that a map is planned, asset pending from Ahmad Marei) as its own table with a `json embed_config` field, reasoning it would let the layout ship now and the asset slot in later without a migration. On review, that's over-engineering for what is, in Phase 1, a single static map on one page — a dedicated table, API route, and future CMS screen for one embed is unwarranted complexity (a YAGNI violation) when a hardcoded Next.js component or an environment variable does the same job with none of the overhead. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 for the full reasoning and what replaces it.
+
+**No `NewsCategory` / `NewsCategoryTranslation` tables.** An earlier revision modeled news categories (`أخبار المؤسسة`, `إنجازات الشباب`, `شراكاتنا`, `أخبار الفرص`) as a normalized lookup, mirroring how `Pathway` and `Governorate` were normalized. The client has not requested filtering news by category, and the mock itself never filters on `category` — it's a display label only. Building a lookup table, its translation table, and a `news_category_id` FK for a filter nobody asked for is exactly the kind of speculative generality YAGNI warns against. News is now a flat list ordered by `published_at`; if category filtering becomes a real requirement later, it's a straightforward addition, not a correction of an existing mistake.
+
+**No `SuccessStory.batch_number`.** The client's notes describe success stories arriving in batches ("we will send the other batches as soon as we receive them"), which is what originally motivated this field. In practice it would be null for the large majority of stories and adds a concept ("batch") that has no corresponding UI or filter anywhere in the mock or the scope document — it was solving an ingestion/content-ops question with a schema field instead of, say, an admin import log or a `created_at` sort. Removed for the same reason as `NewsCategory`: modeling a distinction nothing currently reads.

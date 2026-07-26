@@ -362,15 +362,6 @@ classDiagram
         +string description
     }
 
-    class AboutMap {
-        <<Translatable, Activatable>>
-        +json embedConfig
-    }
-    class AboutMapTranslation {
-        <<Translation>>
-        +string caption
-    }
-
     Pathway "1" o-- "many" Activity : categorizes
     Governorate "1" o-- "0..*" Activity : takesPlaceIn
     Program "1" o-- "0..*" Activity : optionallyHosts
@@ -388,7 +379,6 @@ classDiagram
     FoundationRoleText "1" *-- "many" FoundationRoleTextTranslation : translations
     StatCounter "1" *-- "many" StatCounterTranslation : translations
     TimelineEntry "1" *-- "many" TimelineEntryTranslation : translations
-    AboutMap "1" *-- "many" AboutMapTranslation : translations
 
     Activity ..> ActivitySource : uses
     NewsArticle ..> MediaType : uses

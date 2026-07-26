@@ -387,7 +387,6 @@ erDiagram
     FoundationRoleText ||--o{ FoundationRoleTextTranslation : "has translations"
     StatCounter ||--o{ StatCounterTranslation : "has translations"
     TimelineEntry ||--o{ TimelineEntryTranslation : "has translations"
-    AboutMap ||--o{ AboutMapTranslation : "has translations"
 
     Activity {
         int id PK
@@ -538,18 +537,6 @@ erDiagram
         string title
         text description
     }
-
-    AboutMap {
-        int id PK
-        json embed_config "lat/lng/zoom or embed URL — pending asset, 01-...md §5"
-        bool is_active
-    }
-    AboutMapTranslation {
-        int id PK
-        int about_map_id FK
-        string language_code
-        string caption "nullable"
-    }
 ```
 
 ---
@@ -661,7 +648,7 @@ For anyone auditing whether this schema actually reflects the product (rather th
 | `NewsArticle` + `NewsArticleTranslation` | `newsData.js` → `newsList[]`: `title`, `desc`, `image`, `date`, `isFeatured`, `programKey`; `heroSliderNews[]`: `type`, `mediaUrl` |
 | `FieldLensImage` | `newsData.js` → `pulseImages[]`: `type` ('featured'/'normal'/'tall'), `title`, `url` — this is "عدسة الميدان" |
 | `SuccessStory` + `SuccessStoryTranslation` | `data.js` (`allStories[]`, imported into `programsData.js`'s file for convenience): `name`, `program`/`programKey`, `location`, `video`, `image`, `quote`, `fullStory` |
-| `Quote`, `FoundationRoleText`, `StatCounter`, `TimelineEntry`, `AboutMap` | Not literal mock data structures (the mockup hardcodes About page copy inline) — modeled directly from `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §3.8's explicit content requirements (quote selection, the verbatim "دور المؤسسة" paragraph, new "4.5K شريك"/"120 موظف" stats, `CPF TIMELINE.xlsx`, pending map asset) |
+| `Quote`, `FoundationRoleText`, `StatCounter`, `TimelineEntry` | Not literal mock data structures (the mockup hardcodes About page copy inline) — modeled directly from `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §3.8's explicit content requirements (quote selection, the verbatim "دور المؤسسة" paragraph, new "4.5K شريك"/"120 موظف" stats, `CPF TIMELINE.xlsx`) |
 | `Governorate` | `programs/networks/MakersMap.jsx` → `GOVERNORATES` array (all 12: إربد، العقبة، مأدبا، الكرك، الطفيلة، عمان، الزرقاء، عجلون، جرش، معان، البلقاء، المفرق) |
 | `MakerCategory` | `makerSpacesData.js` → `MAKER_CATEGORIES: [{id, label}]` |
 | `MakerSpace` + `MakerSpaceTranslation` | `makerSpacesData.js` → `makerSpaces[]`: `name`, `category`, `governorate`, `description`, `address`, `website`, `lat`, `lng` |
@@ -673,3 +660,5 @@ For anyone auditing whether this schema actually reflects the product (rather th
 ## 8. What's intentionally absent
 
 Consistent with `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §4: no `Partner`/`Partnership` model, no `Publication` model, no `Entity`/`EntityCategory` (Directory) model, no `YouthNetwork` model, and — critically — **no points/rewards field anywhere** in this schema, even though the mock's `Activity`-equivalent data (`allEvents[].points`) has one. If a future ticket asks to "just add it back since we're touching the table anyway," that's scope creep this diagram was built specifically to make visible and preventable.
+
+**No `AboutMap` table.** An earlier revision of this schema modeled the About page's pending map (§3.8's client note that a map is planned, asset pending from Ahmad Marei) as its own table with a `json embed_config` field, reasoning it would let the layout ship now and the asset slot in later without a migration. On review, that's over-engineering for what is, in Phase 1, a single static map on one page — a dedicated table, API route, and future CMS screen for one embed is unwarranted complexity (a YAGNI violation) when a hardcoded Next.js component or an environment variable does the same job with none of the overhead. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 for the full reasoning and what replaces it.

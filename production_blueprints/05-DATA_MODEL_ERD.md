@@ -363,6 +363,8 @@ Covers the Home page's Activities section, بوابة الفرص's Activities ta
 
 **Note on `Activity` location modeling:** the mock's `city` field is usually a real governorate name (`'عمان'`, `'إربد'`, ...) but one event uses `'أونلاين'` ("online"). Rather than force "online" into the `Governorate` lookup, `Activity.governorate_id` is nullable and paired with an `is_online` boolean — this was only discoverable by reading the actual mock data, not by guessing a generic "location" field.
 
+**Note on `Activity` program relation:** unlike `NewsArticle` and `SuccessStory` — both of which carry an explicit `programKey` field in the mock (`newsData.js`, `allStories[]`) — `data.js` → `allEvents[]` has **no structured field linking an activity to a program**. The nullable `Activity.program_id` FK below is therefore an **architectural inference, not a mock-derived field**. It exists because (a) one mock event's free-text `location` happens to name a program verbatim (`'جامعة الحسين التقنية (HTU)'` on the cybersecurity hackathon, id 8), suggesting the concepts are related in practice even though the mock never formalizes it, and (b) Program detail pages already render program-scoped News and Success Stories via the same `programKey` pattern (`ProgramNewsSection.jsx`, `RelatedProgramStories.jsx`) — a program page eventually wanting to list its own upcoming activities is the natural next case. Keeping the FK nullable now means that if/when this is needed, it's a data-population task, not a schema migration; standalone activities with no program affiliation (the seasonal community campaigns, for instance) simply leave it null.
+
 ```mermaid
 erDiagram
     Activity ||--o{ ActivityTranslation : "has translations"
@@ -654,7 +656,7 @@ For anyone auditing whether this schema actually reflects the product (rather th
 | `ProgramSubInitiative` | `programsData.js` → `subInitiatives: [{name, subtitle, description, icon, ctaLabel, ctaUrl}]` (e.g. "The Core", "HTUx") |
 | `ProgramFaq` | `programsData.js` → `faqs: [{q, a}]` |
 | `ProgramCallout` | `programsData.js` → `donationBanner: {icon, accent, text, ctaLabel, ctaUrl}` and `spotlightSection: {title, text, ctaLabel, ctaAnchor}` (consolidated, see §4) |
-| `Activity` + `ActivityTranslation` | `data.js` → `allEvents[]`: `title`, `date`, `city`, `location`, `pathway`, `ageRange`, `image`, `description` (`points` deliberately dropped, see §5) |
+| `Activity` + `ActivityTranslation` | `data.js` → `allEvents[]`: `title`, `date`, `city`, `location`, `pathway`, `ageRange`, `image`, `description` (`points` deliberately dropped, see §5) (*Note: `program_id` is an architectural inference for CMS flexibility, not found in the mock data*) |
 | `NewsCategory` | `newsData.js` → `newsList[].category` / `heroSliderNews[].category` ('أخبار المؤسسة', 'إنجازات الشباب', 'شراكاتنا', 'أخبار الفرص') |
 | `NewsArticle` + `NewsArticleTranslation` | `newsData.js` → `newsList[]`: `title`, `desc`, `image`, `date`, `isFeatured`, `programKey`; `heroSliderNews[]`: `type`, `mediaUrl` |
 | `FieldLensImage` | `newsData.js` → `pulseImages[]`: `type` ('featured'/'normal'/'tall'), `title`, `url` — this is "عدسة الميدان" |

@@ -114,7 +114,7 @@ Additional required changes:
 - **Consider a boxed/iconed layout for each stat** — client recommendation is a treatment similar to the original live website's stat presentation, adapted to whatever reads best in the new design system; this is a design decision for the frontend team, not a hard requirement.
 - **Add two new stats:** **"4.5K شريك"** (partners — same stat as the home page) and **"120 موظف"** (120 employees).
 - **A map is planned for this page**, to be placed **before** the "رحلة المؤسسة" (Foundation Journey / timeline) section. **The map content/asset is pending from Ahmad Marei** — build the section's placement and layout shell, but the actual map integration is blocked on that external input (see §5).
-- **Timeline ("رحلة المؤسسة") content** is available and ready now, in the client-shared `CPF TIMELINE.xlsx` spreadsheet — ingest this into timeline entry data (date/title/description per milestone) as part of Phase 1 build, no blocker here.
+- **Timeline ("رحلة المؤسسة") content**: this document originally said `CPF TIMELINE.xlsx` was "available now, ready to ingest" — **corrected**, that file was never actually delivered/found. Step 2 implementation seeded the mockup's own smaller 4-entry timeline (2015/2017/2019/2024) as an interim placeholder instead. Real ingestion into full timeline entry data (date/title/description per milestone) still needs the actual spreadsheet — treat this the same as every other pending client deliverable below, not as already-in-hand.
 - **No Publications page in Phase 1.** (The mockup's `PublicationsPage.jsx`, built in an earlier iteration of this project, is deferred entirely — same treatment as Partnerships, see §3.7.)
 
 ---
@@ -150,7 +150,7 @@ The following are **content or asset dependencies from the client**, not technic
 - Full news database.
 - Quote selection from `HRHCP's Quotes - DK 11.2 - Copy.xlsx`.
 - Map asset/embed for the About page (Ahmad Marei).
-- `CPF TIMELINE.xlsx` — timeline data (available now, ready to ingest).
+- `CPF TIMELINE.xlsx` — timeline data. **Not actually available despite earlier notes here saying otherwise** — confirmed missing when Step 2 went looking for it; the mockup's smaller 4-entry timeline was seeded as an interim placeholder instead.
 - Athar Sphere API details — version, endpoint, authentication token, and expected response shape (see §7.0).
 - Decision on target-audience-criteria enforcement (strict vs. flexible) for activities/opportunities, to be made through Athar Sphere (see §7.0).
 - QR code flow finalization with Marei's team/the relevant owning team (see §7.0) — not yet an engineering task until the flow itself is defined.
@@ -251,9 +251,9 @@ The IT team raised WordPress (or a similar CMS) as a possible platform for high-
 
 The three items below were added directly, later than both the original client PDF notes (§2) and the IT alignment notes (§9) — neither source document mentions any of them. They're recorded here so this document keeps being the accurate scope-of-record rather than silently falling out of sync with the schema in `05-DATA_MODEL_ERD.md`/`07-DATA_MODEL_ERD_RATIONALE.md`, which already model all three.
 
-### 10.1 Foundation Leaders (قيادات المؤسسة) — new, in scope
+### 10.1 Foundation Leaders (قيادات المؤسسة) — new, in scope — mockup precedent found
 
-A leadership section (board and executive members, each with a name, position, bio, and either a photo or a video for their detail view) is now in scope. **Unlike everything else in this document, this has no mockup precedent to reference** — there is no existing page, component, or data shape in `cpf-app` to build against, unlike every other Phase 1 item, which at minimum has a mockup UI to use as a UX/visual reference (`02-FRONTEND_ARCHITECTURE.md` §3's "rebuild, don't port" guidance assumes a mockup exists to look at). **Not yet decided: where this lives in the site's navigation/page structure** (a section of the About page, alongside "دور المؤسسة" and "رحلة المؤسسة"? Its own page?) and what the frontend should look like, since there's nothing to reference. Treat this as a design gap to close (a quick shape/critique pass against `DESIGN.md`, matching how every other section in this project got a design treatment before being built) before frontend implementation starts, not just a backend model to wire up. The data model itself (`Leader`/`LeaderTranslation`) is already specified — see `05-...md` §5 and `07-...md` §4.2.
+A leadership section (board and executive members, each with a name, position, bio, and either a photo or a video for their detail view) is in scope. **Correction:** this was originally recorded here as having no mockup precedent at all. That was wrong — `cpf-app/src/pages/AboutPage.jsx` has a complete, working `leaders{board, executive}` UI (a tabbed board/executive picker, 10 + 5 people, cards with name/role/image, one entry with an expanded bio and video), only found once backend implementation actually started and someone checked the mock directly. This is now the **direct frontend reference**, same "rebuild, don't port" treatment (`02-FRONTEND_ARCHITECTURE.md` §3) every other Phase 1 page already gets — not a design gap needing a from-scratch shape/critique pass. **Placement is effectively settled too**: the mockup puts this on the About page, alongside "دور المؤسسة" and "رحلة المؤسسة," which is the obvious default for the rebuild absent a reason to move it. The data model (`Leader`/`LeaderTranslation`) is specified in `05-...md` §5 and `07-...md` §4.2, and its provenance tag there has been corrected from 🟣 (new, no precedent) to 🟢 (mock-derived).
 
 ### 10.2 "Join Our Team" form — new, but a mockup precedent already exists and needs reconciling
 

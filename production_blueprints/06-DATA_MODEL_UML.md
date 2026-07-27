@@ -241,13 +241,6 @@ classDiagram
         LIVE_SITE_SEED
         CMS
     }
-    class FieldLensLayout {
-        <<enumeration>>
-        FEATURED
-        NORMAL
-        TALL
-    }
-
     class Activity {
         <<Translatable, Activatable, Timestamped>>
         +string slug
@@ -290,7 +283,7 @@ classDiagram
 
     class FieldLensImage {
         <<Translatable, Orderable, Activatable>>
-        +FieldLensLayout layoutType
+        +date date
         +string image
     }
     class FieldLensImageTranslation {
@@ -355,6 +348,20 @@ classDiagram
         +string description
     }
 
+    class Leader {
+        <<Translatable, Orderable, Activatable, Timestamped>>
+        +string leadershipType
+        +string cardImage
+        +MediaType detailMediaType
+        +string detailMediaUrl
+    }
+    class LeaderTranslation {
+        <<Translation>>
+        +string name
+        +string position
+        +string bio
+    }
+
     Pathway "1" o-- "many" Activity : categorizes
     Governorate "1" o-- "0..*" Activity : takesPlaceIn
     Program "1" o-- "0..*" Activity : optionallyHosts
@@ -370,14 +377,17 @@ classDiagram
     FoundationRoleText "1" *-- "many" FoundationRoleTextTranslation : translations
     StatCounter "1" *-- "many" StatCounterTranslation : translations
     TimelineEntry "1" *-- "many" TimelineEntryTranslation : translations
+    Leader "1" *-- "many" LeaderTranslation : translations
 
     Activity ..> ActivitySource : uses
     NewsArticle ..> MediaType : uses
+    Leader ..> MediaType : uses
     NewsArticle ..> NewsSource : uses
-    FieldLensImage ..> FieldLensLayout : uses
 ```
 
 `Pathway`, `Governorate`, and `Program` are reused here **by reference** (aggregation only, no attributes redrawn) — their full class definitions live in §3 (`Pathway`, `Program`) and §5 (`Governorate`). `ActivitySource` and `NewsSource` are kept as two distinct enumerations rather than merged into one generic "content source" enum: they encode genuinely different concepts (`Activity`'s source is about the pending Impact System (Athar Sphere) integration seam from `01-...md` §7; `NewsArticle`'s source is about whether a row came from the one-time live-site content seed or the future CMS).
+
+`Leader` deliberately reuses the existing `MediaType` enumeration (`IMAGE`/`VIDEO`) for `detailMediaType` rather than introducing a near-identical enum of its own — same values, same meaning, no reason to duplicate it. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 for why `Leader` has no mock or scope-document precedent at all, unlike everything else in this diagram.
 
 ---
 
@@ -450,6 +460,31 @@ classDiagram
         +markHandled() void
     }
 
+    class TeamJoinSubmission {
+        +string name
+        +string email
+        +string phone
+        +string resumeUrl
+        +string resumeFile
+        +string message
+        +string languageCode
+        +datetime submittedAt
+        +SubmissionStatus status
+        +markHandled() void
+    }
+
+    class SuccessStorySubmission {
+        +string name
+        +string email
+        +string phone
+        +string programName
+        +string storyText
+        +string languageCode
+        +datetime submittedAt
+        +SubmissionStatus status
+        +markHandled() void
+    }
+
     Governorate "1" *-- "many" GovernorateTranslation : translations
     MakerCategory "1" *-- "many" MakerCategoryTranslation : translations
     MakerSpace "1" *-- "many" MakerSpaceTranslation : translations
@@ -459,9 +494,11 @@ classDiagram
 
     ContactSubmission ..> SubmissionStatus : uses
     NetworkJoinSubmission ..> SubmissionStatus : uses
+    TeamJoinSubmission ..> SubmissionStatus : uses
+    SuccessStorySubmission ..> SubmissionStatus : uses
 ```
 
-**Why `ContactSubmission` and `NetworkJoinSubmission` don't inherit `TranslatableModel`:** they're visitor-submitted data, not CMS-authored content — there's nothing to translate. `languageCode` here is a plain recorded fact ("what language did the visitor submit in"), not a translation key, which is exactly why it's a flat field on the class itself rather than a `Translation` composition — the same distinction made in `05-...md` §6.
+**Why `ContactSubmission` and `NetworkJoinSubmission` don't inherit `TranslatableModel`:** they're visitor-submitted data, not CMS-authored content — there's nothing to translate. `languageCode` here is a plain recorded fact ("what language did the visitor submit in"), not a translation key, which is exactly why it's a flat field on the class itself rather than a `Translation` composition — the same distinction made in `05-...md` §6. `TeamJoinSubmission` and `SuccessStorySubmission` follow the same rule, for the same reason. Note `SuccessStorySubmission.programName` has no relationship line to `Program` at all (not even aggregation) — it's a plain field, deliberately not an FK; see `07-DATA_MODEL_ERD_RATIONALE.md` §4.4 for why.
 
 ---
 

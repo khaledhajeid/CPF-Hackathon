@@ -377,6 +377,7 @@ erDiagram
     FoundationRoleText ||--o{ FoundationRoleTextTranslation : "has translations"
     StatCounter ||--o{ StatCounterTranslation : "has translations"
     TimelineEntry ||--o{ TimelineEntryTranslation : "has translations"
+    Leader ||--o{ LeaderTranslation : "has translations"
 
     Activity {
         int id PK
@@ -427,8 +428,8 @@ erDiagram
 
     FieldLensImage {
         int id PK
-        string layout_type "featured | normal | tall"
         string image
+        date date "for chronological sorting"
         int order
         bool is_active
     }
@@ -515,7 +516,29 @@ erDiagram
         string title
         text description
     }
+
+    Leader {
+        int id PK
+        string leadership_type "board | executive"
+        string card_image
+        string detail_media_type "image | video"
+        string detail_media_url "nullable"
+        int order
+        bool is_active
+        datetime created_at
+        datetime updated_at
+    }
+    LeaderTranslation {
+        int id PK
+        int leader_id FK
+        string language_code
+        string name
+        string position
+        text bio "nullable"
+    }
 ```
+
+**Note on `Leader` (قيادات المؤسسة):** unlike everything else in this diagram, this entity has no mock precedent at all — it wasn't in the original client PDF notes (`01-...md` §2) or the later IT alignment notes (`01-...md` §9); it was added directly on instruction, with the exact structure above. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 for the full reasoning, including why it carries both a `card_image` (for a listing/grid view) and a separate `detail_media_type`/`detail_media_url` pair (for an expanded bio view that may show a video instead of a photo).
 
 ---
 
@@ -601,9 +624,36 @@ erDiagram
         datetime submitted_at
         string status "new | handled"
     }
+
+    TeamJoinSubmission {
+        int id PK
+        string name
+        string email
+        string phone
+        string resume_url "nullable — pasted link"
+        string resume_file "nullable — uploaded document"
+        text message
+        string language_code
+        datetime submitted_at
+        string status "new | handled"
+    }
+
+    SuccessStorySubmission {
+        int id PK
+        string name
+        string email
+        string phone
+        string program_name "free text — visitor-typed, not a Program FK"
+        text story_text
+        string language_code
+        datetime submitted_at
+        string status "new | handled"
+    }
 ```
 
-**Why `ContactSubmission` and `NetworkJoinSubmission` have no translation table:** both are *user-submitted* data, not CMS-authored content — there's nothing to translate. `language_code` here just records which language the visitor used, for support/reporting purposes (matches `03-BACKEND_ARCHITECTURE_AND_SECURITY.md` §4.7).
+**Why `ContactSubmission` and `NetworkJoinSubmission` have no translation table:** both are *user-submitted* data, not CMS-authored content — there's nothing to translate. `language_code` here just records which language the visitor used, for support/reporting purposes (matches `03-BACKEND_ARCHITECTURE_AND_SECURITY.md` §4.7). `TeamJoinSubmission` and `SuccessStorySubmission` follow the same rule for the same reason.
+
+**Note on `TeamJoinSubmission` and `SuccessStorySubmission`:** both were added directly on instruction, but — unlike `Leader` — each corresponds to a real, already-built (and previously unmodeled) piece of mock UI: `Contact.jsx`'s "careers" tab already has a full CV-submission modal, and `success/ShareStoryModal.jsx` already implements a 3-step "share your story" flow. Neither ever had a backing schema table before now. `TeamJoinSubmission.resume_url`/`resume_file` are split into two nullable fields (rather than one ambiguous field) so the schema doesn't leave the "pasted link vs. uploaded file" distinction for application code to invent — application logic should enforce that exactly one is set. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.4 for the full field-by-field comparison against what these two mock components actually collect today, which differs from the field list implemented here in a few places worth a follow-up decision.
 
 ---
 
@@ -624,14 +674,17 @@ For anyone auditing whether this schema actually reflects the product (rather th
 | `Activity` + `ActivityTranslation` | `data.js` → `allEvents[]`: `title`, `date`, `city`, `location`, `pathway`, `ageRange`, `image`, `description` (`points` deliberately dropped, see §5) (*Note: `program_id` is an architectural inference for CMS flexibility, `end_date_time` is an architectural addition for events with a specific end time; neither is found in the mock data*) |
 | ~~`NewsCategory` + `NewsCategoryTranslation`~~ | **Removed** — the mock's `category` strings existed on `newsList[]`/`heroSliderNews[]`, but the client has not requested news filtering by category; keeping a lookup table for a filter nobody asked for is scope creep (YAGNI), see §8 |
 | `NewsArticle` + `NewsArticleTranslation` | `newsData.js` → `newsList[]`: `title`, `desc`, `image`, `date`, `isFeatured`, `programKey`; `heroSliderNews[]`: `type`, `mediaUrl` (*Note: no `news_category_id` — see the `NewsCategory` row above*) |
-| `FieldLensImage` | `newsData.js` → `pulseImages[]`: `type` ('featured'/'normal'/'tall'), `title`, `url` — this is "عدسة الميدان" |
+| `FieldLensImage` | `newsData.js` → `pulseImages[]`: `title`, `url` — this is "عدسة الميدان" (*Note: `type`/`layout_type` removed — all images use a normal layout now, per direct instruction; `date` added for chronological sorting, also per direct instruction, not found in the mock*) |
 | `SuccessStory` + `SuccessStoryTranslation` | `data.js` (`allStories[]`, imported into `programsData.js`'s file for convenience): `name`, `program`/`programKey`, `location`, `video`, `image`, `quote`, `fullStory` (*Note: `subtitle` is an architectural refinement, not a direct field copy — see §4.2/§8 for why some `program` values in the mock, e.g. "مكتب المؤسسة في عجلون", don't actually resolve to a `Program` and need their own label field; `batch_number` was removed — see §8*) |
 | `Quote`, `FoundationRoleText`, `StatCounter`, `TimelineEntry` | Not literal mock data structures (the mockup hardcodes About page copy inline) — modeled directly from `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §3.8's explicit content requirements (quote selection, the verbatim "دور المؤسسة" paragraph, new "4.5K شريك"/"120 موظف" stats, `CPF TIMELINE.xlsx`) |
+| `Leader` + `LeaderTranslation` | Not in the mock, not in `01-...md`'s original scope or IT alignment notes — added directly on instruction, exact structure given. See `07-DATA_MODEL_ERD_RATIONALE.md` §4.2 |
 | `Governorate` | `programs/networks/MakersMap.jsx` → `GOVERNORATES` array (all 12: إربد، العقبة، مأدبا، الكرك، الطفيلة، عمان، الزرقاء، عجلون، جرش، معان، البلقاء، المفرق) |
 | `MakerCategory` | `makerSpacesData.js` → `MAKER_CATEGORIES: [{id, label}]` |
 | `MakerSpace` + `MakerSpaceTranslation` | `makerSpacesData.js` → `makerSpaces[]`: `name`, `category`, `governorate`, `description`, `address`, `website`, `lat`, `lng` |
 | `ContactSubmission` | `Contact.jsx` general contact form fields (name, email, phone, subject, message) |
 | `NetworkJoinSubmission` | `Contact.jsx` "انضم لشبكتنا" tab form fields: name, age-range select, governorate select, phone, email, interest-area select |
+| `TeamJoinSubmission` | Given field list added directly on instruction — but a real, unmodeled precedent already exists: `Contact.jsx`'s "careers" tab CV-submission modal (name, specialization field, required PDF upload; no email/phone/message today). See `07-DATA_MODEL_ERD_RATIONALE.md` §4.4 for the full discrepancy list |
+| `SuccessStorySubmission` | Given field list added directly on instruction — a real, unmodeled precedent already exists: `success/ShareStoryModal.jsx`'s 3-step form (name, program/initiative select, optional title, story text, optional photo upload, optional video/social link; no email/phone today). See `07-DATA_MODEL_ERD_RATIONALE.md` §4.4 for the full discrepancy list |
 
 ---
 
@@ -644,3 +697,5 @@ Consistent with `01-PROJECT_VISION_AND_PHASE1_SCOPE.md` §4: no `Partner`/`Partn
 **No `NewsCategory` / `NewsCategoryTranslation` tables.** An earlier revision modeled news categories (`أخبار المؤسسة`, `إنجازات الشباب`, `شراكاتنا`, `أخبار الفرص`) as a normalized lookup, mirroring how `Pathway` and `Governorate` were normalized. The client has not requested filtering news by category, and the mock itself never filters on `category` — it's a display label only. Building a lookup table, its translation table, and a `news_category_id` FK for a filter nobody asked for is exactly the kind of speculative generality YAGNI warns against. News is now a flat list ordered by `published_at`; if category filtering becomes a real requirement later, it's a straightforward addition, not a correction of an existing mistake.
 
 **No `SuccessStory.batch_number`.** The client's notes describe success stories arriving in batches ("we will send the other batches as soon as we receive them"), which is what originally motivated this field. In practice it would be null for the large majority of stories and adds a concept ("batch") that has no corresponding UI or filter anywhere in the mock or the scope document — it was solving an ingestion/content-ops question with a schema field instead of, say, an admin import log or a `created_at` sort. Removed for the same reason as `NewsCategory`: modeling a distinction nothing currently reads.
+
+**No `FieldLensImage.layout_type`.** Originally modeled to mirror the mock's `pulseImages[].type` (`featured`/`normal`/`tall`), which drove a masonry-style grid with mixed tile sizes. Removed on direct instruction — all images use a normal layout, so the field has no value left to distinguish. `date` was added in its place for chronological sorting, which `layout_type` never provided anyway.

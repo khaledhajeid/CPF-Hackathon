@@ -193,9 +193,9 @@ export default function YouthContributions() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105" 
                 />
                 
-                {/* تراكب لوني وعنوان */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/card:opacity-100 flex flex-col justify-end p-6 transition-opacity duration-300">
-                   <span className="text-white font-black text-lg drop-shadow-md translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">
+                {/* تراكب لوني وعنوان - ظاهر دائماً على الموبايل، يظهر بالتحويم على الديسكتوب فقط */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover/card:opacity-100 flex flex-col justify-end p-6 transition-opacity duration-300">
+                   <span className="text-white font-black text-lg drop-shadow-md translate-y-0 md:translate-y-4 md:group-hover/card:translate-y-0 transition-transform duration-300">
                      {item.title}
                    </span>
                 </div>
@@ -282,8 +282,8 @@ export default function YouthContributions() {
       {/* 🟢 نافذة إضافة مشاركة (فورية) */}
       {/* ========================================= */}
       {isUploadModalOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6 bg-black/70 backdrop-blur-sm" dir="rtl">
-          <div className="bg-white w-full max-w-lg rounded-[2rem] shadow-2xl overflow-hidden relative">
+        <div className="fixed inset-0 z-[9999] flex items-end md:items-center justify-center p-0 md:p-6 bg-black/70 backdrop-blur-sm" dir="rtl">
+          <div className="bg-white w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[2rem] md:rounded-[2rem] shadow-2xl relative">
             
             <div className="bg-[#f8fafc] px-6 py-4 border-b border-gray-100 flex justify-between items-center">
               <h3 className="font-black text-[#8a1538] text-lg">شاركنا إنجازك</h3>

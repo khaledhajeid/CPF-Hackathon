@@ -217,15 +217,15 @@ export default function VisualPulse({ onImageClick }) {
         alt={item.title} 
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1a0409]/95 via-[#1a0409]/30 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+
+      <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 ease-out border border-white/30">
           <Maximize2 className="w-5 h-5 text-white" />
         </div>
       </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-10 text-right flex flex-col gap-1">
+
+      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-0 opacity-100 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-10 text-right flex flex-col gap-1">
         {item.eventName && (
           <span className="text-[#C08F2D] font-bold text-[10px] sm:text-xs">
             {item.eventName}

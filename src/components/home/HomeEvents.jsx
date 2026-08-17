@@ -1,7 +1,7 @@
 // src/components/home/HomeEvents.jsx
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Award, ArrowUpLeft, Target, Users, LayoutGrid, Timer, Filter, Search, ChevronDown, BookOpen, SearchX } from 'lucide-react';
+import { Calendar, MapPin, ArrowUpLeft, Target, Users, LayoutGrid, Timer, Filter, Search, ChevronDown, BookOpen, SearchX } from 'lucide-react';
 import EventDetailsDrawer from '../events/EventDetailsDrawer';
 import JordanMap from './JordanMap';
 import { allEvents } from '../../data';
@@ -210,14 +210,7 @@ export default function HomeEvents({ activeFilters, setActiveFilters, handleRegi
                               </div>
                             </div>
 
-                            <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                              <div className="flex flex-col">
-                                <span className="text-[9px] xl:text-[10px] 2xl:text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
-                                <div className="flex items-center gap-1">
-                                  <Award className="w-4 h-4 xl:w-4 xl:h-4 2xl:w-5 2xl:h-5 text-[#C08F2D]" />
-                                  <span className="text-[#721F31] font-black text-[11px] xl:text-[11px] 2xl:text-sm">+{event.points} نقطة</span>
-                                </div>
-                              </div>
+                            <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-end">
                               <button
                                 onClick={(e) => { e.stopPropagation(); setSelectedEvent(event); }}
                                 className="flex items-center gap-1.5 bg-[#8a1538] hover:bg-[#680f2a] text-white px-3 lg:px-4 py-2 rounded-xl font-black text-[11px] lg:text-[11px] xl:text-[12px] 2xl:text-sm transition-colors shadow-md cursor-pointer"

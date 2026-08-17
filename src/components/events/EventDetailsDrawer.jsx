@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, MapPin, Award, Clock, ShieldCheck, Users, Info, Lock, Unlock, UserCheck, ChevronDown, ChevronUp } from 'lucide-react';
+import { X, Calendar, MapPin, Clock, ShieldCheck, Users, Info, Lock, UserCheck, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,17 +42,14 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
   };
 
   const pathwayColor = getPathwayColor(currentEvent.pathway);
-  const userPoints = 200; 
-  const requiredPoints = currentEvent.requiredPoints !== undefined ? currentEvent.requiredPoints : 200; 
-  const isCityEligible = true; 
-  const isAgeEligible = true; 
+  const isCityEligible = true;
+  const isAgeEligible = true;
 
   let lockReason = "";
   if (!isCityEligible) lockReason = "متاح فقط لسكان محافظة " + currentEvent.city;
   else if (!isAgeEligible) lockReason = "العمر غير مطابق للشروط";
-  else if (userPoints < requiredPoints) lockReason = `يتطلب ${requiredPoints} نقطة (رصيدك الحالي: ${userPoints})`;
 
-  const canRegister = isCityEligible && isAgeEligible && (userPoints >= requiredPoints);
+  const canRegister = isCityEligible && isAgeEligible;
 
   const backdropVariants = {
     hidden: { opacity: 0, backdropFilter: "blur(0px)" },
@@ -141,13 +138,6 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                        <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-gray-800 leading-snug">{currentEvent.city} - {currentEvent.location || 'المركز الشبابي'}</p>
                      </div>
                    </div>
-                   <div className="flex items-start gap-2.5 lg:gap-2.5 xl:gap-3 2xl:gap-4">
-                     <Award className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#C08F2D] mt-0.5 shrink-0" />
-                     <div>
-                       <p className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-sm text-[#C08F2D] font-bold mb-0.5">المكافأة</p>
-                       <p className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-black text-[#C08F2D]">+{currentEvent.points} نقطة</p>
-                     </div>
-                   </div>
                 </div>
 
                 <div className="mb-6 lg:mb-8 xl:mb-10 2xl:mb-12">
@@ -208,26 +198,6 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                         <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مطابق</span>
                       ) : (
                         <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-[#8a1538]/10 text-[#8a1538] px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">غير مطابق</span>
-                      )}
-                    </div>
-
-                    <div className="flex items-center gap-3 bg-[#F8FAFC] border border-gray-100 p-3 2xl:p-4 rounded-xl">
-                      {requiredPoints === 0 ? (
-                        <>
-                           <Unlock className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 text-gray-500" />
-                           <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">مستوى النقاط:</span>
-                           <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-gray-200 text-gray-600 px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">متاح للجميع</span>
-                        </>
-                      ) : (
-                        <>
-                           <Lock className={`w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 shrink-0 ${userPoints >= requiredPoints ? 'text-[#C08F2D]' : 'text-[#8a1538]'}`} />
-                           <span className="text-[12px] lg:text-[13px] xl:text-sm 2xl:text-lg font-bold text-gray-700 flex-1 leading-snug">النقاط المطلوبة: {requiredPoints} نقطة</span>
-                           {userPoints >= requiredPoints ? (
-                             <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-white border border-gray-200 text-gray-500 px-2 xl:px-2.5 py-1 rounded-md font-black shadow-sm shrink-0">مؤهل</span>
-                           ) : (
-                             <span className="text-[9px] lg:text-[10px] xl:text-[10px] 2xl:text-sm bg-[#8a1538]/10 text-[#8a1538] px-2 xl:px-2.5 py-1 rounded-md font-black shrink-0">غير مؤهل</span>
-                           )}
-                        </>
                       )}
                     </div>
 

@@ -458,21 +458,23 @@ export default function Contact({ onNavigate, initialTab }) {
         <Footer onNavigate={onNavigate}/>
       </div>
 
-      {/* 4. الـ Modal (نافذة إرسال الـ CV المنبثقة) */}
+      {/* 4. الـ Modal (نافذة إرسال الـ CV المنبثقة) - ورقة منزلقة من الأسفل على الموبايل */}
       <AnimatePresence>
         {modalType && (
-          <>
-            <motion.div 
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => { setModalType(null); setIsSent(false); }}
-              className="fixed inset-0 bg-[#1a070b]/60 backdrop-blur-sm z-[100]"
-            />
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg 2xl:max-w-xl z-[101] px-4"
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => { setModalType(null); setIsSent(false); }}
+            className="fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6 bg-[#1a070b]/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: window.innerWidth < 768 ? '100%' : 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: window.innerWidth < 768 ? '100%' : 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: window.innerWidth < 768 ? 250 : 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-lg 2xl:max-w-xl max-h-[90vh] overflow-y-auto"
             >
-              <div className="bg-white rounded-[clamp(1.5rem,3vw,2rem)] p-[clamp(1.5rem,3vw,2.5rem)] shadow-2xl relative overflow-hidden">
+              <div className="bg-white rounded-t-[clamp(1.5rem,3vw,2rem)] md:rounded-[clamp(1.5rem,3vw,2rem)] p-[clamp(1.5rem,3vw,2.5rem)] shadow-2xl relative overflow-hidden">
                 <div className={`absolute top-0 right-0 left-0 h-2 ${modalType === 'job' ? 'bg-[#721F31]' : 'bg-[#C08F2D]'}`} />
                 
                 <button onClick={() => { setModalType(null); setIsSent(false); }} className="absolute top-[clamp(1rem,2vw,1.5rem)] left-[clamp(1rem,2vw,1.5rem)] w-[clamp(1.5rem,2.5vw,2rem)] h-[clamp(1.5rem,2.5vw,2rem)] bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors cursor-pointer">
@@ -527,7 +529,7 @@ export default function Contact({ onNavigate, initialTab }) {
                 </AnimatePresence>
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
 

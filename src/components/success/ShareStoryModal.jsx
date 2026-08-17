@@ -35,19 +35,24 @@ export default function ShareStoryModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const isMobileViewport = window.innerWidth < 768;
+
   return (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center px-4 sm:px-6 font-sans" dir="rtl">
+    <div className="fixed inset-0 z-[99999] flex items-end md:items-center justify-center px-0 sm:px-6 font-sans" dir="rtl">
       {/* خلفية التعتيم الزجاجية */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         onClick={onClose}
         className="absolute inset-0 bg-[#1a0409]/60 backdrop-blur-md"
       />
 
-      {/* المودال */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-2xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+      {/* المودال - ورقة منزلقة من الأسفل على الموبايل */}
+      <motion.div
+        initial={{ opacity: isMobileViewport ? 1 : 0, scale: isMobileViewport ? 1 : 0.95, y: isMobileViewport ? '100%' : 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: isMobileViewport ? 1 : 0, scale: isMobileViewport ? 1 : 0.95, y: isMobileViewport ? '100%' : 20 }}
+        transition={{ type: 'spring', damping: 25, stiffness: isMobileViewport ? 250 : 300 }}
+        className="relative w-full max-w-2xl bg-white rounded-t-[2rem] md:rounded-[2rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
       >
         {/* زر الإغلاق */}
         {!isSuccess && (

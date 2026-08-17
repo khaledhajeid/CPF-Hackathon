@@ -1,13 +1,9 @@
 // src/pages/Login.jsx
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, User, Lock, Eye, EyeOff, Mail, Building2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, User, Lock, Eye, EyeOff, Mail, Fingerprint } from 'lucide-react';
 
 export default function Login({ onLogin, onNavigateBack }) {
-  // 🟢 State جديدة لتحديد نوع الحساب
-  const [loginRole, setLoginRole] = useState('user'); // 'user' | 'admin'
-  
-  // 🟢 استبدلنا nationalId بـ identifier عشان يستوعب (رقم وطني) أو (إيميل للأدمن)
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -19,22 +15,18 @@ export default function Login({ onLogin, onNavigateBack }) {
         document.getElementById('identifierInput')?.focus();
       }
     }, 500);
-  }, [loginRole]); // خليناه يعمل فوكس كل ما يغير التاب كمان
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      // 🟢 نمرر نوع الحساب للأب عشان يوجهنا صح
-      if (onLogin) onLogin(loginRole);
+      if (onLogin) onLogin('user');
     }, 1500);
   };
 
-  // 🟢 الـ Validation صار ذكي: للأفراد لازم 10 أرقام، للأدمن أي نص أطول من 3 أحرف
-  const isFormValid = loginRole === 'user' 
-    ? identifier.length === 10 && password.length > 0
-    : identifier.length >= 3 && password.length > 0;
+  const isFormValid = identifier.length === 10 && password.length > 0;
 
   return (
     <div className="min-h-[100dvh] flex bg-white font-sans" dir="rtl">
@@ -58,60 +50,30 @@ export default function Login({ onLogin, onNavigateBack }) {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           className="w-full max-w-md mx-auto pt-24 sm:pt-20 pb-10"
         >
-          {/* الترويسة الديناميكية حسب نوع الحساب */}
+          {/* الترويسة */}
           <div className="mb-8 sm:mb-10 text-center">
             <div className="h-14 sm:h-16 flex items-center justify-center mb-5 sm:mb-6">
-              <img 
-                src={loginRole === 'admin' ? '/CPF-Logo.png' : '/sanad-logo.png'} 
-                alt="Logo" 
-                className="h-full object-contain drop-shadow-sm transition-all duration-300" 
-                onError={(e) => { e.target.style.display = 'none'; }} 
+              <img
+                src="/CPF-Logo.png"
+                alt="شعار مؤسسة ولي العهد"
+                className="h-full object-contain drop-shadow-sm"
+                onError={(e) => { e.target.style.display = 'none'; }}
               />
             </div>
-            
+
             <h1 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 tracking-tight">
-              {loginRole === 'admin' ? 'بوابة الإدارة' : 'تسجيل الدخول'}
+              تسجيل الدخول
             </h1>
             <p className="text-gray-500 font-medium text-[13px] sm:text-sm px-4">
-              {loginRole === 'admin' 
-                ? 'تسجيل الدخول الخاص بمدراء المكاتب والمحافظات' 
-                : 'أدخل بياناتك للوصول إلى آلاف الفرص والبرامج المتاحة'}
+              أدخل بياناتك للوصول إلى آلاف الفرص والبرامج المتاحة
             </p>
           </div>
 
-{/* 🟢 التاب بار الجديد (حل مشكلة الأنيميشن) */}
-          <div className="flex bg-[#F8FAFC] border border-gray-100 rounded-xl p-1.5 mb-8 relative">
-            <button 
-              type="button"
-              onClick={() => { setLoginRole('user'); setIdentifier(''); setPassword(''); }}
-              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors z-10 cursor-pointer ${loginRole === 'user' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
-            >
-              <User className="w-4 h-4" />
-              حساب أفراد
-            </button>
-            <button 
-              type="button"
-              onClick={() => { setLoginRole('admin'); setIdentifier(''); setPassword(''); }}
-              className={`flex-1 py-3 text-[13px] sm:text-sm font-bold rounded-lg flex items-center justify-center gap-2 transition-colors z-10 cursor-pointer ${loginRole === 'admin' ? 'text-[#8a1538]' : 'text-gray-500 hover:text-gray-900'}`}
-            >
-              <Building2 className="w-4 h-4" />
-              حساب مكاتب
-            </button>
-            
-            {/* 🟢 السلايدر بانتقال صريح باستخدام transform فقط (نفس الوحدة دايماً) عشان نضمن انتقال سلس بدون قفزات */}
-            <motion.div 
-              initial={false}
-              animate={{ x: loginRole === 'user' ? '0%' : '-100%' }}
-              className="absolute top-1.5 bottom-1.5 right-1.5 w-[calc(50%-6px)] bg-white rounded-lg shadow-sm border border-gray-200/50 z-0"
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            />
-          </div>
-
           <form onSubmit={handleLogin} className="space-y-5 sm:space-y-6">
-            
+
             <div>
               <label htmlFor="identifierInput" className="block text-[13px] font-black text-gray-900 mb-2">
-                {loginRole === 'admin' ? 'الرقم الوظيفي أو الإيميل' : 'الرقم الوطني'}
+                الرقم الوطني
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
@@ -119,20 +81,13 @@ export default function Login({ onLogin, onNavigateBack }) {
                 </div>
                 <input
                   id="identifierInput"
-                  type={loginRole === 'admin' ? "text" : "text"}
-                  inputMode={loginRole === 'admin' ? "text" : "numeric"}
+                  type="text"
+                  inputMode="numeric"
                   required
-                  maxLength={loginRole === 'admin' ? 50 : 10}
+                  maxLength={10}
                   value={identifier}
-                  onChange={(e) => {
-                    // للأفراد نقبل أرقام فقط، للأدمن نقبل أي نص
-                    if (loginRole === 'user') {
-                      setIdentifier(e.target.value.replace(/\D/g, ''));
-                    } else {
-                      setIdentifier(e.target.value);
-                    }
-                  }}
-                  placeholder={loginRole === 'admin' ? 'أدخل الإيميل أو الرقم الوظيفي' : 'أدخل الرقم الوطني المكون من 10 أرقام'}
+                  onChange={(e) => setIdentifier(e.target.value.replace(/\D/g, ''))}
+                  placeholder="أدخل الرقم الوطني المكون من 10 أرقام"
                   className="w-full bg-[#F8FAFC] border border-gray-200 text-gray-900 font-bold text-[14px] sm:text-[15px] py-3.5 pr-10 sm:pr-11 pl-4 rounded-xl hover:bg-gray-50 focus:bg-white focus:border-[#8a1538] focus:ring-4 focus:ring-[#8a1538]/10 outline-none transition-all placeholder:font-medium placeholder:text-[12px] sm:placeholder:text-[13px]"
                   dir="ltr"
                 />
@@ -142,7 +97,7 @@ export default function Login({ onLogin, onNavigateBack }) {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="block text-[13px] font-black text-gray-900">
-                  {loginRole === 'admin' ? 'كلمة المرور' : 'كلمة مرور تطبيق سند'}
+                  كلمة مرور تطبيق سند
                 </label>
                 <button type="button" className="text-[11px] font-black text-[#8a1538] hover:text-[#C08F2D] transition-colors cursor-pointer">
                   نسيت كلمة المرور؟
@@ -180,41 +135,49 @@ export default function Login({ onLogin, onNavigateBack }) {
                 {isLoading ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full" />
                 ) : (
-                  <>
-                    {loginRole === 'admin' ? <ShieldCheck className="w-5 h-5" /> : null}
-                    <span>{loginRole === 'admin' ? 'دخول لوحة التحكم' : 'دخول عبر تطبيق سند'}</span>
-                  </>
+                  <span>تسجيل الدخول</span>
                 )}
               </button>
             </div>
+
+            <div className="relative flex items-center py-3">
+              <div className="flex-grow border-t border-gray-100"></div>
+              <span className="flex-shrink-0 mx-4 text-gray-500 text-[10px] sm:text-[11px] font-bold">أو</span>
+              <div className="flex-grow border-t border-gray-100"></div>
+            </div>
+
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-2.5 bg-white border border-gray-200 hover:border-[#8a1538]/30 hover:bg-[#8a1538]/5 text-gray-700 font-bold text-[13px] sm:text-[14px] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer"
+            >
+              <Fingerprint className="w-5 h-5 text-[#8a1538]" />
+              الدخول ببصمة الإصبع (Passkey)
+            </button>
           </form>
 
-          {/* خيارات الدخول المنقحة تظهر فقط للأفراد */}
-          {loginRole === 'user' && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 sm:mt-10">
-              <div className="relative flex items-center py-4">
-                <div className="flex-grow border-t border-gray-100"></div>
-                <span className="flex-shrink-0 mx-4 text-gray-500 text-[10px] sm:text-[11px] font-bold">أو الدخول لغير الأردنيين</span>
-                <div className="flex-grow border-t border-gray-100"></div>
-              </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 sm:mt-10">
+            <div className="relative flex items-center py-4">
+              <div className="flex-grow border-t border-gray-100"></div>
+              <span className="flex-shrink-0 mx-4 text-gray-500 text-[10px] sm:text-[11px] font-bold">أو الدخول لغير الأردنيين</span>
+              <div className="flex-grow border-t border-gray-100"></div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-2">
-                <button type="button" className="flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-bold text-[12px] sm:text-[13px] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer">
-                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                  </svg>
-                  Google
-                </button>
-                <button type="button" className="flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-bold text-[12px] sm:text-[13px] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer">
-                  <Mail className="w-4 h-4 text-[#8a1538] shrink-0" />
-                  البريد الإلكتروني
-                </button>
-              </div>
-            </motion.div>
-          )}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-2">
+              <button type="button" className="flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-bold text-[12px] sm:text-[13px] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer">
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Google
+              </button>
+              <button type="button" className="flex items-center justify-center gap-2 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-bold text-[12px] sm:text-[13px] py-3.5 rounded-xl transition-all shadow-sm cursor-pointer">
+                <Mail className="w-4 h-4 text-[#8a1538] shrink-0" />
+                البريد الإلكتروني
+              </button>
+            </div>
+          </motion.div>
 
         </motion.div>
       </div>
@@ -249,7 +212,7 @@ export default function Login({ onLogin, onNavigateBack }) {
             بوابة واحدة <br/> <span className="text-[#C08F2D]">لآلاف الفرص</span>
           </h2>
           <p className="text-white/90 font-medium text-[1.1rem] leading-relaxed max-w-md mx-auto">
-            تابع رصيد نقاطك وأدر تذاكر الفعاليات واكتشف مسارك المهني والأكاديمي بخطوة واحدة
+            أدر تذاكر الفعاليات واكتشف مسارك المهني والأكاديمي بخطوة واحدة
           </p>
         </div>
 

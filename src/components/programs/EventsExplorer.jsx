@@ -1,7 +1,7 @@
 // src/components/programs/EventsExplorer.jsx
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpLeft, Search, Calendar, MapPin, Award, Timer, ChevronDown, Check } from 'lucide-react';
+import { ArrowUpLeft, Search, Calendar, MapPin, Timer, ChevronDown, Check } from 'lucide-react';
 import JordanMap from '../home/JordanMap';
 import EventDetailsDrawer from '../events/EventDetailsDrawer';
 import { allEvents } from '../../data';
@@ -192,14 +192,9 @@ export default function EventsExplorer({ handleRegisterClick }) {
                             <div className="flex items-center gap-2 text-gray-500 text-[clamp(0.6rem,0.9vw,0.75rem)] font-bold"><MapPin className="w-3.5 h-3.5 text-[#C08F2D]" /> <span className="truncate">{event.city} - {event.location}</span></div>
                           </div>
                         </div>
-                        <div className="mt-auto pt-[clamp(0.6rem,1vw,1rem)] border-t border-gray-100 flex items-center justify-between">
-                          <div className="flex flex-col">
-                            {/* 🟢 تصغير نصوص المكافأة */}
-                            <span className="text-[0.6875rem] font-bold text-gray-500 uppercase tracking-wider mb-0.5">المكافأة</span>
-                            <div className="flex items-center gap-1"><Award className="w-3.5 h-3.5 text-[#C08F2D]" /><span className="text-[#721F31] font-black text-[clamp(0.6rem,0.9vw,0.75rem)]">+{event.points} نقطة</span></div>
-                          </div>
+                        <div className="mt-auto pt-[clamp(0.6rem,1vw,1rem)] border-t border-gray-100 flex items-center justify-end">
                           {/* 🟢 تصغير زر التفاصيل */}
-                          <button 
+                          <button
                             onClick={(e) => { e.stopPropagation(); setSelectedEvent(event); }} 
                             className="flex items-center gap-1.5 md:gap-2 bg-[#8a1538] hover:bg-[#680f2a] text-white px-[clamp(0.75rem,1.5vw,1.25rem)] py-[clamp(0.4rem,0.8vw,0.625rem)] rounded-xl font-black text-[clamp(0.6rem,0.9vw,0.75rem)] transition-colors shadow-md group/btn"
                           >

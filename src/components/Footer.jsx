@@ -58,8 +58,8 @@ export default function Footer({ onNavigate }) {
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* قسم النشرة الإخبارية */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 pb-10 md:pb-12 mb-10 md:mb-12 border-b border-white/10">
+        {/* قسم النشرة الإخبارية - نموذج اشتراك بريدي، عنصر ويب وليس تطبيق، فيظهر فقط على الديسكتوب */}
+        <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-8 pb-10 md:pb-12 mb-10 md:mb-12 border-b border-white/10">
           <div className="text-center lg:text-right w-full lg:w-1/2 lg:pe-10">
             <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white mb-2 md:mb-3 tracking-tight">اشترك في نشرتنا الإخبارية</h3>
             <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed px-4 lg:px-0">
@@ -120,7 +120,8 @@ export default function Footer({ onNavigate }) {
             </div>
           </div>
 
-          <div className="text-center md:text-right lg:pe-6 border-t border-white/5 md:border-t-0 pt-8 md:pt-0">
+          {/* روابط سريعة - تكرار للتنقل، مخفية على الموبايل لأن الشريط السفلي يغطيها */}
+          <div className="hidden md:block text-right lg:pe-6">
             <h4 className="text-[#C08F2D] font-black text-lg md:text-xl mb-5 md:mb-6">روابط سريعة</h4>
             <ul className="space-y-3 md:space-y-4 text-[13px] md:text-base font-bold text-gray-200 flex flex-col items-center md:items-start">
               {quickLinks.map((link, idx) => (
@@ -183,7 +184,7 @@ export default function Footer({ onNavigate }) {
 
           <button
             onClick={scrollToTop}
-            className={`flex items-center justify-center w-full md:w-auto gap-2 text-gray-300 hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-3 md:py-2.5 rounded-xl md:rounded-full transition-all border border-white/10 shadow-lg group cursor-pointer ${FOCUS_RING}`}
+            className={`hidden md:flex items-center justify-center w-full md:w-auto gap-2 text-gray-300 hover:text-white bg-[#300d14] hover:bg-[#a67b25] px-5 py-3 md:py-2.5 rounded-xl md:rounded-full transition-all border border-white/10 shadow-lg group cursor-pointer ${FOCUS_RING}`}
           >
             <span>أعلى الصفحة</span>
             <ArrowUpLeft className="w-4 h-4 transform rotate-45 transition-transform duration-300 group-hover:-translate-y-1" />

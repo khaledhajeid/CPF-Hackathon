@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Programs from './components/Programs';
-import ChatWidget from './components/ChatWidget';
 import SuccessStories from './components/SuccessStories';
 import Contact from './components/Contact';
 import HomePage from './pages/HomePage';
@@ -23,8 +22,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home'); 
   const [activeFilters, setActiveFilters] = useState({ pathway: 'الكل', location: 'الكل' });
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [userPoints] = useState(300);
-  const [myTickets, setMyTickets] = useState([]); 
+  const [myTickets, setMyTickets] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -89,7 +87,7 @@ function App() {
   // 🟢 4. استبدلنا كل setCurrentPage بـ handleNavigate 
   const renderPage = () => {
     if (currentPage === 'dashboard') {
-      return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={handleNavigate} userPoints={userPoints} myTickets={myTickets} /></motion.div>;
+      return <motion.div key="dashboard" {...pageVariants}><Dashboard onNavigate={handleNavigate} myTickets={myTickets} /></motion.div>;
     }
     switch (currentPage) {
       case 'admin':
@@ -198,15 +196,12 @@ function App() {
       </AnimatePresence>
       
       {!isAdminPage && (
-        <>
-          <MobileNavBar 
-            currentPage={currentPage} 
-            onNavigate={handleNavigate} 
-            onLoginClick={() => setIsLoginOpen(true)} 
-            onSearchClick={() => setIsSearchOpen(true)} 
-          />
-          <ChatWidget />
-        </>
+        <MobileNavBar
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLoginClick={() => setIsLoginOpen(true)}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
       )}
       
     </div>

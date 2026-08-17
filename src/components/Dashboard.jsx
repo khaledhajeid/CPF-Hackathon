@@ -2,15 +2,43 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ShieldCheck, QrCode, Ticket, MapPin, Calendar, X,
-  Settings, User, Bell, Lock, LogOut, CreditCard, Gift, Clock,
-  CheckCircle2, CircleDashed, ArrowUpLeft, BarChart3, ChevronLeft, Map
+  ShieldCheck, ScanLine, Ticket, MapPin, Calendar, CalendarDays, X,
+  Settings, User, Bell, Lock, LogOut, CreditCard, Clock,
+  CheckCircle2, CircleDashed, ArrowUpLeft, BarChart3, ChevronLeft, ChevronRight, Map
 } from 'lucide-react';
 
-export default function Dashboard({ onNavigate, userPoints, myTickets }) {
+const ARABIC_MONTHS = {
+  'كانون الثاني': 0, 'شباط': 1, 'آذار': 2, 'نيسان': 3, 'أيار': 4, 'حزيران': 5,
+  'تموز': 6, 'آب': 7, 'أيلول': 8, 'تشرين الأول': 9, 'تشرين الثاني': 10, 'كانون الأول': 11,
+};
+
+const WEEKDAY_LABELS = ['أحد', 'إثن', 'ثلا', 'أرب', 'خمي', 'جمع', 'سبت'];
+
+// 🟢 بيانات تجريبية لتعبئة التقويم، عناوينها من allEvents في data.js
+const MOCK_CALENDAR_EVENTS = [
+  { id: 'm1', title: 'برنامج إعداد القيادات الشابة وصناع القرار', date: '15 آب 2026', city: 'العقبة', pathway: 'قُد', status: 'completed' },
+  { id: 'm2', title: 'معسكر التصنيع الرقمي والطباعة ثلاثية الأبعاد', date: '25 آب 2026', city: 'عمان', pathway: 'تعلّم', status: 'completed' },
+  { id: 'm3', title: 'ورشة فن الخطابة والتحدث أمام الجمهور', date: '02 أيلول 2026', city: 'الزرقاء', pathway: 'قُد', status: 'upcoming' },
+  { id: 'm4', title: 'ورشة الذكاء الاصطناعي في خدمة التعليم', date: '08 أيلول 2026', city: 'أونلاين', pathway: 'تعلّم', status: 'upcoming' },
+  { id: 'm5', title: 'دورة أساسيات ريادة الأعمال وبناء المشاريع الناشئة', date: '10 أيلول 2026', city: 'إربد', pathway: 'تعلّم', status: 'upcoming' },
+  { id: 'm6', title: 'مخيم البرمجة وتطوير تطبيقات الهواتف الذكية', date: '20 أيلول 2026', city: 'أونلاين', pathway: 'تعلّم', status: 'upcoming' },
+];
+
+function parseArabicDate(str) {
+  if (!str) return null;
+  const match = Object.keys(ARABIC_MONTHS).find(name => str.includes(name));
+  if (!match) return null;
+  const day = parseInt(str, 10);
+  const yearMatch = str.match(/\d{4}/);
+  const year = yearMatch ? parseInt(yearMatch[0], 10) : new Date().getFullYear();
+  if (!day) return null;
+  return new Date(year, ARABIC_MONTHS[match], day);
+}
+
+export default function Dashboard({ onNavigate, myTickets }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedTicketForQR, setSelectedTicketForQR] = useState(null);
-  
+
   const [smsNotifications, setSmsNotifications] = useState(true);
 
   const fadeUpVariants = {
@@ -27,6 +55,51 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
     { id: 'p1', title: 'دورة أساسيات ريادة الأعمال', date: '10 أيار 2026', type: 'المشاركة الاقتصادية', status: 'completed' },
     { id: 'p2', title: 'مبادرة شتاء دافئ للتطوع', date: '22 شباط 2026', type: 'التنمية المجتمعية', status: 'completed' },
   ];
+
+  const calendarEvents = [
+    ...myTickets.map(t => ({ id: t.id, title: t.title, dateStr: t.date, city: t.city, pathway: t.pathway, status: 'upcoming', parsed: parseArabicDate(t.date) })),
+    ...pastEvents.map(ev => ({ id: ev.id, title: ev.title, dateStr: ev.date, city: null, pathway: ev.type, status: 'completed', parsed: parseArabicDate(ev.date) })),
+    ...MOCK_CALENDAR_EVENTS.map(ev => ({ id: ev.id, title: ev.title, dateStr: ev.date, city: ev.city, pathway: ev.pathway, status: ev.status, parsed: parseArabicDate(ev.date) })),
+  ].filter(ev => ev.parsed);
+
+  const monthCounts = calendarEvents.reduce((acc, ev) => {
+    const key = `${ev.parsed.getFullYear()}-${ev.parsed.getMonth()}`;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  const busiestMonthKey = Object.keys(monthCounts).reduce(
+    (best, key) => (!best || monthCounts[key] > monthCounts[best] ? key : best), null
+  );
+  const firstEventMonth = busiestMonthKey
+    ? new Date(parseInt(busiestMonthKey.split('-')[0], 10), parseInt(busiestMonthKey.split('-')[1], 10), 1)
+    : new Date(2026, 7, 1);
+
+  const [calendarMonth, setCalendarMonth] = useState(firstEventMonth);
+  const [selectedDay, setSelectedDay] = useState(null);
+
+  const monthLabel = calendarMonth.toLocaleDateString('ar-JO', { month: 'long', year: 'numeric' });
+  const daysInMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 0).getDate();
+  const firstWeekday = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth(), 1).getDay();
+
+  const eventsByDay = calendarEvents.reduce((acc, ev) => {
+    if (ev.parsed.getFullYear() === calendarMonth.getFullYear() && ev.parsed.getMonth() === calendarMonth.getMonth()) {
+      const d = ev.parsed.getDate();
+      acc[d] = [...(acc[d] || []), ev];
+    }
+    return acc;
+  }, {});
+
+  const changeMonth = (offset) => {
+    setCalendarMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + offset, 1));
+    setSelectedDay(null);
+  };
+
+  const dayCells = [
+    ...Array.from({ length: firstWeekday }, () => null),
+    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+  ];
+
+  const selectedDayEvents = selectedDay ? (eventsByDay[selectedDay] || []) : [];
 
   return (
     <div className="min-h-[100dvh] bg-[#F4F7FA] pb-24 font-sans selection:bg-[#C08F2D] selection:text-white" dir="rtl">
@@ -55,14 +128,14 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 -mt-32 md:-mt-44 relative z-20">
         
         {/* =========================================
-            2. الهوية الرقمية ومحفظة النقاط
+            2. الهوية الرقمية
             ========================================= */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row gap-5 md:gap-8 mb-8 md:mb-12 items-end w-full"
+          className="flex justify-center mb-8 md:mb-12 w-full"
         >
           {/* كرت الهوية */}
-          <div className="w-full lg:w-[420px] h-[220px] md:h-[240px] relative rounded-2xl md:rounded-[2rem] p-6 md:p-8 text-white shadow-2xl shadow-[#8a1538]/20 overflow-hidden shrink-0 group">
+          <div className="w-full max-w-md h-[220px] md:h-[240px] relative rounded-2xl md:rounded-[2rem] p-6 md:p-8 text-white shadow-2xl shadow-[#8a1538]/20 overflow-hidden shrink-0 group">
             <div className="absolute inset-0 bg-gradient-to-br from-[#8a1538] via-[#680f2a] to-[#2d0511]" />
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
             <div className="absolute -right-10 -top-10 md:-right-20 md:-top-20 w-48 h-48 md:w-64 md:h-64 bg-[#C08F2D]/20 rounded-full blur-[40px] md:blur-[50px] group-hover:bg-[#C08F2D]/30 transition-all duration-700 pointer-events-none" />
@@ -93,26 +166,6 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
               </div>
             </div>
           </div>
-
-          {/* محفظة النقاط والمكافآت */}
-          <div className="w-full bg-white rounded-2xl md:rounded-[2rem] p-5 md:p-8 shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-5 md:gap-6">
-            <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9] rounded-2xl md:rounded-3xl flex items-center justify-center shadow-inner border border-gray-200 shrink-0">
-                <Gift className="w-8 h-8 md:w-10 md:h-10 text-[#C08F2D]" />
-              </div>
-              <div>
-                <p className="text-[11px] md:text-[13px] font-black text-gray-500 mb-0.5 md:mb-1">الرصيد التراكمي للإنجاز</p>
-                <div className="flex items-baseline gap-1 md:gap-2">
-                  <span className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">{userPoints}</span>
-                  <span className="text-[#C08F2D] text-sm md:text-lg font-black">نقطة</span>
-                </div>
-              </div>
-            </div>
-            <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#F8FAFC] hover:bg-gray-100 border border-gray-200 text-gray-700 px-5 md:px-6 py-3.5 md:py-4 rounded-xl font-black text-[13px] md:text-sm transition-all duration-300 group cursor-pointer">
-              استبدال النقاط
-              <span className="bg-[#C08F2D] text-white text-[9px] px-2 py-0.5 rounded-full mr-1 group-hover:animate-pulse">قريباً</span>
-            </button>
-          </div>
         </motion.div>
 
         {/* =========================================
@@ -121,6 +174,7 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
         <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-2 scrollbar-hide w-full">
           {[
             { id: 'overview', label: 'المسار الزمني', icon: Clock },
+            { id: 'calendar', label: 'التقويم', icon: CalendarDays },
             { id: 'wallet', label: 'التذاكر والمحفظة', icon: Ticket },
             { id: 'analytics', label: 'بصمتك', icon: BarChart3 },
             { id: 'settings', label: 'الإعدادات', icon: Settings }
@@ -236,6 +290,81 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
               </div>
             )}
 
+            {/* تبويب التقويم */}
+            {activeTab === 'calendar' && (
+              <motion.div variants={fadeUpVariants} className="bg-white rounded-2xl md:rounded-[2rem] p-5 md:p-8 border border-gray-100 shadow-sm">
+                <div className="flex items-center justify-between mb-6 md:mb-8">
+                  <h3 className="font-black text-lg md:text-xl text-gray-900">{monthLabel}</h3>
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <button onClick={() => changeMonth(-1)} className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center transition-colors cursor-pointer">
+                      <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
+                    </button>
+                    <button onClick={() => changeMonth(1)} className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center transition-colors cursor-pointer">
+                      <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-7 gap-1 md:gap-2 mb-2 md:mb-3">
+                  {WEEKDAY_LABELS.map(label => (
+                    <span key={label} className="text-center text-[10px] md:text-xs font-black text-gray-400 py-1">{label}</span>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-7 gap-1 md:gap-2">
+                  {dayCells.map((day, idx) => {
+                    if (!day) return <div key={`empty-${idx}`} />;
+                    const dayEvents = eventsByDay[day] || [];
+                    const hasUpcoming = dayEvents.some(ev => ev.status === 'upcoming');
+                    const isSelected = selectedDay === day;
+                    return (
+                      <button
+                        key={day}
+                        onClick={() => setSelectedDay(isSelected ? null : day)}
+                        className={`aspect-square rounded-xl md:rounded-2xl flex flex-col items-center justify-center gap-1 relative text-[12px] md:text-sm font-black transition-colors cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#8a1538] text-white'
+                            : dayEvents.length > 0
+                              ? 'bg-[#8a1538]/5 text-gray-900 hover:bg-[#8a1538]/10'
+                              : 'text-gray-500 hover:bg-gray-50'
+                        }`}
+                      >
+                        {day}
+                        {dayEvents.length > 0 && (
+                          <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : hasUpcoming ? 'bg-[#C08F2D]' : 'bg-green-500'}`} />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-gray-100">
+                  {selectedDay ? (
+                    selectedDayEvents.length > 0 ? (
+                      <div className="space-y-3 md:space-y-4">
+                        {selectedDayEvents.map(ev => (
+                          <div key={ev.id} className="flex items-center gap-3 md:gap-4 bg-[#F8FAFC] border border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4">
+                            <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${ev.status === 'upcoming' ? 'bg-[#C08F2D]' : 'bg-green-500'}`} />
+                            <div className="min-w-0 flex-1">
+                              <h4 className="text-[13px] md:text-[15px] font-black text-gray-900 leading-tight truncate">{ev.title}</h4>
+                              <p className="text-[11px] md:text-xs font-bold text-gray-500 mt-0.5">{ev.pathway}{ev.city ? ` • ${ev.city}` : ''}</p>
+                            </div>
+                            <span className={`text-[9px] md:text-[10px] font-black px-2 py-1 rounded-md shrink-0 ${ev.status === 'upcoming' ? 'text-[#C08F2D] bg-[#C08F2D]/10' : 'text-green-600 bg-green-50'}`}>
+                              {ev.status === 'upcoming' ? 'قادم' : 'مكتمل'}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-center text-gray-400 text-[13px] font-bold py-4">لا توجد فعاليات في هذا اليوم.</p>
+                    )
+                  ) : (
+                    <p className="text-center text-gray-400 text-[13px] font-bold py-4">اختر يوماً يحتوي على نقطة لعرض تفاصيل فعالياته.</p>
+                  )}
+                </div>
+              </motion.div>
+            )}
+
             {/* التبويب الثاني: محفظة التذاكر */}
             {activeTab === 'wallet' && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-8">
@@ -279,9 +408,9 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
                       <div className="bg-[#F8FAFC] p-5 md:p-8 sm:w-48 flex flex-col items-center justify-center text-center shrink-0 border-t-0 sm:border-t-0 sm:border-r border-dashed border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors"
                            onClick={() => setSelectedTicketForQR(ticket)}>
                         <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl shadow-sm flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform">
-                          <QrCode className="w-6 h-6 md:w-8 md:h-8 text-[#8a1538]" />
+                          <ScanLine className="w-6 h-6 md:w-8 md:h-8 text-[#8a1538]" />
                         </div>
-                        <p className="text-[11px] md:text-xs font-black text-gray-900">عرض الرمز (QR)</p>
+                        <p className="text-[11px] md:text-xs font-black text-gray-900">امسح رمز الحضور</p>
                       </div>
                     </motion.div>
                   ))
@@ -416,29 +545,38 @@ export default function Dashboard({ onNavigate, userPoints, myTickets }) {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[999999] w-[92%] max-w-sm bg-white rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 shadow-2xl flex flex-col items-center text-center overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-full h-2 md:h-3 bg-[#8a1538]" />
-              <button onClick={() => setSelectedTicketForQR(null)} className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-500 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 p-1.5 md:p-2 rounded-full transition-colors cursor-pointer">
+              <button onClick={() => setSelectedTicketForQR(null)} className="absolute top-4 right-4 md:top-6 md:right-6 z-10 text-white hover:text-white bg-black/30 hover:bg-black/50 p-1.5 md:p-2 rounded-full transition-colors cursor-pointer backdrop-blur-sm">
                 <X className="w-4 h-4 md:w-5 md:h-5" />
               </button>
-              
-              <div className="w-14 h-14 md:w-16 md:h-16 bg-[#8a1538]/10 text-[#8a1538] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mt-4 md:mt-6">
-                <QrCode className="w-6 h-6 md:w-8 md:h-8" />
-              </div>
-              
-              <h3 className="font-black text-lg md:text-xl text-gray-900 mb-1 md:mb-2 leading-tight">بطاقة الدخول الموحدة</h3>
+
+              <h3 className="font-black text-lg md:text-xl text-gray-900 mb-1 md:mb-2 leading-tight mt-4 md:mt-6">امسح رمز الحضور</h3>
               <p className="text-gray-500 text-[11px] md:text-[13px] font-bold mb-6 md:mb-8 px-2 md:px-4 leading-relaxed">
-                اعرض هذا الرمز لتأكيد حضورك واكتساب <span className="text-[#C08F2D] font-black">{selectedTicketForQR.points} نقطة</span>.
+                وجّه كاميرا هاتفك نحو رمز الـ QR عند بوابة الدخول لتأكيد حضورك.
               </p>
-              
-              <div className="w-48 h-48 md:w-56 md:h-56 bg-white border-2 border-gray-100 rounded-2xl md:rounded-3xl p-3 md:p-4 shadow-sm mb-6 md:mb-8 relative">
-                <div className="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8 border-t-[3px] border-r-[3px] md:border-t-4 md:border-r-4 border-[#C08F2D] rounded-tr-[15px] md:rounded-tr-[20px]" />
-                <div className="absolute top-0 left-0 w-6 h-6 md:w-8 md:h-8 border-t-[3px] border-l-[3px] md:border-t-4 md:border-l-4 border-[#C08F2D] rounded-tl-[15px] md:rounded-tl-[20px]" />
-                <div className="absolute bottom-0 right-0 w-6 h-6 md:w-8 md:h-8 border-b-[3px] border-r-[3px] md:border-b-4 md:border-r-4 border-[#C08F2D] rounded-br-[15px] md:rounded-br-[20px]" />
-                <div className="absolute bottom-0 left-0 w-6 h-6 md:w-8 md:h-8 border-b-[3px] border-l-[3px] md:border-b-4 md:border-l-4 border-[#C08F2D] rounded-bl-[15px] md:rounded-bl-[20px]" />
-                
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=CPF-TICKET-${selectedTicketForQR.id}-KHALED`} alt="QR Code" className="w-full h-full object-contain mix-blend-multiply" />
+
+              <div className="w-full aspect-square bg-[#0c0c0e] rounded-2xl md:rounded-3xl shadow-sm mb-6 md:mb-8 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.15),transparent_60%)]" />
+
+                <div className="absolute inset-6 md:inset-8">
+                  <div className="absolute top-0 right-0 w-8 h-8 md:w-10 md:h-10 border-t-4 border-r-4 border-white rounded-tr-2xl" />
+                  <div className="absolute top-0 left-0 w-8 h-8 md:w-10 md:h-10 border-t-4 border-l-4 border-white rounded-tl-2xl" />
+                  <div className="absolute bottom-0 right-0 w-8 h-8 md:w-10 md:h-10 border-b-4 border-r-4 border-white rounded-br-2xl" />
+                  <div className="absolute bottom-0 left-0 w-8 h-8 md:w-10 md:h-10 border-b-4 border-l-4 border-white rounded-bl-2xl" />
+
+                  <motion.div
+                    initial={{ y: '0%' }}
+                    animate={{ y: ['0%', '100%', '0%'] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute inset-x-0 h-[3px] bg-[#C08F2D] shadow-[0_0_12px_rgba(192,143,45,0.8)] rounded-full"
+                  />
+                </div>
+
+                <div className="absolute bottom-3 md:bottom-4 inset-x-0 flex items-center justify-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#C08F2D] animate-pulse" />
+                  <span className="text-white/80 text-[11px] md:text-xs font-bold">جاري البحث عن الرمز...</span>
+                </div>
               </div>
-              
+
               <div className="w-full bg-gray-50 rounded-xl md:rounded-2xl p-3 md:p-4 border border-gray-100 text-center">
                 <p className="text-gray-900 font-black text-[13px] md:text-[15px] mb-1 md:mb-1.5 truncate px-2">{selectedTicketForQR.title}</p>
                 <div className="flex justify-center items-center gap-1.5 md:gap-2 text-[11px] md:text-xs font-bold text-gray-500">

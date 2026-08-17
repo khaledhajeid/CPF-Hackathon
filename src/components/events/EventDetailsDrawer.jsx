@@ -216,7 +216,7 @@ export default function EventDetailsDrawer({ event, isOpen, onClose, onRegister 
                     className="w-full relative overflow-hidden group bg-[#8a1538] hover:bg-[#680f2a] text-white rounded-xl lg:rounded-xl xl:rounded-2xl font-black text-[13px] lg:text-[13px] xl:text-sm 2xl:text-2xl py-3.5 lg:py-3.5 xl:py-4 2xl:py-6 flex items-center justify-center gap-2 lg:gap-2 xl:gap-3 transition-all shadow-md cursor-pointer"
                   >
                     <ShieldCheck className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 text-[#C08F2D]" />
-                    <span>تسجيل الدخول عبر سند للمتابعة</span>
+                    <span>تسجيل الدخول للمتابعة</span>
                   </button>
                 ) : (
                   <button 

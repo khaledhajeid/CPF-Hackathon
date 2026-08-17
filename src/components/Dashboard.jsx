@@ -144,7 +144,7 @@ export default function Dashboard({ onNavigate, myTickets }) {
               <div className="flex justify-between items-start">
                 <div className="inline-flex items-center gap-1.5 md:gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-2.5 md:px-3 py-1 md:py-1.5 rounded-full">
                   <ShieldCheck className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#C08F2D]" />
-                  <span className="text-[10px] md:text-[11px] font-black tracking-wider">موثق عبر سند</span>
+                  <span className="text-[10px] md:text-[11px] font-black tracking-wider">هوية موثقة</span>
                 </div>
                 <CreditCard className="w-6 h-6 md:w-8 md:h-8 text-white/40" strokeWidth={1} />
               </div>

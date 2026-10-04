@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import Programs from './components/Programs';
+import ChatWidget from './components/ChatWidget';
 import SuccessStories from './components/SuccessStories';
 import Contact from './components/Contact';
 import HomePage from './pages/HomePage';
@@ -196,12 +197,15 @@ function App() {
       </AnimatePresence>
       
       {!isAdminPage && (
-        <MobileNavBar
-          currentPage={currentPage}
-          onNavigate={handleNavigate}
-          onLoginClick={() => setIsLoginOpen(true)}
-          onSearchClick={() => setIsSearchOpen(true)}
-        />
+        <>
+          <MobileNavBar
+            currentPage={currentPage}
+            onNavigate={handleNavigate}
+            onLoginClick={() => setIsLoginOpen(true)}
+            onSearchClick={() => setIsSearchOpen(true)}
+          />
+          <ChatWidget />
+        </>
       )}
       
     </div>
